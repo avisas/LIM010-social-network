@@ -1,0 +1,39 @@
+.flex-form{
+  display: flex;
+  flex-direction: column;
+ 
+  padding: 0px 20px;  
+}
+.flex{
+  display:flex;
+  /*align-items:center;*/
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.inputForm{
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button{
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media screen and (min-width:764px){
+  .flex-form{
+    display: flex;
+    align-items: flex-end;
+  }
+}

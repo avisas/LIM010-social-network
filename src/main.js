@@ -1,28 +1,38 @@
-// Este es el punto de entrada de tu aplicacion
-
-/*import { myFunction } from './lib/index.js';
-
-myFunction();*/
-
-
+//import  {myFunction } from './lib/index.js';
 
 let formAutenticacion;
 inicializar = () => {
   formAutenticacion = document.getElementById("form-autenticacion");
-  formAutenticacion.addEventListener("submit", userCreate, false);
+  formAutenticacion.addEventListener("submit", signIn);
 }
 
-userCreate = (event) => {
+// Crear usuario
+const userCreate = (event) => {
   event.preventDefault();
-  var usuario = event.target.email.value;
-  var contrasena = event.target.password.value;
+  const usuario = event.target.email.value;
+  const contrasena = event.target.password.value;
 
   firebase.auth().createUserWithEmailAndPassword(usuario, contrasena)
     .then(function (result) {
-      console.log('Usuario creado');
+      alert('Usuario creado');
     })
     .catch(function (error) {
-      console.log('Error');
+      alert('Error');
     });
 }
+
+// Login de usuario
+const signIn = (event) => {
+  event.preventDefault();
+  const usuario = event.target.email.value;
+  const contrasena = event.target.password.value;
+  firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
+  .then(function (result) {
+    alert('Ingresaste')
+  })
+  .catch(function (error) {
+    alert('Error');
+  });
+}
+
 inicializar();

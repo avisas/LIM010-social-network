@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Social Network</title>
 </head>
@@ -30,14 +31,15 @@
 </script>
 
 <body>
-  <form id="form-autenticacion">
+  <form id="form-autenticacion" class="flex-form">
     <h1>Social Network</h1>
-    <label for="email">Email</label>
-    <input type="text" name="email" value="" id="email">
-    <label for="password">Password</label>
-    <input type="password" name="password" value="" id="password">
-    <input type="submit" name="" value="Entrar">
+    <input type="text" name="email" value="" placeholder="Email" class="inputForm" id="email">
+    <input type="password" name="password" value="" placeholder="Password" class="inputForm" id="password">
+    <input type="submit" name="" class="button" value="Log In">
+    <label>¿No tienes una cuenta?&nbsp;<span class="bold">Registrate</span></label>
+
   </form>
+  <div id="page2"></div>
   <!--<script type="module" src="main.js"></script>-->
   <script src="main.js"></script>
 
