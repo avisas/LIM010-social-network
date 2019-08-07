@@ -5,7 +5,7 @@ const loginFacebook = document.getElementById("facebook");
 let formAutenticacion;
 inicializar = () => {
   formAutenticacion = document.getElementById("form-autenticacion");
-  formAutenticacion.addEventListener("submit", signIn);
+  formAutenticacion.addEventListener("submit", userCreate);
 }
 // Crear usuario
 const userCreate = (event) => {
