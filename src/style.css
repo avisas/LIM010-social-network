@@ -13,6 +13,15 @@
   font-weight: bold;
 }
 
+.show-message-error{
+  display: inline-block;
+  color: #db4a39;
+  font-weight: bold;
+}
+
+.hide-message-error{
+  display: none;
+}
 .inputForm{
   padding: 12px 20px;
   margin: 8px 0;

@@ -7,14 +7,20 @@ let email = document.getElementById("email");
 // Login de usuario
 const signIn = (event) => {
   event.preventDefault();
+  const messageErrorLabel = document.getElementById("messageError");
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
   firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
     .then(function (result) {
+      messageErrorLabel.classList.remove("show-message-error");
+      messageErrorLabel.classList.remove("hide-message-error");
+      // messageErrorLabel.innerHTML = '';
       alert('Ingresaste')
     })
     .catch(function (error) {
-      alert('Error');
+      messageErrorLabel.classList.remove("hide-message-error");
+      messageErrorLabel.classList.add("show-message-error");
+      // messageErrorLabel.innerHTML = '<span style="color:red;">Usuario y/o contraseña inválida.</span>';
     });
 }
 
@@ -44,6 +50,7 @@ email.addEventListener("keyup", function (event) {
     email.setCustomValidity("");
   };
 });
+
 const signInFacebook = (event) => {
   event.preventDefault();
   let provider = new firebase.auth.FacebookAuthProvider();
