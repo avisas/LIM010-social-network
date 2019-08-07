@@ -34,13 +34,10 @@ register.addEventListener('click', () => {
   formRegister.innerHTML = divContent;
   document.getElementById("page2").appendChild(formRegister);
 
-  //const mail = formRegister.querySelector('#mail').value;
-  //const password = formRegister.querySelector('#password').value;
+ 
   const btnRegister = formRegister.querySelector('#button-register');
 
   btnRegister.addEventListener('click', registerFunction);
-
-//return formRegister;
 });
 
 const registerFunction = (event) => {
@@ -54,9 +51,7 @@ const registerFunction = (event) => {
       alert('Creadooo');
     })
     .catch(error => {
-      const errorCode = error.code;
-      const  errorMessage = error.message;
-      alert( `Error: ${errorMessage} Tipo:${errorCode}`);
+      alert( 'Error');
     });
 }
 
