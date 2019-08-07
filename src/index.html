@@ -12,6 +12,7 @@
 <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js"></script>
+<script src="https://kit.fontawesome.com/b5efdc9698.js"></script>
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#config-web-app -->
 
@@ -31,14 +32,26 @@
 </script>
 
 <body>
-  <form id="form-autenticacion" class="flex-form">
+  <section class="login-section">
+    <form id="form-autenticacion" class="flex-form">
     <h1>Social Network</h1>
+    <p>¡Bienvenido Chefcito!</p>
     <input type="text" name="email" value="" placeholder="Email" class="inputForm" id="email">
     <input type="password" name="password" value="" placeholder="Password" class="inputForm" id="password">
-    <input type="submit" name="" class="button" value="Log In">
-    <label>¿No tienes una cuenta?&nbsp;<span class="bold">Registrate</span></label>
-
+    <input type="submit" name="" class="button-login" value="Log In">
   </form>
+  <div class="flex-form">
+    <p>O bien ingresa con...</p>
+    <div class="div-icon">
+      <span id="facebook"><i class="fab fa-facebook iconfb"></i></span>
+      <span id="google"><i class="fab fa-google iconGoogle"></i></span>        
+    </div>
+    
+    <label>¿No tienes una cuenta?&nbsp;<span class="bold">Registrate</span></label>
+  </div>
+  </section>
+  
+      
   <div id="page2"></div>
   <!--<script type="module" src="main.js"></script>-->
   <script src="main.js"></script>
