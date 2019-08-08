@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Social Network</title>
@@ -40,8 +41,8 @@
       <form id="form-autenticacion" class="flex-form">
         <h1>Tasty Recipes</h1>
         <p>¡Bienvenido Chefcito!</p>
-        <input type="email" name="email" value="" placeholder="Email" class="inputForm" required>
-        <input type="password" name="password" value="" placeholder="Password" class="inputForm" required>
+        <input type="text" name="email" value="" placeholder="Email" class="inputForm" id="email">
+        <input type="password" name="password" value="" placeholder="Password" class="inputForm" id="password">
         <input type="submit" name="" class="button-login" value="Log In">
         <label id="messageError"></label>
       </form>
@@ -51,14 +52,16 @@
           <span id="facebook"><i class="fab fa-facebook iconfb"></i></span>
           <span id="google"><i class="fab fa-google iconGoogle"></i></span>
         </div>
-        <label>¿No tienes una cuenta?&nbsp;<span class="bold">Registrate</span></label>
+        <label>¿No tienes una cuenta?&nbsp;<span id="register" class="bold">Registrate</span></label>
       </div>
     </div>
   </div>
 
+
   <div id="page2"></div>
-  <!--<script type="module" src="main.js"></script>-->
-  <script src="main.js"></script>
+
+  <script type="module" src="main.js"></script>
+  <!--<script src="main.js"></script>-->
 
 </body>
 

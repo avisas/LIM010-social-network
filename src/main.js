@@ -1,9 +1,9 @@
-//import  {myFunction } from './lib/index.js';
+import { registerTemplate } from './views/register-view.js';
+
 const loginGoogle = document.getElementById("google");
 const loginFacebook = document.getElementById("facebook");
 const formAutenticacion = document.getElementById("form-autenticacion");
 
-// Login de usuario
 const signIn = (event) => {
   event.preventDefault();
   const messageErrorLabel = document.getElementById("messageError");
@@ -37,22 +37,21 @@ formAutenticacion.addEventListener("submit", signIn);
 
 const register = document.getElementById("register");
 register.addEventListener('click', () => {
-  const formRegister = document.createElement('div');
+  registerTemplate();
+  /*const formRegister = document.createElement('div');
   const divContent = `<form id="form-register" class="flex-form">
   <h1>Social Network</h1>
   <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
   <input type="password" name="pass" placeholder="Password" class="inputForm" id="pass">
   <input type="submit" class="button" id="button-register" value="Register">
-  </form>`;
+  </form>
+  `;
   formRegister.innerHTML = divContent;
-  document.getElementById("page2").appendChild(formRegister);
-
- 
+  document.getElementById("page2").appendChild(formRegister); 
   const btnRegister = formRegister.querySelector('#button-register');
-
-  btnRegister.addEventListener('click', registerFunction);
+  btnRegister.addEventListener('click', registerFunction);*/
 });
-
+/*
 const registerFunction = (event) => {
   event.preventDefault();
   const email = document.querySelector('#mail').value;
@@ -67,23 +66,23 @@ const registerFunction = (event) => {
       alert( 'Error');
     });
 }
+*/
 
 const signInFacebook = (event) => {
   event.preventDefault();
   let provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithPopup(provider)
-    .then(function (result) {
-      console.log(result);
-    }).catch(function (error) {
-      console.log(error);
-    })
+  firebase.auth().signInWithPopup(provider).then(function (result) {
+    console.log(result);
+  }).catch(function (error) {
+    console.log(error);
+  })
 };
 
 loginFacebook.addEventListener("click", signInFacebook);
 
 const signInGoogle = (event) => {
   event.preventDefault();
-  if (!firebase.auth().currentUser) {
+   if (!firebase.auth().currentUser) {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
     firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -100,7 +99,8 @@ const signInGoogle = (event) => {
     });
   } else {
     firebase.auth().signOut();
-  }
+  } 
+ 
 };
 
-loginGoogle.addEventListener("click", signInGoogle, false);
+loginGoogle.addEventListener("click", signInGoogle,false);
