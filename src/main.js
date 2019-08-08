@@ -13,14 +13,22 @@ const signIn = (event) => {
   firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
     .then(function (result) {
       messageErrorLabel.classList.remove("show-message-error");
-      messageErrorLabel.classList.remove("hide-message-error");
-      // messageErrorLabel.innerHTML = '';
+      messageErrorLabel.innerHTML = '';
       alert('Ingresaste')
     })
     .catch(function (error) {
-      messageErrorLabel.classList.remove("hide-message-error");
       messageErrorLabel.classList.add("show-message-error");
-      // messageErrorLabel.innerHTML = '<span style="color:red;">Usuario y/o contraseña inválida.</span>';
+      switch (error.code) {
+        case 'auth/user-not-found':
+          messageErrorLabel.innerHTML = 'Usuario no registrado';
+          break;
+        case 'auth/wrong-password':
+          messageErrorLabel.innerHTML = 'Contraseña incorrecta';
+          break;
+        default:
+          messageErrorLabel.innerHTML = 'Se ha producido un error';
+          console.log(`code: "${error.code}" & message: ${error.message}`);
+      }
     });
 }
 
