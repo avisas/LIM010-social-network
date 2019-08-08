@@ -32,20 +32,39 @@ const signIn = (event) => {
     });
 }
 
+formAutenticacion = document.getElementById("form-autenticacion");
 formAutenticacion.addEventListener("submit", signIn);
 
-// Crear usuario
-const userCreate = (event) => {
-  event.preventDefault();
-  const usuario = event.target.email.value;
-  const contrasena = event.target.password.value;
+const register = document.getElementById("register");
+register.addEventListener('click', () => {
+  const formRegister = document.createElement('div');
+  const divContent = `<form id="form-register" class="flex-form">
+  <h1>Social Network</h1>
+  <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
+  <input type="password" name="pass" placeholder="Password" class="inputForm" id="pass">
+  <input type="submit" class="button" id="button-register" value="Register">
+  </form>`;
+  formRegister.innerHTML = divContent;
+  document.getElementById("page2").appendChild(formRegister);
 
-  firebase.auth().createUserWithEmailAndPassword(usuario, contrasena)
+ 
+  const btnRegister = formRegister.querySelector('#button-register');
+
+  btnRegister.addEventListener('click', registerFunction);
+});
+
+const registerFunction = (event) => {
+  event.preventDefault();
+  const email = document.querySelector('#mail').value;
+  const password = document.querySelector('#pass').value;
+  console.log(email);
+  console.log(password);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function (result) {
-      alert('Usuario creado');
+      alert('Creadooo');
     })
-    .catch(function (error) {
-      alert('Error');
+    .catch(error => {
+      alert( 'Error');
     });
 }
 
