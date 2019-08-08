@@ -2,7 +2,6 @@
 const loginGoogle = document.getElementById("google");
 const loginFacebook = document.getElementById("facebook");
 const formAutenticacion = document.getElementById("form-autenticacion");
-let email = document.getElementById("email");
 
 // Login de usuario
 const signIn = (event) => {
@@ -11,12 +10,13 @@ const signIn = (event) => {
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
   firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
-    .then(function (result) {
+    .then((result) => {
       messageErrorLabel.classList.remove("show-message-error");
       messageErrorLabel.innerHTML = '';
+      console.log(result);
       alert('Ingresaste')
     })
-    .catch(function (error) {
+    .catch((error) => {
       messageErrorLabel.classList.add("show-message-error");
       switch (error.code) {
         case 'auth/user-not-found':
@@ -34,7 +34,6 @@ const signIn = (event) => {
 
 formAutenticacion.addEventListener("submit", signIn);
 
-
 // Crear usuario
 const userCreate = (event) => {
   event.preventDefault();
@@ -50,23 +49,15 @@ const userCreate = (event) => {
     });
 }
 
-
-email.addEventListener("keyup", function (event) {
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity("Ingresa un correo electrónico válido!");
-  } else {
-    email.setCustomValidity("");
-  };
-});
-
 const signInFacebook = (event) => {
   event.preventDefault();
   let provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(function (result) {
-    console.log(result);
-  }).catch(function (error) {
-    console.log(error);
-  })
+  firebase.auth().signInWithPopup(provider)
+    .then(function (result) {
+      console.log(result);
+    }).catch(function (error) {
+      console.log(error);
+    })
 };
 
 loginFacebook.addEventListener("click", signInFacebook);
@@ -91,7 +82,6 @@ const signInGoogle = (event) => {
   } else {
     firebase.auth().signOut();
   }
-
 };
 
 loginGoogle.addEventListener("click", signInGoogle, false);
