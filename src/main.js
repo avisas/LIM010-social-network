@@ -1,4 +1,5 @@
-//import  {myFunction } from './lib/index.js';
+import { registerTemplate } from './views/register-view.js';
+
 const loginGoogle = document.getElementById("google");
 const loginFacebook = document.getElementById("facebook");
 
@@ -23,7 +24,8 @@ formAutenticacion.addEventListener("submit", signIn);
 
 const register = document.getElementById("register");
 register.addEventListener('click', () => {
-  const formRegister = document.createElement('div');
+  registerTemplate();
+  /*const formRegister = document.createElement('div');
   const divContent = `<form id="form-register" class="flex-form">
   <h1>Social Network</h1>
   <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
@@ -32,14 +34,12 @@ register.addEventListener('click', () => {
   </form>
   `;
   formRegister.innerHTML = divContent;
-  document.getElementById("page2").appendChild(formRegister);
-
- 
+  document.getElementById("page2").appendChild(formRegister); 
   const btnRegister = formRegister.querySelector('#button-register');
 
-  btnRegister.addEventListener('click', registerFunction);
+  btnRegister.addEventListener('click', registerFunction);*/
 });
-
+/*
 const registerFunction = (event) => {
   event.preventDefault();
   const email = document.querySelector('#mail').value;
@@ -54,7 +54,7 @@ const registerFunction = (event) => {
       alert( 'Error');
     });
 }
-
+*/
 
 const signInFacebook = (event) => {
   event.preventDefault();
