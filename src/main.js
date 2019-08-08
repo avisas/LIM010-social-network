@@ -4,6 +4,7 @@ const loginGoogle = document.getElementById("google");
 const loginFacebook = document.getElementById("facebook");
 const formAutenticacion = document.getElementById("form-autenticacion");
 
+// Login de usuario
 const signIn = (event) => {
   event.preventDefault();
   const messageErrorLabel = document.getElementById("messageError");
@@ -31,7 +32,6 @@ const signIn = (event) => {
       }
     });
 }
-
 formAutenticacion = document.getElementById("form-autenticacion");
 formAutenticacion.addEventListener("submit", signIn);
 
@@ -49,6 +49,7 @@ register.addEventListener('click', () => {
   formRegister.innerHTML = divContent;
   document.getElementById("page2").appendChild(formRegister); 
   const btnRegister = formRegister.querySelector('#button-register');
+
   btnRegister.addEventListener('click', registerFunction);*/
 });
 /*
@@ -104,3 +105,5 @@ const signInGoogle = (event) => {
 };
 
 loginGoogle.addEventListener("click", signInGoogle,false);
+
+

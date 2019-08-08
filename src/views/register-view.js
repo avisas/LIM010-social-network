@@ -17,3 +17,4 @@ export const registerTemplate = () => {
   btnRegister.addEventListener('click', registerFunction);
   return formRegister;
 };
+
