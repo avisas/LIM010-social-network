@@ -15,6 +15,11 @@ h1{
 .container{
   display: block;
 }
+.show-message-error{
+  display: inline-block;
+  color: #db4a39;
+  font-weight: bold;
+}
 .img-login{
   background-size: cover;
   width: 100%;

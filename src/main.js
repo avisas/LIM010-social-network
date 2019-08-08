@@ -2,25 +2,38 @@ import { registerTemplate } from './views/register-view.js';
 
 const loginGoogle = document.getElementById("google");
 const loginFacebook = document.getElementById("facebook");
-
-let formAutenticacion ;
+const formAutenticacion = document.getElementById("form-autenticacion");
 
 // Login de usuario
 const signIn = (event) => {
   event.preventDefault();
+  const messageErrorLabel = document.getElementById("messageError");
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
   firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
-    .then(function (result) {
-      alert('Ingresaste');
+    .then((result) => {
+      messageErrorLabel.classList.remove("show-message-error");
+      messageErrorLabel.innerHTML = '';
+      console.log(result);
+      alert('Ingresaste')
     })
-    .catch(function (error) {
-      alert('Error');
+    .catch((error) => {
+      messageErrorLabel.classList.add("show-message-error");
+      switch (error.code) {
+        case 'auth/user-not-found':
+          messageErrorLabel.innerHTML = 'Usuario no registrado';
+          break;
+        case 'auth/wrong-password':
+          messageErrorLabel.innerHTML = 'Contraseña incorrecta';
+          break;
+        default:
+          messageErrorLabel.innerHTML = 'Se ha producido un error';
+          console.log(`code: "${error.code}" & message: ${error.message}`);
+      }
     });
 }
 formAutenticacion = document.getElementById("form-autenticacion");
 formAutenticacion.addEventListener("submit", signIn);
-
 
 const register = document.getElementById("register");
 register.addEventListener('click', () => {
