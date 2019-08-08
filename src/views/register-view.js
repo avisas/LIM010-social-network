@@ -20,7 +20,6 @@ export default () => {
 </div>
   `;
   formRegister.innerHTML = registerContent;
-  //document.getElementById("page2").appendChild(formRegister);
 
   const btnRegister = formRegister.querySelector('#button-register');
 
