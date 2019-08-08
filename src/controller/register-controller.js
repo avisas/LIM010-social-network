@@ -1,3 +1,4 @@
+
 export const registerFunction = (event) => {
   event.preventDefault();
   const email = document.querySelector('#mail').value;
@@ -7,6 +8,7 @@ export const registerFunction = (event) => {
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(function (result) {
       alert('Creadooo');
+      location.hash = '#/';
     })
     .catch(error => {
       alert('Error');

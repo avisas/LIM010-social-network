@@ -5,6 +5,7 @@ export const loginFunction = (event) => {
     firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
       .then(function (result) {
         alert('Ingresaste');
+        location.hash = '#/home';
       })
       .catch(function (error) {
         alert('Error');
@@ -16,7 +17,7 @@ export const loginFunction = (event) => {
     let provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log(result);
-      alert('ingresaste con fb')
+      alert('ingresaste con fb');
     }).catch(function (error) {
       console.log(error);
     })

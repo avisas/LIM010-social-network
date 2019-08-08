@@ -1,10 +1,8 @@
-import { registerTemplate } from './views/register-view.js';
-import { loginTemplate} from './views/login-view.js';
+import { changeView } from './controller-view/index.js'
 
-loginTemplate();
+const init = () => {
+  changeView(window.location.hash);
+  window.addEventListener('hashchange', () => changeView(window.location.hash));
+}
 
-const register = document.getElementById("register");
-register.addEventListener('click', () => {
-  registerTemplate();
-});
-
+window.addEventListener('load', init);

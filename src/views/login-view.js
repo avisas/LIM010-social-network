@@ -1,6 +1,6 @@
 import { loginFunction, signInFacebook, signInGoogle } from '../controller/login-controller.js';
 
-export const loginTemplate = () => {
+export default () => {
   const formLogin = document.createElement('div');
   formLogin.className = 'container';
   const divLogin = `
@@ -21,12 +21,12 @@ export const loginTemplate = () => {
           <span id="facebook"><i class="fab fa-facebook iconfb"></i></span>
           <span id="google"><i class="fab fa-google iconGoogle"></i></span>
         </div>
-        <label>¿No tienes una cuenta?&nbsp;<span id="register" class="bold">Registrate</span></label>
+        <label>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="register" class="bold">Registrate</span></a></label>
       </div>
     </div>
   `;
   formLogin.innerHTML = divLogin;
-  document.getElementById("container").appendChild(formLogin);
+  //document.getElementById("container").appendChild(formLogin);
 
   const formAutenticacion = formLogin.querySelector('#form-autenticacion');
   const loginFacebook = formLogin.querySelector('#facebook');
