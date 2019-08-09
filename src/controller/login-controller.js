@@ -1,6 +1,6 @@
 export const loginFunction = (event) => {
   event.preventDefault();
-  const messageErrorLabel = document.getElementById("messageError");
+  const messageErrorLabel = document.getElementById("LoginMessageError");
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
   firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
@@ -21,14 +21,15 @@ export const loginFunction = (event) => {
         case 'auth/wrong-password':
           messageErrorLabel.innerHTML = 'Contraseña incorrecta';
           break;
-         // "auth/invalid-email"
-          
+        case 'auth/invalid-email':
+          messageErrorLabel.innerHTML = 'No se ingresó ningún correo electrónico';
+        break
         default:
           messageErrorLabel.innerHTML = 'Se ha producido un error';
           console.log(`code: "${error.code}" & message: ${error.message}`);
       }
     });
-}
+};
 
  export const signInFacebook = (event) => {
     event.preventDefault();
