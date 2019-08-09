@@ -1,3 +1,5 @@
+import { recoverUserName } from '../controller/login-controller.js';
+
 export default () => {
     const home = document.createElement('div');
   
@@ -21,19 +23,6 @@ export default () => {
     home.innerHTML = homeContent;
     //document.getElementById("page2").appendChild(formRegister);
     const userName = home.querySelector('#user-name');
-
-    const inicializateFire = (event) => {
-      firebase.auth().onAuthStateChanged(function(user){
-        if(user){
-          let displayName = user.displayName;
-          let userPhoto = user.photoURL;
-          let userEmail = user.email;
-
-          userName.textContent = displayName;
-          
-        }
-      })
-    } 
-    inicializateFire();
+     recoverUserName(userName);
     return home;
   };
