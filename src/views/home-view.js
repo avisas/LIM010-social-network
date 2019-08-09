@@ -1,4 +1,4 @@
-import { recoverUserName } from '../controller/login-controller.js';
+import { recoverUserName } from '../controller/home-controller.js';
 
 export default () => {
     const home = document.createElement('div');
@@ -10,7 +10,7 @@ export default () => {
       <ul class="nav-links">
         <li><a id="user-name" href="#/">User</a></li>
         <li><a href="#/about">about</a></li>
-        <li><a href="#/sesion">Cerrar Sesión</a></li>
+        <li><a href="#/">Cerrar Sesión</a></li>
       </ul>
     </nav>
   </header>

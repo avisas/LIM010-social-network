@@ -67,13 +67,3 @@ export const signInGoogle = (event) => {
   }
 
 };
-export const recoverUserName = (userChild) => {
-  firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-      let displayName = user.displayName;
-      let userPhoto = user.photoURL;
-      let userEmail = user.email;
-      userChild.textContent = displayName;
-    }
-  })
-} 
