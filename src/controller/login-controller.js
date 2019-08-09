@@ -7,6 +7,7 @@ export const loginFunction = (event) => {
     .then((result) => {
       messageErrorLabel.classList.remove("show-message-error");
       messageErrorLabel.innerHTML = '';
+      location.hash = '#/home';
       console.log(result);
       alert('Ingresaste')
     })
@@ -19,6 +20,8 @@ export const loginFunction = (event) => {
         case 'auth/wrong-password':
           messageErrorLabel.innerHTML = 'Contraseña incorrecta';
           break;
+         // "auth/invalid-email"
+          
         default:
           messageErrorLabel.innerHTML = 'Se ha producido un error';
           console.log(`code: "${error.code}" & message: ${error.message}`);
