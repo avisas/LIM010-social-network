@@ -16,6 +16,7 @@ export default () => {
     <input type="text" name="mail" placeholder="Email" class="inputForm" id="mail">
     <input type="password" name="pass" placeholder="Password" class="inputForm" id="pass">
     <input type="submit" class="button-login" id="button-register" value="Register">
+    <label id="registerMessageError"></label>
   </form>
 </div>
   `;
