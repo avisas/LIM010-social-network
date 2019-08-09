@@ -2,7 +2,7 @@ import { loginFunction, signInFacebook, signInGoogle } from '../controller/login
 
 export default () => {
   const formLogin = document.createElement('div');
-  formLogin.className = 'container';
+  formLogin.className = 'container-login';
   const divLogin = `
     <div class="section-image">
       <img class="img-login" src="img/login-img.jpg">
@@ -35,6 +35,6 @@ export default () => {
 
   formAutenticacion.addEventListener("submit", loginFunction);
   loginFacebook.addEventListener('click', signInFacebook);
-  loginGoogle.addEventListener('click', signInGoogle,false);
+  loginGoogle.addEventListener('click', signInGoogle);
   return formLogin;
 };
