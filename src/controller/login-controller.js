@@ -9,6 +9,7 @@ export const loginFunction = (event) => {
       messageErrorLabel.innerHTML = '';
       console.log(result);
       alert('Ingresaste')
+      location.hash = '#/home';
     })
     .catch((error) => {
       messageErrorLabel.classList.add("show-message-error");
