@@ -1,16 +1,30 @@
 export const loginFunction = (event) => {
-    event.preventDefault();
-    const usuario = event.target.email.value;
-    const contrasena = event.target.password.value;
-    firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
-      .then(function (result) {
-        alert('Ingresaste');
-        location.hash = '#/home';
-      })
-      .catch(function (error) {
-        alert('Error');
-      });
-  };
+  event.preventDefault();
+  const messageErrorLabel = document.getElementById("messageError");
+  const usuario = event.target.email.value;
+  const contrasena = event.target.password.value;
+  firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
+    .then((result) => {
+      messageErrorLabel.classList.remove("show-message-error");
+      messageErrorLabel.innerHTML = '';
+      console.log(result);
+      alert('Ingresaste')
+    })
+    .catch((error) => {
+      messageErrorLabel.classList.add("show-message-error");
+      switch (error.code) {
+        case 'auth/user-not-found':
+          messageErrorLabel.innerHTML = 'Usuario no registrado';
+          break;
+        case 'auth/wrong-password':
+          messageErrorLabel.innerHTML = 'Contraseña incorrecta';
+          break;
+        default:
+          messageErrorLabel.innerHTML = 'Se ha producido un error';
+          console.log(`code: "${error.code}" & message: ${error.message}`);
+      }
+    });
+}
 
  export const signInFacebook = (event) => {
     event.preventDefault();
