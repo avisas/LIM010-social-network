@@ -10,6 +10,7 @@ export const registerFunction = (event) => {
     .then((result) => {
       regMessageErrorLabel.classList.remove("show-message-error");
       regMessageErrorLabel.innerHTML = '';
+      location.hash = '#/';
       console.log(result);
       alert('Usuario creado correctamente')
     })
