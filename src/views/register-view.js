@@ -2,7 +2,7 @@ import { registerFunction } from '../controller/register-controller.js';
 
 export default () => {
   const formRegister = document.createElement('div');
-  formRegister.className = 'container';
+  formRegister.className = 'container-login';
 
   const registerContent = `
   <div class="section-image">

@@ -7,8 +7,10 @@ export const loginFunction = (event) => {
     .then((result) => {
       messageErrorLabel.classList.remove("show-message-error");
       messageErrorLabel.innerHTML = '';
+      location.hash = '#/home';
       console.log(result);
       alert('Ingresaste')
+      location.hash = '#/home';
     })
     .catch((error) => {
       messageErrorLabel.classList.add("show-message-error");
@@ -35,6 +37,7 @@ export const loginFunction = (event) => {
     firebase.auth().signInWithPopup(provider).then(function (result) {
       console.log(result);
       alert('ingresaste con fb');
+      location.hash = '#/home';
     }).catch(function (error) {
       console.log(error);
     })
@@ -49,6 +52,7 @@ export const loginFunction = (event) => {
         let token = result.credential.accessToken;
         let user = result.user;
         alert('ingresaste con google')
+        location.hash = '#/home';
       }).catch(function (error) {
         let errorCode = error.code;
         let errorMessage = error.message;
@@ -63,3 +67,12 @@ export const loginFunction = (event) => {
     } 
    
   };
+/* const inicializateFire = (event) => {
+  firebase.auth().onAuthStateChanged(function(user){
+    if(user){
+      let displayName = user.displayName;
+      let userPhoto = user.photoURL;
+      let userEmail = user.email;
+    }
+  })
+} */
