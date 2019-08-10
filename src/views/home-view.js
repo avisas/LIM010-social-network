@@ -24,6 +24,9 @@ export default () => {
     home.innerHTML = homeContent;
     //document.getElementById("page2").appendChild(formRegister);
     const userName = home.querySelector('#user-name');
-     recoverUserName(userName);
+    recoverUserName(userName);
+    userName.addEventListener('click',()=>{
+      location.hash = '#/profile';
+    });
     return home;
   };

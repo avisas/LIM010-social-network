@@ -23,7 +23,7 @@ export const loginFunction = (event) => {
           break;
         case 'auth/invalid-email':
           messageErrorLabel.innerHTML = 'No se ingresó ningún correo electrónico';
-        break
+          break
         default:
           messageErrorLabel.innerHTML = 'Se ha producido un error';
           console.log(`code: "${error.code}" & message: ${error.message}`);
@@ -64,6 +64,8 @@ export const signInGoogle = (event) => {
     });
   } else {
     firebase.auth().signOut();
-  }
-
+  };
+};
+export const userCurrent = () => {
+    return firebase.auth().currentUser;
 };
