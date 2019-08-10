@@ -1,4 +1,5 @@
-import { profile } from './profile.js';
+import { recoverUserName } from '../controller/home-controller.js';
+
 export default () => {
     const home = document.createElement('div');
   
@@ -9,7 +10,7 @@ export default () => {
       <ul class="nav-links">
         <li><a id="user-name">User</a></li>
         <li><a href="#/about">about</a></li>
-        <li><a href="#/sesion">Cerrar Sesión</a></li>
+        <li><a href="#/">Cerrar Sesión</a></li>
       </ul>
     </nav>
     
@@ -23,27 +24,6 @@ export default () => {
     home.innerHTML = homeContent;
     //document.getElementById("page2").appendChild(formRegister);
     const userName = home.querySelector('#user-name');
-
-    const inicializateFire = (event) => {
-      firebase.auth().onAuthStateChanged(function(user){
-        if(user){
-          let displayName = user.displayName;
-          let userPhoto = user.photoURL;
-          let userEmail = user.email;
-
-          userName.textContent = displayName;
-          
-        }
-      })
-    } 
-    inicializateFire();
-
-    userName.addEventListener('click', ()=>{
-      document.getElementById('profile').innerHTML = '';
-      document.getElementById('profile').appendChild(profile());
-      var user = firebase.auth().currentUser;
-
-
-    });
+     recoverUserName(userName);
     return home;
   };
