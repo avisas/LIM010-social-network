@@ -1,3 +1,4 @@
+import { profile } from './profile.js';
 export default () => {
     const home = document.createElement('div');
   
@@ -6,15 +7,16 @@ export default () => {
     <h2>tasty recipes</h2> 
     <nav>
       <ul class="nav-links">
-        <li><a id="user-name" href="#/">User</a></li>
+        <li><a id="user-name">User</a></li>
         <li><a href="#/about">about</a></li>
         <li><a href="#/sesion">Cerrar Sesión</a></li>
       </ul>
     </nav>
+    
   </header>
   <main>
       <h1>Responsive Header</h1>
-      
+      <div id="profile"></div>
   </main>
   <footer></footer>
     `;
@@ -35,5 +37,13 @@ export default () => {
       })
     } 
     inicializateFire();
+
+    userName.addEventListener('click', ()=>{
+      document.getElementById('profile').innerHTML = '';
+      document.getElementById('profile').appendChild(profile());
+      var user = firebase.auth().currentUser;
+
+
+    });
     return home;
   };

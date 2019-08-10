@@ -4,6 +4,6 @@ import Home from './home-view.js';
 const components = {
     login: Login,
     register: Register,
-    home: Home
+    home: Home,
 }
 export { components };
