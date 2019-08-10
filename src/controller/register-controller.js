@@ -17,8 +17,11 @@ export const registerFunction = (event) => {
     .catch((error) => {
       regMessageErrorLabel.classList.add("show-message-error");
       switch (error.code) {
+        case 'auth/email-already-in-use':
+          regMessageErrorLabel.innerHTML = '¡La dirección de correo electrónico ya existe!';
+          break;
         case 'auth/weak-password':
-          regMessageErrorLabel.innerHTML = 'La contraseña debe tener 6 ó mas caracteres';
+          regMessageErrorLabel.innerHTML = 'La contraseña debe tener 6 ó más caracteres';
           break;
         case 'auth/invalid-email':
           regMessageErrorLabel.innerHTML = 'No se escribió correo electrónico válido';
