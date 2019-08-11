@@ -1,5 +1,6 @@
 import { components } from '../views/index.js'
-const changeView = (route) => {
+
+export const changeView = (route) => {
   const container = document.getElementById('container');
 
   container.innerHTML = '';
@@ -24,9 +25,6 @@ const changeView = (route) => {
         container.appendChild(components.profile())
       }
       break;
-
     default: break;
   }
 }
-
-export { changeView }

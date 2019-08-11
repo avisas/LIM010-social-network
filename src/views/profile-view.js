@@ -1,11 +1,10 @@
 import { profileFunction } from '../controller/profile-controller.js'
 import { userCurrent } from '../controller/login-controller.js'
+
 export default () => {
   const use = userCurrent();
-
   const profile = document.createElement('div');
-  const profileContent = `
-    
+  const profileContent = `    
     <h2>Profile</h2> 
     <img src="https://cdn1.iconfinder.com/data/icons/avatars-heads/154/eat-food-man-head-avatar-512.png">
     <input id='fileid' type='file' hidden/>
