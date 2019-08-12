@@ -1,4 +1,4 @@
-import { profileFunction } from '../controller/profile-controller.js'
+import { updateUserName } from '../controller/profile-controller.js'
 import { userCurrent } from '../controller/login-controller.js'
 
 export default () => {
@@ -24,8 +24,8 @@ export default () => {
   save.addEventListener('click', () => {
     event.preventDefault();
     const user = userCurrent();
-    const name = profile.querySelector('#name').value;
-    profileFunction(user, name).then(function () {
+    const newName = profile.querySelector('#name').value;
+    updateUserName(user, newName).then(function () {
       // Update successful.
       location.hash = '#/home';
     });
@@ -33,4 +33,3 @@ export default () => {
 
   return profile;
 };
-
