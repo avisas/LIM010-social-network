@@ -1,6 +1,7 @@
 import { components } from '../views/index.js'
 const changeView = (route) => {
   const container = document.getElementById('container');
+
   container.innerHTML = '';
   switch (route) {
     case '#/':
@@ -18,6 +19,12 @@ const changeView = (route) => {
         container.appendChild(components.home())
       }
       break;
+    case '#/profile':
+      {
+        container.appendChild(components.profile())
+      }
+      break;
+
     default: break;
   }
 }

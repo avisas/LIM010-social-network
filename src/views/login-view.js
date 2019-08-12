@@ -1,5 +1,4 @@
 import { loginFunction, signInFacebook, signInGoogle } from '../controller/login-controller.js';
-
 export default () => {
   const formLogin = document.createElement('div');
   formLogin.className = 'container-login';
