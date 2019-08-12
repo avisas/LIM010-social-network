@@ -1,5 +1,5 @@
  // Your web app's Firebase configuration
- var firebaseConfig = {
+ const firebaseConfig = {
   apiKey: "AIzaSyDRfwgljtnkk2mUrYDMcSEumDulfkHe9Uk",
   authDomain: "social-network-2c5f9.firebaseapp.com",
   databaseURL: "https://social-network-2c5f9.firebaseio.com",

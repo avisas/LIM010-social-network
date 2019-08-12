@@ -1,11 +1,10 @@
-import { profileFunction } from '../controller/profile-controller.js'
+import { updateUserName } from '../controller/profile-controller.js'
 import { userCurrent } from '../controller/login-controller.js'
+
 export default () => {
   const use = userCurrent();
-
   const profile = document.createElement('div');
-  const profileContent = `
-    
+  const profileContent = `    
     <h2>Profile</h2> 
     <img src="https://cdn1.iconfinder.com/data/icons/avatars-heads/154/eat-food-man-head-avatar-512.png">
     <input id='fileid' type='file' hidden/>
@@ -25,8 +24,8 @@ export default () => {
   save.addEventListener('click', () => {
     event.preventDefault();
     const user = userCurrent();
-    const name = profile.querySelector('#name').value;
-    profileFunction(user, name).then(function () {
+    const newName = profile.querySelector('#name').value;
+    updateUserName(user, newName).then(function () {
       // Update successful.
       location.hash = '#/home';
     });
@@ -34,4 +33,3 @@ export default () => {
 
   return profile;
 };
-

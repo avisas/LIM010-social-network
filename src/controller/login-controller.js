@@ -9,7 +9,7 @@ export const loginFunction = (event) => {
       messageErrorLabel.innerHTML = '';
       location.hash = '#/home';
       console.log(result);
-      alert('Ingresaste')
+      // alert('Ingresaste')
       location.hash = '#/home';
     })
     .catch((error) => {
