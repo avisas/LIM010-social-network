@@ -3,6 +3,8 @@ import { components } from '../views/index.js';
 export const changeView = (route) => {
   const container = document.getElementById('container');
   // const sessionUser = firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+  // FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
   container.innerHTML = '';
   switch (route) {
     case '#/':
