@@ -7,22 +7,22 @@ export const changeView = (route) => {
   switch (route) {
     case '#/':
       {
-        container.appendChild(components.login())
+        container.appendChild(components.login());
       }
       break;
     case '#/register':
       {
-        container.appendChild(components.register())
+        container.appendChild(components.register());
       }
       break;
     case '#/home':
       {
-        container.appendChild(components.home())
+        container.appendChild(components.home());
       }
       break;
     case '#/profile':
       {
-        container.appendChild(components.profile())
+        container.appendChild(components.profile());
       }
       break;
     default: break;
