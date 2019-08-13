@@ -11,6 +11,8 @@
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+export const dataBase = firebase.firestore();
+
 import { changeView } from './controller-view/index.js'
 
 const init = () => {
