@@ -4,8 +4,6 @@ export const recoverUserName = (userName) => {
       let displayName = user.displayName;
       // let userPhoto = user.photoURL;
       let userEmail = user.email;
-      // console.log(displayName);
-      //console.log(userEmail);
       if (displayName === null) {
         userName.textContent = userEmail;
       } else {
@@ -15,6 +13,13 @@ export const recoverUserName = (userName) => {
   })
 };
 
+export const signOutUser = () => {
+  firebase.auth().signOut().then(function() {
+    location.hash = '#/';
+  }, function(error) {
+    console.log(error);
+  });
+};
 export const changeViewToProfile = () => { 
   location.hash = '#/profile'; 
 };
