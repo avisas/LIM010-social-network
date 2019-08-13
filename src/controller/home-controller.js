@@ -37,3 +37,6 @@ export const pullAllPublications = () => {
   const displayName ='Ana', message='Hola, ¿como estas?', id='556ggyb545';
   return [{displayName, message, id}, {displayName, message, id}, {displayName, message, id}];
 };
+
+
+

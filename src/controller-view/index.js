@@ -17,6 +17,7 @@ export const changeView = (route) => {
         container.appendChild(components.register());
       }
       break;
+      
     case '#/home':
       {
         container.appendChild(components.home());
