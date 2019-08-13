@@ -1,8 +1,8 @@
-import { components } from '../views/index.js'
+import { components } from '../views/index.js';
 
 export const changeView = (route) => {
   const container = document.getElementById('container');
-// const sessionUser = firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+  // const sessionUser = firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
   container.innerHTML = '';
   switch (route) {
     case '#/':
@@ -17,7 +17,7 @@ export const changeView = (route) => {
       break;
     case '#/home':
       {
-          container.appendChild(components.home())
+        container.appendChild(components.home())
       }
       break;
     case '#/profile':
@@ -27,4 +27,4 @@ export const changeView = (route) => {
       break;
     default: break;
   }
-}
+};

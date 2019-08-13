@@ -1,20 +1,20 @@
 export const recoverUserName = (userName) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      let displayName = user.displayName;
+      const displayName = user.displayName;
       // let userPhoto = user.photoURL;
-      let userEmail = user.email;
+      const userEmail = user.email;
       if (displayName === null) {
         userName.textContent = userEmail;
       } else {
         userName.textContent = displayName;
       }
     }
-  })
+  });
 };
 
 export const signOutUser = () => {
-  firebase.auth().signOut().then(function() {
+  firebase.auth().signOut().then(() => {
     location.hash = '#/';
   }, function(error) {
     console.log(error);
@@ -34,6 +34,6 @@ export const pushPublication = (event) => {
 export const pullAllPublications = () => {
   event.preventDefault();
   // fetch all publications from Firestore, ordered from most recent to least recent.
-  const displayName='Ana', message='Hola, ¿como estas?', id='556ggyb545';
+  const displayName ='Ana', message='Hola, ¿como estas?', id='556ggyb545';
   return [{displayName, message, id}, {displayName, message, id}, {displayName, message, id}];
 };
