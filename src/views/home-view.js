@@ -1,4 +1,4 @@
-import { recoverUserName, pushPublication, pullAllPublications, changeViewToProfile } from '../controller/home-controller.js';
+import { recoverUserName, pushPublication, pullAllPublications, changeViewToProfile, signOutUser} from '../controller/home-controller.js';
 
 export const home = () => {
   const home = document.createElement('div');
@@ -10,7 +10,7 @@ export const home = () => {
       <ul class="nav-links">
         <li><a id="user-name">User</a></li>
         <li><a href="#/about">about</a></li>
-        <li><a href="#/">Cerrar Sesión</a></li>
+        <li><a id="signOut">Cerrar Sesión</a></li>
       </ul>
     </nav>    
   </header>
@@ -30,6 +30,8 @@ export const home = () => {
   const userName = home.querySelector('#user-name');
   const formPublication = home.querySelector('#form-publication');
   const allPublications = home.querySelector('#listOfPublications');
+  const btnSignOut = home.querySelector('#signOut');
+  btnSignOut.addEventListener('click', signOutUser);
 
   recoverUserName(userName);
 
@@ -59,3 +61,5 @@ export const renderAllPublications = (element, list) => {
     element.appendChild(listItem);
   }
 };
+
+
