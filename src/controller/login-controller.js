@@ -1,18 +1,18 @@
 export const loginFunction = (event) => {
   event.preventDefault();
-  const messageErrorLabel = document.getElementById("LoginMessageError");
+  const messageErrorLabel = document.getElementById('LoginMessageError');
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
   firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
     .then((result) => {
-      messageErrorLabel.classList.remove("show-message-error");
+      messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
-      location.hash = '#/home';
+      window.location.hash = '#/home';
       console.log(result);
-      location.hash = '#/home';
+      window.location.hash = '#/home';
     })
     .catch((error) => {
-      messageErrorLabel.classList.add("show-message-error");
+      messageErrorLabel.classList.add('show-message-error');
       switch (error.code) {
         case 'auth/user-not-found':
           messageErrorLabel.innerHTML = 'Usuario no registrado';
@@ -22,7 +22,7 @@ export const loginFunction = (event) => {
           break;
         case 'auth/invalid-email':
           messageErrorLabel.innerHTML = 'No se ingresó ningún correo electrónico';
-          break
+          break;
         default:
           messageErrorLabel.innerHTML = 'Se ha producido un error';
           console.log(`code: "${error.code}" & message: ${error.message}`);
@@ -32,12 +32,12 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
-  let provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(function (result) {
-    location.hash = '#/home';
-  }).catch(function (error) {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  firebase.auth().signInWithPopup(provider).then(() => {
+    window.location.hash = '#/home';
+  }).catch((error) => {
     console.log(error);
-  })
+  });
 };
 
 export const signInGoogle = (event) => {
@@ -45,18 +45,26 @@ export const signInGoogle = (event) => {
   if (!firebase.auth().currentUser) {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-      location.hash = '#/home';
-    }).catch(function (error) {
-      let errorCode = error.code;
+    firebase.auth().signInWithPopup(provider).then(() => {
+      window.location.hash = '#/home';
+    }).catch((error) => {
+      const errorCode = error.code;
       if (errorCode === 'auth/account-exists-with-different-credential') {
         alert('Es el mismo usuario');
       }
     });
   } else {
     firebase.auth().signOut();
-  };
+  }
 };
-export const userCurrent = () => {
-    return firebase.auth().currentUser;
-};
+
+export const showPassword = () => {
+    const tipo = document.querySelector('#password');
+    if(tipo.type == "password"){
+        tipo.type = "text";
+    }else{
+        tipo.type = "password";
+    }
+
+}
+export const userCurrent = () => firebase.auth().currentUser;

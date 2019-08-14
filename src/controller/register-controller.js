@@ -1,21 +1,53 @@
+import { dataBase } from '../main.js';
+import { userCurrent } from './login-controller.js';
+
+const createProfile = (id, name, email) => {
+  dataBase.collection('users').doc(id).set({
+    name, email,
+  });
+  const user = userCurrent();
+
+  user.updateProfile({
+    displayName: name,
+  });
+};
+
+export const getName = (userName) => {
+  const user = userCurrent().uid;
+  dataBase.collection('users').doc(user).get().then((doc) => {
+    if (doc.exists) {
+      console.log('Document data:', doc.data().name);
+      userName.textContent = doc.data().name;
+    } else {
+      // doc.data() will be undefined in this case
+      console.log('No such document!');
+    }
+  })
+    .catch((error) => {
+      console.log('Error getting document:', error);
+    });
+};
 
 export const registerFunction = (event) => {
   event.preventDefault();
-  const regMessageErrorLabel = document.getElementById("registerMessageError");
+  const regMessageErrorLabel = document.getElementById('registerMessageError');
+  const nick = document.querySelector('#nick').value;
   const email = document.querySelector('#mail').value;
   const password = document.querySelector('#pass').value;
-  console.log(email);
-  console.log(password);
+
   firebase.auth().createUserWithEmailAndPassword(email, password)
     .then((result) => {
-      regMessageErrorLabel.classList.remove("show-message-error");
+      const use = userCurrent();
+      createProfile(use.uid, nick, email);
+      getName(use.uid);
+      regMessageErrorLabel.classList.remove('show-message-error');
       regMessageErrorLabel.innerHTML = '';
-      location.hash = '#/';
+      window.location.hash = '#/';
       console.log(result);
-      alert('Usuario creado correctamente')
+      alert('Usuario creado correctamente');
     })
     .catch((error) => {
-      regMessageErrorLabel.classList.add("show-message-error");
+      regMessageErrorLabel.classList.add('show-message-error');
       switch (error.code) {
         case 'auth/email-already-in-use':
           regMessageErrorLabel.innerHTML = '¡La dirección de correo electrónico ya existe!';
