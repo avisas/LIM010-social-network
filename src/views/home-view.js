@@ -17,8 +17,8 @@ export const home = () => {
   <main>
       <h1>Responsive Header</h1>
       <!--<div id="profile"></div>-->
-      <form id="form-publication" maxlength=50 class="flex-form margin-form" required>
-        <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea"></textarea>
+      <form id="form-publication" maxlength=50 class="flex-form" required>
+        <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
         <input type="submit" name="" class="button-login" value="Compartir">
       </form>
       <ul id="listOfPublications"></ul>
