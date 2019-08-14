@@ -12,6 +12,10 @@ h1{
 .flex{
   display:flex;
 }
+.margin-form{
+  border: solid 1px;
+  padding-top: 16px;
+}
 .container-login{
   display: block;
 }
@@ -46,7 +50,7 @@ h1{
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  width: 60%;
+  width: 30%;
 }
 .iconfb{
   color: #3b5998;
@@ -88,6 +92,11 @@ ul li a:hover{
   background-color: #6d9f16;
 
   /* background-color: #555; */
+}
+
+.textarea {
+  width: -webkit-fill-available;
+  height: 65px;
 }
 
 @media screen and (min-width:764px){
