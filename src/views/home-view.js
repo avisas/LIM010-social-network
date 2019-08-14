@@ -51,8 +51,6 @@ export const home = () => {
   const btnComportirPost = home.querySelector('#compartir-post');
   
   //Delete
-  
-
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
   //getName(userName);
