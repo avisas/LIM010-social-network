@@ -1,5 +1,6 @@
-import { recoverUserName, pushPublication, pullAllPublications, changeViewToProfile, signOutUser} from '../controller/home-controller.js';
-import {savePost, showPost, deletePost} from '../controller/post-controller.js';
+import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
+import { savePost, showPost } from '../controller/post-controller.js';
+import { getName } from '../controller/register-controller.js';
 export const home = () => {
   const home = document.createElement('div');
 
@@ -54,16 +55,15 @@ export const home = () => {
 
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
-
+  //getName(userName);
   formPublication.addEventListener('submit', () => {
     console.log('Se ejecutó submit');
-    pushPublication(event);
-    renderAllPublications(allPublications, pullAllPublications());
+    // renderAllPublications(allPublications, pullAllPublications());
   });
 
   userName.addEventListener('click', changeViewToProfile);
 
-  renderAllPublications(allPublications, pullAllPublications());
+  // renderAllPublications(allPublications, pullAllPublications());
   btnComportirPost.addEventListener('click', savePost);
 
   showPost(allPublications);
