@@ -60,3 +60,13 @@ export const signInGoogle = (event) => {
 export const userCurrent = () => {
     return firebase.auth().currentUser;
 };
+
+export const showPassword = () => {
+    const tipo = document.querySelector('#password');
+    if(tipo.type == "password"){
+        tipo.type = "text";
+    }else{
+        tipo.type = "password";
+    }
+
+}
