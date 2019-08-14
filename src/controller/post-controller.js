@@ -39,7 +39,7 @@ export const showPost = (tabla) => {
           <th scope="row">${doc.id}</th>
           <td>${doc.data().userName}</td>
           <td>${doc.data().notes}</td>
-          <td><button id="${doc.id}" class="btn btn-warning">Editar</button></td>
+          <td><button id="" class="btn-edit">Editar</button></td>
           <td><button id="${doc.id}" name="delete" class="btn-delete">Eliminar</button></td>
         </tr>
         `;
