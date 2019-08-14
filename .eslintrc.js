@@ -21,7 +21,7 @@ module.exports = {
     'prefer-destructuring': 0,
     'import/extensions': 0,
     'import/prefer-default-export': 0,
-
+    'linebreak-style': 0,
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
