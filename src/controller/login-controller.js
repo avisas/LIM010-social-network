@@ -57,4 +57,14 @@ export const signInGoogle = (event) => {
     firebase.auth().signOut();
   }
 };
+
+export const showPassword = () => {
+    const tipo = document.querySelector('#password');
+    if(tipo.type == "password"){
+        tipo.type = "text";
+    }else{
+        tipo.type = "password";
+    }
+
+}
 export const userCurrent = () => firebase.auth().currentUser;

@@ -90,6 +90,15 @@ ul li a:hover{
   /* background-color: #555; */
 }
 
+.fa-eye:before {
+  content: "\f06e";
+  float: right;
+  margin-left: 270px;
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
+}
+
 @media screen and (min-width:764px){
   html, body{
     height: 100%;
