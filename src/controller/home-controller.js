@@ -15,13 +15,13 @@ export const recoverUserName = (userName) => {
 
 export const signOutUser = () => {
   firebase.auth().signOut().then(() => {
-    location.hash = '#/';
-  }, function(error) {
+    window.location.hash = '#/';
+  }, (error) => {
     console.log(error);
   });
 };
-export const changeViewToProfile = () => { 
-  location.hash = '#/profile'; 
+export const changeViewToProfile = () => {
+  window.location.hash = '#/profile';
 };
 
 export const pushPublication = (event) => {
@@ -30,13 +30,3 @@ export const pushPublication = (event) => {
   // push messagetoPublish to firestore
   console.log(`message prueba: ${messageToPublish}`);
 };
-
-export const pullAllPublications = () => {
-  event.preventDefault();
-  // fetch all publications from Firestore, ordered from most recent to least recent.
-  const displayName ='Ana', message='Hola, ¿como estas?', id='556ggyb545';
-  return [{displayName, message, id}, {displayName, message, id}, {displayName, message, id}];
-};
-
-
-

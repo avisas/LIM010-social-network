@@ -1,8 +1,6 @@
-import {
- recoverUserName, pushPublication, pullAllPublications, changeViewToProfile, signOutUser 
-} from '../controller/home-controller.js';
+import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
 import { savePost, showPost } from '../controller/post-controller.js';
-
+import { getName } from '../controller/register-controller.js';
 export const home = () => {
   const home = document.createElement('div');
 

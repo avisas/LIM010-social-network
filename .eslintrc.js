@@ -21,12 +21,15 @@ module.exports = {
     'prefer-destructuring': 0,
     'import/extensions': 0,
     'import/prefer-default-export': 0,
-    'linebreak-style': 0,
     'jest/no-disabled-tests': 'warn',
     'jest/no-focused-tests': 'error',
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
+<<<<<<< HEAD
+=======
+    'no-param-reassign': 0,
+>>>>>>> a8929e85109134f48be2fb4a5b89f1b27830df2d
     'linebreak-style': 0,
   },
 };

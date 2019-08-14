@@ -1,5 +1,5 @@
 import { dataBase } from '../main.js';
-import { userCurrent } from "./login-controller.js";
+import { userCurrent } from './login-controller.js';
 
 export const savePost = () => {
   const notePost = document.querySelector('#publication').value;
@@ -10,10 +10,21 @@ export const savePost = () => {
     userName: user.displayName,
   })
     .then((docRef) => {
-      console.log("Document written with ID: ", docRef.id);
-    })
+      alert('Publicacion ingresada');
+      console.log('Document written with ID: ', docRef.id);
+    }).catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+};
+
+const deletePost = (event) => {
+  event.preventDefault();
+  const id = event.target.id;
+  dataBase.collection('post').doc(id).delete().then(() => {
+    console.log('Document successfully deleted!');
+  })
     .catch((error) => {
-      console.error("Error adding document: ", error);
+      console.error('Error removing document: ', error);
     });
 };
 
@@ -35,16 +46,5 @@ export const showPost = (tabla) => {
     });
     const buttonDeletePost = document.querySelector('#listOfPublications');
     buttonDeletePost.addEventListener('click', deletePost);
-  });
-};
-
-const deletePost = (event) => {
-  event.preventDefault();
-  const id = event.target.id;
-  dataBase.collection('post').doc(id).delete().then(() => {
-    console.log("Document successfully deleted!");
-  })
-.catch((error) => {
-    console.error("Error removing document: ", error);
   });
 };

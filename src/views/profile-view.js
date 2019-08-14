@@ -1,8 +1,8 @@
-import { updateUserName } from '../controller/profile-controller.js'
-import { userCurrent } from '../controller/login-controller.js'
+import { updateProfile } from '../controller/profile-controller.js';
+import { userCurrent } from '../controller/login-controller.js';
+import { getData } from '../controller/profile-controller.js';
 
 export default () => {
-  const use = userCurrent();
   const profile = document.createElement('div');
   const profileContent = `    
     <h2>Profile</h2> 
@@ -11,21 +11,26 @@ export default () => {
     <input id='fileButton' type='button' value='Upload MB' />
     
     <form>
-    <input type="text" value="${use.displayName}" class="inputForm" id="name">
-    <input type="text" value="${use.email}" disabled class="inputForm" id="name">
+    <input type="text" value="" class="inputForm" id="name">
+    <input type="text" value="" disabled class="inputForm" id="email">
 
     <input type="submit" class="button-login" id="button-save" value="Guardar">
     </form>
     `;
 
   profile.innerHTML = profileContent;
+  const name = profile.querySelector('#name');
+  const email = profile.querySelector('#email');
+  
+  getData(name, email);
   const save = profile.querySelector('#button-save');
   
   save.addEventListener('click', () => {
     event.preventDefault();
-    const user = userCurrent();
     const newName = profile.querySelector('#name').value;
-    updateUserName(user, newName).then(function () {
+    const email = profile.querySelector('#email').value;
+
+    updateProfile(newName, email).then(function () {
       // Update successful.
       location.hash = '#/home';
     });

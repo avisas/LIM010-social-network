@@ -1,4 +1,5 @@
 import { registerFunction } from '../controller/register-controller.js';
+import { userCurrent } from '../controller/login-controller.js'
 
 export default () => {
   const formRegister = document.createElement('div');
