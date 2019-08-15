@@ -12,10 +12,6 @@ export const loginFunction = (event) => {
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/home';
-<<<<<<< HEAD
-      console.log(result);
-=======
->>>>>>> b04eaec03d6cf946b94f8592a6ce408e6f04ed3e
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
