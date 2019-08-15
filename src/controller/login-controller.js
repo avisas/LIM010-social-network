@@ -1,9 +1,11 @@
+import { signIn, signInWithFacebook } from '../controller-firebase/controller-authentication.js';
+
 export const loginFunction = (event) => {
   event.preventDefault();
   const messageErrorLabel = document.getElementById('LoginMessageError');
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
-  firebase.auth().signInWithEmailAndPassword(usuario, contrasena)
+  signIn(usuario, contrasena)
     .then((result) => {
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
@@ -30,8 +32,7 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
-  const provider = new firebase.auth.FacebookAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(() => {
+  signInWithFacebook().then(() => {
     window.location.hash = '#/home';
   }).catch((error) => {
     console.log(error);
