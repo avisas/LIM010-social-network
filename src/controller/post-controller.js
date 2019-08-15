@@ -1,7 +1,8 @@
 import { dataBase } from '../main.js';
 import { userCurrent } from './login-controller.js';
 
-export const savePost = () => {
+export const savePost = (event) => {
+  event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const user = userCurrent();
   dataBase.collection('post').add({
@@ -28,6 +29,10 @@ const deletePost = (event) => {
     });
 };
 
+const edit = (event) => {
+  event.preventDefault();
+  alert('ahora me puedes editar');
+};
 export const showPost = (tabla) => {
   // const table = document.getElementById('tabla');
   dataBase.collection('post').onSnapshot((querySnapshot) => {
@@ -39,12 +44,22 @@ export const showPost = (tabla) => {
           <th scope="row">${doc.id}</th>
           <td>${doc.data().userName}</td>
           <td>${doc.data().notes}</td>
-          <td><button id="" class="btn-edit">Editar</button></td>
-          <td><button id="${doc.id}" name="delete" class="btn-delete">Eliminar</button></td>
+          <td><button id="${doc.id}" class="edit">Editar</button></td>
+          <td><button id="${doc.id}" name="delete" class="delete">Eliminar</button></td>
         </tr>
         `;
     });
-    const buttonDeletePost = document.querySelector('#listOfPublications');
-    buttonDeletePost.addEventListener('click', deletePost);
+    const buttonDeletePost = document.querySelectorAll('.delete');
+    for (const button of buttonDeletePost) {
+
+      button.addEventListener('click', deletePost);
+    }
+
+    const buttons = document.querySelectorAll('.edit');
+
+    for (const button of buttons) {
+
+      button.addEventListener('click', edit);
+    }
   });
 };
