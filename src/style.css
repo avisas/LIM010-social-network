@@ -99,6 +99,9 @@ ul li a:hover{
   z-index: 2;
 }
 
+.hide{
+  display: none;
+}
 @media screen and (min-width:764px){
   html, body{
     height: 100%;
