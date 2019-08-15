@@ -22,6 +22,7 @@ export const home = () => {
       <form id="form-publication" maxlength=50 class="flex-form" required>
         <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
+        <input type="submit" id="edit-post" class="button-login hide" value="Editar">
       </form> 
       <table class="table my-3">
       <thead>
@@ -29,6 +30,7 @@ export const home = () => {
           <th scope="col">Id</th>
           <th scope="col">User</th>
           <th scope="col">Message</th>
+          <th scope="col">Hora</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>
         </tr>
@@ -41,6 +43,8 @@ export const home = () => {
   <footer></footer>
     `;
   home.innerHTML = homeContent;
+
+
 
   const userName = home.querySelector('#user-name');
   const allPublications = home.querySelector('#listOfPublications');

@@ -26,10 +26,7 @@ module.exports = {
     'jest/no-identical-title': 'error',
     'jest/prefer-to-have-length': 'warn',
     'jest/valid-expect': 'error',
-<<<<<<< HEAD
-=======
     'no-param-reassign': 0,
->>>>>>> a8929e85109134f48be2fb4a5b89f1b27830df2d
     'linebreak-style': 0,
   },
 };
