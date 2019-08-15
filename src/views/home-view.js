@@ -55,7 +55,6 @@ export const home = () => {
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
-
   userName.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);

@@ -9,7 +9,6 @@ export const loginFunction = (event) => {
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/home';
       console.log(result);
-      window.location.hash = '#/home';
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
@@ -25,7 +24,6 @@ export const loginFunction = (event) => {
           break;
         default:
           messageErrorLabel.innerHTML = 'Se ha producido un error';
-          console.log(`code: "${error.code}" & message: ${error.message}`);
       }
     });
 };
