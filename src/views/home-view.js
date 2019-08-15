@@ -1,8 +1,9 @@
+/* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
 import { savePost, showPost } from '../controller/post-controller.js';
-import { getName } from '../controller/register-controller.js';
+
 export const home = () => {
-  const home = document.createElement('div');
+  const homeDiv = document.createElement('div');
 
   const homeContent = `
   <header>
@@ -42,16 +43,14 @@ export const home = () => {
   </main>
   <footer></footer>
     `;
-  home.innerHTML = homeContent;
+  homeDiv.innerHTML = homeContent;
 
+  const userName = homeDiv.querySelector('#user-name');
+  const allPublications = homeDiv.querySelector('#listOfPublications');
 
-
-  const userName = home.querySelector('#user-name');
-  const allPublications = home.querySelector('#listOfPublications');
-
-  const btnSignOut = home.querySelector('#signOut');
+  const btnSignOut = homeDiv.querySelector('#signOut');
   // const notePost = home.querySelector('#publication').value;
-  const btnComportirPost = home.querySelector('#compartir-post');
+  const btnComportirPost = homeDiv.querySelector('#compartir-post');
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
@@ -60,5 +59,5 @@ export const home = () => {
   btnComportirPost.addEventListener('click', savePost);
 
   showPost(allPublications);
-  return home;
+  return homeDiv;
 };
