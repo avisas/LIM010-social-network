@@ -32,7 +32,8 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
-  signInWithFacebook().then(() => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  signInWithFacebook(provider).then(() => {
     window.location.hash = '#/home';
   }).catch((error) => {
     console.log(error);
