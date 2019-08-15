@@ -1,7 +1,8 @@
 import { dataBase } from '../main.js';
 import { userCurrent } from './login-controller.js';
 
-export const savePost = () => {
+export const savePost = (event) => {
+  event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const user = userCurrent();
   dataBase.collection('post').add({
@@ -19,13 +20,14 @@ export const savePost = () => {
 
 const deletePost = (event) => {
   event.preventDefault();
-  const id = event.target.id;
-  dataBase.collection('post').doc(id).delete().then(() => {
+  alert('entraste a eliminar');
+   const id = event.target.id;
+   dataBase.collection('post').doc(id).delete().then(() => {
     console.log('Document successfully deleted!');
   })
     .catch((error) => {
       console.error('Error removing document: ', error);
-    });
+    }); 
 };
 
 export const showPost = (tabla) => {
@@ -40,11 +42,12 @@ export const showPost = (tabla) => {
           <td>${doc.data().userName}</td>
           <td>${doc.data().notes}</td>
           <td><button id="" class="btn-edit">Editar</button></td>
-          <td><button id="${doc.id}" name="delete" class="btn-delete">Eliminar</button></td>
+          <td><button id="btn-delete" data-id="${doc.id}" class="btn-delete">Eliminar</button></td>
         </tr>
         `;
     });
-    const buttonDeletePost = document.querySelector('#listOfPublications');
-    buttonDeletePost.addEventListener('click', deletePost);
+    const buttonDeletePost = document.querySelector('#listOfPublications .btn-delete').getAttribute('#btn-delete');
+
+    buttonDeletePost.addEventListener('click', deletePost());
   });
 };
