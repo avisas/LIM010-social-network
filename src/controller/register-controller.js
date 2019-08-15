@@ -1,5 +1,5 @@
 import { dataBase } from '../main.js';
-import { userCurrent } from './login-controller.js';
+import { userCurrent, createUser } from '../controller-firebase/controller-authentication.js';
 
 const createProfile = (id, name, email) => {
   dataBase.collection('users').doc(id).set({
@@ -35,16 +35,15 @@ export const registerFunction = (event) => {
   const email = document.querySelector('#mail').value;
   const password = document.querySelector('#pass').value;
 
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((result) => {
+  createUser(email, password)
+    .then(() => {
       const use = userCurrent();
       createProfile(use.uid, nick, email);
       getName(use.uid);
       regMessageErrorLabel.classList.remove('show-message-error');
       regMessageErrorLabel.innerHTML = '';
       window.location.hash = '#/';
-      console.log(result);
-      alert('Usuario creado correctamente');
+      alert('Usuario creado correctamente'); // Poner un mensaje bonito
     })
     .catch((error) => {
       regMessageErrorLabel.classList.add('show-message-error');
@@ -60,7 +59,6 @@ export const registerFunction = (event) => {
           break;
         default:
           regMessageErrorLabel.innerHTML = 'Se ha producido un error';
-          console.log(`code: "${error.code}" & message: ${error.message}`);
       }
     });
 };

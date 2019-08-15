@@ -17,7 +17,7 @@ export const signOutUser = () => {
   firebase.auth().signOut().then(() => {
     window.location.hash = '#/';
   }, (error) => {
-    console.log(error);
+    // console.log(error);
   });
 };
 export const changeViewToProfile = () => {

@@ -1,5 +1,5 @@
 import { updateProfile } from '../controller/profile-controller.js';
-import { userCurrent } from '../controller/login-controller.js';
+import { userCurrent } from '../controller-firebase/controller-authentication.js';
 import { getData } from '../controller/profile-controller.js';
 
 export default () => {

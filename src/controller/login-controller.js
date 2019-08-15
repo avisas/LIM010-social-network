@@ -1,4 +1,6 @@
-import { signIn, signInWithFacebook } from '../controller-firebase/controller-authentication.js';
+import {
+  signIn, signInWithFacebook, signInWithGoogle, signOutLogin, userCurrent,
+} from '../controller-firebase/controller-authentication.js';
 
 export const loginFunction = (event) => {
   event.preventDefault();
@@ -6,11 +8,14 @@ export const loginFunction = (event) => {
   const usuario = event.target.email.value;
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
-    .then((result) => {
+    .then(() => {
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/home';
+<<<<<<< HEAD
       console.log(result);
+=======
+>>>>>>> b04eaec03d6cf946b94f8592a6ce408e6f04ed3e
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
@@ -35,17 +40,17 @@ export const signInFacebook = (event) => {
   const provider = new firebase.auth.FacebookAuthProvider();
   signInWithFacebook(provider).then(() => {
     window.location.hash = '#/home';
-  }).catch((error) => {
-    console.log(error);
+  }).catch(() => {
+    // Aqui va el error , leer manejo de errores de FB
   });
 };
 
 export const signInGoogle = (event) => {
   event.preventDefault();
-  if (!firebase.auth().currentUser) {
+  if (!userCurrent()) {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    firebase.auth().signInWithPopup(provider).then(() => {
+    signInWithGoogle(provider).then(() => {
       window.location.hash = '#/home';
     }).catch((error) => {
       const errorCode = error.code;
@@ -54,17 +59,15 @@ export const signInGoogle = (event) => {
       }
     });
   } else {
-    firebase.auth().signOut();
+    signOutLogin();
   }
 };
 
 export const showPassword = () => {
-    const tipo = document.querySelector('#password');
-    if(tipo.type == "password"){
-        tipo.type = "text";
-    }else{
-        tipo.type = "password";
-    }
-
-}
-export const userCurrent = () => firebase.auth().currentUser;
+  const tipo = document.querySelector('#password');
+  if (tipo.type == 'password') {
+    tipo.type = 'text';
+  } else {
+    tipo.type = 'password';
+  }
+};
