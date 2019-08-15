@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { changeView } from './controller-view/index.js';
 
 const firebaseConfig = {

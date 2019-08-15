@@ -1,3 +1,4 @@
+// eslint-disable-next-line object-curly-newline
 import { loginFunction, signInFacebook, signInGoogle, showPassword } from '../controller/login-controller.js';
 
 export default () => {
@@ -28,7 +29,7 @@ export default () => {
     </div>
   `;
   formLogin.innerHTML = divLogin;
-  //document.getElementById("container").appendChild(formLogin);
+  // document.getElementById("container").appendChild(formLogin);
 
   const formAutenticacion = formLogin.querySelector('#form-autenticacion');
   const loginFacebook = formLogin.querySelector('#facebook');
@@ -36,7 +37,7 @@ export default () => {
   const showEye = formLogin.querySelector('#show-eye');
 
 
-  formAutenticacion.addEventListener("submit", loginFunction);
+  formAutenticacion.addEventListener('submit', loginFunction);
   loginFacebook.addEventListener('click', signInFacebook);
   loginGoogle.addEventListener('click', signInGoogle);
   showEye.addEventListener('click', showPassword);

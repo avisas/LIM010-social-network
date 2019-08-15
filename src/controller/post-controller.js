@@ -43,8 +43,8 @@ const edit = (event) => {
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
   boton.value = 'Editar';
-  boton.addEventListener('click', () => {
-    event.preventDefault();
+  boton.addEventListener('click', (e) => {
+    e.preventDefault();
     const washingtonRef = dataBase.collection('post').doc(id);
 
     // Set the "capital" field of the city 'DC'

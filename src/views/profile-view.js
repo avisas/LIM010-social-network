@@ -1,6 +1,6 @@
-import { updateProfile } from '../controller/profile-controller.js';
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { getData } from '../controller/profile-controller.js';
+
+/* eslint-disable import/no-cycle */
+import { updateProfile, getData } from '../controller/profile-controller.js';
 
 export default () => {
   const profile = document.createElement('div');
@@ -21,18 +21,16 @@ export default () => {
   profile.innerHTML = profileContent;
   const name = profile.querySelector('#name');
   const email = profile.querySelector('#email');
-  
   getData(name, email);
   const save = profile.querySelector('#button-save');
-  
-  save.addEventListener('click', () => {
+  save.addEventListener('click', (event) => {
     event.preventDefault();
     const newName = profile.querySelector('#name').value;
-    const email = profile.querySelector('#email').value;
+    const newEmail = profile.querySelector('#email').value;
 
-    updateProfile(newName, email).then(function () {
+    updateProfile(newName, newEmail).then(() => {
       // Update successful.
-      location.hash = '#/home';
+      window.location.hash = '#/home';
     });
   });
 
