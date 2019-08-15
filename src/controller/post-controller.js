@@ -1,5 +1,5 @@
 import { dataBase } from '../main.js';
-import { userCurrent } from './login-controller.js';
+import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
 export const savePost = (event) => {
   event.preventDefault();
