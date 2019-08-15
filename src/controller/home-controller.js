@@ -1,3 +1,5 @@
+import { signOutLogin } from '../controller-firebase/controller-authentication.js';
+
 export const recoverUserName = (userName) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -14,19 +16,12 @@ export const recoverUserName = (userName) => {
 };
 
 export const signOutUser = () => {
-  firebase.auth().signOut().then(() => {
+  signOutLogin().then(() => {
     window.location.hash = '#/';
-  }, (error) => {
+  }, () => {
     // console.log(error);
   });
 };
 export const changeViewToProfile = () => {
   window.location.hash = '#/profile';
-};
-
-export const pushPublication = (event) => {
-  event.preventDefault();
-  const messageToPublish = event.target.publication.value;
-  // push messagetoPublish to firestore
-  console.log(`message prueba: ${messageToPublish}`);
 };

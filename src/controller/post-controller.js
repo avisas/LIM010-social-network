@@ -1,34 +1,35 @@
-import { dataBase } from '../main.js';
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
+// eslint-disable-next-line import/no-cycle
+import { dataBase } from '../main.js';
+
 
 export const savePost = (event) => {
   event.preventDefault();
   const notePost = document.querySelector('#publication').value;
-  const timePost = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
+  const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
   const user = userCurrent();
   dataBase.collection('post').add({
     notes: notePost,
     user: user.uid,
     userName: user.displayName,
-    timePost: timePost,
+    timePost: time,
   })
-    .then((docRef) => {
-      alert('Publicacion ingresada');
-      console.log('Document written with ID: ', docRef.id);
-    }).catch((error) => {
-      console.error('Error adding document: ', error);
+    .then(() => {
+      // alert('Publicacion ingresada');
+      // console.log('Document written with ID: ', docRef.id);
+    }).catch(() => {
+      // console.error('Error adding document: ', error);
     });
 };
 
 const deletePost = (event) => {
   event.preventDefault();
-  alert('entraste a eliminar');
   const id = event.target.id;
   dataBase.collection('post').doc(id).delete().then(() => {
-    console.log('Document successfully deleted!');
+    // console.log('Document successfully deleted!'); poner un modal
   })
-    .catch((error) => {
-      console.error('Error removing document: ', error);
+    .catch(() => {
+      // console.error('Error removing document: ', error); poner un modal
     });
 };
 
@@ -41,7 +42,6 @@ const edit = (event) => {
   const botonGuardar = document.querySelector('#compartir-post');
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
-  console.log(boton);
   boton.value = 'Editar';
   boton.addEventListener('click', () => {
     event.preventDefault();
@@ -49,29 +49,27 @@ const edit = (event) => {
 
     // Set the "capital" field of the city 'DC'
     const note = document.querySelector('#publication').value;
-    const timePost = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
+    const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
     return washingtonRef.update({
       notes: note,
-      timePost: timePost,
+      timePost: time,
     })
       .then(() => {
         boton.classList.add('hide');
         botonGuardar.classList.remove('hide');
-        console.log('Document successfully updated!');
       })
-      .catch((error) => {
+      .catch(() => {
         // The document probably doesn't exist.
-        console.error('Error updating document: ', error);
+        // console.error('Error updating document: ', error);
       });
   });
 };
 
 export const showPost = (tabla) => {
-  // const table = document.getElementById('tabla');
   dataBase.collection('post').onSnapshot((querySnapshot) => {
     tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
-      console.log(`${doc.id} => ${doc.data().userName}`);
+      // console.log(`${doc.id} => ${doc.data().userName}`);
       tabla.innerHTML += `
       <tr>
           <th scope="row">${doc.id}</th>
@@ -84,12 +82,14 @@ export const showPost = (tabla) => {
         `;
     });
     const buttonDeletePost = document.querySelectorAll('.delete');
+    // eslint-disable-next-line no-restricted-syntax
     for (const button of buttonDeletePost) {
       button.addEventListener('click', deletePost);
     }
 
     const buttons = document.querySelectorAll('.edit');
 
+    // eslint-disable-next-line no-restricted-syntax
     for (const button of buttons) {
       button.addEventListener('click', edit);
     }

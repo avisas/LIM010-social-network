@@ -51,7 +51,7 @@ export const signInGoogle = (event) => {
     }).catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/account-exists-with-different-credential') {
-        alert('Es el mismo usuario');
+        // alert('Es el mismo usuario');
       }
     });
   } else {
@@ -61,7 +61,7 @@ export const signInGoogle = (event) => {
 
 export const showPassword = () => {
   const tipo = document.querySelector('#password');
-  if (tipo.type == 'password') {
+  if (tipo.type === 'password') {
     tipo.type = 'text';
   } else {
     tipo.type = 'password';

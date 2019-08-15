@@ -1,4 +1,4 @@
-import { loginFunction, signInFacebook, signInGoogle, showPassword} from '../controller/login-controller.js';
+import { loginFunction, signInFacebook, signInGoogle, showPassword } from '../controller/login-controller.js';
 
 export default () => {
   const formLogin = document.createElement('div');

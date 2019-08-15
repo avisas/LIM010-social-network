@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
 import { userCurrent, createUser } from '../controller-firebase/controller-authentication.js';
 
@@ -16,15 +17,15 @@ export const getName = (userName) => {
   const user = userCurrent().uid;
   dataBase.collection('users').doc(user).get().then((doc) => {
     if (doc.exists) {
-      console.log('Document data:', doc.data().name);
+      // console.log('Document data:', doc.data().name);
       userName.textContent = doc.data().name;
     } else {
       // doc.data() will be undefined in this case
-      console.log('No such document!');
+      // console.log('No such document!');
     }
   })
-    .catch((error) => {
-      console.log('Error getting document:', error);
+    .catch(() => {
+      // console.log('Error getting document:', error);
     });
 };
 
@@ -43,7 +44,7 @@ export const registerFunction = (event) => {
       regMessageErrorLabel.classList.remove('show-message-error');
       regMessageErrorLabel.innerHTML = '';
       window.location.hash = '#/';
-      alert('Usuario creado correctamente'); // Poner un mensaje bonito
+      // alert('Usuario creado correctamente'); // Poner un mensaje bonito
     })
     .catch((error) => {
       regMessageErrorLabel.classList.add('show-message-error');
