@@ -6,7 +6,7 @@ export default () => {
   formLogin.className = 'container-login';
   const divLogin = `
     <div class="section-image">
-      <img class="img-login" src="img/login-img.jpg">
+      <img class="img-login" src="img/banner03.jpg">
     </div>
     <div class="login">
       <form id="form-autenticacion" class="flex-form">
