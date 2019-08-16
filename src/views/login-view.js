@@ -10,8 +10,8 @@ export default () => {
     </div>
     <div class="login">
       <form id="form-autenticacion" class="flex-form">
-        <h1>Tasty Recipes</h1>
-        <p>¡Bienvenido Chefcito!</p>
+      <img src="img/logo.png" class="img-logo" alt="Logo meet and code">
+        <p class="slogan-coders">¡Bienvenido a <strong>Meet and Code</strong>, la red de coders en acción!</p>
         <input type="text" name="email" value="" placeholder="Email" class="inputForm" id="email">
         <input type="password" name="password" value="" placeholder="Password" class="inputForm" id="password">
         <span id="show-eye"><i class="far fa-eye"></i></span>
@@ -24,7 +24,7 @@ export default () => {
           <span id="facebook"><i class="fab fa-facebook iconfb"></i></span>
           <span id="google"><i class="fab fa-google iconGoogle"></i></span>
         </div>
-        <label>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="register" class="bold">Registrate</span></a></label>
+        <p>¿No tienes una cuenta?&nbsp;<a href="#/register"><span id="register" class="register-href">Registrate</span></a></p>
       </div>
     </div>
   `;
