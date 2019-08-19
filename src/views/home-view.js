@@ -1,8 +1,51 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import { savePost, showPost } from '../controller/post-controller.js';
+import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost } from '../controller/post-controller.js';
 
-export const home = () => {
+
+const listNotes = (objNote) => {
+  const liElemnt = document.createElement('li');
+  liElemnt.classList.add('li-child');
+  liElemnt.innerHTML = `
+  <span class=""> 
+    <span>${objNote.userName}</span>
+    <span>${objNote.notes}</span>
+    <span>${objNote.timePost}</span>
+    <span>${objNote.privacidad}</span>
+  </span>
+  <a class="" id="delete-${objNote.id}">
+  <i>Delete</i>
+  </a>
+  </span>
+  <a class="" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+  <i>Edit</i>
+  </a>
+  <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
+  <i>Like</i>
+  </a>
+  <a class="" id="dislike-${objNote.id}" data-post="${objNote.id}">
+  <i>Dislike</i>
+  </a>
+  <a id="counter-${objNote.id}">
+  </a>
+  `;
+  liElemnt.querySelector(`#delete-${objNote.id}`)
+    .addEventListener('click', () => deletePost(objNote.id));
+
+  liElemnt.querySelector(`#edit-${objNote.id}`)
+    .addEventListener('click', () => edit(objNote.id));
+
+  liElemnt.querySelector(`#like-${objNote.id}`)
+    .addEventListener('click', () => addLike(objNote.id));
+
+  liElemnt.querySelector(`#dislike-${objNote.id}`)
+    .addEventListener('click', () => deleteLikePost(objNote.id));
+
+  liElemnt.querySelector(`#counter-${objNote.id}`).innerHTML = showLikePost(objNote.id);
+  return liElemnt;
+};
+
+export const home = (notes) => {
   const homeDiv = document.createElement('div');
 
   const homeContent = `
@@ -48,13 +91,22 @@ export const home = () => {
         
       </tbody>
     </table>
+    <section>
+      <ul id="notes-list">
+      </ul>
+    </section>
   </main>
   <footer></footer>
     `;
   homeDiv.innerHTML = homeContent;
 
+  const ul = homeDiv.querySelector('#notes-list');
+  notes.forEach((note) => {
+    ul.appendChild(listNotes(note));
+  });
+
   const userName = homeDiv.querySelector('#user-name');
-  const allPublications = homeDiv.querySelector('#listOfPublications');
+  // const allPublications = homeDiv.querySelector('#listOfPublications');
   // const selectPrivacidad = homeDiv.querySelector('#privacidad');
 
   const btnSignOut = homeDiv.querySelector('#signOut');
@@ -66,7 +118,7 @@ export const home = () => {
   userName.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
-  showPost(allPublications);
+  // showPost(allPublications);
   // showPostCurrenUser(allPublications);
 
   return homeDiv;
