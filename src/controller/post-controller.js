@@ -92,7 +92,6 @@ const showButtonLike = (postId) => {
         console.log('entree');
         // buttonLike.classList.add('hide');
         buttonDislike.classList.add('hide');
-        
         // buttonDislike.classList.remove('hide');
       } else {
         console.log('no entree');

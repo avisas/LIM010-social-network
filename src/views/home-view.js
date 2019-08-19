@@ -65,8 +65,8 @@ export const home = () => {
   userName.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
-  // showPost(allPublications);
-  showPostCurrenUser(allPublications);
+  showPost(allPublications);
+  // showPostCurrenUser(allPublications);
 
   return homeDiv;
 };

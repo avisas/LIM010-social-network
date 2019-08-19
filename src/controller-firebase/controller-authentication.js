@@ -8,7 +8,6 @@ export const signInWithFacebook = () => {
 
 export const signInWithGoogle = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
   return firebase.auth().signInWithPopup(provider);
 };
 
