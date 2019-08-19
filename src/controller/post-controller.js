@@ -6,10 +6,12 @@ import { dataBase } from '../main.js';
 export const savePost = (event) => {
   event.preventDefault();
   const notePost = document.querySelector('#publication').value;
+  const selectPrivacidad = document.querySelector('#privacidad').value;
   const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
   const user = userCurrent();
   dataBase.collection('post').add({
     notes: notePost,
+    privacidad: selectPrivacidad,
     user: user.uid,
     userName: user.displayName,
     timePost: time,
@@ -37,7 +39,9 @@ const edit = (event) => {
   event.preventDefault();
   const id = event.target.id;
   const notes = event.currentTarget.dataset.note;
+  const privacidad = event.currentTarget.dataset.privacidad;
   document.querySelector('#publication').value = notes;
+  document.querySelector('#privacidad').value = privacidad;
   const boton = document.querySelector('#edit-post');
   const botonGuardar = document.querySelector('#compartir-post');
   boton.classList.remove('hide');
@@ -49,9 +53,11 @@ const edit = (event) => {
 
     // Set the "capital" field of the city 'DC'
     const note = document.querySelector('#publication').value;
+    const selectPrivacidad = document.querySelector('#privacidad').value;
     const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
     return washingtonRef.update({
       notes: note,
+      privacidad: selectPrivacidad,
       timePost: time,
     })
       .then(() => {
@@ -66,7 +72,7 @@ const edit = (event) => {
 };
 
 export const showPost = (tabla) => {
-  dataBase.collection('post').onSnapshot((querySnapshot) => {
+  dataBase.collection('post').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
     tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
       // console.log(`${doc.id} => ${doc.data().userName}`);
@@ -76,7 +82,8 @@ export const showPost = (tabla) => {
           <td>${doc.data().userName}</td>
           <td>${doc.data().notes}</td>
           <td>${doc.data().timePost}</td>
-          <td><button id="${doc.id}" name="edit" data-note="${doc.data().notes}" class="edit">Editar</button></td>
+          <td>${doc.data().privacidad}</td>
+          <td><button id="${doc.id}" name="edit" data-note="${doc.data().notes}" data-privacidad="${doc.data().privacidad}" class="edit">Editar</button></td>
           <td><button id="${doc.id}" name="delete" class="delete">Eliminar</button></td>
         </tr>
         `;
@@ -88,7 +95,37 @@ export const showPost = (tabla) => {
     }
 
     const buttons = document.querySelectorAll('.edit');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const button of buttons) {
+      button.addEventListener('click', edit);
+    }
+  });
+};
 
+export const showPostCurrenUser = (tabla) => {
+  dataBase.collection('post').where('user', '==', '0waPqgnKgqXnzd80ycBSUfT6E1i1').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
+    tabla.innerHTML = '';
+    querySnapshot.forEach((doc) => {
+      // console.log(`${doc.id} => ${doc.data().userName}`);
+      tabla.innerHTML += `
+      <tr>
+          <th scope="row">${doc.id}</th>
+          <td>${doc.data().userName}</td>
+          <td>${doc.data().notes}</td>
+          <td>${doc.data().timePost}</td>
+          <td>${doc.data().privacidad}</td>
+          <td><button id="${doc.id}" name="edit" data-note="${doc.data().notes}" data-privacidad="${doc.data().privacidad}" class="edit">Editar</button></td>
+          <td><button id="${doc.id}" name="delete" class="delete">Eliminar</button></td>
+        </tr>
+        `;
+    });
+    const buttonDeletePost = document.querySelectorAll('.delete');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const button of buttonDeletePost) {
+      button.addEventListener('click', deletePost);
+    }
+
+    const buttons = document.querySelectorAll('.edit');
     // eslint-disable-next-line no-restricted-syntax
     for (const button of buttons) {
       button.addEventListener('click', edit);

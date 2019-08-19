@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import { savePost, showPost } from '../controller/post-controller.js';
+import { savePost, showPost, showPostCurrenUser } from '../controller/post-controller.js';
 
 export const home = () => {
   const homeDiv = document.createElement('div');
@@ -22,6 +22,10 @@ export const home = () => {
       <div id="user-perfil"></div>
       <form id="form-publication" maxlength=50 class="flex-form" required>
         <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
+        <select id="privacidad" name="select">
+        <option value="publico" selected>Publico</option> 
+        <option value="privado">Privado</option>
+      </select>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
       </form> 
@@ -32,6 +36,7 @@ export const home = () => {
           <th scope="col">User</th>
           <th scope="col">Message</th>
           <th scope="col">Hora</th>
+          <th scope="col">Privacidad</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>
         </tr>
@@ -47,6 +52,7 @@ export const home = () => {
 
   const userName = homeDiv.querySelector('#user-name');
   const allPublications = homeDiv.querySelector('#listOfPublications');
+  // const selectPrivacidad = homeDiv.querySelector('#privacidad');
 
   const btnSignOut = homeDiv.querySelector('#signOut');
   // const notePost = home.querySelector('#publication').value;
@@ -57,7 +63,8 @@ export const home = () => {
   userName.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
+  // showPost(allPublications);
+  showPostCurrenUser(allPublications);
 
-  showPost(allPublications);
   return homeDiv;
 };
