@@ -2,7 +2,7 @@
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
 import { dataBase } from '../main.js';
 import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
-import { addLikeFirebase, deleteLikeFirebase } from '../controller-firebase/controller-likes.js';
+import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase } from '../controller-firebase/controller-likes.js';
 
 export const savePost = (event) => {
   event.preventDefault();
@@ -82,10 +82,12 @@ const showButtonLike = (postId) => {
   });
 };
 
-export const showLikePost = (idPost) => {
-  dataBase.collection('post').doc(idPost).collection('likes').onSnapshot((querySnapshot) => {
-    document.getElementById(`counter-${idPost}`).innerHTML = querySnapshot.size;
-  });
+export const showLikePost = (id) => {
+  showLikeFirebase(id)
+    .onSnapshot((querySnapshot) => {
+      document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
+      console.log(querySnapshot.size);
+    });
 }; 
 
 export const deleteLikePost = (postId) => {

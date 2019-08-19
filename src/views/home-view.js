@@ -4,10 +4,10 @@ import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost } fro
 
 
 const listNotes = (objNote) => {
-  const liElemnt = document.createElement('li');
+const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
-  <span class=""> 
+  <span class="">
     <span>${objNote.userName}</span>
     <span>${objNote.notes}</span>
     <span>${objNote.timePost}</span>
@@ -41,8 +41,8 @@ const listNotes = (objNote) => {
   liElemnt.querySelector(`#dislike-${objNote.id}`)
     .addEventListener('click', () => deleteLikePost(objNote.id));
 
-  liElemnt.querySelector(`#counter-${objNote.id}`).innerHTML = showLikePost(objNote.id);
-  return liElemnt;
+  showLikePost(objNote.id);
+  return liElemnt; 
 };
 
 export const home = (notes) => {
