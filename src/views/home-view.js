@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import { savePost, showPost, showPostCurrenUser } from '../controller/post-controller.js';
+import { savePost, showPost } from '../controller/post-controller.js';
 
 export const home = () => {
   const homeDiv = document.createElement('div');

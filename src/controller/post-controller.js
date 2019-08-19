@@ -83,8 +83,7 @@ export const getPosts = (callback) => {
 const showButtonLike = (postId) => {
   const buttonLike = document.getElementById(`like-${postId}`);
   const buttonDislike = document.getElementById(`dislike-${postId}`);
-  console.log(buttonDislike);
-  console.log(buttonLike);
+  alert(buttonDislike);
   const user = userCurrent();
   dataBase.collection('post').doc(postId).collection('likes').onSnapshot((querySnapshot) => {
     querySnapshot.forEach((post) => {
@@ -164,7 +163,6 @@ export const showPost = (tabla) => {
           <td id="counter-${doc.id}"></td>
         </tr>
         `;
-      
       showLikePost(doc.id);
     });
 
@@ -178,49 +176,6 @@ export const showPost = (tabla) => {
     // eslint-disable-next-line no-restricted-syntax
     for (const button of buttons) {
       button.addEventListener('click', edit);
-    }
-  });
-};
-
-export const showPostCurrenUser = (tabla) => {
-  dataBase.collection('post').where('user', '==', '0waPqgnKgqXnzd80ycBSUfT6E1i1').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
-    tabla.innerHTML = '';
-    querySnapshot.forEach((doc) => {
-      // console.log(`${doc.id} => ${doc.data().userName}`);
-      tabla.innerHTML += `
-      <tr>
-          <th scope="row">${doc.id}</th>
-          <td>${doc.data().userName}</td>
-          <td>${doc.data().notes}</td>
-          <td>${doc.data().timePost}</td>
-          <td>${doc.data().privacidad}</td>
-          <td><button id="${doc.id}" name="edit" data-note="${doc.data().notes}" data-privacidad="${doc.data().privacidad}" class="edit">Editar</button></td>
-          <td><button id="${doc.id}" name="delete" class="delete">Eliminar</button></td>
-        </tr>
-        `;
-    });
-    const buttonDeletePost = document.querySelectorAll('.delete');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of buttonDeletePost) {
-      button.addEventListener('click', deletePost);
-    }
-
-    const buttons = document.querySelectorAll('.edit');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of buttons) {
-      button.addEventListener('click', edit);
-    }
-
-    const likes = document.querySelectorAll('.like');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of likes) {
-      button.addEventListener('click', addLike);
-    }
-
-    const dislikes = document.querySelectorAll('.dislike');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of dislikes) {
-      button.addEventListener('click', deleteLikePost);
     }
   });
 };
