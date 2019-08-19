@@ -83,6 +83,8 @@ export const getPosts = (callback) => {
 const showButtonLike = (postId) => {
   const buttonLike = document.getElementById(`like-${postId}`);
   const buttonDislike = document.getElementById(`dislike-${postId}`);
+  console.log(buttonDislike);
+  console.log(buttonLike);
   const user = userCurrent();
   dataBase.collection('post').doc(postId).collection('likes').onSnapshot((querySnapshot) => {
     querySnapshot.forEach((post) => {
