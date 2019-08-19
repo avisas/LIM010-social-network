@@ -33,8 +33,7 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
-  const provider = new firebase.auth.FacebookAuthProvider();
-  signInWithFacebook(provider).then(() => {
+  signInWithFacebook().then(() => {
     window.location.hash = '#/home';
   }).catch(() => {
     // Aqui va el error , leer manejo de errores de FB
@@ -44,9 +43,7 @@ export const signInFacebook = (event) => {
 export const signInGoogle = (event) => {
   event.preventDefault();
   if (!userCurrent()) {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-    signInWithGoogle(provider).then(() => {
+    signInWithGoogle().then(() => {
       window.location.hash = '#/home';
     }).catch((error) => {
       const errorCode = error.code;

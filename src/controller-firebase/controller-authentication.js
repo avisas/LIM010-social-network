@@ -1,9 +1,16 @@
 /* eslint-disable max-len */
 export const signIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
 
-export const signInWithFacebook = provider => firebase.auth().signInWithPopup(provider);
+export const signInWithFacebook = () => {
+  const provider = new firebase.auth.FacebookAuthProvider();
+  return firebase.auth().signInWithPopup(provider);
+};
 
-export const signInWithGoogle = provider => firebase.auth().signInWithPopup(provider);
+export const signInWithGoogle = () => {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  return firebase.auth().signInWithPopup(provider);
+};
 
 export const userCurrent = () => firebase.auth().currentUser;
 

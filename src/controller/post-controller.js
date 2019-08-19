@@ -2,17 +2,16 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 // eslint-disable-next-line import/no-cycle
 import { dataBase } from '../main.js';
 
-
 export const savePost = (event) => {
   event.preventDefault();
   const notePost = document.querySelector('#publication').value;
-  const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
+  // const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
   const user = userCurrent();
   dataBase.collection('post').add({
     notes: notePost,
     user: user.uid,
     userName: user.displayName,
-    timePost: time,
+    timePost: (new Date()).toLocaleDateString(),
   })
     .then(() => {
       // alert('Publicacion ingresada');
@@ -64,11 +63,85 @@ const edit = (event) => {
       });
   });
 };
+/*
+export const getPosts = (callback) => {
+  dataBase.collection('posts').onSnapshot((querySnapshot) => {
+    const postsArray = [];
+    querySnapshot.forEach((doc) => {
+      postsArray.push({ id: doc.id, ...doc.data()});
+    });
+    callback(postsArray);
+  });
+}; */
+
+const showButtonLike = (postId) => {
+  const buttonLike = document.getElementById(`like-${postId}`);
+  const buttonDislike = document.getElementById(`dislike-${postId}`);
+  const user = userCurrent();
+  dataBase.collection('post').doc(postId).collection('likes').onSnapshot((querySnapshot) => {
+    querySnapshot.forEach((post) => {
+      console.log(post.data().idUser);
+      console.log(user.uid);
+      if (post.data().idUser !== user.uid) {
+        console.log('entree');
+        // buttonLike.classList.add('hide');
+        buttonDislike.classList.add('hide');
+        
+        // buttonDislike.classList.remove('hide');
+      } else {
+        console.log('no entree');
+        // buttonDislike.classList.add('hide');
+        buttonLike.classList.add('hide');
+      }
+    });
+  });
+};
+
+const showLikePost = (idPost) => {
+  dataBase.collection('post').doc(idPost).collection('likes').onSnapshot((querySnapshot) => {
+    document.getElementById(`counter-${idPost}`).innerHTML = querySnapshot.size;
+  });
+};
+const deleteLikePost = (e) => {
+  e.preventDefault();
+  const user = userCurrent();
+  const postId = e.currentTarget.dataset.post;
+  const buttonLike = document.getElementById(`like-${postId}`);
+  const buttonDislike = document.getElementById(`dislike-${postId}`);
+  dataBase.collection('post').doc(postId).collection('likes')
+    .doc(user.uid)
+    .delete()
+    .then(() => {
+      buttonDislike.classList.add('hide');
+      buttonLike.classList.remove('hide');
+    });
+};
+
+/* Funcion de guardar like */
+const addLike = (e) => {
+  e.preventDefault();
+  const postId = e.currentTarget.dataset.post;
+  const buttonLike = document.getElementById(`like-${postId}`);
+  const buttonDislike = document.getElementById(`dislike-${postId}`);
+  const user = userCurrent();
+  dataBase.collection('post').doc(postId).collection('likes').doc(user.uid)
+    .set({
+      idUser: user.uid,
+      emailUser: user.displayName,
+      idPost: postId,
+    })
+    .then(() => {
+      buttonDislike.classList.remove('hide');
+      buttonLike.classList.add('hide');
+      // buttonDislike.addEventListener('click', deleteLikePost(postId, user.uid));
+    });
+};
 
 export const showPost = (tabla) => {
   dataBase.collection('post').onSnapshot((querySnapshot) => {
     tabla.innerHTML = '';
     querySnapshot.forEach((doc) => {
+      showButtonLike(doc.id);
       // console.log(`${doc.id} => ${doc.data().userName}`);
       tabla.innerHTML += `
       <tr>
@@ -78,9 +151,15 @@ export const showPost = (tabla) => {
           <td>${doc.data().timePost}</td>
           <td><button id="${doc.id}" name="edit" data-note="${doc.data().notes}" class="edit">Editar</button></td>
           <td><button id="${doc.id}" name="delete" class="delete">Eliminar</button></td>
+          <td><button id="like-${doc.id}" data-post="${doc.id}" class="like">Like</button></td>
+          <td><button  id="dislike-${doc.id}" data-post="${doc.id}" class="dislike">DisLike</button></td>
+          <td id="counter-${doc.id}"></td>
         </tr>
         `;
+      
+      showLikePost(doc.id);
     });
+
     const buttonDeletePost = document.querySelectorAll('.delete');
     // eslint-disable-next-line no-restricted-syntax
     for (const button of buttonDeletePost) {
@@ -92,6 +171,18 @@ export const showPost = (tabla) => {
     // eslint-disable-next-line no-restricted-syntax
     for (const button of buttons) {
       button.addEventListener('click', edit);
+    }
+
+    const likes = document.querySelectorAll('.like');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const button of likes) {
+      button.addEventListener('click', addLike);
+    }
+
+    const dislikes = document.querySelectorAll('.dislike');
+    // eslint-disable-next-line no-restricted-syntax
+    for (const button of dislikes) {
+      button.addEventListener('click', deleteLikePost);
     }
   });
 };
