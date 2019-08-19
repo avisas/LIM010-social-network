@@ -107,6 +107,7 @@ const showLikePost = (idPost) => {
     document.getElementById(`counter-${idPost}`).innerHTML = querySnapshot.size;
   });
 };
+
 const deleteLikePost = (e) => {
   e.preventDefault();
   const user = userCurrent();
@@ -138,7 +139,6 @@ const addLike = (e) => {
     .then(() => {
       buttonDislike.classList.remove('hide');
       buttonLike.classList.add('hide');
-      // buttonDislike.addEventListener('click', deleteLikePost(postId, user.uid));
     });
 };
 
