@@ -10,7 +10,9 @@ describe('signIn', () => {
 // configurando firebase mock
 // iniciando tests
 
-import { signIn } from '../src/controller-firebase/controller-authentication.js';
+import {
+  signIn, createUser, userCurrent, signInWithFacebook, signInWithGoogle, signOutLogin,
+} from '../src/controller-firebase/controller-authentication.js';
 
 const firebasemock = require('firebase-mock');
 
@@ -19,17 +21,55 @@ const mockfirestore = new firebasemock.MockFirestore();
 
 mockfirestore.autoFlush();
 mockauth.autoFlush();
+const mockprovider = new firebasemock.MockFirebase();
+mockprovider.autoFlush();
 
 global.firebase = firebasemock.MockFirebaseSdk(
   // use null if your code does not use RTDB
   path => (path ? mockfirestore.child(path) : null),
   () => mockauth,
   () => mockfirestore,
+  () => mockprovider,
 );
 
-describe('lista de notas', () => {
-  it('Debería poder iniciar sesion', () => signIn('front@end.la', '123456')
+describe('Crear un usuario', () => {
+  it('Debería poder registrarse con email albayauri.29@gmail.com y password 123456', () => createUser('albayauri.29@gmail.com', '123456')
     .then((user) => {
-      expect(user.email).toBe('front@end.la');
+      expect(user.email).toBe('albayauri.29@gmail.com');
+    }));
+});
+
+describe('Iniciar sesión', () => {
+  it('Debería poder iniciar sesion', () => signIn('albayauri.29@gmail.com', '123456')
+    .then((user) => {
+      expect(user.email).toBe('albayauri.29@gmail.com');
+    }));
+});
+
+describe('User current', () => {
+  it('Debería poder retornar el usuario que ha iniciado sesión', () => signIn('albayauri.29@gmail.com', '123456')
+    .then(() => {
+      expect(userCurrent().email).toBe('albayauri.29@gmail.com');
+    }));
+});
+
+describe('Login con Facebook', () => {
+  it('Debería poder iniciar sesion con Facebook', () => signInWithFacebook('albayauri.29@gmail.com', '123456')
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
+});
+
+describe('Login con Google', () => {
+  it('Debería poder iniciar sesion con Google', () => signInWithGoogle('albayauri.29@gmail.com', '123456')
+    .then((user) => {
+      expect(user.isAnonymous).toBe(false);
+    }));
+});
+
+describe('Cerrar sesión', () => {
+  it('Debería poder cerrar sesión', () => signOutLogin()
+    .then((user) => {
+      expect(user).toBe(undefined);
     }));
 });

@@ -39,6 +39,8 @@ export const home = () => {
           <th scope="col">Privacidad</th>
           <th scope="col">Editar</th>
           <th scope="col">Eliminar</th>
+          <th scope="col">like</th>
+          <th scope="col">count</th>
         </tr>
       </thead>
       <tbody id="listOfPublications">
