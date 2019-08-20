@@ -1,4 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One|Ubuntu&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+}
+main{
+  padding:20px;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  background-color: #83bb21;
+}
 h1{
   font-family: 'Pacifico', cursive;
   font-size: 45px;
@@ -21,10 +35,7 @@ h1{
   font-weight: bold;
 }
 .section-image{
-  background-color: #5968a1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
 }
 .img-login{
   background-size: cover;
@@ -60,6 +71,17 @@ p{
   width: 70%;
 }
 
+.flex-post{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 0px 20px;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 15px;
+}
 .button-login{
   font-family: 'Patua One', cursive;
   background-color: #f0ab00;
@@ -73,6 +95,11 @@ p{
   font-size: 18px;
   outline: none;
 }
+.textarea-post{
+  width: -webkit-fill-available;
+  height: 70px;
+  border-radius: 5px;
+}
 .iconfb{
   color: #3b5998;
   font-size: 45px;
@@ -85,13 +112,6 @@ p{
   margin-bottom: 15px;
 }
 
-header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 10%;
-  background-color: #83bb21;
-}
 ul{
   list-style-type: none;
   /* padding: 0; */
@@ -159,6 +179,16 @@ ul li a:hover{
     height: 500px;
   }
  
+  .section-image{
+    background-color: #5968a1;
+    background-image: url(img/banner03.jpg);
+    height: 100vh;
+    width: 60%;
+    display: block;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+  }
   /* header styles */
   /* .header a {
     float: left;

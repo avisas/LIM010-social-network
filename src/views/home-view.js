@@ -7,21 +7,24 @@ export const home = () => {
 
   const homeContent = `
   <header>
-    <h2>tasty recipes</h2> 
+    <h2>Meet and Code</h2> 
+    <div class="menu-bar">
+      <a href="#" class="bt-menu"><span class="icon-menu"></span>Menu</a>
+    </div>
     <nav>
       <ul class="nav-links">
-        <li><a id="user-name">User</a></li>
-        <li><a href="#/about">about</a></li>
-        <li><a id="signOut">Cerrar Sesión</a></li>
+        <li><a id="user-name"><span class="icon-user"></span>User</a></li>
+        <li><a href="#/about"><span class="icon-question"></span>about</a></li>
+        <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
       </ul>
     </nav>    
   </header>
   <main>
-      <h1>Responsive Header</h1>
+      <!--<h1>Responsive Header</h1>-->
       <!--<div id="profile"></div>-->
       <div id="user-perfil"></div>
-      <form id="form-publication" maxlength=50 class="flex-form" required>
-        <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
+      <form id="form-publication" maxlength=50 class="flex-post" required>
+        <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
       </form> 
