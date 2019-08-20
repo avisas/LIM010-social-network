@@ -1,6 +1,5 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { dataBase } from '../main.js';
 import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
 import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase } from '../controller-firebase/controller-likes.js';
 
@@ -30,15 +29,6 @@ export const saveComment = (postId) => {
       console.error('Error adding document: ', error);
     });
 };
-
-/* export const misPost = () => {
-  const user = userCurrent();
-  console.log(user);
-  showPostUserFirebase((user, notes) => {
-    container.innerHTML = '';
-    container.appendChild(components.home(notes));
-  });
-}; */
 
 export const deletePost = (id) => {
   deletePostFirebase(id)

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
 import { dataBase } from '../main.js';
+import { userCurrent } from './controller-authentication.js';
 
 export const addPostFirebase = (notePost, selectPrivacidad, user) => {
   return dataBase.collection('post').add({

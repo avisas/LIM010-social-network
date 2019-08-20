@@ -1,13 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import {
-  savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment,
-} from '../controller/post-controller.js';
-import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 // eslint-disable-next-line object-curly-newline
-
-
+import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
+import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 
 const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -67,7 +63,6 @@ const listNotes = (objNote) => {
   </form> 
   <section id="allComments-${objNote.id}"></section>
   `;
-
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
 
@@ -85,7 +80,6 @@ const listNotes = (objNote) => {
 
   showLikePost(liElemnt, objNote.id);
 
-  showLikePost(objNote.id);
   const allComents = liElemnt.querySelector(`#allComments-${objNote.id}`);
 
   getAllComments(objNote.id, (coments) => {
@@ -123,7 +117,7 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
-        <input type="submit" id="mis-post" class="button-login " value="Mis Post">
+        <button id="mis-post" class="button-login">Mis Post</button>
       </form> 
       
     <section>
@@ -141,11 +135,16 @@ export const home = (notes) => {
   });
 
   const userName = homeDiv.querySelector('#user-name');
+  // const allPublications = homeDiv.querySelector('#listOfPublications');
+  // const selectPrivacidad = homeDiv.querySelector('#privacidad');
 
   const btnSignOut = homeDiv.querySelector('#signOut');
+  // const notePost = home.querySelector('#publication').value;
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
+
   const btnMisPost = homeDiv.querySelector('#mis-post');
-  btnMisPost.addEventListener('click', () => {
+  btnMisPost.addEventListener('click', (ev) => {
+    ev.preventDefault();
     ul.innerHTML = '';
     showPostUserFirebase((notes) => {
       notes.forEach((notes) => {
@@ -153,12 +152,16 @@ export const home = (notes) => {
       });
     });
   });
+
+
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
   userName.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
+  // showPost(allPublications);
+  // showPostCurrenUser(allPublications);
 
   return homeDiv;
 };
