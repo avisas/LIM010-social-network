@@ -1,10 +1,12 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost } from '../controller/post-controller.js';
-
+import {
+  savePost, deletePost, edit, addLike, deleteLikePost, showLikePost,
+} from '../controller/post-controller.js';
+import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 
 const listNotes = (objNote) => {
-const liElemnt = document.createElement('li');
+  const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
   <span class="">
@@ -29,6 +31,7 @@ const liElemnt = document.createElement('li');
   <a id="counter-${objNote.id}">
   </a>
   `;
+
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
 
@@ -42,7 +45,7 @@ const liElemnt = document.createElement('li');
     .addEventListener('click', () => deleteLikePost(objNote.id));
 
   showLikePost(objNote.id);
-  return liElemnt; 
+  return liElemnt;
 };
 
 export const home = (notes) => {
@@ -71,26 +74,8 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
+        <input type="submit" id="mis-post" class="button-login " value="Mis Post">
       </form> 
-      <table class="table my-3">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">User</th>
-          <th scope="col">Message</th>
-          <th scope="col">Hora</th>
-          <th scope="col">Privacidad</th> 
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
-          <th scope="col">like</th>
-          <th scope="col">dislike</th>
-          <th scope="col">count</th>
-        </tr>
-      </thead>
-      <tbody id="listOfPublications">
-        
-      </tbody>
-    </table>
     <section>
       <ul id="notes-list">
       </ul>
@@ -106,20 +91,24 @@ export const home = (notes) => {
   });
 
   const userName = homeDiv.querySelector('#user-name');
-  // const allPublications = homeDiv.querySelector('#listOfPublications');
-  // const selectPrivacidad = homeDiv.querySelector('#privacidad');
 
   const btnSignOut = homeDiv.querySelector('#signOut');
-  // const notePost = home.querySelector('#publication').value;
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
+  const btnMisPost = homeDiv.querySelector('#mis-post');
+  btnMisPost.addEventListener('click', () => {
+    ul.innerHTML = '';
+    showPostUserFirebase((notes) => {
+      notes.forEach((notes) => {
+        ul.appendChild(listNotes(notes));
+      });
+    });
+  });
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
   userName.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
-  // showPost(allPublications);
-  // showPostCurrenUser(allPublications);
 
   return homeDiv;
 };

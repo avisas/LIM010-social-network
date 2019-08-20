@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
 import { dataBase } from '../main.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
 import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase } from '../controller-firebase/controller-likes.js';
 
 export const savePost = (event) => {
@@ -9,7 +9,6 @@ export const savePost = (event) => {
   const notePost = document.querySelector('#publication').value;
   // const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
   const selectedPrivacidad = document.querySelector('#privacidad').value;
-
   const user = userCurrent();
   addPostFirebase(notePost, selectedPrivacidad, user)
     .then(() => {
@@ -19,6 +18,15 @@ export const savePost = (event) => {
       console.error('Error adding document: ', error);
     });
 };
+
+/* export const misPost = () => {
+  const user = userCurrent();
+  console.log(user);
+  showPostUserFirebase((user, notes) => {
+    container.innerHTML = '';
+    container.appendChild(components.home(notes));
+  });
+}; */
 
 export const deletePost = (id) => {
   //event.preventDefault();
@@ -86,9 +94,8 @@ export const showLikePost = (id) => {
   showLikeFirebase(id)
     .onSnapshot((querySnapshot) => {
       document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
-      console.log(querySnapshot.size);
     });
-}; 
+};
 
 export const deleteLikePost = (postId) => {
   const user = userCurrent();
@@ -114,71 +121,3 @@ export const addLike = (postId) => {
       // buttonLike.classList.add('hide');
     });
 };
-
-/* export const showPost = (tabla) => {
-  dataBase.collection('post').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
-    tabla.innerHTML = '';
-    querySnapshot.forEach((doc) => {
-      showButtonLike(doc.id);
-      // console.log(`${doc.id} => ${doc.data().userName}`);
-      tabla.innerHTML += `
-      <tr>
-          <th scope="row">${doc.id}</th>
-          <td>${doc.data().userName}</td>
-          <td>${doc.data().notes}</td>
-          <td>${doc.data().timePost}</td>
-          <td>${doc.data().privacidad}</td>
-          <td><button id="${doc.id}" name="edit" data-note="${doc.data().notes}" data-privacidad="${doc.data().privacidad}" class="edit">Editar</button></td>
-          <td><button id="${doc.id}" name="delete" class="delete">Eliminar</button></td>
-          <td><button id="like-${doc.id}" data-post="${doc.id}" class="like">Like</button></td>
-          <td><button  id="dislike-${doc.id}" data-post="${doc.id}" class="dislike">DisLike</button></td>
-          <td id="counter-${doc.id}"></td>
-        </tr>
-        `;
-      showLikePost(doc.id);
-    });
-
-    const buttonDeletePost = document.querySelectorAll('.delete');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of buttonDeletePost) {
-      button.addEventListener('click', deletePost);
-    }
-
-    const buttons = document.querySelectorAll('.edit');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of buttons) {
-      button.addEventListener('click', edit);
-    }
-
-    const likes = document.querySelectorAll('.like');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of likes) {
-      button.addEventListener('click', addLike);
-    }
-
-    const dislikes = document.querySelectorAll('.dislike');
-    // eslint-disable-next-line no-restricted-syntax
-    for (const button of dislikes) {
-      button.addEventListener('click', deleteLikePost);
-    }
-  });
-}; */
-
-/* export const listNotes (objNote) => {
-  const liElemnt = document.createElement('li');
-  liElemnt.classList.add('li-child');
-  liElemnt.innerHTML = `
-  <span class="">
-    <span>${objNote.userName}</span>
-    <span>${objNote.notes}</span>
-    <span>${objNote.timePost}</span>
-    <span>${objNote.privacidad}</span>
-  </span>
-  <a class="" id="${objNote.id}">
-  <i>Delete</i>
-  </a>
-  `;
-  liElemnt.querySelector(`#${objNote.id}`)
-  .addEventListener('click', () => deletePost);
-  return liElemnt;
-}; */
