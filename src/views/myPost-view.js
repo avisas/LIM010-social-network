@@ -3,6 +3,7 @@ import { recoverUserName, changeViewToProfile, signOutUser } from '../controller
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
+import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 
 const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -90,7 +91,7 @@ const listNotes = (objNote) => {
   return liElemnt;
 };
 
-export const home = (notes) => {
+export default (notes) => {
   const homeDiv = document.createElement('div');
 
   const homeContent = `
@@ -116,7 +117,7 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
-        <button id="mis-post" class="button-login">Mis Post</button>
+        <button id="btn-home" class="button-login">Home</button>
       </form> 
       
     <section>
@@ -141,11 +142,12 @@ export const home = (notes) => {
   // const notePost = home.querySelector('#publication').value;
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
-  const btnMisPost = homeDiv.querySelector('#mis-post');
+  const btnMisPost = homeDiv.querySelector('#btn-home');
   btnMisPost.addEventListener('click', (ev) => {
     ev.preventDefault();
-    window.location.hash = '#/myPost';
+    window.location.hash = '#/home';
   });
+
 
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
