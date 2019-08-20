@@ -1,10 +1,37 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost } from '../controller/post-controller.js';
+// eslint-disable-next-line object-curly-newline
+import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
+import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
 
+const listComment = (objNote) => {
+  const liElemnt = document.createElement('li');
+  liElemnt.classList.add('li-child');
+  liElemnt.innerHTML = `
+  <span class="">
+    <span>${objNote.nameUser}</span>
+    <span>${objNote.comment}</span>
+  </span>
+  <a class="" id="delete-${objNote.id}">
+  <i>Delete</i>
+  </a>
+  </span>
+  <a class="" id="edit-${objNote.id}">
+  <i>Edit</i>
+  </a> 
+  `;
+
+  liElemnt.querySelector(`#delete-${objNote.id}`)
+    .addEventListener('click', () => deleteCommentFirebase(objNote.idPost, objNote.id));
+
+  liElemnt.querySelector(`#edit-${objNote.id}`)
+    .addEventListener('click', () => editComment(objNote.id, objNote.idPost, objNote.comment));
+
+  return liElemnt;
+};
 
 const listNotes = (objNote) => {
-const liElemnt = document.createElement('li');
+  const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
   <span class="">
@@ -21,13 +48,19 @@ const liElemnt = document.createElement('li');
   <i>Edit</i>
   </a>
   <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
-  <i>Like</i>
+  <img class="heart" src="../src/img/corazon-vacio.png">
   </a>
-  <a class="" id="dislike-${objNote.id}" data-post="${objNote.id}">
-  <i>Dislike</i>
+  <a class="hide" id="dislike-${objNote.id}" data-post="${objNote.id}">
+  <img class="heart" src="../src/img/corazon.png">
   </a>
   <a id="counter-${objNote.id}">
   </a>
+  <form id="form-publication" maxlength=50 class="flex-form" required>
+    <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
+    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-login" value="Comentar">
+    <input type="submit" id="editco-${objNote.id}" class="button-login hide" value="Editar">
+  </form> 
+  <section id="allComments-${objNote.id}"></section>
   `;
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
@@ -40,9 +73,21 @@ const liElemnt = document.createElement('li');
 
   liElemnt.querySelector(`#dislike-${objNote.id}`)
     .addEventListener('click', () => deleteLikePost(objNote.id));
+  // changeButton(liElemnt, objNote.id);
+  liElemnt.querySelector(`#comment-${objNote.id}`)
+    .addEventListener('click', () => saveComment(objNote.id));
 
-  showLikePost(objNote.id);
-  return liElemnt; 
+  showLikePost(liElemnt, objNote.id);
+
+  const allComents = liElemnt.querySelector(`#allComments-${objNote.id}`);
+
+  getAllComments(objNote.id, (coments) => {
+    allComents.innerHTML = '';
+    coments.forEach((comment) => {
+      allComents.appendChild(listComment(comment));
+    });
+  });
+  return liElemnt;
 };
 
 export const home = (notes) => {
@@ -72,25 +117,7 @@ export const home = (notes) => {
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
       </form> 
-      <table class="table my-3">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">User</th>
-          <th scope="col">Message</th>
-          <th scope="col">Hora</th>
-          <th scope="col">Privacidad</th> 
-          <th scope="col">Editar</th>
-          <th scope="col">Eliminar</th>
-          <th scope="col">like</th>
-          <th scope="col">dislike</th>
-          <th scope="col">count</th>
-        </tr>
-      </thead>
-      <tbody id="listOfPublications">
-        
-      </tbody>
-    </table>
+      
     <section>
       <ul id="notes-list">
       </ul>

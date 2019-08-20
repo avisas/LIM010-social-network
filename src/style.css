@@ -115,7 +115,9 @@ ul li a:hover {
 
   /* background-color: #555; */
 }
-
+.heart{
+  height: 30px;
+}
 .fa-eye:before {
   content: "\f06e";
   float: right;
