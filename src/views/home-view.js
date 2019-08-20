@@ -3,6 +3,7 @@ import { recoverUserName, changeViewToProfile, signOutUser } from '../controller
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
+import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 
 const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -116,6 +117,7 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
+        <input type="submit" id="mis-post" class="button-login " value="Mis Post">
       </form> 
       
     <section>
@@ -139,6 +141,18 @@ export const home = (notes) => {
   const btnSignOut = homeDiv.querySelector('#signOut');
   // const notePost = home.querySelector('#publication').value;
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
+
+  const btnMisPost = homeDiv.querySelector('#mis-post');
+  btnMisPost.addEventListener('click', () => {
+    ul.innerHTML = '';
+    showPostUserFirebase((notes) => {
+      notes.forEach((notes) => {
+        ul.appendChild(listNotes(notes));
+      });
+    });
+  });
+
+
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 

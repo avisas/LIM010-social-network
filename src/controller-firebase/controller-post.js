@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
+import { userCurrent } from './controller-authentication.js';
 
 export const addPostFirebase = (notePost, selectPrivacidad, user) => {
   return dataBase.collection('post').add({
@@ -24,7 +25,18 @@ export const editPostFirebase = (id, note, selectedPrivacidad) => {
 };
 
 export const showPostFirebase = (callback) => {
-  return dataBase.collection('post').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
+  return dataBase.collection('post').where('privacidad', '==', 'publico').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    callback(data);
+  });
+};
+
+export const showPostUserFirebase = (callback) => {
+  const user = userCurrent();
+  return dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
     const data = [];
     querySnapshot.forEach((doc) => {
       data.push({ id: doc.id, ...doc.data() });
