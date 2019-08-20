@@ -113,6 +113,7 @@ p{
   height: 70px;
   border-radius: 5px;
 }
+
 .btn-share{
   font-family: 'Patua One', cursive;
   background-color: #b6c334;
@@ -124,6 +125,12 @@ p{
   cursor: pointer;
   font-size: 13px;
   align-self: flex-end;
+}
+
+.btn-select{
+  align-self: start;
+  margin-top: 3px;
+  border-top-style: inset;
 }
 .iconfb{
   color: #3b5998;
@@ -173,6 +180,10 @@ ul li a:hover{
 
 .hide {
   display: none;
+}
+
+.show {
+  display: block;
 }
 @media screen and (min-width: 764px) {
 html, body {

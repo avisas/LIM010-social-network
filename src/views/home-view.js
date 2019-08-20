@@ -97,7 +97,8 @@ export const home = (notes) => {
   <header>
     <h2>Meet and Code</h2> 
     <div class="menu-bar">
-      <a href="#" class="bt-menu"><span class="icon-menu"></span></a>
+      <a  id="menu-hamb" href="#" class="bt-menu"><span class="icon-menu"></span></a>
+      <div id="hamb-mostrar"class="Esto-se-muestra hide"></div>
     </div>
     <nav>
       <ul class="nav-links">
@@ -111,14 +112,14 @@ export const home = (notes) => {
       <!--<h1>Responsive Header</h1>-->
       <!--<div id="profile"></div>-->
       <div id="user-perfil"></div>
-      <form id="form-publication" maxlength=50 class="flex-form" required>
-        <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
-        <select id="privacidad" name="select">
-        <option value="publico" selected>Publico</option> 
+      <form id="form-publication" maxlength=50 class="flex-post" required>
+        <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
+        <select id="privacidad" class="btn-select" name="select">
+        <option value="publico" selected>Público</option> 
         <option value="privado">Privado</option>
       </select>
-        <input type="submit" id="compartir-post" class="button-login" value="Compartir">
-        <input type="submit" id="edit-post" class="button-login hide" value="Editar">
+        <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
+        <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
       </form> 
       
     <section>
