@@ -99,14 +99,14 @@ export const home = (notes) => {
     <nav>
       <ul class="nav-links">
         <li><a id="user-name">User</a></li>
-        <li><a href="#/about">about</a></li>
+        <li><a id=""">about</a></li>
+        <li><a id=""">Configuracion</a></li>
         <li><a id="signOut">Cerrar Sesión</a></li>
       </ul>
     </nav>    
   </header>
   <main>
       <h1>Responsive Header</h1>
-      <!--<div id="profile"></div>-->
       <div id="user-perfil"></div>
       <form id="form-publication" maxlength=50 class="flex-form" required>
         <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
