@@ -11,11 +11,20 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 10px 10%;
-  background-color: #83bb21;
+  background-color: #4994e8;
 }
 h1{
   font-family: 'Pacifico', cursive;
   font-size: 45px;
+}
+
+header nav ul li a {
+  color: rgb(49, 49, 49);
+  text-decoration: none;
+}
+
+header nav ul li span {
+  margin-right: 10px;
 }
 .flex-form{
   display: flex;
@@ -95,10 +104,26 @@ p{
   font-size: 18px;
   outline: none;
 }
+.button-login:hover{
+  color: #eade70;
+  background-color: rgb(0, 143, 211);
+}
 .textarea-post{
   width: -webkit-fill-available;
   height: 70px;
   border-radius: 5px;
+}
+.btn-share{
+  font-family: 'Patua One', cursive;
+  background-color: #b6c334;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  align-self: flex-end;
 }
 .iconfb{
   color: #3b5998;
@@ -130,9 +155,8 @@ padding: 10px;
 }
 ul li a:hover{
   color:#f1f1f1;
-  background-color: #6d9f16;
+  background-color: deepskyblue;
 
-  /* background-color: #555; */
 }
 
 .fa-eye:before {
@@ -169,9 +193,9 @@ ul li a:hover{
   .login{
     display: flex;
     flex-direction: column;
-    width: 200%;
     align-items: center;
     justify-content: center;
+    width: 40%;
   }
   .img-login{
     background-size: cover;
@@ -188,6 +212,13 @@ ul li a:hover{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 50%;
+  }
+
+  .flex-post{
+    width: 30%;
+    margin-left: 40%;
+    margin-bottom: 5%;
+    margin-top: 5%;
   }
   /* header styles */
   /* .header a {
