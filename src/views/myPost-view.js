@@ -3,6 +3,7 @@ import { recoverUserName, changeViewToProfile, signOutUser } from '../controller
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
+import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 
 const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -57,8 +58,8 @@ const listNotes = (objNote) => {
   </a>
   <form id="form-publication" maxlength=50 class="flex-form" required>
     <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
-    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
-    <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
+    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-login" value="Comentar">
+    <input type="submit" id="editco-${objNote.id}" class="button-login hide" value="Editar">
   </form> 
   <section id="allComments-${objNote.id}"></section>
   `;
@@ -90,12 +91,12 @@ const listNotes = (objNote) => {
   return liElemnt;
 };
 
-export const home = (notes) => {
+export default (notes) => {
   const homeDiv = document.createElement('div');
 
   const homeContent = `
   <header>
-    <h2>Meet and Code</h2> 
+    <h2>tasty recipes</h2> 
     <nav>
       <ul class="nav-links">
         <li><a id="user-name">User</a></li>
@@ -114,9 +115,9 @@ export const home = (notes) => {
         <option value="publico" selected>Publico</option> 
         <option value="privado">Privado</option>
       </select>
-        <input type="submit" id="compartir-post" class="button-home" value="Compartir">
-        <input type="submit" id="edit-post" class="button-home hide" value="Editar">
-        <button id="mis-post" class="button-home">Mis Post</button>
+        <input type="submit" id="compartir-post" class="button-login" value="Compartir">
+        <input type="submit" id="edit-post" class="button-login hide" value="Editar">
+        <button id="btn-home" class="button-login">Home</button>
       </form> 
       
     <section>
@@ -141,11 +142,12 @@ export const home = (notes) => {
   // const notePost = home.querySelector('#publication').value;
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
-  const btnMisPost = homeDiv.querySelector('#mis-post');
+  const btnMisPost = homeDiv.querySelector('#btn-home');
   btnMisPost.addEventListener('click', (ev) => {
     ev.preventDefault();
-    window.location.hash = '#/myPost';
+    window.location.hash = '#/home';
   });
+
 
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
