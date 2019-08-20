@@ -73,6 +73,20 @@ p{
   font-size: 18px;
   outline: none;
 }
+
+.button-home{
+  font-family: 'Patua One', cursive;
+  background-color: #5968a1;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 40%
+  font-size: 12px;
+  outline: none;
+}
 .iconfb {
   color: #3b5998;
   font-size: 45px;
@@ -90,7 +104,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10%;
-  background-color: #83bb21;
+  background-color: #f0ab00;
 }
 ul {
   list-style-type: none;

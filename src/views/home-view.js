@@ -58,8 +58,8 @@ const listNotes = (objNote) => {
   </a>
   <form id="form-publication" maxlength=50 class="flex-form" required>
     <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
-    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-login" value="Comentar">
-    <input type="submit" id="editco-${objNote.id}" class="button-login hide" value="Editar">
+    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
+    <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
   </form> 
   <section id="allComments-${objNote.id}"></section>
   `;
@@ -96,7 +96,7 @@ export const home = (notes) => {
 
   const homeContent = `
   <header>
-    <h2>tasty recipes</h2> 
+    <h2>Meet and Code</h2> 
     <nav>
       <ul class="nav-links">
         <li><a id="user-name">User</a></li>
@@ -115,9 +115,9 @@ export const home = (notes) => {
         <option value="publico" selected>Publico</option> 
         <option value="privado">Privado</option>
       </select>
-        <input type="submit" id="compartir-post" class="button-login" value="Compartir">
-        <input type="submit" id="edit-post" class="button-login hide" value="Editar">
-        <input type="submit" id="mis-post" class="button-login " value="Mis Post">
+        <input type="submit" id="compartir-post" class="button-home" value="Compartir">
+        <input type="submit" id="edit-post" class="button-home hide" value="Editar">
+        <input type="submit" id="mis-post" class="button-home" value="Mis Post">
       </form> 
       
     <section>
