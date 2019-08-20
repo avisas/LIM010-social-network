@@ -58,8 +58,15 @@ p{
   border: 1px solid #ccc;
   border-radius: 20px;
   width: 70%;
+  position: relative;
 }
-
+.eye-class{
+    width: 20px;
+    position: absolute;
+    height: 20px;
+    right: 20px;
+    top: 15px;
+}
 .button-login{
   font-family: 'Patua One', cursive;
   background-color: #f0ab00;
@@ -120,11 +127,11 @@ ul li a:hover {
 }
 .fa-eye:before {
   content: "\f06e";
-  float: right;
-  margin-left: 210px;
-  margin-top: -50px;
-  position: relative;
-  z-index: 2;
+  /* float: right; */
+  /* margin-left: 210px; */
+  /* margin-top: -50px; */
+  /* position: relative; */
+  /* z-index: 2; */
 }
 
 .hide {
@@ -162,15 +169,10 @@ ul li a:hover {
     width: 833px;
     height: 500px;
   }
-
-  /* header styles */
-  /* .header a {
-    float: left;
-  text-align: center;
-  }
-  .header-right {
-    float: right;
-  } */
+ .inputForm1{
+   border: none;
+  outline: none;
+ } 
   nav ul {
     display: flex;
     justify-content: space-around;
