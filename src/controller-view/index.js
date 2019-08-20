@@ -18,6 +18,12 @@ export const changeView = (route) => {
         container.appendChild(components.home(notes));
       });
       break;
+    case '#/myPost':
+      showPostUserFirebase((notes) => {
+        container.innerHTML = '';
+        container.appendChild(components.myPost(notes));
+      });
+      break;
     case '#/profile': container.appendChild(components.profile());
       break;
     default: break;
