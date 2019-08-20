@@ -117,7 +117,7 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="button-login" value="Compartir">
         <input type="submit" id="edit-post" class="button-login hide" value="Editar">
-        <input type="submit" id="mis-post" class="button-login " value="Mis Post">
+        <button id="mis-post" class="button-login">Mis Post</button>
       </form> 
       
     <section>
@@ -143,7 +143,8 @@ export const home = (notes) => {
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   const btnMisPost = homeDiv.querySelector('#mis-post');
-  btnMisPost.addEventListener('click', () => {
+  btnMisPost.addEventListener('click', (ev) => {
+    ev.preventDefault();
     ul.innerHTML = '';
     showPostUserFirebase((notes) => {
       notes.forEach((notes) => {
