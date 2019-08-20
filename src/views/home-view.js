@@ -3,6 +3,7 @@ import { recoverUserName, changeViewToProfile, signOutUser } from '../controller
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
+import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
 
 const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -57,8 +58,8 @@ const listNotes = (objNote) => {
   </a>
   <form id="form-publication" maxlength=50 class="flex-form" required>
     <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
-    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-login" value="Comentar">
-    <input type="submit" id="editco-${objNote.id}" class="button-login hide" value="Editar">
+    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
+    <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
   </form> 
   <section id="allComments-${objNote.id}"></section>
   `;
@@ -120,6 +121,7 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
         <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
+        <button id="mis-post" class="button-home">Mis Post</button>
       </form> 
       
     <section>
@@ -143,6 +145,19 @@ export const home = (notes) => {
   const btnSignOut = homeDiv.querySelector('#signOut');
   // const notePost = home.querySelector('#publication').value;
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
+
+  const btnMisPost = homeDiv.querySelector('#mis-post');
+  btnMisPost.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    ul.innerHTML = '';
+    showPostUserFirebase((notes) => {
+      notes.forEach((note) => {
+        ul.appendChild(listNotes(note));
+      });
+    });
+  });
+
+
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
