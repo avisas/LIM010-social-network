@@ -12,9 +12,13 @@ export default () => {
       <form id="form-autenticacion" class="flex-form">
       <img src="img/logo.png" class="img-logo" alt="Logo meet and code">
         <p class="slogan-coders">¡Bienvenido a <strong>Meet and Code</strong>, la red de coders en acción!</p>
-        <input type="text" name="email" value="" placeholder="Email" class="inputForm" id="email">
-        <input type="password" name="password" value="" placeholder="Password" class="inputForm" id="password">
-        <span id="show-eye"><i class="far fa-eye"></i></span>
+        <div class="inputForm">
+        <input type="text" name="email" value="" placeholder="Email" class="inputForm1" id="email">
+        </div>
+        <div class="inputForm">
+        <input type="password" name="password" value="" placeholder="Password" class="inputForm1" id="password">
+        <span id="show-eye" class="eye-class"><i class="far fa-eye"></i></span>
+        </div>
         <input type="submit" name="" class="button-login" value="Log In">
         <label id="LoginMessageError"></label>
       </form>

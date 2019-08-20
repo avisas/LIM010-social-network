@@ -147,8 +147,8 @@ export const home = (notes) => {
     ev.preventDefault();
     ul.innerHTML = '';
     showPostUserFirebase((notes) => {
-      notes.forEach((notes) => {
-        ul.appendChild(listNotes(notes));
+      notes.forEach((note) => {
+        ul.appendChild(listNotes(note));
       });
     });
   });
