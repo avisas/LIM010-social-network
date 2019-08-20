@@ -1,20 +1,32 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
 import { dataBase } from '../main.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
-import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase } from '../controller-firebase/controller-likes.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
+import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase } from '../controller-firebase/controller-likes.js';
 
 export const savePost = (event) => {
   event.preventDefault();
   const notePost = document.querySelector('#publication').value;
-  // const time = firebase.firestore.Timestamp.fromDate(new Date()).toDate();
   const selectedPrivacidad = document.querySelector('#privacidad').value;
   const user = userCurrent();
   addPostFirebase(notePost, selectedPrivacidad, user)
     .then(() => {
       alert('Publicacion ingresada');
       // console.log('Document written with ID: ', docRef.id);
-    }).catch(() => {
+    }).catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+};
+
+export const saveComment = (postId) => {
+  event.preventDefault();
+  const noteComment = document.querySelector(`#commentario-${postId}`).value;
+  const user = userCurrent();
+  addCommentFirebase(user, postId, noteComment)
+    .then(() => {
+      alert('comentario ingresado');
+      // console.log('Document written with ID: ', docRef.id);
+    }).catch((error) => {
       console.error('Error adding document: ', error);
     });
 };
@@ -29,20 +41,18 @@ export const savePost = (event) => {
 }; */
 
 export const deletePost = (id) => {
-  //event.preventDefault();
-  // const id = event.target.id;
   deletePostFirebase(id)
     .then(() => {
-      alert('Publicacion borrada');
+      deletePostFirebase(id);
       // console.log('Document written with ID: ', docRef.id);
-    }).catch(() => {
+    }).catch((error) => {
       console.error('Error adding document: ', error);
     });
 };
 
+
+
 export const edit = (id) => {
-  // event.preventDefault();
-  // const id = event.target.id;
   const notes = event.currentTarget.dataset.note;
   const privacidad = event.currentTarget.dataset.privacidad;
   document.querySelector('#publication').value = notes;
@@ -68,32 +78,46 @@ export const edit = (id) => {
   });
 };
 
-const showButtonLike = (postId) => {
-  const buttonLike = document.getElementById(`like-${postId}`);
-  const buttonDislike = document.getElementById(`dislike-${postId}`);
-  const user = userCurrent();
-  dataBase.collection('post').doc(postId).collection('likes').onSnapshot((querySnapshot) => {
-    querySnapshot.forEach((post) => {
-      console.log(post.data().idUser);
-      console.log(user.uid);
-      if (post.data().idUser !== user.uid) {
-        console.log('entree');
-        // buttonLike.classList.add('hide');
-        buttonDislike.classList.add('hide');
-        // buttonDislike.classList.remove('hide');
-      } else {
-        console.log('no entree');
-        // buttonDislike.classList.add('hide');
-        buttonLike.classList.add('hide');
-      }
-    });
+
+export const editComment = (idComment, idPost, comment) => {
+  document.querySelector(`#commentario-${idPost}`).value = comment;
+  const boton = document.querySelector(`#editco-${idPost}`);
+  const botonGuardar = document.querySelector(`#comment-${idPost}`);
+  boton.classList.remove('hide');
+  botonGuardar.classList.add('hide');
+  // boton.value = 'Editar';
+  boton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const note = document.querySelector(`#commentario-${idPost}`).value;
+    editCommentFirebase(idPost, idComment, note)
+      .then(() => {
+        boton.classList.add('hide');
+        botonGuardar.classList.remove('hide');
+      })
+      .catch(() => {
+        // The document probably doesn't exist.
+        // console.error('Error updating document: ', error);
+      });
   });
 };
 
-export const showLikePost = (id) => {
+export const showLikePost = (list, id) => {
+  const buttonLike = list.querySelector(`#like-${id}`);
+  const buttonDislike = list.querySelector(`#dislike-${id}`);
+  const user = userCurrent();
   showLikeFirebase(id)
     .onSnapshot((querySnapshot) => {
       document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
+      querySnapshot.forEach((doc) => {
+        console.log(querySnapshot.size);
+        if (doc.data().idUser !== user.uid || !doc.exists) {
+          buttonLike.classList.remove('hide');
+          buttonDislike.classList.add('hide');
+        } else {
+          buttonLike.classList.add('hide');
+          buttonDislike.classList.remove('hide');
+        }
+      });
     });
 };
 
@@ -103,21 +127,19 @@ export const deleteLikePost = (postId) => {
   const buttonDislike = document.getElementById(`dislike-${postId}`);
   deleteLikeFirebase(user, postId)
     .then(() => {
-      // buttonDislike.classList.add('hide');
-      // buttonLike.classList.remove('hide');
+      buttonDislike.classList.add('hide');
+      buttonLike.classList.remove('hide');
     });
 };
 
 /* Funcion de guardar like */
 export const addLike = (postId) => {
-  // e.preventDefault();
-  // const postId = e.currentTarget.dataset.post;
   const buttonLike = document.getElementById(`like-${postId}`);
   const buttonDislike = document.getElementById(`dislike-${postId}`);
   const user = userCurrent();
   addLikeFirebase(user, postId)
     .then(() => {
-      // buttonDislike.classList.remove('hide');
-      // buttonLike.classList.add('hide');
+      buttonDislike.classList.remove('hide');
+      buttonLike.classList.add('hide');
     });
 };
