@@ -30,15 +30,15 @@ header nav ul li span {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 20px;  
+  padding: 0px 20px;
 }
-.flex{
-  display:flex;
+.flex {
+  display: flex;
 }
-.container-login{
+.container-login {
   display: block;
 }
-.show-message-error{
+.show-message-error {
   display: inline-block;
   color: #db4a39;
   font-weight: bold;
@@ -71,7 +71,7 @@ p{
   color: #008fd3;
 }
 
-.inputForm{
+.inputForm {
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -133,7 +133,7 @@ p{
   color:#db4a39;
   font-size: 45px;
 }
-.div-icon{
+.div-icon {
   margin-bottom: 15px;
 }
 
@@ -141,24 +141,27 @@ ul{
   list-style-type: none;
   /* padding: 0; */
 }
-ul li{
+ul li {
   display: inline-block;
   padding: 0px 20px;
 }
-ul li a{
+ul li a {
   transition: all 0.3s ease 0s;
   text-decoration: none;
+  cursor: pointer;
   /* text-align: center; */
   color: black;
-display: block;
-padding: 10px;
+  display: block;
+  padding: 10px;
 }
 ul li a:hover{
   color:#f1f1f1;
   background-color: deepskyblue;
 
 }
-
+.heart{
+  height: 30px;
+}
 .fa-eye:before {
   content: "\f06e";
   float: right;
@@ -168,42 +171,42 @@ ul li a:hover{
   z-index: 2;
 }
 
-.hide{
+.hide {
   display: none;
 }
-@media screen and (min-width:764px){
-  html, body{
+@media screen and (min-width: 764px) {
+html, body {
     height: 100%;
     width: 100%;
     margin: 0px;
-    padding:0px;
-  }
-  .flex-form{
+    padding: 0px;
+}
+.flex-form {
     display: flex;
     width: 25vw;
-  }
-  .container-login{
+}
+.container-login {
     display: inline-flex;
     height: 100vh;
     width: 100%;
-  }
-  .container{
+}
+.container {
     height: 100%;
-  }
-  .login{
+}
+.login {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 40%;
-  }
-  .img-login{
+}
+.img-login {
     background-size: cover;
     width: 833px;
     height: 500px;
-  }
+}
  
-  .section-image{
+.section-image{
     background-color: #5968a1;
     background-image: url(img/banner03.jpg);
     height: 100vh;
@@ -212,14 +215,14 @@ ul li a:hover{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: 50%;
-  }
+}
 
-  .flex-post{
+.flex-post{
     width: 30%;
     margin-left: 40%;
     margin-bottom: 5%;
     margin-top: 5%;
-  }
+}
   /* header styles */
   /* .header a {
     float: left;
@@ -229,7 +232,7 @@ ul li a:hover{
     float: right;
   } */
   nav ul {
-    display:flex;
+    display: flex;
     justify-content: space-around;
   }
   /* nav li{
