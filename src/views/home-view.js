@@ -3,6 +3,7 @@ import { recoverUserName, changeViewToProfile, signOutUser } from '../controller
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
+import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
 const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -34,33 +35,42 @@ const listNotes = (objNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
-  <span class="">
-    <span>${objNote.userName}</span>
-    <span>${objNote.notes}</span>
-    <span>${objNote.timePost}</span>
-    <span>${objNote.privacidad}</span>
-  </span>
-  <a class="" id="delete-${objNote.id}">
-  <i>Delete</i>
-  </a>
-  </span>
-  <a class="" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
-  <i>Edit</i>
-  </a>
-  <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
-  <img class="heart" src="../src/img/corazon-vacio.png">
-  </a>
-  <a class="hide" id="dislike-${objNote.id}" data-post="${objNote.id}">
-  <img class="heart" src="../src/img/corazon.png">
-  </a>
-  <a id="counter-${objNote.id}">
-  </a>
-  <form id="form-publication" maxlength=50 class="flex-form" required>
-    <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
-    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
-    <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
-  </form> 
-  <section id="allComments-${objNote.id}"></section>
+  <div class="div-posts">
+    <div>
+      <span>${objNote.userName}</span>
+      <span>${objNote.privacidad}</span>
+    </div>
+    <hr/>
+    <div class="middle-post">
+      <span>${objNote.notes}</span>
+      <hr/>
+      <span>${objNote.timePost}</span>
+    </div>
+    <div class="botom-post">
+      <a class="" id="delete-${objNote.id}">
+      <i>Delete</i>
+      </a>
+      </span>
+      <a class="" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+      <i>Edit</i>
+      </a>
+      <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
+      <img class="heart" src="../src/img/corazon-vacio.png">
+      </a>
+      <a class="hide" id="dislike-${objNote.id}" data-post="${objNote.id}">
+      <img class="heart" src="../src/img/corazon.png">
+      </a>
+      <a id="counter-${objNote.id}">
+      </a>
+    </div>
+    
+    <form id="form-publication" maxlength=50 class="flex-form" required>
+      <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
+      <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
+      <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
+    </form> 
+    <section id="allComments-${objNote.id}"></section>
+  </div>
   `;
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
@@ -107,22 +117,31 @@ export const home = (notes) => {
     </nav>    
   </header>
   <main>
-      <h1>Responsive Header</h1>
-      <div id="user-perfil"></div>
-      <form id="form-publication" maxlength=50 class="flex-form" required>
-        <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
-        <select id="privacidad" name="select">
-        <option value="publico" selected>Publico</option> 
-        <option value="privado">Privado</option>
-      </select>
-        <input type="submit" id="compartir-post" class="button-home" value="Compartir">
-        <input type="submit" id="edit-post" class="button-home hide" value="Editar">
-      </form> 
-      
-    <section>
-      <ul id="notes-list">
-      </ul>
-    </section>
+      <div id="user-perfil">
+        <img class="img-profile" src="img/banner03.jpg">
+        <div>
+          ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : `<img src="">`}
+          <h2>
+        </div>
+      </div>
+      <div>
+        <div class="div-post">
+          <form id="form-publication" maxlength=50 required>
+            <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
+            <select id="privacidad" class="btn-select" name="select">
+            <option value="publico" selected>Público</option> 
+            <option value="privado">Privado</option>
+          </select>
+            <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
+            <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
+          </form> 
+        </div>
+        
+        <section>
+          <ul id="notes-list" class="ul-parent">
+          </ul>
+        </section>
+      </div>
   </main>
   <footer></footer>
     `;

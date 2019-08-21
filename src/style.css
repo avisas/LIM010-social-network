@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One|Ubuntu&display=swap');
+body{
+  margin: 0px;
+}
 h1{
   font-family: 'Pacifico', cursive;
   font-size: 45px;
@@ -146,7 +149,66 @@ ul li a:hover {
   /* position: relative; */
   /* z-index: 2; */
 }
-
+.flex-post{
+  width: 30%;
+  margin-left: 40%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.textarea-post{
+  width: -webkit-fill-available;
+    height: 100px;
+    resize: none;
+    border: 1px solid #5AC39B;
+    padding: 7px 20px 7px 20px
+}
+.btn-select{
+  align-self: start;
+  margin-top: 3px;
+  border-top-style: inset;
+}
+.btn-share{
+  font-family: 'Patua One', cursive;
+  background-color: #b6c334;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  align-self: flex-end;
+}
+.img-profile{
+  width: 100%;
+}
+.div-post {
+  height: auto;
+  border: 2px solid #7c817e;
+  border-radius: 5px;
+  padding: 2%;
+}
+.div-posts {
+  height: auto;
+  border: 2px solid #7c817e;
+  border-radius: 5px;
+  padding: 2%;
+}
+.middle-post{
+  display: flex;
+  flex-direction: column;
+}
+.botom-post{
+  display: flex;
+}
+.li-child{
+  margin: 0px;
+    width: 100%;
+    padding-left: 0px;
+}
+.ul-parent{
+  padding-left: 0px;
+}
 .hide {
   display: none;
 }
@@ -157,6 +219,12 @@ ul li a:hover {
     width: 100%;
     margin: 0px;
     padding: 0px;
+  }
+  main{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: flex;
+    justify-content: space-evenly;
   }
   .flex-form {
     display: flex;
@@ -193,4 +261,7 @@ ul li a:hover {
   /* nav li{
     flex: 1 1 0; 
   } */
+  .img-profile {
+    width: 500px;
+}
 }
