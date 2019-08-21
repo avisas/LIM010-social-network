@@ -41,19 +41,19 @@ export const deletePost = (id) => {
 };
 
 export const edit = (id) => {
-  const notes = event.currentTarget.dataset.note;
-  const privacidad = event.currentTarget.dataset.privacidad;
-  document.querySelector('#publication').value = notes;
-  document.querySelector('#privacidad').value = privacidad;
+  const textPost = document.querySelector(`#text-${id}`);
   const boton = document.querySelector('#edit-post');
+  const selectPrivacity = document.querySelector(`#selectPriv-${id}`);
   const botonGuardar = document.querySelector('#compartir-post');
+  textPost.disabled = false;
+  selectPrivacity.disabled = false;
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
   boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
-    const note = document.querySelector('#publication').value;
-    const selectedPrivacidad = document.querySelector('#privacidad').value;
+    const note = textPost.value;
+    const selectedPrivacidad = selectPrivacity.value;
     editPostFirebase(id, note, selectedPrivacidad)
       .then(() => {
         boton.classList.add('hide');
