@@ -58,8 +58,8 @@ const listNotes = (objNote) => {
   </a>
   <form id="form-publication" maxlength=50 class="flex-form" required>
     <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
-    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-login" value="Comentar">
-    <input type="submit" id="editco-${objNote.id}" class="button-login hide" value="Editar">
+    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
+    <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
   </form> 
   <section id="allComments-${objNote.id}"></section>
   `;
@@ -99,9 +99,11 @@ export default (notes) => {
     <h2>tasty recipes</h2> 
     <nav>
       <ul class="nav-links">
-        <li><a id="user-name">User</a></li>
-        <li><a href="#/about">about</a></li>
-        <li><a id="signOut">Cerrar Sesión</a></li>
+      <li><a id="user-name">User</a></li>
+      <li><a id="home">Home</a></li>
+      <!--<li><a id=""">About</a></li>-->
+      <li><a id="setting">Setting</a></li>
+      <li><a id="signOut">Log Out</a></li>
       </ul>
     </nav>    
   </header>
@@ -115,9 +117,8 @@ export default (notes) => {
         <option value="publico" selected>Publico</option> 
         <option value="privado">Privado</option>
       </select>
-        <input type="submit" id="compartir-post" class="button-login" value="Compartir">
-        <input type="submit" id="edit-post" class="button-login hide" value="Editar">
-        <button id="btn-home" class="button-login">Home</button>
+        <input type="submit" id="compartir-post" class="button-home" value="Compartir">
+        <input type="submit" id="edit-post" class="button-home hide" value="Editar">
       </form> 
       
     <section>
@@ -135,28 +136,28 @@ export default (notes) => {
   });
 
   const userName = homeDiv.querySelector('#user-name');
-  // const allPublications = homeDiv.querySelector('#listOfPublications');
-  // const selectPrivacidad = homeDiv.querySelector('#privacidad');
-
   const btnSignOut = homeDiv.querySelector('#signOut');
-  // const notePost = home.querySelector('#publication').value;
+  const settingUser = homeDiv.querySelector('#setting');
+  const btnHome = homeDiv.querySelector('#home');
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
-  const btnMisPost = homeDiv.querySelector('#btn-home');
-  btnMisPost.addEventListener('click', (ev) => {
+  // const btnMisPost = homeDiv.querySelector('#mis-post');
+  userName.addEventListener('click', (ev) => {
+    ev.preventDefault();
+    window.location.hash = '#/myPost';
+  });
+
+  btnHome.addEventListener('click', (ev) => {
     ev.preventDefault();
     window.location.hash = '#/home';
   });
 
-
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
-  userName.addEventListener('click', changeViewToProfile);
+  settingUser.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
-  // showPost(allPublications);
-  // showPostCurrenUser(allPublications);
 
   return homeDiv;
 };

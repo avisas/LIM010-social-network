@@ -40,8 +40,6 @@ export const deletePost = (id) => {
     });
 };
 
-
-
 export const edit = (id) => {
   const notes = event.currentTarget.dataset.note;
   const privacidad = event.currentTarget.dataset.privacidad;
