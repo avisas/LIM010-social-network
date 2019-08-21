@@ -26,9 +26,3 @@ export const changeViewToProfile = () => {
   window.location.hash = '#/profile';
 };
 
-// const menuHamb = homeDiv.querySelector('#menu-hamb');
-// const hambMostrar = homeDiv.querySelector('#hamb-mostrar');
-// const modoMenu = 0;
-
-// menuHamb.addEventListener('click', );
-// hambMostrar.addEventListener('click', );

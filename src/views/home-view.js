@@ -65,6 +65,7 @@ const listNotes = (objNote) => {
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
 
+
   liElemnt.querySelector(`#edit-${objNote.id}`)
     .addEventListener('click', () => edit(objNote.id));
 
@@ -95,16 +96,17 @@ export const home = (notes) => {
 
   const homeContent = `
   <header>
-    <h2>Meet and Code</h2> 
     <div class="menu-bar">
-      <a  id="menu-hamb" href="#" class="bt-menu"><span class="icon-menu"></span></a>
-      <div id="hamb-mostrar"class="Esto-se-muestra hide"></div>
+      <a  id="menu-hamb" class="bt-menu"><span class="icon-menu"></span></a>
+      <div id="hamb-mostrar" class="Esto-se-muestra hide">
+      <a id="user-name"><span class="icon-user"></span>User</a>
+      <a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a>
+      </div>
     </div>
     <nav>
-      <ul class="nav-links">
-        <li><a id="user-name"><span class="icon-user"></span>User</a></li>
+      <ul class="nav-links flex">
+        <h2>Meet and Code</h2> 
         <li><a href="#/about"><span class="icon-question"></span>about</a></li>
-        <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
       </ul>
     </nav>    
   </header>
@@ -160,5 +162,24 @@ export const home = (notes) => {
   // showPost(allPublications);
   // showPostCurrenUser(allPublications);
 
+  const menuHamb = homeDiv.querySelector('#menu-hamb');
+  const hambMostrar = homeDiv.querySelector('#hamb-mostrar');
+  let modoMenu = 0;
+
+  menuHamb.addEventListener('click', () => {
+    if (modoMenu === 0) {
+      hambMostrar.classList.add('block');
+      hambMostrar.classList.remove('hide');
+      modoMenu = 1;
+    } else {
+      hambMostrar.classList.add('hide');
+      hambMostrar.classList.remove('block');
+      modoMenu = 0;
+    }
+  });
+
   return homeDiv;
+
 };
+
+

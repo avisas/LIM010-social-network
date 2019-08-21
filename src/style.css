@@ -18,6 +18,10 @@ h1{
   font-size: 45px;
 }
 
+h2{
+  font-size: 23px;
+}
+
 header nav ul li a {
   color: rgb(49, 49, 49);
   text-decoration: none;
@@ -191,6 +195,9 @@ ul li a:hover{
   /* z-index: 2; */
 }
 
+.icon-exit{
+  cursor: pointer;
+}
 .hide {
   display: none;
 }
@@ -204,6 +211,10 @@ html, body {
     width: 100%;
     margin: 0px;
     padding: 0px;
+}
+
+h2{
+  font-size: 45px;
 }
 .flex-form {
     display: flex;
