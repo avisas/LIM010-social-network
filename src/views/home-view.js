@@ -99,9 +99,10 @@ export const home = (notes) => {
     <nav>
       <ul class="nav-links">
         <li><a id="user-name">User</a></li>
-        <li><a id=""">about</a></li>
-        <li><a id=""">Configuracion</a></li>
-        <li><a id="signOut">Cerrar Sesión</a></li>
+        <li><a id="home">Home</a></li>
+        <!--<li><a id=""">About</a></li>-->
+        <li><a id="setting">Setting</a></li>
+        <li><a id="signOut">Log Out</a></li>
       </ul>
     </nav>    
   </header>
@@ -116,7 +117,6 @@ export const home = (notes) => {
       </select>
         <input type="submit" id="compartir-post" class="button-home" value="Compartir">
         <input type="submit" id="edit-post" class="button-home hide" value="Editar">
-        <button id="mis-post" class="button-home">Mis Post</button>
       </form> 
       
     <section>
@@ -134,15 +134,12 @@ export const home = (notes) => {
   });
 
   const userName = homeDiv.querySelector('#user-name');
-  // const allPublications = homeDiv.querySelector('#listOfPublications');
-  // const selectPrivacidad = homeDiv.querySelector('#privacidad');
-
   const btnSignOut = homeDiv.querySelector('#signOut');
-  // const notePost = home.querySelector('#publication').value;
+  const settingUser = homeDiv.querySelector('#setting');
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
-  const btnMisPost = homeDiv.querySelector('#mis-post');
-  btnMisPost.addEventListener('click', (ev) => {
+  // const btnMisPost = homeDiv.querySelector('#mis-post');
+  userName.addEventListener('click', (ev) => {
     ev.preventDefault();
     window.location.hash = '#/myPost';
   });
@@ -150,11 +147,9 @@ export const home = (notes) => {
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
 
-  userName.addEventListener('click', changeViewToProfile);
+  settingUser.addEventListener('click', changeViewToProfile);
 
   btnComportirPost.addEventListener('click', savePost);
-  // showPost(allPublications);
-  // showPostCurrenUser(allPublications);
 
   return homeDiv;
 };
