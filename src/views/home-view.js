@@ -47,13 +47,18 @@ const listNotes = (objNote) => {
       <span>${objNote.timePost}</span>
     </div>
     <div class="botom-post">
-      <a class="" id="delete-${objNote.id}">
-      <i>Delete</i>
+    ${userCurrent().uid === objNote.user ? `<a class="" id="delete-${objNote.id}"> <i>Delete</i>
       </a>
       </span>
       <a class="" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
       <i>Edit</i>
+      </a>` : `<a class="hide" id="delete-${objNote.id}">
+      <i>Delete</i>
       </a>
+      </span>
+      <a class="hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+      <i>Edit</i>
+      </a> `}
       <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
       <img class="heart" src="../src/img/corazon-vacio.png">
       </a>
