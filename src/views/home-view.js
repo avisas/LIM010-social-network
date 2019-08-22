@@ -143,7 +143,7 @@ export const home = (notes) => {
         <img class="img-profile" src="img/banner03.jpg">
         <div class="flex">
           
-            ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
+            ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img class="img-avatar" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
           
           <h2>${userCurrent().displayName}</h2>
         </div>
