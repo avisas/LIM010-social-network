@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
+import { recoverUserName, changeViewToProfile, changeViewToMyPosts, signOutUser } from '../controller/home-controller.js';
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
@@ -139,11 +139,13 @@ export const home = (notes) => {
     </nav>    
   </header>
   <main>
-      <div id="user-perfil">
+      <div id="user-perfil" class="user-perfil">
         <img class="img-profile" src="img/banner03.jpg">
-        <div>
-          ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img src="">'}
-          <h2>
+        <div class="flex">
+          
+            ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
+          
+          <h2>${userCurrent().displayName}</h2>
         </div>
       </div>
       <div>
@@ -180,10 +182,7 @@ export const home = (notes) => {
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   // const btnMisPost = homeDiv.querySelector('#mis-post');
-  userName.addEventListener('click', (ev) => {
-    ev.preventDefault();
-    window.location.hash = '#/myPost';
-  });
+  userName.addEventListener('click', changeViewToMyPosts);
 
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);

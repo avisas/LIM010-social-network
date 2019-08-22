@@ -25,3 +25,6 @@ export const signOutUser = () => {
 export const changeViewToProfile = () => {
   window.location.hash = '#/profile';
 };
+export const changeViewToMyPosts = () => {
+  window.location.hash = '#/myPost';
+};
