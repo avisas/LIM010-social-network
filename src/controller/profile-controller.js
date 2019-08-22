@@ -34,16 +34,16 @@ export const getData = (name, email) => {
 export const updateProfile = (nameUser, emailUser) => {
   const user = userCurrent();
   const userProfile = dataBase.collection('users').doc(user.uid);
-
+  user.updateProfile({
+    displayName: nameUser,
+  });
   return userProfile.update({
     name: nameUser,
     email: emailUser,
   }).then(() => {
     // const user = userCurrent();
     // console.log('Document successfully updated!');
-    user.updateProfile({
-      displayName: nameUser,
-    });
+    
   }).catch(() => {
     // The document probably doesn't exist.
     // console.error('Error updating document: ', error);

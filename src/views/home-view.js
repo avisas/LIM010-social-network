@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
+import { recoverUserName, changeViewToProfile, changeViewToMyPosts, signOutUser } from '../controller/home-controller.js';
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
@@ -97,7 +97,6 @@ const listNotes = (objNote) => {
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
 
-
   liElemnt.querySelector(`#edit-${objNote.id}`)
     .addEventListener('click', () => edit(objNote.id));
 
@@ -128,42 +127,46 @@ export const home = (notes) => {
 
   const homeContent = `
   <header>
-  <h2>Meet and Code</h2> 
+    <h2>Meet and Code</h2> 
     <nav class="nav-links flex menu-bar">
     <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
     <ul id="show-hamb" class="hide list-menu">
-        <li><a id="user-name"><span class="icon-user"></span>User</a></li>
+    <li><a id="user-name"><span class="icon-user"></span>User</a></li>
         <li><a id="home">Home</a></li>
-        <li><a href="#/about"><span class="icon-question"></span>About</a></li>
-     <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
-    </ul>
-  </nav>     
+        <!--<li><a id=""">About</a></li>-->
+        <li><a id="setting">Setting</a></li>
+        <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
+      </ul>
+    </nav>    
   </header>
   <main>
-  <div id="user-perfil">
-  <img class="img-profile" src="img/banner03.jpg">
-  <div>
-    ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img src="">'}
-    <h2>
-    </div>
-    </div>
-  <div>
-      <div class="div-post">
-      <form id="form-publication" maxlength=50 class="flex-post" required>
-        <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
-        <select id="privacidad" class="btn-select" name="select">
-        <option value="publico" selected>Público</option> 
-        <option value="privado">Privado</option>
-      </select>
-        <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
-        <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
-        <button id="mis-post" class="button-home">Mis Post</button>
-      </form> 
+      <div id="user-perfil" class="user-perfil">
+        <img class="img-profile" src="img/banner03.jpg">
+        <div class="flex">
+          
+            ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img class="img-avatar" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
+          
+          <h2>${userCurrent().displayName}</h2>
+        </div>
       </div>
-    <section>
-      <ul id="notes-list" class="ul-parent">
-      </ul>
-    </section>
+      <div>
+        <div class="div-post">
+          <form id="form-publication" maxlength=50 required>
+            <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
+            <select id="privacidad" class="btn-select" name="select">
+              <option value="publico" selected>Público</option> 
+              <option value="privado">Privado</option>
+            </select>
+            <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
+            <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
+          </form> 
+        </div>
+        
+        <section>
+          <ul id="notes-list" class="ul-parent">
+          </ul>
+        </section>
+      </div>
   </main>
   <footer></footer>
     `;
@@ -180,10 +183,7 @@ export const home = (notes) => {
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   // const btnMisPost = homeDiv.querySelector('#mis-post');
-  userName.addEventListener('click', (ev) => {
-    ev.preventDefault();
-    window.location.hash = '#/myPost';
-  });
+  userName.addEventListener('click', changeViewToMyPosts);
 
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
@@ -207,8 +207,5 @@ export const home = (notes) => {
       modoMenu = 0;
     }
   });
-
   return homeDiv;
 };
-
-
