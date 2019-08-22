@@ -91,7 +91,7 @@ const listNotes = (objNote) => {
   return liElemnt;
 };
 
-export default (notes) => {
+export const myPost = (notes) => {
   const homeDiv = document.createElement('div');
 
   const homeContent = `
@@ -139,7 +139,7 @@ export default (notes) => {
   const btnSignOut = homeDiv.querySelector('#signOut');
   const settingUser = homeDiv.querySelector('#setting');
   const btnHome = homeDiv.querySelector('#home');
-  const btnComportirPost = homeDiv.querySelector('#compartir-post');
+  // const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   // const btnMisPost = homeDiv.querySelector('#mis-post');
   userName.addEventListener('click', (ev) => {
@@ -157,7 +157,7 @@ export default (notes) => {
 
   settingUser.addEventListener('click', changeViewToProfile);
 
-  btnComportirPost.addEventListener('click', savePost);
+  // btnComportirPost.addEventListener('click', savePost);
 
   return homeDiv;
 };

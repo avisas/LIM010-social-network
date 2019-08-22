@@ -11,22 +11,33 @@ const listComment = (objNote) => {
   liElemnt.innerHTML = `
   <span class="">
     <span>${objNote.nameUser}</span>
-    <span>${objNote.comment}</span>
+    <textarea disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
   </span>
+  ${userCurrent().uid === objNote.idUser ? `
   <a class="" id="delete-${objNote.id}">
   <i>Delete</i>
   </a>
-  </span>
+  <a class="hide" id="savecomment-${objNote.id}">
+  <i>Guardar</i>
+  </a>
   <a class="" id="edit-${objNote.id}">
   <i>Edit</i>
-  </a> 
+  </a> ` : `<a class="hide" id="delete-${objNote.id}">
+  <i>Delete</i>
+  </a>
+  <a class="hide" id="savecomment-${objNote.id}">
+  <i>Guardar</i>
+  </a>
+  <a class="hide" id="edit-${objNote.id}">
+  <i>Edit</i>
+  </a> `}
   `;
 
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deleteCommentFirebase(objNote.idPost, objNote.id));
 
   liElemnt.querySelector(`#edit-${objNote.id}`)
-    .addEventListener('click', () => editComment(objNote.id, objNote.idPost, objNote.comment));
+    .addEventListener('click', () => editComment(objNote.id, objNote.idPost));
 
   return liElemnt;
 };
@@ -59,6 +70,7 @@ const listNotes = (objNote) => {
       <a class="hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
       <i>Edit</i>
       </a> `}
+      
       <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
       <img class="heart" src="../src/img/corazon-vacio.png">
       </a>
@@ -72,7 +84,6 @@ const listNotes = (objNote) => {
     <form id="form-publication" maxlength=50 class="flex-form" required>
       <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
       <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
-      <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
     </form> 
     <section id="allComments-${objNote.id}"></section>
   </div>
