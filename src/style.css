@@ -13,6 +13,9 @@ header{
   padding: 10px 10%;
   background-color: #4994e8;
 }
+body{
+  margin: 0px;
+}
 h1{
   font-family: 'Pacifico', cursive;
   font-size: 45px;
@@ -200,6 +203,82 @@ p{
 
 .icon-exit{
   cursor: pointer;
+}
+
+.flex-post{
+  width: 30%;
+  margin-left: 40%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.textarea-post{
+  width: -webkit-fill-available;
+    height: 100px;
+    resize: none;
+    border: 1px solid #5AC39B;
+    padding: 7px 20px 7px 20px
+}
+.btn-select{
+  align-self: start;
+  margin-top: 3px;
+  border-top-style: inset;
+}
+.btn-share{
+  font-family: 'Patua One', cursive;
+  background-color: #b6c334;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  align-self: flex-end;
+}
+.img-profile{
+  width: 100%;
+}
+.div-post {
+  height: auto;
+  border: 2px solid #7c817e;
+  border-radius: 5px;
+  padding: 2%;
+}
+.div-posts {
+  height: auto;
+  border: 2px solid #7c817e;
+  border-radius: 5px;
+  padding: 2%;
+}
+.middle-post{
+  display: flex;
+  flex-direction: column;
+}
+.botom-post{
+  display: flex;
+}
+.li-child{
+  margin: 0px;
+  width: 100%;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.ul-parent{
+  padding-left: 0px;
+}
+.profile-div{
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+.img-user{
+  height: 200px;
+}
+.form-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 .hide {
   display: none;

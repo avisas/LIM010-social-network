@@ -13,7 +13,7 @@ export const updateUserName = (user, newName) => user.updateProfile({
 
 export const getData = (name, email) => {
   const user = userCurrent();
-  dataBase.collection('users').doc(user.uid).get().then((doc) => {
+  /* dataBase.collection('users').doc(user.uid).get().then((doc) => {
     if (doc.exists) {
       // console.log('Document data:', doc.data().name);
       name.value = doc.data().name;
@@ -25,7 +25,9 @@ export const getData = (name, email) => {
   })
     .catch(() => {
       // console.log('Error getting document:', error);
-    });
+    }); */
+  name.value = user.displayName;
+  email.value = user.email;
 };
 
 

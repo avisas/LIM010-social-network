@@ -8,7 +8,7 @@ export const addPostFirebase = (notePost, selectPrivacidad, user) => {
     privacidad: selectPrivacidad,
     user: user.uid,
     userName: user.displayName,
-    timePost: (new Date()).toLocaleDateString(),
+    timePost: (new Date()).toGMTString(),
   });
 };
 
@@ -20,7 +20,7 @@ export const editPostFirebase = (id, note, selectedPrivacidad) => {
   return dataBase.collection('post').doc(id).update({
     notes: note,
     privacidad: selectedPrivacidad,
-    timePost: (new Date()).toLocaleDateString(),
+    timePost: (new Date()).toGMTString(),
   });
 };
 

@@ -3,8 +3,8 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
 import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase } from '../controller-firebase/controller-likes.js';
 
-export const savePost = (event) => {
-  event.preventDefault();
+export const savePost = () => {
+  // event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const selectedPrivacidad = document.querySelector('#privacidad').value;
   const user = userCurrent();
@@ -18,7 +18,6 @@ export const savePost = (event) => {
 };
 
 export const saveComment = (postId) => {
-  event.preventDefault();
   const noteComment = document.querySelector(`#commentario-${postId}`).value;
   const user = userCurrent();
   addCommentFirebase(user, postId, noteComment)
@@ -33,29 +32,27 @@ export const saveComment = (postId) => {
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
-      deletePostFirebase(id);
+      // deletePostFirebase(id);
       // console.log('Document written with ID: ', docRef.id);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });
 };
 
-
-
 export const edit = (id) => {
-  const notes = event.currentTarget.dataset.note;
-  const privacidad = event.currentTarget.dataset.privacidad;
-  document.querySelector('#publication').value = notes;
-  document.querySelector('#privacidad').value = privacidad;
+  const textPost = document.querySelector(`#text-${id}`);
   const boton = document.querySelector('#edit-post');
+  const selectPrivacity = document.querySelector(`#selectPriv-${id}`);
   const botonGuardar = document.querySelector('#compartir-post');
+  textPost.disabled = false;
+  selectPrivacity.disabled = false;
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
   boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
-    const note = document.querySelector('#publication').value;
-    const selectedPrivacidad = document.querySelector('#privacidad').value;
+    const note = textPost.value;
+    const selectedPrivacidad = selectPrivacity.value;
     editPostFirebase(id, note, selectedPrivacidad)
       .then(() => {
         boton.classList.add('hide');
@@ -69,20 +66,23 @@ export const edit = (id) => {
 };
 
 
-export const editComment = (idComment, idPost, comment) => {
-  document.querySelector(`#commentario-${idPost}`).value = comment;
-  const boton = document.querySelector(`#editco-${idPost}`);
-  const botonGuardar = document.querySelector(`#comment-${idPost}`);
+export const editComment = (idComment, idPost) => {
+  const textComment = document.querySelector(`#textcomment-${idComment}`);
+  textComment.disabled = false;
+  const boton = document.querySelector(`#savecomment-${idComment}`);
+  // const boton = document.querySelector(`#editco-${idPost}`);
+  const botonEditar = document.querySelector(`#edit-${idComment}`);
+
   boton.classList.remove('hide');
-  botonGuardar.classList.add('hide');
+  botonEditar.classList.add('hide');
   // boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
-    const note = document.querySelector(`#commentario-${idPost}`).value;
+    const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
         boton.classList.add('hide');
-        botonGuardar.classList.remove('hide');
+        botonEditar.classList.remove('hide');
       })
       .catch(() => {
         // The document probably doesn't exist.
@@ -99,7 +99,7 @@ export const showLikePost = (list, id) => {
     .onSnapshot((querySnapshot) => {
       document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
       querySnapshot.forEach((doc) => {
-        console.log(querySnapshot.size);
+        // console.log(querySnapshot.size);
         if (doc.data().idUser !== user.uid || !doc.exists) {
           buttonLike.classList.remove('hide');
           buttonDislike.classList.add('hide');
