@@ -93,7 +93,6 @@ const listNotes = (objNote) => {
 
 export const myPost = (notes) => {
   const homeDiv = document.createElement('div');
-
   const homeContent = `
   <header>
     <h2>tasty recipes</h2> 
