@@ -9,28 +9,30 @@ const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
-  <span class="">
-    <span>${objNote.nameUser}</span>
-    <textarea disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
-  </span>
-  ${userCurrent().uid === objNote.idUser ? `
-  <a class="" id="delete-${objNote.id}">
-  <i>Delete</i>
-  </a>
-  <a class="hide" id="savecomment-${objNote.id}">
-  <i>Guardar</i>
-  </a>
-  <a class="" id="edit-${objNote.id}">
-  <i>Edit</i>
-  </a> ` : `<a class="hide" id="delete-${objNote.id}">
-  <i>Delete</i>
-  </a>
-  <a class="hide" id="savecomment-${objNote.id}">
-  <i>Guardar</i>
-  </a>
-  <a class="hide" id="edit-${objNote.id}">
-  <i>Edit</i>
-  </a> `}
+    <span class="">
+      <span>${objNote.nameUser}</span>
+      <textarea disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
+    </span>
+    ${userCurrent().uid === objNote.idUser ? `
+      <a class="mr-mitad" id="delete-${objNote.id}">
+        <i>Delete</i>
+      </a>
+      <a class="hide mr-mitad" id="savecomment-${objNote.id}">
+        <i>Guardar</i>
+      </a>
+      <a class="mr-mitad" id="edit-${objNote.id}">
+        <i>Edit</i>
+      </a> ` : `
+      <a class="hide mr-mitad" id="delete-${objNote.id}">
+        <i>Delete</i>
+      </a>
+      <a class="hide mr-mitad" id="savecomment-${objNote.id}">
+        <i>Guardar</i>
+      </a>
+      <a class="hide mr-mitad" id="edit-${objNote.id}">
+        <i>Edit</i>
+      </a> 
+    `}
   `;
 
   liElemnt.querySelector(`#delete-${objNote.id}`)
@@ -46,7 +48,7 @@ const listNotes = (objNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
-  <div class="div-posts">
+  <div class="div-posts border-post">
     <div>
       <span>${objNote.userName}</span>
       <span>${objNote.privacidad}</span>
@@ -64,23 +66,23 @@ const listNotes = (objNote) => {
       <span>${objNote.timePost}</span>
     </div>
     <div class="botom-post">
-    ${userCurrent().uid === objNote.user ? `<a class="" id="delete-${objNote.id}"> <i>Delete</i>
+    ${userCurrent().uid === objNote.user ? `<a class="mr-mitad" id="delete-${objNote.id}"> <i>Delete</i>
       </a>
       </span>
-      <a class="" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+      <a class="mr-mitad" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
       <i>Edit</i>
-      </a>` : `<a class="hide" id="delete-${objNote.id}">
+      </a>` : `<a class="hide mr-mitad" id="delete-${objNote.id}">
       <i>Delete</i>
       </a>
       </span>
-      <a class="hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+      <a class="hide mr-mitad" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
       <i>Edit</i>
       </a> `}
       
-      <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
+      <a class="mr-mitad" id="like-${objNote.id}" data-post="${objNote.id}">
       <img class="heart" src="../src/img/corazon-vacio.png">
       </a>
-      <a class="hide" id="dislike-${objNote.id}" data-post="${objNote.id}">
+      <a class="hide mr-mitad" id="dislike-${objNote.id}" data-post="${objNote.id}">
       <img class="heart" src="../src/img/corazon.png">
       </a>
       <a id="counter-${objNote.id}">
@@ -128,13 +130,14 @@ export const home = (notes) => {
   const homeContent = `
   <header>
     <h2>Meet and Code</h2> 
-    <nav>
-      <ul class="nav-links">
-        <li><a id="user-name">User</a></li>
+    <nav class="nav-links flex menu-bar">
+    <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
+    <ul id="show-hamb" class="hide list-menu">
+    <li><a id="user-name"><span class="icon-user"></span>User</a></li>
         <li><a id="home">Home</a></li>
         <!--<li><a id=""">About</a></li>-->
         <li><a id="setting">Setting</a></li>
-        <li><a id="signOut">Log Out</a></li>
+        <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
       </ul>
     </nav>    
   </header>
@@ -191,5 +194,20 @@ export const home = (notes) => {
 
   btnComportirPost.addEventListener('click', savePost);
 
+  const HambMenu = homeDiv.querySelector('#hamb-menu');
+  const showHamb = homeDiv.querySelector('#show-hamb');
+  let modoMenu = 0;
+
+  HambMenu.addEventListener('click', () => {
+    if (modoMenu === 0) {
+      showHamb.classList.add('block');
+      showHamb.classList.remove('hide');
+      modoMenu = 1;
+    } else {
+      showHamb.classList.add('hide');
+      showHamb.classList.remove('block');
+      modoMenu = 0;
+    }
+  });
   return homeDiv;
 };

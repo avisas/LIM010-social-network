@@ -3,13 +3,13 @@ import { signOutLogin } from '../controller-firebase/controller-authentication.j
 export const recoverUserName = (userName) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-      const displayName = user.displayName;
+      const displayName = `<span class="icon-user"></span>${user.displayName}`;
       // let userPhoto = user.photoURL;
       const userEmail = user.email;
       if (displayName === null) {
         userName.textContent = userEmail;
       } else {
-        userName.textContent = displayName;
+        userName.innerHTML = displayName;
       }
     }
   });
