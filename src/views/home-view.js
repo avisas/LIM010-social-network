@@ -142,7 +142,7 @@ export const home = (notes) => {
       <div id="user-perfil">
         <img class="img-profile" src="img/banner03.jpg">
         <div>
-          ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : `<img src="">`}
+          ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img src="">'}
           <h2>
         </div>
       </div>
