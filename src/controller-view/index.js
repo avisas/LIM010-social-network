@@ -6,7 +6,6 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 export const changeView = (route) => {
   const container = document.getElementById('container');
   const user = userCurrent();
-
   container.innerHTML = '';
   switch (route) {
     case '#/': container.appendChild(components.login());

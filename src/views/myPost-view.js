@@ -118,8 +118,8 @@ export const myPost = (myNotes) => {
     <h2>Meet and Code</h2> 
     <nav>
       <ul class="nav-links">
-        <li><a href="#/myPost" id="user-name">User</a></li>
-        <li><a href="#/home" id="home">Home</a></li>
+        <li><a id="user-name">User</a></li>
+        <li><a id="home">Home</a></li>
         <li><a id=""">About</a></li>
         <li><a id="setting">Setting</a></li>
         <li><a id="signOut">Log Out</a></li>
@@ -157,7 +157,7 @@ export const myPost = (myNotes) => {
   // const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   // const btnMisPost = homeDiv.querySelector('#mis-post');
-  /* userName.addEventListener('click', (ev) => {
+  userName.addEventListener('click', (ev) => {
     ev.preventDefault();
     window.location.hash = '#/myPost';
   });
@@ -165,7 +165,7 @@ export const myPost = (myNotes) => {
   btnHome.addEventListener('click', (ev) => {
     ev.preventDefault();
     window.location.hash = '#/home';
-  }); */
+  });
 
   btnSignOut.addEventListener('click', signOutUser);
   recoverUserName(userName);
