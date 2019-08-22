@@ -1,145 +1,160 @@
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
 // eslint-disable-next-line object-curly-newline
-import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
+import { deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
 import { getAllComments, deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
-import { showPostUserFirebase } from '../controller-firebase/controller-post.js';
+import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
-const listComment = (objNote) => {
+const listComment = (objMyPostNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
   <span class="">
-    <span>${objNote.nameUser}</span>
-    <span>${objNote.comment}</span>
+    <span>${objMyPostNote.nameUser}</span>
+    <span>${objMyPostNote.comment}</span>
   </span>
-  <a class="" id="delete-${objNote.id}">
+  <a class="" id="delete-${objMyPostNote.id}">
   <i>Delete</i>
   </a>
   </span>
-  <a class="" id="edit-${objNote.id}">
+  <a class="" id="edit-${objMyPostNote.id}">
   <i>Edit</i>
   </a> 
   `;
 
-  liElemnt.querySelector(`#delete-${objNote.id}`)
-    .addEventListener('click', () => deleteCommentFirebase(objNote.idPost, objNote.id));
+  liElemnt.querySelector(`#delete-${objMyPostNote.id}`)
+    .addEventListener('click', () => deleteCommentFirebase(objMyPostNote.idPost, objMyPostNote.id));
 
-  liElemnt.querySelector(`#edit-${objNote.id}`)
-    .addEventListener('click', () => editComment(objNote.id, objNote.idPost, objNote.comment));
+  liElemnt.querySelector(`#edit-${objMyPostNote.id}`)
+    .addEventListener('click', () => editComment(objMyPostNote.id, objMyPostNote.idPost, objMyPostNote.comment));
 
   return liElemnt;
 };
 
-const listNotes = (objNote) => {
-  const liElemnt = document.createElement('li');
-  liElemnt.classList.add('li-child');
-  liElemnt.innerHTML = `
-  <span class="">
-    <span>${objNote.userName}</span>
-    <span>${objNote.notes}</span>
-    <span>${objNote.timePost}</span>
-    <span>${objNote.privacidad}</span>
-  </span>
-  <a class="" id="delete-${objNote.id}">
-  <i>Delete</i>
-  </a>
-  </span>
-  <a class="" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
-  <i>Edit</i>
-  </a>
-  <a class="" id="like-${objNote.id}" data-post="${objNote.id}">
-  <img class="heart" src="../src/img/corazon-vacio.png">
-  </a>
-  <a class="hide" id="dislike-${objNote.id}" data-post="${objNote.id}">
-  <img class="heart" src="../src/img/corazon.png">
-  </a>
-  <a id="counter-${objNote.id}">
-  </a>
-  <form id="form-publication" maxlength=50 class="flex-form" required>
-    <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
-    <input type="submit" id="comment-${objNote.id}" data-post="${objNote.id}" class="button-home" value="Comentar">
-    <input type="submit" id="editco-${objNote.id}" class="button-home hide" value="Editar">
-  </form> 
-  <section id="allComments-${objNote.id}"></section>
+const myPostListNotes = (objMyPostNote) => {
+  const liElemntMyPost = document.createElement('li');
+  liElemntMyPost.classList.add('li-child');
+  liElemntMyPost.innerHTML = `
+  <div class="div-posts">
+    <div>
+      <span>${objMyPostNote.userName}</span>
+      <span>${objMyPostNote.privacidad}</span>
+    </div>
+    <hr/>
+    <div class="middle-post">
+      <textarea id="text-${objMyPostNote.id}" disabled>${objMyPostNote.notes}</textarea>
+      <hr/>
+      <select id="selectPriv-${objMyPostNote.id}" class="btn-privacidad" name="select" disabled>
+      ${objMyPostNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>  
+        <option value="publico">Público</option>` : `<option value="privado">Privado</option>  
+        <option value="publico" selected>Público</option> `}
+      </select>
+      <hr/>
+      <span>${objMyPostNote.timePost}</span>
+    </div>
+    <div class="botom-post">
+    ${userCurrent().uid === objMyPostNote.user ? `<a class="" id="delete-${objMyPostNote.id}"> <i>Delete</i>
+      </a>
+      </span>
+      <a class="" id="edit-${objMyPostNote.id}" data-note="${objMyPostNote.notes}" data-privacidad="${objMyPostNote.privacidad}">
+      <i>Edit</i>
+      </a>` : `<a class="hide" id="delete-${objMyPostNote.id}">
+      <i>Delete</i>
+      </a>
+      </span>
+      <a class="hide" id="edit-${objMyPostNote.id}" data-note="${objMyPostNote.notes}" data-privacidad="${objMyPostNote.privacidad}">
+      <i>Edit</i>
+      </a> `}
+      <a class="" id="like-${objMyPostNote.id}" data-post="${objMyPostNote.id}">
+      <img class="heart" src="../src/img/corazon-vacio.png">
+      </a>
+      <a class="hide" id="dislike-${objMyPostNote.id}" data-post="${objMyPostNote.id}">
+      <img class="heart" src="../src/img/corazon.png">
+      </a>
+      <a id="counter-${objMyPostNote.id}">
+      </a>
+    </div>
+    
+    <form id="form-publication" maxlength=50 class="flex-form" required>
+      <textarea placeholder="¿Que quieres compartir?" id="commentario-${objMyPostNote.id}"></textarea>
+      <input type="submit" id="comment-${objMyPostNote.id}" data-post="${objMyPostNote.id}" class="button-home" value="Comentar">
+      <input type="submit" id="editco-${objMyPostNote.id}" class="button-home hide" value="Editar">
+    </form> 
+    <section id="allComments-${objMyPostNote.id}"></section>
+  </div>
   `;
-  liElemnt.querySelector(`#delete-${objNote.id}`)
-    .addEventListener('click', () => deletePost(objNote.id));
+  liElemntMyPost.querySelector(`#delete-${objMyPostNote.id}`)
+    .addEventListener('click', () => deletePost(objMyPostNote.id));
 
-  liElemnt.querySelector(`#edit-${objNote.id}`)
-    .addEventListener('click', () => edit(objNote.id));
+  liElemntMyPost.querySelector(`#edit-${objMyPostNote.id}`)
+    .addEventListener('click', () => edit(objMyPostNote.id));
 
-  liElemnt.querySelector(`#like-${objNote.id}`)
-    .addEventListener('click', () => addLike(objNote.id));
+  liElemntMyPost.querySelector(`#like-${objMyPostNote.id}`)
+    .addEventListener('click', () => addLike(objMyPostNote.id));
 
-  liElemnt.querySelector(`#dislike-${objNote.id}`)
-    .addEventListener('click', () => deleteLikePost(objNote.id));
+  liElemntMyPost.querySelector(`#dislike-${objMyPostNote.id}`)
+    .addEventListener('click', () => deleteLikePost(objMyPostNote.id));
   // changeButton(liElemnt, objNote.id);
-  liElemnt.querySelector(`#comment-${objNote.id}`)
-    .addEventListener('click', () => saveComment(objNote.id));
+  liElemntMyPost.querySelector(`#comment-${objMyPostNote.id}`)
+    .addEventListener('click', () => saveComment(objMyPostNote.id));
 
-  showLikePost(liElemnt, objNote.id);
+  showLikePost(liElemntMyPost, objMyPostNote.id);
 
-  const allComents = liElemnt.querySelector(`#allComments-${objNote.id}`);
+  const allComents = liElemntMyPost.querySelector(`#allComments-${objMyPostNote.id}`);
 
-  getAllComments(objNote.id, (coments) => {
+  getAllComments(objMyPostNote.id, (coments) => {
     allComents.innerHTML = '';
     coments.forEach((comment) => {
       allComents.appendChild(listComment(comment));
     });
   });
-  return liElemnt;
+  return liElemntMyPost;
 };
 
-export default (notes) => {
-  const homeDiv = document.createElement('div');
-
-  const homeContent = `
+export const myPost = (myNotes) => {
+  const myPostDiv = document.createElement('div');
+  const myPostContent = `
   <header>
-    <h2>tasty recipes</h2> 
+    <h2>Meet and Code</h2> 
     <nav>
       <ul class="nav-links">
-      <li><a id="user-name">User</a></li>
-      <li><a id="home">Home</a></li>
-      <!--<li><a id=""">About</a></li>-->
-      <li><a id="setting">Setting</a></li>
-      <li><a id="signOut">Log Out</a></li>
+        <li><a id="user-name">User</a></li>
+        <li><a id="home">Home</a></li>
+        <li><a id=""">About</a></li>
+        <li><a id="setting">Setting</a></li>
+        <li><a id="signOut">Log Out</a></li>
       </ul>
     </nav>    
   </header>
   <main>
-      <h1>Responsive Header</h1>
-      <!--<div id="profile"></div>-->
-      <div id="user-perfil"></div>
-      <form id="form-publication" maxlength=50 class="flex-form" required>
-        <textarea placeholder="¿Que quieres compartir?" id="publication"></textarea>
-        <select id="privacidad" name="select">
-        <option value="publico" selected>Publico</option> 
-        <option value="privado">Privado</option>
-      </select>
-        <input type="submit" id="compartir-post" class="button-home" value="Compartir">
-        <input type="submit" id="edit-post" class="button-home hide" value="Editar">
-      </form> 
+    <div id="user-perfil">
+    <img class="img-profile" src="img/banner03.jpg">
+    <div>
+      ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : `<img src="">`}
+      <h2>
+    </div>
+    </div>
+    <div>
       
     <section>
-      <ul id="notes-list">
+      <ul id="myPostNotes-list">
       </ul>
     </section>
   </main>
   <footer></footer>
     `;
-  homeDiv.innerHTML = homeContent;
+  myPostDiv.innerHTML = myPostContent;
 
-  const ul = homeDiv.querySelector('#notes-list');
-  notes.forEach((note) => {
-    ul.appendChild(listNotes(note));
+  const ulMyPost = myPostDiv.querySelector('#myPostNotes-list');
+  myNotes.forEach((note3) => {
+    ulMyPost.appendChild(myPostListNotes(note3));
   });
 
-  const userName = homeDiv.querySelector('#user-name');
-  const btnSignOut = homeDiv.querySelector('#signOut');
-  const settingUser = homeDiv.querySelector('#setting');
-  const btnHome = homeDiv.querySelector('#home');
-  const btnComportirPost = homeDiv.querySelector('#compartir-post');
+  const userName = myPostDiv.querySelector('#user-name');
+  const btnSignOut = myPostDiv.querySelector('#signOut');
+  const settingUser = myPostDiv.querySelector('#setting');
+  const btnHome = myPostDiv.querySelector('#home');
+  // const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   // const btnMisPost = homeDiv.querySelector('#mis-post');
   userName.addEventListener('click', (ev) => {
@@ -157,7 +172,7 @@ export default (notes) => {
 
   settingUser.addEventListener('click', changeViewToProfile);
 
-  btnComportirPost.addEventListener('click', savePost);
+  // btnComportirPost.addEventListener('click', savePost);
 
-  return homeDiv;
+  return myPostDiv;
 };

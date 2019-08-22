@@ -19,9 +19,9 @@ export const changeView = (route) => {
       });
       break;
     case '#/myPost':
-      showPostUserFirebase((notes) => {
+      showPostUserFirebase((notes1) => {
         container.innerHTML = '';
-        container.appendChild(components.myPost(notes));
+        container.appendChild(components.myPost(notes1));
       });
       break;
     case '#/profile': container.appendChild(components.profile());
