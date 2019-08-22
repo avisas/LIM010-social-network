@@ -3,8 +3,8 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
 import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase } from '../controller-firebase/controller-likes.js';
 
-export const savePost = () => {
-  // event.preventDefault();
+export const savePost = (event) => {
+  event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const selectedPrivacidad = document.querySelector('#privacidad').value;
   const user = userCurrent();

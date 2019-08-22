@@ -1,10 +1,11 @@
 /* eslint-disable import/no-cycle */
 import { components } from '../views/index.js';
 import { showPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
-
+import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
 export const changeView = (route) => {
   const container = document.getElementById('container');
+  const user = userCurrent();
 
   container.innerHTML = '';
   switch (route) {
@@ -19,7 +20,7 @@ export const changeView = (route) => {
       });
       break;
     case '#/myPost':
-      showPostUserFirebase((notes1) => {
+      showPostUserFirebase(user, (notes1) => {
         container.innerHTML = '';
         container.appendChild(components.myPost(notes1));
       });
