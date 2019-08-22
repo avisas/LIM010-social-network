@@ -66,20 +66,23 @@ export const edit = (id) => {
 };
 
 
-export const editComment = (idComment, idPost, comment) => {
-  document.querySelector(`#commentario-${idPost}`).value = comment;
-  const boton = document.querySelector(`#editco-${idPost}`);
-  const botonGuardar = document.querySelector(`#comment-${idPost}`);
+export const editComment = (idComment, idPost) => {
+  const textComment = document.querySelector(`#textcomment-${idComment}`);
+  textComment.disabled = false;
+  const boton = document.querySelector(`#savecomment-${idComment}`);
+  // const boton = document.querySelector(`#editco-${idPost}`);
+  const botonEditar = document.querySelector(`#edit-${idComment}`);
+
   boton.classList.remove('hide');
-  botonGuardar.classList.add('hide');
+  botonEditar.classList.add('hide');
   // boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
-    const note = document.querySelector(`#commentario-${idPost}`).value;
+    const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
         boton.classList.add('hide');
-        botonGuardar.classList.remove('hide');
+        botonEditar.classList.remove('hide');
       })
       .catch(() => {
         // The document probably doesn't exist.

@@ -93,7 +93,7 @@ p{
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  width: 40%
+  width: 40%;
   font-size: 12px;
   outline: none;
 }
@@ -210,6 +210,19 @@ ul li a:hover {
 }
 .ul-parent{
   padding-left: 0px;
+}
+.profile-div{
+  display: flex;
+  flex-direction: column;
+  margin: 10%;
+}
+.img-user{
+  height: 200px;
+}
+.form-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hide {
   display: none;
