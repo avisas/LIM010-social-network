@@ -48,7 +48,7 @@ const listNotes = (objNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
-  <div class="div-posts">
+  <div class="div-posts border-post">
     <div>
       <span>${objNote.userName}</span>
       <span>${objNote.privacidad}</span>

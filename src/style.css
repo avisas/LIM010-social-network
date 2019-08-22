@@ -257,6 +257,9 @@ p{
   padding: 2%;
 }
 
+.border-post{
+  border: 2px solid #7c817e; 
+}
 .middle-post{
   display: flex;
   flex-direction: column;
