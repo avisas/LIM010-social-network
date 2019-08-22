@@ -264,7 +264,11 @@ p{
 .botom-post{
   display: flex;
 }
+.mr-mitad{
+  margin-right: 0.5rem;
+}
 .li-child{
+  list-style: none;
   margin: 0px;
   width: 100%;
   padding-left: 0px;
