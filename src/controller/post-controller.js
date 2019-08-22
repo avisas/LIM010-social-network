@@ -3,8 +3,8 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
 import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase } from '../controller-firebase/controller-likes.js';
 
-export const savePost = (event) => {
-  event.preventDefault();
+export const savePost = () => {
+  // event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const selectedPrivacidad = document.querySelector('#privacidad').value;
   const user = userCurrent();
@@ -18,7 +18,6 @@ export const savePost = (event) => {
 };
 
 export const saveComment = (postId) => {
-  event.preventDefault();
   const noteComment = document.querySelector(`#commentario-${postId}`).value;
   const user = userCurrent();
   addCommentFirebase(user, postId, noteComment)
@@ -33,7 +32,7 @@ export const saveComment = (postId) => {
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
-      deletePostFirebase(id);
+      // deletePostFirebase(id);
       // console.log('Document written with ID: ', docRef.id);
     }).catch((error) => {
       console.error('Error adding document: ', error);
@@ -100,7 +99,7 @@ export const showLikePost = (list, id) => {
     .onSnapshot((querySnapshot) => {
       document.getElementById(`counter-${id}`).innerHTML = querySnapshot.size;
       querySnapshot.forEach((doc) => {
-        console.log(querySnapshot.size);
+        // console.log(querySnapshot.size);
         if (doc.data().idUser !== user.uid || !doc.exists) {
           buttonLike.classList.remove('hide');
           buttonDislike.classList.add('hide');
