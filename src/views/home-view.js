@@ -97,18 +97,15 @@ export const home = (notes) => {
   const homeContent = `
   <header>
   <h2>Meet and Code</h2> 
-    <nav>
-      <ul class="nav-links flex">
-      <div class="menu-bar">
-      <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
-      <div id="show-hamb" class="hide">
-      <li><a id="user-name"><span class="icon-user"></span>User</a></li>
-       <li><a href="#/about"><span class="icon-question"></span>about</a></li>
-       <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
-      </div>
-      </div>
-      </ul>
-    </nav>    
+
+    <nav class="nav-links flex menu-bar">
+    <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
+    <ul id="show-hamb" class="hide list-menu">
+        <li><a id="user-name"><span class="icon-user"></span>User</a></li>
+        <li><a href="#/about"><span class="icon-question"></span>about</a></li>
+     <li><a id="signOut"><span class="icon-exit"></span>Cerrar Sesión</a></li>
+    </ul>
+  </nav>     
   </header>
   <main>
       <!--<h1>Responsive Header</h1>-->
