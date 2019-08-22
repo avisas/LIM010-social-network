@@ -53,7 +53,13 @@ const listNotes = (objNote) => {
     </div>
     <hr/>
     <div class="middle-post">
-      <span>${objNote.notes}</span>
+      <textarea id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
+      <hr/>
+      <select id="selectPriv-${objNote.id}" class="btn-privacidad" name="select" disabled>
+      ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>  
+        <option value="publico">Público</option>` : `<option value="privado">Privado</option>  
+        <option value="publico" selected>Público</option> `}
+      </select>
       <hr/>
       <span>${objNote.timePost}</span>
     </div>
@@ -145,9 +151,9 @@ export const home = (notes) => {
           <form id="form-publication" maxlength=50 required>
             <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
             <select id="privacidad" class="btn-select" name="select">
-            <option value="publico" selected>Público</option> 
-            <option value="privado">Privado</option>
-          </select>
+              <option value="publico" selected>Público</option> 
+              <option value="privado">Privado</option>
+            </select>
             <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
             <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
           </form> 
