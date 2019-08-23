@@ -11,7 +11,7 @@ export const loginFunction = (event) => {
     .then(() => {
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
-      window.location.hash = '#/home';
+      window.location.hash = '#/codeMeet';
     })
     .catch((error) => {
       messageErrorLabel.classList.add('show-message-error');
@@ -34,7 +34,7 @@ export const loginFunction = (event) => {
 export const signInFacebook = (event) => {
   event.preventDefault();
   signInWithFacebook().then(() => {
-    window.location.hash = '#/home';
+    window.location.hash = '#/codeMeet';
   }).catch(() => {
     // Aqui va el error , leer manejo de errores de FB
   });
@@ -44,7 +44,7 @@ export const signInGoogle = (event) => {
   event.preventDefault();
   if (!userCurrent()) {
     signInWithGoogle().then(() => {
-      window.location.hash = '#/home';
+      window.location.hash = '#/codeMeet';
     }).catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/account-exists-with-different-credential') {

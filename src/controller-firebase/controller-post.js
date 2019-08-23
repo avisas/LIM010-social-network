@@ -36,11 +36,13 @@ export const showPostFirebase = (callback) => {
 
 export const showPostUserFirebase = (callback) => {
   const user = userCurrent();
-  return dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
+  return dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc')
+    .get()
+    .then((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      callback(data);
     });
-    callback(data);
-  });
 };
