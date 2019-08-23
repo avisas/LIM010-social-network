@@ -1,4 +1,5 @@
 /* eslint-disable import/no-cycle */
+import { storage } from '../main.js';
 import { recoverUserName, changeViewToProfile, changeViewToMyPosts, signOutUser } from '../controller/home-controller.js';
 // eslint-disable-next-line object-curly-newline
 import { savePost, deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment, editComment } from '../controller/post-controller.js';
@@ -165,6 +166,7 @@ export const home = (notes) => {
               <option value="publico" selected>Público</option> 
               <option value="privado">Privado</option>
             </select>
+            <input type="file" value="upload" id="file-button">
             <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
           </form> 
         </div>
@@ -188,6 +190,7 @@ export const home = (notes) => {
   const btnSignOut = homeDiv.querySelector('#signOut');
   const settingUser = homeDiv.querySelector('#setting');
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
+  const fileButton = homeDiv.querySelector('#file-button');
 
   // const btnMisPost = homeDiv.querySelector('#mis-post');
   userName.addEventListener('click', changeViewToMyPosts);
@@ -214,5 +217,15 @@ export const home = (notes) => {
       modoMenu = 0;
     }
   });
+
+  fileButton.addEventListener('change', (event) => {
+    console.log('Esto es el storage');
+    console.log(storage);
+    const file = event.target.files[0];
+    const storageRef = storage.ref('images/' + file.name);
+    storageRef.put(file);
+    console.log('Aqui llegó al storageRef');
+  });
+
   return homeDiv;
 };

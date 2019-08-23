@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { dataBase } from '../main.js';
+import { dataBase, storage } from '../main.js';
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
 export const updateUserName = (user, newName) => user.updateProfile({
