@@ -1,4 +1,3 @@
-
 /* eslint-disable import/no-cycle */
 import { updateProfile, getData } from '../controller/profile-controller.js';
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
@@ -8,8 +7,7 @@ export default () => {
   profile.className = 'profile-div';
   const profileContent = `   
     <h2>Profile</h2> 
-    ${userCurrent().photoURL !== null ? `<img class="img-user" src="${userCurrent().photoURL}">` : '<img class="img-user" src="https://cdn1.iconfinder.com/data/icons/avatars-heads/154/eat-food-man-head-avatar-512.png>'}
-       
+    ${userCurrent().photoURL !== null ? `<img class="img-user" src="${userCurrent().photoURL}">` : '<img class="img-avatar" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
     <form class="form-profile">
     <input type="text" value="" class="inputForm" id="name">
     <input type="text" value="" disabled class="inputForm" id="email">
@@ -26,8 +24,8 @@ export default () => {
   const save = profile.querySelector('#button-save');
   save.addEventListener('click', (event) => {
     event.preventDefault();
-    const newName = profile.querySelector('#name').value;
-    const newEmail = profile.querySelector('#email').value;
+    const newName = name.value;
+    const newEmail = email.value;
 
     updateProfile(newName, newEmail).then(() => {
       // Update successful.

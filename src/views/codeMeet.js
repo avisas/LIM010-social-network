@@ -11,8 +11,9 @@ export default () => {
   const headerContent = `
 	<header>
 		<h2>Meet and Code</h2> 
-		<nav>
-			<ul class="nav-links">
+    <nav class="nav-links flex menu-bar">
+    <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
+			<ul id="show-hamb" class="hide list-menu"
 				<li><a id="user-name" >User</a></li>
 				<li><a id="homePag">Home</a></li>
 				<!--<li><a id=""">About</a></li>-->
@@ -32,7 +33,7 @@ export default () => {
       <div id="content-post">
         
       </div>
-  </main>
+  </main>-
 		`;
 
   headerDiv.innerHTML = headerContent;
@@ -67,5 +68,21 @@ export default () => {
   recoverUserName(userName);
 
   settingUser.addEventListener('click', changeViewToProfile);
+
+  const HambMenu = headerDiv.querySelector('#hamb-menu');
+  const showHamb = headerDiv.querySelector('#show-hamb');
+  let modoMenu = 0;
+
+  HambMenu.addEventListener('click', () => {
+    if (modoMenu === 0) {
+      showHamb.classList.add('block');
+      showHamb.classList.remove('hide');
+      modoMenu = 1;
+    } else {
+      showHamb.classList.add('hide');
+      showHamb.classList.remove('block');
+      modoMenu = 0;
+    }
+  });
   return headerDiv;
 };

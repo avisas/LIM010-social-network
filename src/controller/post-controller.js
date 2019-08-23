@@ -43,14 +43,17 @@ export const deletePost = (id) => {
 
 export const edit = (id) => {
   const textPost = document.querySelector(`#text-${id}`);
-  const boton = document.querySelector('#edit-post');
+  // const boton = document.querySelector('#edit-post');
   const selectPrivacity = document.querySelector(`#selectPriv-${id}`);
-  const botonGuardar = document.querySelector('#compartir-post');
+  const botonGuardar = document.querySelector(`#edit-${id}`);
+  
+  const boton = document.querySelector(`#save-post-${id}`);
+
   textPost.disabled = false;
   selectPrivacity.disabled = false;
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
-  boton.value = 'Editar';
+  // boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
     const note = textPost.value;

@@ -7,10 +7,9 @@ const myPostListNotes = (objMyPostNote) => {
   const liElemntMyPost = document.createElement('li');
   liElemntMyPost.classList.add('li-child');
   liElemntMyPost.innerHTML = `
-  <div class="div-posts">
+  <div class="div-post">
     <div>
       <span>${objMyPostNote.userName}</span>
-      <span>${objMyPostNote.privacidad}</span>
     </div>
     <hr/>
     <div class="middle-post">
