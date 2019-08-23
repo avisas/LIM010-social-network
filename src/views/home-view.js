@@ -52,16 +52,15 @@ const listNotes = (objNote) => {
     <div>
       <span>${objNote.userName}</span>
     </div>
-    <hr/>
+    <hr>
     <div class="middle-post">
       <textarea id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
-      <hr/>
       <select id="selectPriv-${objNote.id}" class="btn-privacidad" name="select" disabled>
       ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>  
         <option value="publico">Público</option>` : `<option value="privado">Privado</option>  
         <option value="publico" selected>Público</option> `}
       </select>
-      <hr/>
+      <hr>
       <span>${objNote.timePost}</span>
     </div>
     <div class="botom-post">

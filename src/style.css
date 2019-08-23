@@ -32,7 +32,7 @@ header nav ul{
   right: 0;
   top: 45px;
   background-color: #4994e8;
-  height: 100vh;
+  height: 25vh
 }
 header nav ul li {
   display: inline-block;
@@ -171,19 +171,6 @@ p{
   padding: 7px 20px 7px 20px
 }
 
-.btn-share{
-  font-family: 'Patua One', cursive;
-  background-color: #b6c334;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 13px;
-  align-self: flex-end;
-}
-
 .btn-select{
   align-self: start;
   margin-top: 3px;
@@ -237,7 +224,7 @@ p{
 }
 .btn-share{
   font-family: 'Patua One', cursive;
-  background-color: #b6c334;
+  background-color: #5968a1;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -253,10 +240,12 @@ p{
 }
 .div-post {
   height: auto;
-  border: 2px solid #7c817e;
+  border: 2px solid #4231B5;
   border-radius: 5px;
   padding: 2%;
   margin: 2%;
+  font-family: 'Ubuntu';
+
 }
 
 .border-post{
@@ -311,12 +300,20 @@ p{
   align-items: center;
 
 }
+hr{
+  border: 2px solid #795FFD;;
+  margin: 2%;
+}
 .img-avatar{
   height: 100px;
 }
 .hide {
   display: none;
 }
+.inputForm1{
+  border: none;
+  outline: none;
+ } 
 
 .show {
   display: block;

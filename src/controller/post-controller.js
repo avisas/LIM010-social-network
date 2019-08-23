@@ -18,6 +18,7 @@ export const savePost = (event) => {
 };
 
 export const saveComment = (postId) => {
+  event.preventDefault();
   const noteComment = document.querySelector(`#commentario-${postId}`).value;
   const user = userCurrent();
   addCommentFirebase(user, postId, noteComment)
@@ -32,8 +33,6 @@ export const saveComment = (postId) => {
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
-      // deletePostFirebase(id);
-      // console.log('Document written with ID: ', docRef.id);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });
@@ -44,7 +43,7 @@ export const edit = (id) => {
   // const boton = document.querySelector('#edit-post');
   const selectPrivacity = document.querySelector(`#selectPriv-${id}`);
   const botonGuardar = document.querySelector(`#edit-${id}`);
-  
+
   const boton = document.querySelector(`#save-post-${id}`);
 
   textPost.disabled = false;
