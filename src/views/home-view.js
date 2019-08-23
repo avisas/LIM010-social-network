@@ -48,10 +48,9 @@ const listNotes = (objNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
-  <div class="div-posts border-post">
+  <div class="div-post">
     <div>
       <span>${objNote.userName}</span>
-      <span>${objNote.privacidad}</span>
     </div>
     <hr/>
     <div class="middle-post">
@@ -71,13 +70,20 @@ const listNotes = (objNote) => {
       </span>
       <a class="mr-mitad" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
       <i>Edit</i>
-      </a>` : `<a class="hide mr-mitad" id="delete-${objNote.id}">
+      </a>
+      <a class="mr-mitad hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+      <i>Guardar</i>
+      </a>
+      ` : `<a class="hide mr-mitad" id="delete-${objNote.id}">
       <i>Delete</i>
       </a>
       </span>
       <a class="hide mr-mitad" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
       <i>Edit</i>
-      </a> `}
+      </a> 
+      <a class="mr-mitad hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
+      <i>Guardar</i>
+      </a>`}
       
       <a class="mr-mitad" id="like-${objNote.id}" data-post="${objNote.id}">
       <img class="heart" src="../src/img/corazon-vacio.png">
@@ -160,7 +166,6 @@ export const home = (notes) => {
               <option value="privado">Privado</option>
             </select>
             <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
-            <input type="submit" id="edit-post" class="btn-edit hide" value="Editar">
           </form> 
         </div>
         

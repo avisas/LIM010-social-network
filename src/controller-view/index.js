@@ -8,6 +8,8 @@ export const changeView = (route) => {
   const user = userCurrent();
   container.innerHTML = '';
   switch (route) {
+    case '': container.appendChild(components.login());
+      break;
     case '#/': container.appendChild(components.login());
       break;
     case '#/register': container.appendChild(components.register());
