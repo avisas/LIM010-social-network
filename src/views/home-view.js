@@ -133,8 +133,8 @@ export const home = (notes) => {
 
   homeDiv.innerHTML = `
   
-        <div class="div-post">
-          <div id="form-publication" maxlength=50 required>
+        <div id="form-save" class="div-post">
+          <form id="form-publication" maxlength=50 required>
             <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
             <select id="privacidad" class="btn-select" name="select">
               <option value="publico" selected>Público</option> 

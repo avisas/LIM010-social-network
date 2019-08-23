@@ -13,10 +13,9 @@ export default () => {
 		<h2>Meet and Code</h2> 
     <nav class="nav-links flex menu-bar">
     <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
-			<ul id="show-hamb" class="hide list-menu"
-				<li><a id="user-name" >User</a></li>
+			<ul id="show-hamb" class="hide list-menu">
+				<li><a id="user-name">User</a></li>
 				<li><a id="homePag">Home</a></li>
-				<!--<li><a id=""">About</a></li>-->
 				<li><a id="setting">Setting</a></li>
 				<li><a id="signOut">Log Out</a></li>
 			</ul>
@@ -37,11 +36,10 @@ export default () => {
 		`;
 
   headerDiv.innerHTML = headerContent;
-  const userName = headerDiv.querySelector('#user-name');
   const btnSignOut = headerDiv.querySelector('#signOut');
   const settingUser = headerDiv.querySelector('#setting');
   const btnMyPost = headerDiv.querySelector('#user-name');
-
+  
   const contenPost = headerDiv.querySelector('#content-post');
   const homePag = headerDiv.querySelector('#homePag');
 
@@ -65,7 +63,7 @@ export default () => {
   });
 
   btnSignOut.addEventListener('click', signOutUser);
-  recoverUserName(userName);
+  recoverUserName(btnMyPost);
 
   settingUser.addEventListener('click', changeViewToProfile);
 
