@@ -1,11 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { components } from '../views/index.js';
-import { showPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
 export const changeView = (route) => {
   const container = document.getElementById('container');
-  const user = userCurrent();
   container.innerHTML = '';
   switch (route) {
     case '': container.appendChild(components.login());
@@ -14,18 +11,18 @@ export const changeView = (route) => {
       break;
     case '#/register': container.appendChild(components.register());
       break;
-    case '#/home':
+
+    case '#/codeMeet': container.appendChild(components.codeMeet());
+      break;
+
+      /* case '#/home':
+      container.innerHTML = '<p>aqui en home</p>';
+      console.log(route);
       showPostFirebase((notes) => {
         container.innerHTML = '';
         container.appendChild(components.home(notes));
-      });
-      break;
-    case '#/myPost':
-      showPostUserFirebase(user, (notes1) => {
-        container.innerHTML = '';
-        container.appendChild(components.myPost(notes1));
-      });
-      break;
+      // });  
+      break; */
     case '#/profile': container.appendChild(components.profile());
       break;
     default: break;

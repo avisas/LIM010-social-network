@@ -1,7 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
 import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
-import { addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase } from '../controller-firebase/controller-likes.js';
+import {
+  addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
+} from '../controller-firebase/controller-likes.js';
 
 export const savePost = (event) => {
   event.preventDefault();
@@ -10,8 +12,8 @@ export const savePost = (event) => {
   const user = userCurrent();
   addPostFirebase(notePost, selectedPrivacidad, user)
     .then(() => {
-      alert('Publicacion ingresada');
-      // console.log('Document written with ID: ', docRef.id);
+      // alert('Publicacion ingresada');
+      console.log('Document written with ID: ');
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });
@@ -110,7 +112,7 @@ export const showLikePost = (list, id) => {
           buttonDislike.classList.remove('hide');
         }
       });
-    });
+    }); 
 };
 
 export const deleteLikePost = (postId) => {
