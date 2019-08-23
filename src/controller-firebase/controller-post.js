@@ -34,7 +34,8 @@ export const showPostFirebase = (callback) => {
   });
 };
 
-export const showPostUserFirebase = (user, callback) => {
+export const showPostUserFirebase = (callback) => {
+  const user = userCurrent();
   return dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc')
     .get()
     .then((querySnapshot) => {
