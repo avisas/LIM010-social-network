@@ -29,14 +29,15 @@ export default () => {
 
     updateProfile(newName, newEmail).then(() => {
       // Update successful.
-      window.location.hash = '#/codeMeet';
+      console.log('Datos cambiados');
+      window.location.hash = '#/home';
     });
   });
 
   const returnHome = profile.querySelector('#button-return');
   returnHome.addEventListener('click', (event) => {
     event.preventDefault();
-    window.location.hash = '#/codeMeet';
+    window.location.hash = '#/home';
   });
 
   return profile;

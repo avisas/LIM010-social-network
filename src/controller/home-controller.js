@@ -26,5 +26,8 @@ export const changeViewToProfile = () => {
   window.location.hash = '#/profile';
 };
 export const changeViewToMyPosts = () => {
-  window.location.hash = '#/myPost';
+ document.location.hash = '#/myPost';
+};
+export const changeViewToHome = () => {
+  window.location.hash = '#/home';
 };
