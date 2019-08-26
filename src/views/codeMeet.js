@@ -1,11 +1,10 @@
+/* eslint-disable import/no-unresolved */
 /* eslint-disable no-tabs */
 /* eslint-disable import/no-cycle */
 
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { home } from './home-view.js';
-import { showPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
-
+// eslint-disable-next-line import/newline-after-import
+import { allNotes, myPostNotes } from '../controller/post-controller.js';
 export default () => {
   const headerDiv = document.createElement('div');
   const headerContent = `
@@ -15,7 +14,7 @@ export default () => {
     <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
 			<ul id="show-hamb" class="hide list-menu">
 				<li><a id="user-name">User</a></li>
-				<li><a id="homePag">Home</a></li>
+				<li><a id="homePag" >Home</a></li>
 				<li><a id="setting">Setting</a></li>
 				<li><a id="signOut">Log Out</a></li>
 			</ul>
@@ -25,7 +24,7 @@ export default () => {
       <div id="user-perfil">
         <img class="img-profile" src="img/banner03.jpg">
         <div>
-          ${userCurrent().photoURL !== null ? `<img src="${userCurrent().photoURL}">` : '<img src="">'}
+        <img id="user-photo">
           <h2>
         </div>
       </div>
@@ -39,31 +38,41 @@ export default () => {
   const btnSignOut = headerDiv.querySelector('#signOut');
   const settingUser = headerDiv.querySelector('#setting');
   const btnMyPost = headerDiv.querySelector('#user-name');
-  
-  const contenPost = headerDiv.querySelector('#content-post');
+  // const contenPost = headerDiv.querySelector('#content-post');
   const homePag = headerDiv.querySelector('#homePag');
+  const divPhotoUser = headerDiv.querySelector('#user-photo');
 
-  showPostFirebase((notes) => {
+  /* showPostFirebase((notes) => {
     contenPost.innerHTML = '';
     contenPost.appendChild(home(notes));
-  });
+  }); */
 
-  homePag.addEventListener('click', () => {
+  /*  homePag.addEventListener('click', () => {
     showPostFirebase((notes) => {
       contenPost.innerHTML = '';
       contenPost.appendChild(home(notes));
     });
+  }); */
+
+  /*  btnMyPost.addEventListener('click', () => {
+    showPostUserFirebase((notes) => {
+      contenPost.innerHTML = '';
+      contenPost.appendChild(myPost(notes));
+    });
+  }); */
+
+  allNotes(headerDiv);
+  homePag.addEventListener('click', () => {
+    allNotes(headerDiv);
   });
 
   btnMyPost.addEventListener('click', () => {
-    showPostUserFirebase((notes) => {
-      contenPost.innerHTML = '';
-      contenPost.appendChild(home(notes));
-    });
+    myPostNotes(headerDiv);
   });
 
   btnSignOut.addEventListener('click', signOutUser);
-  recoverUserName(btnMyPost);
+
+  recoverUserName(btnMyPost, divPhotoUser);
 
   settingUser.addEventListener('click', changeViewToProfile);
 

@@ -1,9 +1,11 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase } from '../controller-firebase/controller-post.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
 } from '../controller-firebase/controller-likes.js';
+import { home } from '../views/home-view.js';
+import { myPost } from '../views/myPost-view.js';
 
 export const savePost = (event) => {
   event.preventDefault();
@@ -112,7 +114,7 @@ export const showLikePost = (list, id) => {
           buttonDislike.classList.remove('hide');
         }
       });
-    }); 
+    });
 };
 
 export const deleteLikePost = (postId) => {
@@ -136,4 +138,19 @@ export const addLike = (postId) => {
       buttonDislike.classList.remove('hide');
       buttonLike.classList.add('hide');
     });
+};
+export const allNotes = (content) => {
+  const contentPost = content.querySelector('#content-post');
+  showPostFirebase((notes) => {
+    contentPost.innerHTML = '';
+    contentPost.appendChild(home(notes));
+  });
+};
+
+export const myPostNotes = (content1) => {
+  const contentPost = content1.querySelector('#content-post');
+  showPostUserFirebase((myPostnotes) => {
+    contentPost.innerHTML = '';
+    contentPost.appendChild(myPost(myPostnotes));
+  });
 };
