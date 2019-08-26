@@ -277,12 +277,12 @@ p{
   margin: 10%;
 }
 .user-perfil{
-  height: auto;
   border: 2px solid #7c817e;
   border-radius: 5px;
   padding: 2%;
   margin-bottom: 5%;
-  margin-top: 5%;
+  height: 70%;
+  margin-top: 0.7%;
 }
 /*.circle-img{
   height: 150px;
@@ -291,8 +291,14 @@ p{
   border-radius: 50%;
   display: inline-block;
 }*/
+.user-photo{
+  border-radius: 50%;
+}
 .img-user{
   height: 200px;
+}
+.btn-privacidad{
+  margin-top: 3%;
 }
 .form-profile{
   display: flex;

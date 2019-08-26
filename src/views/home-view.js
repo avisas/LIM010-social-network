@@ -1,3 +1,4 @@
+/* eslint-disable import/named */
 /* eslint-disable import/no-cycle */
 // eslint-disable-next-line object-curly-newline
 import { savePost } from '../controller/post-controller.js';

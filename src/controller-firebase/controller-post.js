@@ -1,6 +1,5 @@
 /* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
-import { userCurrent } from './controller-authentication.js';
 
 export const addPostFirebase = (notePost, selectPrivacidad, user) => {
   return dataBase.collection('post').add({
@@ -35,7 +34,7 @@ export const showPostFirebase = (callback) => {
 };
 
 export const showPostUserFirebase = (callback) => {
-  firebase.auth().onAuthStateChanged(user => dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc')
+  return firebase.auth().onAuthStateChanged(user => dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc')
     .get()
     .then((querySnapshot) => {
       const data = [];

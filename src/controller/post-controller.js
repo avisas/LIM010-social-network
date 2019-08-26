@@ -14,8 +14,8 @@ export const savePost = (event) => {
   const user = userCurrent();
   addPostFirebase(notePost, selectedPrivacidad, user)
     .then(() => {
-      // alert('Publicacion ingresada');
-      console.log('Document written with ID: ');
+      alert('Publicacion ingresada');
+      // console.log('Document written with ID: ', docRef.id);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });
@@ -37,6 +37,7 @@ export const saveComment = (postId) => {
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
+          // console.log('Document written with ID: ', docRef.id);
     }).catch((error) => {
       console.error('Error adding document: ', error);
     });

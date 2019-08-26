@@ -12,7 +12,7 @@ export const listNotes = (objNote) => {
   liElemnt.innerHTML = `
       <div class="div-post">
         <div>
-          <span>${objNote.userName}</span>
+          <span>Publicado por: ${objNote.userName}</span>
         </div>
         <hr>
         <div class="middle-post">
@@ -74,7 +74,7 @@ export const listNotes = (objNote) => {
 
   liElemnt.querySelector(`#dislike-${objNote.id}`)
     .addEventListener('click', () => deleteLikePost(objNote.id));
-  
+
   liElemnt.querySelector(`#comment-${objNote.id}`)
     .addEventListener('click', () => saveComment(objNote.id));
 
