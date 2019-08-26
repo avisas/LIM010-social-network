@@ -10,18 +10,23 @@ export const changeView = (route) => {
       break;
     case '#/': container.appendChild(components.login());
       break;
-    case '#/myPost':
-      showPostUserFirebase((notes1) => {
-        container.innerHTML = '';
-        container.appendChild(components.myPost(notes1));
-      });
-      break;
     case '#/register': container.appendChild(components.register());
       break;
+
+    case '#/codeMeet': container.appendChild(components.codeMeet());
+      break;
+
     case '#/home':
       showPostFirebase((notes) => {
         container.innerHTML = '';
         container.appendChild(components.home(notes));
+      });
+      break;
+
+    case '#/myPost':
+      showPostUserFirebase((notes) => {
+        container.innerHTML = '';
+        container.appendChild(components.myPost(notes));
       });
       break;
 

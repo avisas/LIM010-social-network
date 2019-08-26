@@ -1,15 +1,18 @@
 import { signOutLogin } from '../controller-firebase/controller-authentication.js';
 
-export const recoverUserName = (userName) => {
+export const recoverUserName = (userName, userProfileName, UserPhoto) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const displayName = `<span class="icon-user"></span>${user.displayName}`;
-      // let userPhoto = user.photoURL;
+      const displayUserName = user.displayName;
+      const userPhoto = user.photoURL;
       const userEmail = user.email;
       if (displayName === null) {
         userName.textContent = userEmail;
       } else {
         userName.innerHTML = displayName;
+        userProfileName.innerHTML = displayUserName;
+        UserPhoto.src = userPhoto;
       }
     }
   });
