@@ -293,6 +293,8 @@ p{
 }*/
 .user-photo{
   border-radius: 50%;
+  height: 70px;
+
 }
 .img-user{
   height: 200px;
