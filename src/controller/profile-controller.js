@@ -10,14 +10,15 @@ export const updateUserName = (user, newName) => user.updateProfile({
   // console.log(error);
 });
 
-
-export const getData = (name, email) => {
+export const getData = (name, email, job, description) => {
   const user = userCurrent();
-  /* dataBase.collection('users').doc(user.uid).get().then((doc) => {
+  dataBase.collection('users').doc(user.uid).get().then((doc) => {
     if (doc.exists) {
       // console.log('Document data:', doc.data().name);
       name.value = doc.data().name;
       email.value = doc.data().email;
+      job.value = doc.data().job;
+      description.value = doc.data().description;
     } else {
       // doc.data() will be undefined in this case
       // console.log('No such document!');
@@ -25,21 +26,25 @@ export const getData = (name, email) => {
   })
     .catch(() => {
       // console.log('Error getting document:', error);
-    }); */
-  name.value = user.displayName;
-  email.value = user.email;
+    }); 
+  // name.value = user.displayName;
+  // email.value = user.email;
 };
 
 
-export const updateProfile = (nameUser, emailUser) => {
+export const updateProfile = (nameUser, emailUser, job, description) => {
   const user = userCurrent();
   const userProfile = dataBase.collection('users').doc(user.uid);
   user.updateProfile({
     displayName: nameUser,
+
   });
+
   return userProfile.update({
     name: nameUser,
     email: emailUser,
+    job: job,
+    description: description,
   }).then(() => {
     // const user = userCurrent();
     // console.log('Document successfully updated!');
@@ -49,3 +54,22 @@ export const updateProfile = (nameUser, emailUser) => {
     // console.error('Error updating document: ', error);
   });
 };
+
+export const recoverDataProfile = (textJob, textDescription) => {
+  const user = userCurrent();
+  dataBase.collection('users').doc(user.uid).get().then((doc) => {
+    if (doc.exists) {
+      console.log(doc.data().job);
+      console.log(doc.data().description);
+
+      textJob.innerHTML = doc.data().job;
+      textDescription.innerHTML = doc.data().description;
+    } else {
+      // doc.data() will be undefined in this case
+      // console.log('No such document!');
+    }
+  })
+    .catch(() => {
+      // console.log('Error getting document:', error);
+    }); 
+}

@@ -8,7 +8,7 @@ export const home = (notes) => {
   const homeDiv = document.createElement('div');
   homeDiv.innerHTML = `
         <div id="form-save" class="div-post">
-          <form id="form-publication" maxlength=50 required>
+          <form id="form-publication" class="padding" maxlength=50 required>
             <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
             <select id="privacidad" class="btn-select" name="select">
               <option value="publico" selected>Público</option> 

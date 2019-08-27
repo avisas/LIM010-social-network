@@ -11,7 +11,7 @@ header{
   justify-content: space-between;
   align-items: center;
   padding: 10px 10%;
-  background-color: #f0ab00;
+  background-color: #FAD000;
   font-family: 'Ubuntu';
 }
 body{
@@ -171,6 +171,11 @@ p{
   padding: 7px 20px 7px 20px
 }
 
+.textarea{
+  resize: none;
+  background-color: white;
+}
+
 .btn-select{
   align-self: start;
   margin-top: 3px;
@@ -189,7 +194,7 @@ p{
 }
 
 .heart{
-  height: 30px;
+  height: 20px;
 }
 .fa-eye:before {
   content: "\f06e";
@@ -199,7 +204,9 @@ p{
   /* position: relative; */
   /* z-index: 2; */
 }
-
+.margin-left{
+  margin-left: 5%;
+}
 .icon-exit{
   cursor: pointer;
 }
@@ -240,14 +247,16 @@ p{
 }
 .div-post {
   height: auto;
-  border: 2px solid #4231B5;
+  border: 2px solid #009fc6;
   border-radius: 5px;
-  padding: 2%;
   margin: 2%;
   font-family: 'Ubuntu';
 
 }
-
+.user-publicated{
+  background-color: #009fc6;
+  color: white;
+}
 .border-post{
   border: 2px solid #7c817e; 
 }
@@ -308,10 +317,6 @@ p{
   align-items: center;
 
 }
-hr{
-  border: 2px solid #795FFD;;
-  margin: 2%;
-}
 .img-avatar{
   height: 100px;
 }
@@ -325,6 +330,20 @@ hr{
 
 .show {
   display: block;
+}
+.flex-name-post{
+  display: flex;
+  justify-content: space-between;
+}
+.delete{
+  height: 20px;
+}
+.padding{
+  padding: 2%;
+}
+
+.margin{
+  margin: 2%;
 }
 @media screen and (min-width: 764px) {
 html, body {

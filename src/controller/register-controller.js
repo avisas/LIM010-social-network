@@ -2,14 +2,17 @@
 import { dataBase } from '../main.js';
 import { userCurrent, createUser } from '../controller-firebase/controller-authentication.js';
 
-const createProfile = (id, name, email) => {
+const createProfile = (id, nameUser, emailUser) => {
   dataBase.collection('users').doc(id).set({
-    name, email,
+    name: nameUser, 
+    email: emailUser,
+    job: '',
+    description: '',
   });
   const user = userCurrent();
 
   user.updateProfile({
-    displayName: name,
+    displayName: nameUser,
   });
 };
 

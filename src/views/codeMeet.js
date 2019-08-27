@@ -4,8 +4,9 @@
 /* eslint-disable no-tabs */
 /* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
-// eslint-disable-next-line import/newline-after-import
 import { allNotes, myPostNotes } from '../controller/post-controller.js';
+import { recoverDataProfile } from '../controller/profile-controller.js';
+
 export default () => {
   const headerDiv = document.createElement('div');
   const headerContent = `
@@ -28,6 +29,8 @@ export default () => {
         <div class="flex">
         <img id="user-photo" class="user-photo">
         <h2 id="profile-name"></h2>
+        <p id="job"></p>
+        <p id="description"></p>
         </div>
       </div>
       <div id="content-post">
@@ -43,6 +46,8 @@ export default () => {
   const profileName = headerDiv.querySelector('#profile-name');
   const homePag = headerDiv.querySelector('#homePag');
   const divPhotoUser = headerDiv.querySelector('#user-photo');
+  const job = headerDiv.querySelector('#job');
+  const description = headerDiv.querySelector('#description');
 
   allNotes(headerDiv);
   homePag.addEventListener('click', () => {
@@ -56,7 +61,9 @@ export default () => {
   btnSignOut.addEventListener('click', signOutUser);
 
   recoverUserName(btnMyPost, profileName, divPhotoUser);
-
+  console.log(job);
+  console.log(description);
+  recoverDataProfile(job, description)
   settingUser.addEventListener('click', changeViewToProfile);
 
   const HambMenu = headerDiv.querySelector('#hamb-menu');
@@ -76,3 +83,4 @@ export default () => {
   });
   return headerDiv;
 };
+

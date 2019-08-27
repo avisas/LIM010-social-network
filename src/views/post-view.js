@@ -11,49 +11,34 @@ export const listNotes = (objNote) => {
   liElemnt.classList.add('li-child');
   liElemnt.innerHTML = `
       <div class="div-post">
-        <div>
+        <div class="user-publicated padding flex-name-post">
           <span>Publicado por: ${objNote.userName}</span>
+          ${userCurrent().uid === objNote.user ? `<span><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i><span>` :
+          `<span class="hide"><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i></span>`}
         </div>
-        <hr>
         <div class="middle-post">
-          <textarea id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
-          <select id="selectPriv-${objNote.id}" class="btn-privacidad" name="select" disabled>
+          <textarea class="textarea margin padding" id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
+          <select id="selectPriv-${objNote.id}" class="btn-privacidad margin" name="select" disabled>
           ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>  
             <option value="publico">Público</option>` : `<option value="privado">Privado</option>  
             <option value="publico" selected>Público</option> `}
           </select>
-          <hr>
-          <span>${objNote.timePost}</span>
+          <span class="margin">${objNote.timePost}</span>
         </div>
-        <div class="botom-post">
-        ${userCurrent().uid === objNote.user ? `<a class="mr-mitad" id="delete-${objNote.id}"> <i>Delete</i>
-          </a>
-          </span>
-          <a class="mr-mitad" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
-          <i>Edit</i>
-          </a>
-          <a class="mr-mitad hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
-          <i>Guardar</i>
-          </a>
-          ` : `<a class="hide mr-mitad" id="delete-${objNote.id}">
-          <i>Delete</i>
-          </a>
-          </span>
-          <a class="hide mr-mitad" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
-          <i>Edit</i>
-          </a> 
-          <a class="mr-mitad hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}">
-          <i>Guardar</i>
-          </a>`}
-          
+        <div class="botom-post padding">
           <a class="mr-mitad" id="like-${objNote.id}" data-post="${objNote.id}">
-          <img class="heart" src="../src/img/corazon-vacio.png">
+            <img class="heart" src="../src/img/corazon-vacio.png">
           </a>
           <a class="hide mr-mitad" id="dislike-${objNote.id}" data-post="${objNote.id}">
-          <img class="heart" src="../src/img/corazon.png">
+            <img class="heart" src="../src/img/corazon.png">
           </a>
-          <a id="counter-${objNote.id}">
-          </a>
+          <a id="counter-${objNote.id}"></a>
+          ${userCurrent().uid === objNote.user ? `
+            <span class="hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-save"></i></span>
+            <span class="margin-left" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-edit"></i><span>
+            ` : `
+            <span class="hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-save"></i></span>
+            <span class="margin-left hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-edit"></i><span>`}
         </div>
         
         <form id="form-publication" maxlength=50 class="flex-form" required>
