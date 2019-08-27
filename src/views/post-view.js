@@ -34,10 +34,10 @@ export const listNotes = (objNote) => {
           </a>
           <a id="counter-${objNote.id}"></a>
           ${userCurrent().uid === objNote.user ? `
-            <span class="hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-save"></i></span>
+            <span class="margin-left hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-save"></i></span>
             <span class="margin-left" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-edit"></i><span>
             ` : `
-            <span class="hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-save"></i></span>
+            <span class="margin-left hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-save"></i></span>
             <span class="margin-left hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="far fa-edit"></i><span>`}
         </div>
         
