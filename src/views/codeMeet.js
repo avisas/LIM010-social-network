@@ -25,7 +25,7 @@ export default () => {
   
 	<main>
       <div id="user-perfil" class="user-perfil">
-        <img class="img-profile" src="img/banner03.jpg">
+        <img class="img-profile" src="https://designmodo.com/wp-content/uploads/2015/02/coding-page-illustration-page-header.png">
         <div class="flex">
         <img id="user-photo" class="user-photo">
         <h2 id="profile-name"></h2>

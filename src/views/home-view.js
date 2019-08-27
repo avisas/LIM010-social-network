@@ -10,11 +10,13 @@ export const home = (notes) => {
         <div id="form-save" class="div-post">
           <form id="form-publication" class="padding" maxlength=50 required>
             <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
-            <select id="privacidad" class="btn-select" name="select">
-              <option value="publico" selected>Público</option> 
-              <option value="privado">Privado</option>
-            </select>
-            <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
+            <div class="flex-bottom-form">
+              <select id="privacidad" class="btn-select" name="select">
+                <option value="publico" selected>Público</option> 
+                <option value="privado">Privado</option>
+              </select>
+              <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
+            </div>  
           </form> 
         </div>
         

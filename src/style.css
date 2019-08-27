@@ -231,7 +231,7 @@ p{
 }
 .btn-share{
   font-family: 'Patua One', cursive;
-  background-color: #5968a1;
+  background-color: #fa5457;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -330,6 +330,10 @@ p{
 
 .show {
   display: block;
+}
+.flex-bottom-form{
+  display: flex;
+  justify-content: space-between;
 }
 .flex-name-post{
   display: flex;
