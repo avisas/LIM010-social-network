@@ -43,7 +43,7 @@ export const listNotes = (objNote) => {
         </div>
         
         <form id="form-publication" maxlength=50 class="flex-form" required>
-          <textarea placeholder="¿Que quieres compartir?" id="commentario-${objNote.id}"></textarea>
+          <textarea placeholder="Escribe tu comentario" id="commentario-${objNote.id}" class="textarea-comment"></textarea>
           <span id="comment-${objNote.id}" data-post="${objNote.id}"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
         </form> 
         <section id="allComments-${objNote.id}"></section>

@@ -1,7 +1,9 @@
 import {
-  signIn, signInWithFacebook, signInWithGoogle, signOutLogin, userCurrent,
+  signIn, signInWithFacebook, signInWithGoogle, userCurrent,
 } from '../controller-firebase/controller-authentication.js';
-import {createProfile} from '../controller/register-controller.js'
+import { modalMessage } from './home-controller.js';
+// eslint-disable-next-line import/no-cycle
+import { createProfile } from './register-controller.js';
 
 export const loginFunction = (event) => {
   event.preventDefault();
@@ -10,6 +12,9 @@ export const loginFunction = (event) => {
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
     .then(() => {
+      const modalTitle = 'Bienvenida a Meet and Code';
+      const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+      modalMessage(modalTitle, modalContent);
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/codeMeet';
@@ -35,26 +40,44 @@ export const loginFunction = (event) => {
 export const signInFacebook = (event) => {
   event.preventDefault();
   const user = userCurrent();
+  let modalTitle;
+  let modalContent;
   signInWithFacebook().then(() => {
+    modalTitle = 'Bienvenida a Meet and Code';
+    modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalMessage(modalTitle, modalContent);
     window.location.hash = '#/codeMeet';
     createProfile(user.uid, user.displayName, user.email);
-  }).catch(() => {
+  }).catch((error) => {
+    const errorType = error.type;
+    if (errorType === 'OAuthException') {
+      const errorMessage = error.message;
+      modalTitle = 'Mensaje de Error';
+      modalContent = `Error adding document:${errorMessage}`;
+      modalMessage(modalTitle, modalContent);
+    }
+
     // Aqui va el error , leer manejo de errores de FB
   });
 };
 
 export const signInGoogle = (event) => {
   event.preventDefault();
-  const user=userCurrent();
-    signInWithGoogle().then(() => {
-      window.location.hash = '#/codeMeet';
-      createProfile(user.uid, user.displayName, user.email);
-    }).catch((error) => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/account-exists-with-different-credential') {
-        // alert('Es el mismo usuario');
-      }
-    });
+  const user = userCurrent();
+  signInWithGoogle().then(() => {
+    const modalTitle = 'Bienvenida a Meet and Code';
+    const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalMessage(modalTitle, modalContent);
+    window.location.hash = '#/codeMeet';
+    createProfile(user.uid, user.displayName, user.email);
+  }).catch((error) => {
+    const errorCode = error.code;
+    if (errorCode === 'auth/account-exists-with-different-credential') {
+      const modalTitle = 'Mensaje de Error';
+      const modalContent = 'Es el mismo usuario';
+      modalMessage(modalTitle, modalContent);
+    }
+  });
 };
 
 export const showPassword = () => {

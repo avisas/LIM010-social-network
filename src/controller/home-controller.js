@@ -37,3 +37,22 @@ export const changeViewToMyPosts = () => {
 export const changeViewToHome = () => {
   window.location.hash = '#/home';
 };
+
+export const modalMessage = (modalTitleTex, modalContent) => {
+  const modal = document.getElementById('miModal');
+  const flex = document.getElementById('flex-modal');
+  const close = document.getElementById('close');
+  const modalTitle = document.getElementById('modal-title');
+  const textModal = document.getElementById('text-modal');
+  modal.classList.remove('hide');
+  modalTitle.innerHTML = modalTitleTex;
+  textModal.innerHTML = modalContent;
+  close.addEventListener('click', () => {
+    modal.classList.add('hide');
+  });
+  window.addEventListener('click', (e) => {
+    if (e.target === flex) {
+      modal.classList.add('hide');
+    }
+  });
+};

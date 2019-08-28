@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One|Ubuntu&display=swap');
 *{
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 main{
   padding:20px;
@@ -171,6 +172,13 @@ p{
   border: 1px solid #a9a9a9;
   padding: 7px 20px 7px 20px
 }
+.textarea-comment{
+  width: -webkit-fill-available;
+  margin: 3%;
+  resize: none;
+  border: 1.1px solid #a9a9a9;
+  padding: 7px 20px 7px 20px
+}
 
 .textarea{
   resize: none;
@@ -196,6 +204,7 @@ p{
 
 .heart{
   height: 20px;
+  cursor: pointer;
 }
 .fa-eye:before {
   content: "\f06e";
@@ -234,8 +243,8 @@ p{
   font-family: 'Patua One', cursive;
   background-color: #fa5457;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 10px 20px;
+  /* margin: 8px 0; */
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -270,6 +279,10 @@ p{
 }
 .botom-post{
   display: flex;
+  background-color: #c7e4eb;
+  border-color: rgb(0, 159, 198);
+  border-style: solid;
+  border-width: 2px 0 2px 0;
 }
 .mr-mitad{
   margin-right: 0.5rem;
@@ -461,10 +474,10 @@ header nav ul li {
   display: flex !important;
 }
  
-  nav ul {
-    display: flex;
-    justify-content: space-around;
-  }
+nav ul {
+  display: flex;
+  justify-content: space-around;
+}
   /* nav li{
     flex: 1 1 0; 
   } */
@@ -473,4 +486,59 @@ header nav ul li {
     display: block;
     margin-bottom: 10%;
   }
+  .contenido-modal{
+    width: 70%;
+  }
 }
+
+.flex-modal{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.modal{
+	position: fixed;
+	z-index: 1;
+	overflow: auto;
+	left:0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.497);
+}
+.contenido-modal{
+	position: relative;
+	background-color: #fefefe;
+	margin: auto;
+	width: 30%;
+	box-shadow: 0 0 6px 0 rgb(0, 0, 0, .4);
+	animation-name: modal;
+  /* animation-duration: 1s; */
+  margin-top: 2%;
+}
+@keyframes modal{
+	from{top:-330px; opacity: 0;}
+	to{top:0; opacity: 1;}
+}
+.close{
+	color:#f2f2f2;
+	font-size: 30px;
+	font-weight: bold;
+}
+.close:hover{
+	color: #7f8c8d;
+	text-decoration: none;
+	cursor: pointer;
+}
+.modal-header, .modal-footer{
+	padding: 8px 16px;
+	background: #fa5457;
+	color:#f2f2f2;
+}
+.text-modal{text-align: justfy;}
+.modal-body{
+	padding: 20px 16px;
+}
+
