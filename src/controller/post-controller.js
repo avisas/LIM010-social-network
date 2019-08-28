@@ -13,8 +13,6 @@ export const savePost = (event) => {
   const selectedPrivacidad = document.querySelector('#privacidad').value;
   const fileButton = document.querySelector('#fileButton');
   const uploader = document.querySelector('#uploader');
-
-  console.log(fileButton.files[0]);
   const user = userCurrent();
   if (fileButton.files[0] == undefined) {
     addPostFirebase(notePost, selectedPrivacidad, user,'')

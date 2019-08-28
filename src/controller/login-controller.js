@@ -1,6 +1,7 @@
 import {
   signIn, signInWithFacebook, signInWithGoogle, signOutLogin, userCurrent,
 } from '../controller-firebase/controller-authentication.js';
+import {createProfile} from '../controller/register-controller.js'
 
 export const loginFunction = (event) => {
   event.preventDefault();
@@ -33,8 +34,10 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
+  const user = userCurrent();
   signInWithFacebook().then(() => {
     window.location.hash = '#/codeMeet';
+    createProfile(user.uid, user.displayName, user.email);
   }).catch(() => {
     // Aqui va el error , leer manejo de errores de FB
   });
@@ -42,18 +45,16 @@ export const signInFacebook = (event) => {
 
 export const signInGoogle = (event) => {
   event.preventDefault();
-  if (!userCurrent()) {
+  const user=userCurrent();
     signInWithGoogle().then(() => {
       window.location.hash = '#/codeMeet';
+      createProfile(user.uid, user.displayName, user.email);
     }).catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/account-exists-with-different-credential') {
         // alert('Es el mismo usuario');
       }
     });
-  } else {
-    signOutLogin();
-  }
 };
 
 export const showPassword = () => {

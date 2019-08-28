@@ -37,7 +37,7 @@ export default () => {
         </div>  
       </div>
       </div>
-      <div id="content-post">
+      <div class="content-post" id="content-post">
         
       </div>
   </main>-

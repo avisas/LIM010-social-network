@@ -15,7 +15,7 @@ export const home = (notes) => {
                 <option value="publico" selected>Público</option> 
                 <option value="privado">Privado</option>
               </select>
-              <span id="image"><i class="far fa-image"></i></span>
+              <span class="circle-img" id="image"><i class="far fa-image"></i></span>
               <input type="file" class="hide" value="upload" id="fileButton"/>
               <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
             </div>  
