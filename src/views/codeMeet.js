@@ -26,14 +26,18 @@ export default () => {
 	<main>
       <div id="user-perfil" class="user-perfil">
         <img class="img-profile" src="https://designmodo.com/wp-content/uploads/2015/02/coding-page-illustration-page-header.png">
+        <div>
         <div class="flex">
-        <img id="user-photo" class="user-photo">
-        <h2 id="profile-name"></h2>
-        <p id="job"></p>
-        <p id="description"></p>
-        </div>
+          <img id="user-photo" class="user-photo">
+          <h2 id="profile-name"></h2>
+        </div>  
+        <div>
+          <p id="job"></p>
+          <p id="description"></p>
+        </div>  
       </div>
-      <div id="content-post">
+      </div>
+      <div class="content-post" id="content-post">
         
       </div>
   </main>-

@@ -1,7 +1,9 @@
 import {
-  signIn, signInWithFacebook, signInWithGoogle, signOutLogin, userCurrent,
+  signIn, signInWithFacebook, signInWithGoogle, userCurrent,
 } from '../controller-firebase/controller-authentication.js';
 import { modalMessage } from './home-controller.js';
+// eslint-disable-next-line import/no-cycle
+import { createProfile } from './register-controller.js';
 
 export const loginFunction = (event) => {
   event.preventDefault();
@@ -37,40 +39,45 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
-
-
+  const user = userCurrent();
+  let modalTitle;
+  let modalContent;
   signInWithFacebook().then(() => {
-    const modalTitle = 'Bienvenida a Meet and Code';
-    const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalTitle = 'Bienvenida a Meet and Code';
+    modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
     modalMessage(modalTitle, modalContent);
     window.location.hash = '#/codeMeet';
-  }).catch(() => {
-    const modalTitle = 'Mensaje de Error';
-    const modalContent = 'Error al Iniciar Sesión';
-    modalMessage(modalTitle, modalContent);
+    createProfile(user.uid, user.displayName, user.email);
+  }).catch((error) => {
+    const errorType = error.type;
+    if (errorType === 'OAuthException') {
+      const errorMessage = error.message;
+      modalTitle = 'Mensaje de Error';
+      modalContent = `Error adding document:${errorMessage}`;
+      modalMessage(modalTitle, modalContent);
+    }
+
     // Aqui va el error , leer manejo de errores de FB
   });
 };
 
 export const signInGoogle = (event) => {
   event.preventDefault();
-  if (!userCurrent()) {
-    signInWithGoogle().then(() => {
-      const modalTitle = 'Bienvenida a Meet and Code';
-      const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+  const user = userCurrent();
+  signInWithGoogle().then(() => {
+    const modalTitle = 'Bienvenida a Meet and Code';
+    const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalMessage(modalTitle, modalContent);
+    window.location.hash = '#/codeMeet';
+    createProfile(user.uid, user.displayName, user.email);
+  }).catch((error) => {
+    const errorCode = error.code;
+    if (errorCode === 'auth/account-exists-with-different-credential') {
+      const modalTitle = 'Mensaje de Error';
+      const modalContent = 'Es el mismo usuario';
       modalMessage(modalTitle, modalContent);
-      window.location.hash = '#/codeMeet';
-    }).catch((error) => {
-      const errorCode = error.code;
-      if (errorCode === 'auth/account-exists-with-different-credential') {
-        const modalTitle = 'Mensaje de Error';
-        const modalContent = 'Es el mismo usuario';
-        modalMessage(modalTitle, modalContent);
-      }
-    });
-  } else {
-    signOutLogin();
-  }
+    }
+  });
 };
 
 export const showPassword = () => {

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase, uploadImage } from '../controller-firebase/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
 } from '../controller-firebase/controller-likes.js';
@@ -12,17 +12,25 @@ export const savePost = (event) => {
   event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const selectedPrivacidad = document.querySelector('#privacidad').value;
+  const fileButton = document.querySelector('#fileButton');
+  const uploader = document.querySelector('#uploader');
   const user = userCurrent();
-  addPostFirebase(notePost, selectedPrivacidad, user)
-    .then(() => {
-      const modalTitle = 'Nuevo Registro';
-      const modalContent = 'Publicación ingresada';
-      modalMessage(modalTitle, modalContent);
-    }).catch((error) => {
-      const modalTitle = 'Error Nuevo Registro';
-      const modalContent = `Error adding document:${error}`;
-      modalMessage(modalTitle, modalContent);
-    });
+
+  if (fileButton.files[0] === undefined) {
+    addPostFirebase(notePost, selectedPrivacidad, user, '')
+      .then(() => {
+        const modalTitle = 'Nuevo Registro';
+        const modalContent = 'Publicación ingresada';
+        modalMessage(modalTitle, modalContent);
+      });
+  } else {
+    // console.log(uploadImage(fileButton.files[0]));
+    uploadImage(fileButton.files[0], uploader)
+      .then(url => addPostFirebase(notePost, selectedPrivacidad, user, url));
+    const modalTitle = 'Nuevo Registro';
+    const modalContent = 'Publicación ingresada';
+    modalMessage(modalTitle, modalContent);
+  }
 };
 
 export const saveComment = (postId) => {

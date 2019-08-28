@@ -2,7 +2,7 @@
 import { dataBase } from '../main.js';
 import { userCurrent, createUser } from '../controller-firebase/controller-authentication.js';
 
-const createProfile = (id, nameUser, emailUser) => {
+export const createProfile = (id, nameUser, emailUser) => {
   dataBase.collection('users').doc(id).set({
     name: nameUser, 
     email: emailUser,
@@ -13,6 +13,12 @@ const createProfile = (id, nameUser, emailUser) => {
 
   user.updateProfile({
     displayName: nameUser,
+  })
+  .then(()=>{
+    console.log('usuario creado');
+  })
+  .catch((error) => {
+    console.log(error);
   });
 };
 

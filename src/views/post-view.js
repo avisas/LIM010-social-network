@@ -23,6 +23,7 @@ export const listNotes = (objNote) => {
             <option value="publico">Público</option>` : `<option value="privado">Privado</option>  
             <option value="publico" selected>Público</option> `}
           </select>
+          ${objNote.img !== '' ? `<img class="img-post" src="${objNote.img}">` : ``}
           <span class="margin">${objNote.timePost}</span>
         </div>
         <div class="botom-post padding">

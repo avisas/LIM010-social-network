@@ -25,6 +25,7 @@ h1{
 
 h2{
   font-size: 23px;
+  font-family: ubuntu;
 }
 
 header nav ul{
@@ -168,7 +169,7 @@ p{
   width: -webkit-fill-available;
   height: 100px;
   resize: none;
-  border: 1px solid #5AC39B;
+  border: 1px solid #a9a9a9;
   padding: 7px 20px 7px 20px
 }
 
@@ -222,7 +223,7 @@ p{
   width: -webkit-fill-available;
     height: 100px;
     resize: none;
-    border: 1px solid #5AC39B;
+    border: 1px solid #a9a9a9;
     padding: 7px 20px 7px 20px
 }
 .btn-select{
@@ -253,6 +254,9 @@ p{
   margin: 2%;
   font-family: 'Ubuntu';
 
+}
+.img-post{
+  width: 50%;
 }
 .user-publicated{
   background-color: #009fc6;
@@ -350,6 +354,16 @@ p{
 .margin{
   margin: 2%;
 }
+.circle-img{
+  width: 30px;
+  height: 30px;
+  border-radius: 150px;
+  background-color: #fa5457;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
 @media screen and (min-width: 764px) {
 html, body {
   height: 100%;
@@ -432,6 +446,18 @@ header nav ul li {
   border: none;
   outline: none;
  } 
+ .content-post{
+  width: 90vh;
+ }
+ .user-perfil{
+  border: 2px solid #7c817e;
+  border-radius: 5px;
+  padding: 2%;
+  margin-bottom: 5%;
+  height: 70%;
+  margin-top: 0.7%;
+  width: 50vh;
+}
 .list-menu{
   display: flex !important;
 }
@@ -443,13 +469,14 @@ nav ul {
   /* nav li{
     flex: 1 1 0; 
   } */
-.img-profile {
-  width: 500px;
-  display: block;
-}
-.contenido-modal{
-  width: 70%;
-}
+  .img-profile {
+    width: 100%;
+    display: block;
+    margin-bottom: 10%;
+  }
+  .contenido-modal{
+    width: 70%;
+  }
 }
 
 .flex-modal{
