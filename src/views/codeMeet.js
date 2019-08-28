@@ -83,4 +83,3 @@ export default () => {
   });
   return headerDiv;
 };
-

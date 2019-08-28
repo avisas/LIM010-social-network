@@ -29,7 +29,6 @@ export const home = (notes) => {
   notes.forEach((note) => {
     ul.appendChild(listNotes(note));
   });
-
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   btnComportirPost.addEventListener('click', savePost);

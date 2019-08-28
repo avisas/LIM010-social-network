@@ -6,6 +6,7 @@ import {
 } from '../controller-firebase/controller-likes.js';
 import { home } from '../views/home-view.js';
 import { myPost } from '../views/myPost-view.js';
+import { modalMessage } from './home-controller.js';
 
 export const savePost = (event) => {
   event.preventDefault();
@@ -14,60 +15,70 @@ export const savePost = (event) => {
   const user = userCurrent();
   addPostFirebase(notePost, selectedPrivacidad, user)
     .then(() => {
-      alert('Publicacion ingresada');
-      // console.log('Document written with ID: ', docRef.id);
+      const modalTitle = 'Nuevo Registro';
+      const modalContent = 'Publicación ingresada';
+      modalMessage(modalTitle, modalContent);
     }).catch((error) => {
-      console.error('Error adding document: ', error);
+      const modalTitle = 'Error Nuevo Registro';
+      const modalContent = `Error adding document:${error}`;
+      modalMessage(modalTitle, modalContent);
     });
 };
 
 export const saveComment = (postId) => {
-  event.preventDefault();
   const noteComment = document.querySelector(`#commentario-${postId}`).value;
   const user = userCurrent();
   addCommentFirebase(user, postId, noteComment)
     .then(() => {
-      alert('comentario ingresado');
-      // console.log('Document written with ID: ', docRef.id);
+      const modalTitle = 'Nuevo Comentario';
+      const modalContent = 'Comentario ingresado';
+      modalMessage(modalTitle, modalContent);
     }).catch((error) => {
-      console.error('Error adding document: ', error);
+      const modalTitle = 'Error Nuevo Comentario';
+      const modalContent = `Error adding document:${error}`;
+      modalMessage(modalTitle, modalContent);
     });
 };
 
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
-          // console.log('Document written with ID: ', docRef.id);
+      const modalTitle = 'Eliminar';
+      const modalContent = 'Publicación eliminada';
+      modalMessage(modalTitle, modalContent);
     }).catch((error) => {
-      console.error('Error adding document: ', error);
+      const modalTitle = 'Error Eliminar Publicación';
+      const modalContent = `Error adding document:${error}`;
+      modalMessage(modalTitle, modalContent);
     });
 };
 
 export const edit = (id) => {
   const textPost = document.querySelector(`#text-${id}`);
-  // const boton = document.querySelector('#edit-post');
   const selectPrivacity = document.querySelector(`#selectPriv-${id}`);
   const botonGuardar = document.querySelector(`#edit-${id}`);
-
   const boton = document.querySelector(`#save-post-${id}`);
 
   textPost.disabled = false;
   selectPrivacity.disabled = false;
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
-  // boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
     const note = textPost.value;
     const selectedPrivacidad = selectPrivacity.value;
     editPostFirebase(id, note, selectedPrivacidad)
       .then(() => {
+        const modalTitle = 'Editar Publicación';
+        const modalContent = 'Publicación editada';
+        modalMessage(modalTitle, modalContent);
         boton.classList.add('hide');
         botonGuardar.classList.remove('hide');
       })
-      .catch(() => {
-        // The document probably doesn't exist.
-        // console.error('Error updating document: ', error);
+      .catch((error) => {
+        const modalTitle = 'Error Editar Publicación';
+        const modalContent = `Error adding document:${error}`;
+        modalMessage(modalTitle, modalContent);
       });
   });
 };
@@ -77,23 +88,25 @@ export const editComment = (idComment, idPost) => {
   const textComment = document.querySelector(`#textcomment-${idComment}`);
   textComment.disabled = false;
   const boton = document.querySelector(`#savecomment-${idComment}`);
-  // const boton = document.querySelector(`#editco-${idPost}`);
   const botonEditar = document.querySelector(`#edit-${idComment}`);
 
   boton.classList.remove('hide');
   botonEditar.classList.add('hide');
-  // boton.value = 'Editar';
   boton.addEventListener('click', (e) => {
     e.preventDefault();
     const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
+        const modalTitle = 'Editar Comentario';
+        const modalContent = 'Comentario editado';
+        modalMessage(modalTitle, modalContent);
         boton.classList.add('hide');
         botonEditar.classList.remove('hide');
       })
-      .catch(() => {
-        // The document probably doesn't exist.
-        // console.error('Error updating document: ', error);
+      .catch((error) => {
+        const modalTitle = 'Error Editar Comentario';
+        const modalContent = `Error adding document:${error}`;
+        modalMessage(modalTitle, modalContent);
       });
   });
 };

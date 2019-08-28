@@ -1,6 +1,7 @@
 import {
   signIn, signInWithFacebook, signInWithGoogle, signOutLogin, userCurrent,
 } from '../controller-firebase/controller-authentication.js';
+import { modalMessage } from './home-controller.js';
 
 export const loginFunction = (event) => {
   event.preventDefault();
@@ -9,6 +10,9 @@ export const loginFunction = (event) => {
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
     .then(() => {
+      const modalTitle = 'Bienvenida a Meet and Code';
+      const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+      modalMessage(modalTitle, modalContent);
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/codeMeet';
@@ -33,9 +37,17 @@ export const loginFunction = (event) => {
 
 export const signInFacebook = (event) => {
   event.preventDefault();
+
+
   signInWithFacebook().then(() => {
+    const modalTitle = 'Bienvenida a Meet and Code';
+    const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalMessage(modalTitle, modalContent);
     window.location.hash = '#/codeMeet';
   }).catch(() => {
+    const modalTitle = 'Mensaje de Error';
+    const modalContent = 'Error al Iniciar Sesión';
+    modalMessage(modalTitle, modalContent);
     // Aqui va el error , leer manejo de errores de FB
   });
 };
@@ -44,11 +56,16 @@ export const signInGoogle = (event) => {
   event.preventDefault();
   if (!userCurrent()) {
     signInWithGoogle().then(() => {
+      const modalTitle = 'Bienvenida a Meet and Code';
+      const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+      modalMessage(modalTitle, modalContent);
       window.location.hash = '#/codeMeet';
     }).catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/account-exists-with-different-credential') {
-        // alert('Es el mismo usuario');
+        const modalTitle = 'Mensaje de Error';
+        const modalContent = 'Es el mismo usuario';
+        modalMessage(modalTitle, modalContent);
       }
     });
   } else {
