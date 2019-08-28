@@ -172,6 +172,13 @@ p{
   border: 1px solid #a9a9a9;
   padding: 7px 20px 7px 20px
 }
+.textarea-comment{
+  width: -webkit-fill-available;
+  margin: 3%;
+  resize: none;
+  border: 1.1px solid #a9a9a9;
+  padding: 7px 20px 7px 20px
+}
 
 .textarea{
   resize: none;
@@ -197,6 +204,7 @@ p{
 
 .heart{
   height: 20px;
+  cursor: pointer;
 }
 .fa-eye:before {
   content: "\f06e";
@@ -235,8 +243,8 @@ p{
   font-family: 'Patua One', cursive;
   background-color: #fa5457;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
+  padding: 10px 20px;
+  /* margin: 8px 0; */
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -271,6 +279,10 @@ p{
 }
 .botom-post{
   display: flex;
+  background-color: #c7e4eb;
+  border-color: rgb(0, 159, 198);
+  border-style: solid;
+  border-width: 2px 0 2px 0;
 }
 .mr-mitad{
   margin-right: 0.5rem;
