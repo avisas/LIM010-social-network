@@ -1,13 +1,14 @@
 /* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
 
-export const addPostFirebase = (notePost, selectPrivacidad, user) => {
+export const addPostFirebase = (notePost, selectPrivacidad, user, imgUrl) => {
   return dataBase.collection('post').add({
     notes: notePost,
     privacidad: selectPrivacidad,
     user: user.uid,
     userName: user.displayName,
     timePost: (new Date()).toGMTString(),
+    img: imgUrl,
   });
 };
 
@@ -44,3 +45,10 @@ export const showPostUserFirebase = (callback) => {
       callback(data);
     }));
 };
+
+export const uploadImage = (file) => {
+    // Create a storage reference
+    const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
+    return postImageRef.put(file)
+    .then(snapshot => snapshot.ref.getDownloadURL());
+}

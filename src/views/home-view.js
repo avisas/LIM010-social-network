@@ -15,6 +15,8 @@ export const home = (notes) => {
                 <option value="publico" selected>Público</option> 
                 <option value="privado">Privado</option>
               </select>
+              <span id="image"><i class="far fa-image"></i></span>
+              <input type="file" class="hide" value="upload" id="fileButton"/>
               <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
             </div>  
           </form> 
@@ -33,5 +35,14 @@ export const home = (notes) => {
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
 
   btnComportirPost.addEventListener('click', savePost);
+
+  const fileButton = homeDiv.querySelector('#fileButton');
+  const btnImg = homeDiv.querySelector('#image');
+  btnImg.addEventListener('click', () => {
+    fileButton.classList.remove('hide');
+    btnImg.classList.add('hide');
+  });
+
+
   return homeDiv;
 };

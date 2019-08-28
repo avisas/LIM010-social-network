@@ -56,20 +56,21 @@ export const updateProfile = (nameUser, emailUser, job, description) => {
 };
 
 export const recoverDataProfile = (textJob, textDescription) => {
-  const user = userCurrent();
-  dataBase.collection('users').doc(user.uid).get().then((doc) => {
-    if (doc.exists) {
-      console.log(doc.data().job);
-      console.log(doc.data().description);
-
-      textJob.innerHTML = doc.data().job;
-      textDescription.innerHTML = doc.data().description;
-    } else {
-      // doc.data() will be undefined in this case
-      // console.log('No such document!');
-    }
-  })
-    .catch(() => {
-      // console.log('Error getting document:', error);
-    }); 
+  firebase.auth().onAuthStateChanged((user) => {
+    dataBase.collection('users').doc(user.uid).get().then((doc) => {
+      if (doc.exists) {
+        console.log(doc.data().job);
+        console.log(doc.data().description);
+  
+        textJob.innerHTML = doc.data().job;
+        textDescription.innerHTML = doc.data().description;
+      } else {
+        // doc.data() will be undefined in this case
+        // console.log('No such document!');
+      }
+    })
+      .catch(() => {
+        // console.log('Error getting document:', error);
+      }); 
+  });
 }

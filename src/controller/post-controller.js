@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase } from '../controller-firebase/controller-post.js';
+import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase, uploadImage } from '../controller-firebase/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
 } from '../controller-firebase/controller-likes.js';
@@ -11,14 +11,18 @@ export const savePost = (event) => {
   event.preventDefault();
   const notePost = document.querySelector('#publication').value;
   const selectedPrivacidad = document.querySelector('#privacidad').value;
+  const fileButton = document.querySelector('#fileButton');
+  const uploader = document.querySelector('#uploader');
+
+  console.log(fileButton.files[0]);
   const user = userCurrent();
-  addPostFirebase(notePost, selectedPrivacidad, user)
-    .then(() => {
-      alert('Publicacion ingresada');
-      // console.log('Document written with ID: ', docRef.id);
-    }).catch((error) => {
-      console.error('Error adding document: ', error);
-    });
+  if (fileButton.files[0] == undefined) {
+    addPostFirebase(notePost, selectedPrivacidad, user,'')
+  } else {
+    console.log(uploadImage(fileButton.files[0]));
+    uploadImage(fileButton.files[0], uploader)
+      .then((url) => addPostFirebase(notePost, selectedPrivacidad, user,url))
+  }
 };
 
 export const saveComment = (postId) => {
