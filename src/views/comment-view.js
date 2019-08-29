@@ -6,31 +6,22 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 export const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
   liElemnt.classList.add('li-child');
+  liElemnt.classList.add('div-comment');
+  liElemnt.classList.add('margin');
   liElemnt.innerHTML = `
-      <span class="">
-        <span>${objNote.nameUser}</span>
-        <textarea disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
-      </span>
-      ${userCurrent().uid === objNote.idUser ? `
-        <a class="mr-mitad" id="delete-${objNote.id}">
-          <i>Delete</i>
-        </a>
-        <a class="hide mr-mitad" id="savecomment-${objNote.id}">
-          <i>Guardar</i>
-        </a>
-        <a class="mr-mitad" id="edit-${objNote.id}">
-          <i>Edit</i>
-        </a> ` : `
-        <a class="hide mr-mitad" id="delete-${objNote.id}">
-          <i>Delete</i>
-        </a>
-        <a class="hide mr-mitad" id="savecomment-${objNote.id}">
-          <i>Guardar</i>
-        </a>
-        <a class="hide mr-mitad" id="edit-${objNote.id}">
-          <i>Edit</i>
-        </a> 
-      `}
+    <div class="user-publicated padding flex-name-post">
+        <span>Comentado por: ${objNote.nameUser}</span>
+        ${userCurrent().uid === objNote.idUser ? `
+        <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+        <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+        <span class="" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
+         ` : `
+         <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+         <span class="hide" id="edit-${objNote.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+         <span class="hide" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
+          `}
+    </div>
+    <textarea class="textarea padding margin" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
     `;
 
   liElemnt.querySelector(`#delete-${objNote.id}`)
@@ -38,6 +29,5 @@ export const listComment = (objNote) => {
 
   liElemnt.querySelector(`#edit-${objNote.id}`)
     .addEventListener('click', () => editComment(objNote.id, objNote.idPost));
-
   return liElemnt;
 };
