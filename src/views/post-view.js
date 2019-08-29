@@ -43,9 +43,9 @@ export const listNotes = (objNote) => {
             <span class="margin-left hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>`}
         </div>
         <div id="comments-section" class="hide">
-          <form id="form-publication" maxlength=50 class="flex-form" required>
+          <form id="form-publication" maxlength=50 class="form-comment" required>
             <textarea placeholder="Escribe tu comentario" id="commentario-${objNote.id}" class="textarea-comment"></textarea>
-            <span id="comment-${objNote.id}" data-post="${objNote.id}"><i class="fa fa-paper-plane btn-comment" aria-hidden="true"></i></span>
+            <span id="comment-${objNote.id}" data-post="${objNote.id}" class="margin"><i class="fa fa-paper-plane btn-comment" aria-hidden="true"></i></span>
           </form> 
           <section id="allComments-${objNote.id}"></section>
         </div>
@@ -78,7 +78,6 @@ export const listNotes = (objNote) => {
     } else {
       commentSection.classList.add('hide');
     }
-
   });
 
   getAllComments(objNote.id, (coments) => {
