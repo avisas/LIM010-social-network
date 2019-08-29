@@ -14,7 +14,8 @@ export const listNotes = (objNote) => {
         <div class="user-publicated padding flex-name-post">
         
           <span>Publicado por: ${objNote.userName}</span>
-          ${userCurrent().uid === objNote.user ? `<span class="only-flex">${objNote.timePost}</span>
+          <span class="only-flex">${objNote.timePost}</span>
+          ${userCurrent().uid === objNote.user ? `
           
           <span><i class="fa fa-trash btn-delete" id="delete-${objNote.id}" aria-hidden="true"></i><span>` :
       `<span class="hide"><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i></span>`}
