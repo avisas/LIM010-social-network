@@ -6,12 +6,16 @@ export default () => {
   const profile = document.createElement('div');
   profile.className = 'profile-div';
   const profileContent = `   
-    <h2>Profile</h2> 
-    ${userCurrent().photoURL !== null ? `<img class="img-user" src="${userCurrent().photoURL}">` : '<img class="img-avatar" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
+    <h2 class="margin">Profile</h2> 
+    ${userCurrent().photoURL !== null ? `<img class="img-user margin" src="${userCurrent().photoURL}">` : '<img class="img-avatar margin" src="https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg">'}
     <form class="form-profile">
+    <label>Nombre</label>
     <input type="text" value="" class="inputForm" id="name">
+    <label>Email</label>
     <input type="text" value="" disabled class="inputForm" id="email">
+    <label>Ocupación</label>
     <input type="text" value="" class="inputForm" id="job">
+    <label>Sobre ti</label>
     <input type="text" value="" class="inputForm" id="description">
 
     <input type="submit" class="button-login" id="button-save" value="Guardar">
