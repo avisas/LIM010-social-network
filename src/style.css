@@ -180,7 +180,7 @@ p{
   border: 1.1px solid #a9a9a9;
   padding: 7px 20px 7px 20px;
   width: -webkit-fill-available;
-  margin-right: 2%;
+  margin: 2%;
   background-color: #f2eeed;
 }
 
@@ -232,7 +232,10 @@ p{
 .icon-exit{
   cursor: pointer;
 }
-
+.counter-heart{
+  padding: 1%;
+  margin: 2px;
+}
 .flex-post{
   width: 30%;
   margin-left: 40%;
@@ -383,7 +386,7 @@ label{
 .padding{
   padding: 2%;
 }
-.onli-flex{
+.only-flex{
   display: flex;
 }
 .margin{
@@ -447,6 +450,7 @@ header nav ul li {
   display: flex;
   width: 25vw;
 }
+
 .container-login {
   display: inline-flex;
   height: 100vh;
@@ -607,7 +611,13 @@ nav ul {
   padding: 6px;
   border-radius: 50%;
 }
-
+.show-comment{
+  color: #fefefe;
+  background: #3b5998;
+  padding: 10px;
+  border-radius: 50%;
+  margin-left: 4%;
+}
 .btn-comment{
   color: #fefefe;
     background: #3b5998;

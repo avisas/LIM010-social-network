@@ -11,14 +11,17 @@ export const home = (notes) => {
           <form id="form-publication" class="padding" maxlength=50 required>
             <textarea placeholder="¿Que quieres compartir?" id="publication" class="textarea-post"></textarea>
             <div class="flex-bottom-form">
+              <div>
+                <label for="fileButton" id="image"><i class="fa fa-picture-o btn-picture" aria-hidden="true"></i></label>
+                <label id="inputval"></label>
+                <input type="file" class="hide" name="file" value="upload" id="fileButton"/>
+              </div>
               <select id="privacidad" class="btn-select" name="select">
                 <option value="publico" selected>Público</option> 
                 <option value="privado">Privado</option>
               </select>
-
-              <label for="fileButton" id="image"><i class="fa fa-picture-o btn-picture" aria-hidden="true"></i></label>
-              <input type="file" class="hide" name="file" value="upload" id="fileButton"/>
-              <input type="submit" id="compartir-post" class="btn-share" value="Compartir">
+              
+              <input type="button" id="compartir-post" class="btn-share" value="Compartir">
             </div>  
           </form> 
         </div>
@@ -33,16 +36,14 @@ export const home = (notes) => {
     ul.appendChild(listNotes(note));
   });
   const btnComportirPost = homeDiv.querySelector('#compartir-post');
+  const nameValue = homeDiv.querySelector('#inputval');
 
   btnComportirPost.addEventListener('click', savePost);
 
-  /* const fileButton = homeDiv.querySelector('#fileButton');
-  const btnImg = homeDiv.querySelector('#image');
-  btnImg.addEventListener('click', () => {
-    fileButton.classList.remove('hide');
-    btnImg.classList.add('hide');
-  }); */
-
-
+  const fileButton = homeDiv.querySelector('#fileButton');
+  fileButton.addEventListener('change', () => {
+    const fileValue = fileButton.files[0].name;
+    nameValue.innerHTML = fileValue;
+  });
   return homeDiv;
 };
