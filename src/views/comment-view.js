@@ -29,6 +29,5 @@ export const listComment = (objNote) => {
 
   liElemnt.querySelector(`#edit-${objNote.id}`)
     .addEventListener('click', () => editComment(objNote.id, objNote.idPost));
-
   return liElemnt;
 };
