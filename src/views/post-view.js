@@ -28,7 +28,7 @@ export const listNotes = (objNote) => {
           <span class="margin">${objNote.timePost}</span>
           </div>
         </div>
-        <div class="botom-post padding list-item">
+        <div class="botom-post padding">
           <i class="fa fa-heart-o heart-empty" aria-hidden="true" id="like-${objNote.id}" data-post="${objNote.id}"></i>
           <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${objNote.id}" data-post="${objNote.id}"></i>
           <a id="counter-${objNote.id}"></a>
@@ -40,9 +40,9 @@ export const listNotes = (objNote) => {
             <span class="margin-left hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>`}
         </div>
         
-        <form id="form-publication" maxlength=50 class="form-comment margin" required>
+        <form id="form-publication" maxlength=50 class="flex-form" required>
           <textarea placeholder="Escribe tu comentario" id="commentario-${objNote.id}" class="textarea-comment"></textarea>
-          <span id="comment-${objNote.id}" data-post="${objNote.id}"><i class="fa fa-paper-plane btn-comment" aria-hidden="true"></i></span>
+          <span id="comment-${objNote.id}" data-post="${objNote.id}"><i class="fa fa-paper-plane" aria-hidden="true"></i></span>
         </form> 
         <section id="allComments-${objNote.id}"></section>
       </div>
