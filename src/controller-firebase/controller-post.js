@@ -1,13 +1,27 @@
 /* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
 
+const datePost = () =>{
+  const opt1 = {
+    month: 'long', day: 'numeric', year: 'numeric',
+  };
+  const opt2 = {
+    hour12: 'true', hour: 'numeric', minute: 'numeric',
+  };
+  const date = new Date().toLocaleDateString('es-Es', opt1);
+  const time = new Date().toLocaleTimeString('es-Es', opt2);
+  const dataTime = `${date} - ${time}`;
+  console.log(dataTime);
+  return dataTime;
+}
+
 export const addPostFirebase = (notePost, selectPrivacidad, user, imgUrl) => {
   return dataBase.collection('post').add({
     notes: notePost,
     privacidad: selectPrivacidad,
     user: user.uid,
     userName: user.displayName,
-    timePost: (new Date()).toGMTString(),
+    timePost: datePost(),
     img: imgUrl,
   });
 };
@@ -20,7 +34,8 @@ export const editPostFirebase = (id, note, selectedPrivacidad) => {
   return dataBase.collection('post').doc(id).update({
     notes: note,
     privacidad: selectedPrivacidad,
-    timePost: (new Date()).toGMTString(),
+    // timePost: (new Date()).toGMTString(),
+    timePost: datePost(),
   });
 };
 

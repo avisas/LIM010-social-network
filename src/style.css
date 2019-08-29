@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Patua+One|Ubuntu&display=swap');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
 *{
 	margin: 0;
 	padding: 0;
@@ -70,6 +71,7 @@ header nav ul li span {
 .flex {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 .container-login {
   display: block;
@@ -101,6 +103,7 @@ p{
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   color: #666666;
+  padding: 3%;
 }
 .register-href{
   font-weight: bold;
@@ -191,12 +194,19 @@ p{
   border-top-style: inset;
 }
 .iconfb {
-  color: #3b5998;
-  font-size: 45px;
+  color: #fefefe;
+  font-size: 35px;
+  background: #3b5998;
+  padding: 5px 12px 5px 12px;
+  border-radius: 50%;
 }
 .iconGoogle{
-  color:#db4a39;
-  font-size: 45px;
+  color: #fefefe;
+  font-size: 30px;
+  padding: 8px;
+  padding: 7px 8px 7px 8px;
+  background: #db4a39;
+  border-radius: 50%;
 }
 .div-icon {
   margin-bottom: 15px;
@@ -265,6 +275,8 @@ p{
 }
 .img-post{
   width: 50%;
+  height: 50%;
+  margin: 2%;
 }
 .user-publicated{
   background-color: #009fc6;
@@ -305,7 +317,7 @@ p{
 .user-perfil{
   border: 2px solid #7c817e;
   border-radius: 5px;
-  padding: 2%;
+  /* padding: 2%; */
   margin-bottom: 5%;
   height: 70%;
   margin-top: 0.7%;
@@ -323,7 +335,8 @@ p{
 
 }
 .img-user{
-  height: 200px;
+  /* height: 200px; */
+  width: 10%;
 }
 .btn-privacidad{
   margin-top: 3%;
@@ -390,7 +403,7 @@ main{
   justify-content: space-evenly;
 }
 h2{
-  font-size: 40px;
+  font-size: 35px;
 }
 header nav ul{
   list-style-type: none;
@@ -464,7 +477,7 @@ header nav ul li {
  .user-perfil{
   border: 2px solid #7c817e;
   border-radius: 5px;
-  padding: 2%;
+  /* padding: 2%; */
   margin-bottom: 5%;
   height: 70%;
   margin-top: 0.7%;
@@ -484,7 +497,7 @@ nav ul {
   .img-profile {
     width: 100%;
     display: block;
-    margin-bottom: 10%;
+    /* margin-bottom: 10%; */
   }
   .contenido-modal{
     width: 70%;
@@ -533,12 +546,48 @@ nav ul {
 	cursor: pointer;
 }
 .modal-header, .modal-footer{
-	padding: 8px 16px;
-	background: #fa5457;
-	color:#f2f2f2;
+  padding: 8px 16px;
+  color: #f2f2f2;
+  background: #009fc6;
 }
 .text-modal{text-align: justfy;}
 .modal-body{
 	padding: 20px 16px;
 }
 
+.heart-empty{
+  color: red;
+    background: #fefefe;
+    padding: 10px;
+    border-radius: 50%;
+}
+.heart-full{
+  color: #fefefe;
+    background: #eb1717;
+    padding: 10px;
+    border-radius: 50%;
+}
+.iconEdit{
+  color: #0a0b0b;
+    background: #fad000;
+    padding: 10px;
+    border-radius: 50%;
+}
+.iconSave{
+  color: #fefefe;
+  background: rgb(0, 159, 198);
+  padding: 10px;
+  border-radius: 50%;
+}
+.btn-delete{
+  background: #130d11;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+.btn-comment{
+  color: #fefefe;
+    background: #3b5998;
+    padding: 10px;
+    border-radius: 50%;
+}
