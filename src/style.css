@@ -181,6 +181,7 @@ p{
   padding: 7px 20px 7px 20px;
   width: -webkit-fill-available;
   margin-right: 2%;
+  background-color: #f2eeed;
 }
 
 .textarea{
@@ -382,7 +383,9 @@ label{
 .padding{
   padding: 2%;
 }
-
+.onli-flex{
+  display: flex;
+}
 .margin{
   margin: 2%;
 }
@@ -595,7 +598,7 @@ nav ul {
 }
 .iconSave{
   color: #fefefe;
-  background: rgb(0, 159, 198);
+  background: #a5cc1b;
   padding: 10px;
   border-radius: 50%;
 }
@@ -608,6 +611,13 @@ nav ul {
 .btn-comment{
   color: #fefefe;
     background: #3b5998;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.btn-picture{
+  color: #fefefe;
+    background: #fa5457;
     padding: 10px;
     border-radius: 50%;
 }

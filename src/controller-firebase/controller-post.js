@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
 
-const datePost = () =>{
+const datePost = () => {
   const opt1 = {
     month: 'long', day: 'numeric', year: 'numeric',
   };
@@ -62,8 +62,8 @@ export const showPostUserFirebase = (callback) => {
 };
 
 export const uploadImage = (file) => {
-    // Create a storage reference
-    const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
-    return postImageRef.put(file)
+  // Create a storage reference
+  const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
+  return postImageRef.put(file)
     .then(snapshot => snapshot.ref.getDownloadURL());
 }
