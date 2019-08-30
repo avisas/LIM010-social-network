@@ -1,5 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { dataBase } from '../main.js';
+import { datePost } from './controller-post.js';
 
 export const addLikeFirebase = (user, postId) => dataBase.collection('post').doc(postId).collection('likes').doc(user.uid)
   .set({
@@ -19,6 +20,7 @@ export const addCommentFirebase = (user, postId, text) => dataBase.collection('p
   nameUser: user.displayName,
   comment: text,
   idPost: postId,
+  timePost: datePost(),
 });
 
 export const deleteCommentFirebase = (idPost, idComment) => {
@@ -34,11 +36,12 @@ export const editCommentFirebase = (idPost, idComment, commentEdit) => {
 };
 
 export const getAllComments = (idPost, callback) => {
-  dataBase.collection('post').doc(idPost).collection('comment').onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
+  dataBase.collection('post').doc(idPost).collection('comment').orderBy('timePost', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      callback(data);
     });
-    callback(data);
-  });
 };

@@ -36,6 +36,7 @@ export const listNotes = (objNote) => {
           <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${objNote.id}" data-post="${objNote.id}"></i>
           <a id="counter-${objNote.id}" class="counter-heart"></a>
           <span id="show-comment"><i class="fa fa-comment-o show-comment" aria-hidden="true"></i></span>
+          <a id="commentsCount-${objNote.id}" class="counter-heart"></a>
           ${userCurrent().uid === objNote.user ? `
             <span class="margin-left hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="fa fa-floppy-o iconSave" aria-hidden="true"></i></span>
             <span class="margin-left" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>
@@ -68,11 +69,12 @@ export const listNotes = (objNote) => {
     .addEventListener('click', () => saveComment(objNote.id));
 
   showLikePost(liElemnt, objNote.id);
+  // countComments(objNote.id);
 
   const allComents = liElemnt.querySelector(`#allComments-${objNote.id}`);
   const showComment = liElemnt.querySelector('#show-comment');
   const commentSection = liElemnt.querySelector('#comments-section');
-
+  const countComent = liElemnt.querySelector(`#commentsCount-${objNote.id}`);
   showComment.addEventListener('click', () => {
     if (commentSection.className === 'hide') {
       commentSection.classList.remove('hide');
@@ -86,6 +88,7 @@ export const listNotes = (objNote) => {
     coments.forEach((comment) => {
       allComents.appendChild(listComment(comment));
     });
+    countComent.innerHTML = coments.length;
   });
   return liElemnt;
 };
