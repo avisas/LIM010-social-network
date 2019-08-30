@@ -56,7 +56,7 @@ header nav ul li a {
 
 ul li a:hover{
   color:#f1f1f1;
-  background-color: deepskyblue;
+  background-color:#abb159b3;
 }
 header nav ul li span {
   margin-right: 10px;
@@ -180,7 +180,8 @@ p{
   border: 1.1px solid #a9a9a9;
   padding: 7px 20px 7px 20px;
   width: -webkit-fill-available;
-  margin-right: 2%;
+  margin: 2%;
+  background-color: #f2eeed;
 }
 
 .textarea{
@@ -231,7 +232,10 @@ p{
 .icon-exit{
   cursor: pointer;
 }
-
+.counter-heart{
+  padding: 1%;
+  margin: 2px;
+}
 .flex-post{
   width: 30%;
   margin-left: 40%;
@@ -382,7 +386,9 @@ label{
 .padding{
   padding: 2%;
 }
-
+.only-flex{
+  display: flex;
+}
 .margin{
   margin: 2%;
 }
@@ -444,6 +450,7 @@ header nav ul li {
   display: flex;
   width: 25vw;
 }
+
 .container-login {
   display: inline-flex;
   height: 100vh;
@@ -595,7 +602,7 @@ nav ul {
 }
 .iconSave{
   color: #fefefe;
-  background: rgb(0, 159, 198);
+  background: #a5cc1b;
   padding: 10px;
   border-radius: 50%;
 }
@@ -604,10 +611,23 @@ nav ul {
   padding: 6px;
   border-radius: 50%;
 }
-
+.show-comment{
+  color: #fefefe;
+  background: #3b5998;
+  padding: 10px;
+  border-radius: 50%;
+  margin-left: 4%;
+}
 .btn-comment{
   color: #fefefe;
     background: #3b5998;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.btn-picture{
+  color: #fefefe;
+    background: #fa5457;
     padding: 10px;
     border-radius: 50%;
 }

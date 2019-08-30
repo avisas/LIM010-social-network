@@ -58,11 +58,15 @@ export default () => {
 
   allNotes(headerDiv);
   homePag.addEventListener('click', () => {
+    homePag.style.backgroundColor = '#abb159b3';
+    btnMyPost.style.backgroundColor = '#FAD000';
     allNotes(headerDiv);
   });
 
   btnMyPost.addEventListener('click', () => {
     myPostNotes(headerDiv);
+    btnMyPost.style.backgroundColor = '#abb159b3';
+    homePag.style.backgroundColor = '#FAD000';
   });
 
   btnSignOut.addEventListener('click', signOutUser);
