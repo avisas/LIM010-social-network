@@ -95,6 +95,7 @@ export const edit = (id) => {
 export const editComment = (idComment, idPost) => {
   const textComment = document.querySelector(`#textcomment-${idComment}`);
   textComment.disabled = false;
+  textComment.style.backgroundColor = '#fefefe';
   const boton = document.querySelector(`#savecomment-${idComment}`);
   const botonEditar = document.querySelector(`#edit-${idComment}`);
 
@@ -102,6 +103,7 @@ export const editComment = (idComment, idPost) => {
   botonEditar.classList.add('hide');
   boton.addEventListener('click', (e) => {
     e.preventDefault();
+    textComment.style.backgroundColor = '#f2eeed';
     const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
