@@ -616,6 +616,7 @@ label {
 }
 .text-modal {
   text-align: justfy;
+  height: 100px;
 }
 .modal-body {
   padding: 20px 16px;

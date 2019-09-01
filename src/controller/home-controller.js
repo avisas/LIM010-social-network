@@ -48,14 +48,22 @@ export const modalMessage = (modalTitleTex, modalContent, color) => {
   const modalHeader = document.getElementById('modal-header');
   modal.classList.remove('hide');
   modalTitle.innerHTML = modalTitleTex;
-  textModal.innerHTML = modalContent;
   modalHeader.style.backgroundColor = color;
+  if (modalContent === 'bienvenida') {
+    textModal.style.backgroundImage = "url('https://i.blogs.es/435a43/7_navegando/650_1200.gif')";
+  } else {
+    textModal.innerHTML = modalContent;
+  }
   close.addEventListener('click', () => {
     modal.classList.add('hide');
+    textModal.style.backgroundImage = '';
+    textModal.innerHTML = '';
   });
   window.addEventListener('click', (e) => {
     if (e.target === flex) {
       modal.classList.add('hide');
+      textModal.style.backgroundImage = '';
+      textModal.innerHTML = '';
     }
   });
 };
