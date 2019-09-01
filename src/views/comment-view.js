@@ -12,8 +12,8 @@ export const listComment = (objNote) => {
     <div class="user-commented flex-name-post">
         <span>Comentado por: ${objNote.nameUser}</span>
         ${userCurrent().uid === objNote.idUser ? `
-        <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
-        <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+        <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o save-comment" aria-hidden="true"></i></span>
+        <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o edit-comment" aria-hidden="true"></i></span>
         <span class="" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
          ` : `
          <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>

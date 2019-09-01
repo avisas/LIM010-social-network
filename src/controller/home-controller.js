@@ -39,15 +39,17 @@ export const changeViewToHome = () => {
   window.location.hash = '#/home';
 };
 
-export const modalMessage = (modalTitleTex, modalContent) => {
+export const modalMessage = (modalTitleTex, modalContent, color) => {
   const modal = document.getElementById('miModal');
   const flex = document.getElementById('flex-modal');
   const close = document.getElementById('close');
   const modalTitle = document.getElementById('modal-title');
   const textModal = document.getElementById('text-modal');
+  const modalHeader = document.getElementById('modal-header');
   modal.classList.remove('hide');
   modalTitle.innerHTML = modalTitleTex;
   textModal.innerHTML = modalContent;
+  modalHeader.style.backgroundColor = color;
   close.addEventListener('click', () => {
     modal.classList.add('hide');
   });

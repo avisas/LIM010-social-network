@@ -287,7 +287,7 @@ p {
 .img-post {
   width: 40%;
   height: 50%;
-  margin: 2%;
+  margin-left: 2%;
 }
 .user-publicated {
   background-color: #009fc6;
@@ -295,7 +295,7 @@ p {
 }
 .user-commented {
   color: black;
-  padding: 2% 3% 1% 3%;
+  padding: 2% 3% 0% 3%;
   width: 90%;
 }
 .border-post {
@@ -354,6 +354,7 @@ p {
 .photo-header{
   border-radius: 50%;
   height: 30px;
+  margin-top: 5px;
 }
 .img-user {
   /* height: 200px; */
@@ -562,6 +563,7 @@ label {
 .flex-modal {
   width: 100%;
   height: 100%;
+  padding-top: 4%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -659,6 +661,15 @@ label {
   background: #3b5998;
   padding: 10px;
   border-radius: 50%;
+}
+
+.edit-comment {
+  color: #f6b106;
+  font-weight: bold;
+}
+.save-comment{
+  color: #a5cc1b;
+  font-weight: bold;
 }
 
 .btn-picture {
