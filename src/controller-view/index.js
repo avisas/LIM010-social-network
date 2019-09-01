@@ -16,7 +16,7 @@ export const changeView = (route) => {
     case '#/codeMeet': container.appendChild(components.codeMeet());
       break;
 
-    case '#/home':
+    /* case '#/home':
       showPostFirebase((notes) => {
         container.innerHTML = '';
         container.appendChild(components.home(notes));
@@ -29,7 +29,7 @@ export const changeView = (route) => {
         container.appendChild(components.myPost(notes));
       });
       break;
-
+*/ 
     case '#/profile': container.appendChild(components.profile());
       break;
     default: break;

@@ -358,7 +358,7 @@ p {
 }
 .img-user {
   /* height: 200px; */
-  width: 10%;
+  width: 20%;
 }
 .btn-privacidad {
   margin-top: 3%;
@@ -442,6 +442,12 @@ label {
 }
 .file-name{
   border:none;
+}
+.div-main-profile{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 @media screen and (min-width: 764px) {
   html,
@@ -557,6 +563,13 @@ label {
   }
   .contenido-modal {
     width: 70%;
+  }
+  
+  .flex-form-profile{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: -webkit-fill-available;
   }
 }
 
@@ -678,3 +691,5 @@ label {
   padding: 10px;
   border-radius: 50%;
 }
+
+
