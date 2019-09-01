@@ -62,8 +62,8 @@ export const saveComment = (postId) => {
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
-      const modalTitle = 'Eliminar';
-      const modalContent = 'Publicación eliminada';
+      const modalTitle = 'Eliminar publicación';
+      const modalContent = 'La publicación se elimino con éxito';
       modalMessage(modalTitle, modalContent);
     }).catch((error) => {
       const modalTitle = 'Error Eliminar Publicación';
