@@ -285,7 +285,7 @@ p {
   font-family: "Ubuntu";
 }
 .img-post {
-  width: 50%;
+  width: 40%;
   height: 50%;
   margin: 2%;
 }
@@ -350,6 +350,10 @@ p {
 .user-photo {
   border-radius: 50%;
   height: 70px;
+}
+.photo-header{
+  border-radius: 50%;
+  height: 30px;
 }
 .img-user {
   /* height: 200px; */
@@ -434,6 +438,9 @@ label {
 }
 .form-comment {
   display: flex;
+}
+.file-name{
+  border:none;
 }
 @media screen and (min-width: 764px) {
   html,

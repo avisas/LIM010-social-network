@@ -14,8 +14,15 @@ export default () => {
 		<h2>Meet and Code</h2> 
     <nav class="nav-links flex menu-bar">
     <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
-			<ul id="show-hamb" class="hide list-menu">
-				<li><a id="user-name"><span class="icon-user">User</a></li>
+      <ul id="show-hamb" class="hide list-menu">
+      <!--<li><a id="user-name"><span class="icon-user">User</a></li>-->
+        <li>
+          <div class="only-flex">
+          <img id="photo" class="photo-header">
+          <a id="user-name">
+          </a>
+          </div>
+        </li>
 				<li><a id="homePag" >Home</a></li>
 				<li><a id="setting">Setting</a></li>
 				<li><a id="signOut"><span class="icon-exit"></span>Log Out</a></li>
@@ -53,6 +60,7 @@ export default () => {
   const profileName = headerDiv.querySelector('#profile-name');
   const homePag = headerDiv.querySelector('#homePag');
   const divPhotoUser = headerDiv.querySelector('#user-photo');
+  const photo = headerDiv.querySelector('#photo');
   const job = headerDiv.querySelector('#job');
   const description = headerDiv.querySelector('#description');
 
@@ -71,10 +79,8 @@ export default () => {
 
   btnSignOut.addEventListener('click', signOutUser);
 
-  recoverUserName(btnMyPost, profileName, divPhotoUser);
-  console.log(job);
-  console.log(description);
-  recoverDataProfile(job, description)
+  recoverUserName(btnMyPost, profileName, divPhotoUser, photo);
+  recoverDataProfile(job, description);
   settingUser.addEventListener('click', changeViewToProfile);
 
   const HambMenu = headerDiv.querySelector('#hamb-menu');
