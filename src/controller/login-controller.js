@@ -14,7 +14,7 @@ export const loginFunction = (event) => {
     .then(() => {
       const modalTitle = 'Bienvenida a Meet and Code';
       const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
-      modalMessage(modalTitle, modalContent);
+      modalMessage(modalTitle, modalContent, '#009fc6');
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/codeMeet';
@@ -45,7 +45,7 @@ export const signInFacebook = (event) => {
   signInWithFacebook().then(() => {
     modalTitle = 'Bienvenida a Meet and Code';
     modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
-    modalMessage(modalTitle, modalContent);
+    modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
     createProfile(user.uid, user.displayName, user.email);
   }).catch((error) => {
@@ -54,7 +54,7 @@ export const signInFacebook = (event) => {
       const errorMessage = error.message;
       modalTitle = 'Mensaje de Error';
       modalContent = `Error adding document:${errorMessage}`;
-      modalMessage(modalTitle, modalContent);
+      modalMessage(modalTitle, modalContent, '#009fc6');
     }
 
     // Aqui va el error , leer manejo de errores de FB
@@ -67,7 +67,7 @@ export const signInGoogle = (event) => {
   signInWithGoogle().then(() => {
     const modalTitle = 'Bienvenida a Meet and Code';
     const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
-    modalMessage(modalTitle, modalContent);
+    modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
     createProfile(user.uid, user.displayName, user.email);
   }).catch((error) => {
@@ -75,7 +75,7 @@ export const signInGoogle = (event) => {
     if (errorCode === 'auth/account-exists-with-different-credential') {
       const modalTitle = 'Mensaje de Error';
       const modalContent = 'Es el mismo usuario';
-      modalMessage(modalTitle, modalContent);
+      modalMessage(modalTitle, modalContent, '#009fc6');
     }
   });
 };

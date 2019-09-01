@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 import { signOutLogin } from '../controller-firebase/controller-authentication.js';
 
-export const recoverUserName = (userName, userProfileName, UserPhotoProfile) => {
+export const recoverUserName = (userName, userProfileName, UserPhotoProfile, photo) => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       const displayName = `<span class="icon-user"></span>${user.displayName}`;
@@ -13,9 +13,10 @@ export const recoverUserName = (userName, userProfileName, UserPhotoProfile) => 
         UserPhotoProfile.src = 'https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg';
       }
       else {
-        userName.innerHTML = displayName;
+        userName.innerHTML = displayUserName;
         userProfileName.innerHTML = displayUserName;
         UserPhotoProfile.src = userPhoto;
+        photo.src = userPhoto;
       }
     }
   });
@@ -38,15 +39,17 @@ export const changeViewToHome = () => {
   window.location.hash = '#/home';
 };
 
-export const modalMessage = (modalTitleTex, modalContent) => {
+export const modalMessage = (modalTitleTex, modalContent, color) => {
   const modal = document.getElementById('miModal');
   const flex = document.getElementById('flex-modal');
   const close = document.getElementById('close');
   const modalTitle = document.getElementById('modal-title');
   const textModal = document.getElementById('text-modal');
+  const modalHeader = document.getElementById('modal-header');
   modal.classList.remove('hide');
   modalTitle.innerHTML = modalTitleTex;
   textModal.innerHTML = modalContent;
+  modalHeader.style.backgroundColor = color;
   close.addEventListener('click', () => {
     modal.classList.add('hide');
   });

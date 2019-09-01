@@ -13,7 +13,7 @@ export const home = (notes) => {
             <div class="flex-bottom-form">
               <div>
                 <label for="fileButton" id="image"><i class="fa fa-picture-o btn-picture" aria-hidden="true"></i></label>
-                <label id="inputval"></label>
+                <input type="text" class="file-name" id="inputval"/>
                 <input type="file" class="hide" name="file" value="upload" id="fileButton"/>
               </div>
               <select id="privacidad" class="btn-select" name="select">
@@ -43,7 +43,7 @@ export const home = (notes) => {
   const fileButton = homeDiv.querySelector('#fileButton');
   fileButton.addEventListener('change', () => {
     const fileValue = fileButton.files[0].name;
-    nameValue.innerHTML = fileValue;
+    nameValue.value = fileValue;
   });
   return homeDiv;
 };

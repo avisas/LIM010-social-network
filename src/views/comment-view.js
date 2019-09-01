@@ -9,11 +9,11 @@ export const listComment = (objNote) => {
   liElemnt.classList.add('div-comment');
   liElemnt.classList.add('margin');
   liElemnt.innerHTML = `
-    <div class="user-publicated padding flex-name-post">
+    <div class="user-commented flex-name-post">
         <span>Comentado por: ${objNote.nameUser}</span>
         ${userCurrent().uid === objNote.idUser ? `
-        <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
-        <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+        <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o save-comment" aria-hidden="true"></i></span>
+        <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o edit-comment" aria-hidden="true"></i></span>
         <span class="" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
          ` : `
          <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
@@ -21,7 +21,7 @@ export const listComment = (objNote) => {
          <span class="hide" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
           `}
     </div>
-    <textarea class="textarea padding margin" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
+    <textarea class="textArea-comment" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
     `;
 
   liElemnt.querySelector(`#delete-${objNote.id}`)

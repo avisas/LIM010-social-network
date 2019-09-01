@@ -15,37 +15,48 @@ export const savePost = (event) => {
   const fileButton = document.querySelector('#fileButton');
   const uploader = document.querySelector('#uploader');
   const user = userCurrent();
-
-  if (fileButton.files[0] === undefined) {
-    addPostFirebase(notePost, selectedPrivacidad, user, '')
-      .then(() => {
-        const modalTitle = 'Nuevo Registro';
-        const modalContent = 'Publicación ingresada';
-        modalMessage(modalTitle, modalContent);
-      });
+  if (notePost !== '') {
+    if (fileButton.files[0] === undefined) {
+      addPostFirebase(notePost, selectedPrivacidad, user, '')
+        .then(() => {
+          const modalTitle = 'Nuevo Registro';
+          const modalContent = 'Publicación ingresada';
+          modalMessage(modalTitle, modalContent, '#a5bf48ed');
+        });
+    } else {
+      // console.log(uploadImage(fileButton.files[0]));
+      uploadImage(fileButton.files[0], uploader)
+        .then(url => addPostFirebase(notePost, selectedPrivacidad, user, url));
+      const modalTitle = 'Nuevo Registro';
+      const modalContent = 'Publicación ingresada';
+      modalMessage(modalTitle, modalContent, '#a5bf48ed');
+    }
   } else {
-    // console.log(uploadImage(fileButton.files[0]));
-    uploadImage(fileButton.files[0], uploader)
-      .then(url => addPostFirebase(notePost, selectedPrivacidad, user, url));
-    const modalTitle = 'Nuevo Registro';
-    const modalContent = 'Publicación ingresada';
-    modalMessage(modalTitle, modalContent);
+    const modalTitle = 'Error de Registro';
+    const modalContent = 'Ingresé el contenido que deseé compartir';
+    modalMessage(modalTitle, modalContent, '#fa5457');
   }
 };
 
 export const saveComment = (postId) => {
   const noteComment = document.querySelector(`#commentario-${postId}`).value;
   const user = userCurrent();
-  addCommentFirebase(user, postId, noteComment)
-    .then(() => {
-      const modalTitle = 'Nuevo Comentario';
-      const modalContent = 'Comentario ingresado';
-      modalMessage(modalTitle, modalContent);
-    }).catch((error) => {
-      const modalTitle = 'Error Nuevo Comentario';
-      const modalContent = `Error adding document:${error}`;
-      modalMessage(modalTitle, modalContent);
-    });
+  if (noteComment !== '') {
+    addCommentFirebase(user, postId, noteComment)
+      .then(() => {
+        const modalTitle = 'Nuevo Comentario';
+        const modalContent = 'Comentario ingresado';
+        modalMessage(modalTitle, modalContent);
+      }).catch((error) => {
+        const modalTitle = 'Error Nuevo Comentario';
+        const modalContent = `Error adding document:${error}`;
+        modalMessage(modalTitle, modalContent);
+      });
+  } else {
+    const modalTitle = 'Error de Registro';
+    const modalContent = 'Ingresé un comentario en la caja de texto';
+    modalMessage(modalTitle, modalContent, '#fa5457');
+  }
 };
 
 export const deletePost = (id) => {
@@ -91,10 +102,10 @@ export const edit = (id) => {
   });
 };
 
-
 export const editComment = (idComment, idPost) => {
   const textComment = document.querySelector(`#textcomment-${idComment}`);
   textComment.disabled = false;
+  textComment.style.backgroundColor = '#fefefe';
   const boton = document.querySelector(`#savecomment-${idComment}`);
   const botonEditar = document.querySelector(`#edit-${idComment}`);
 
@@ -102,6 +113,8 @@ export const editComment = (idComment, idPost) => {
   botonEditar.classList.add('hide');
   boton.addEventListener('click', (e) => {
     e.preventDefault();
+    textComment.style.backgroundColor = '#f2eeed';
+    textComment.disabled = true;
     const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
