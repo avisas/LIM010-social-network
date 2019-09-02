@@ -33,7 +33,9 @@ nav ul {
   display: flex;
   justify-content: space-around;
 }
-
+.white{
+  color: white;
+}
 header nav ul {
   list-style-type: none;
   position: absolute;
