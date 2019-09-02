@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import MockFirebase from 'mock-cloud-firestore';
 import {
   addLikeFirebase, showLikeFirebase, deleteLikeFirebase,

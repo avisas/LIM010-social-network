@@ -76,7 +76,11 @@ export const listNotes = (objNote) => {
     .addEventListener('click', () => deleteLikePost(objNote.id));
 
   liElemnt.querySelector(`#comment-${objNote.id}`)
-    .addEventListener('click', () => saveComment(objNote.id));
+    .addEventListener('click', () => {
+      const contNote = liElemnt.querySelector(`#commentario-${objNote.id}`);
+      saveComment(objNote.id);
+      contNote.value = '';
+    });
 
   showLikePost(liElemnt, objNote.id);
   // countComments(objNote.id);

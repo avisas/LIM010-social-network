@@ -1,8 +1,10 @@
-// import MockFirebase from '../_mocks_/firebase-mock.js';
+/* eslint-disable import/no-unresolved */
+
 import MockFirebase from 'mock-cloud-firestore';
 
 import {
-  addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase,
+  // eslint-disable-next-line max-len
+  addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase, uploadImage,
 } from '../src/controller-firebase/controller-post.js';
 // global.firebase = MockFirebase();
 
@@ -57,7 +59,7 @@ describe('Add post', () => {
 describe('showPostUserFirebase', () => {
   it('debería leer todos los posts de un usuario', done => showPostUserFirebase('2', (data) => {
     const result = data.filter(post => post.user === '2');
-    expect(result.length).toBe(2);
+    expect(result).toHaveLength(2);
     done();
   }));
 });
@@ -84,9 +86,10 @@ describe('Edit post', () => {
   }));
 });
 
-/*
-describe('Add image', () => {
-  it('Debería poder agregar un post', (done) => {
-  });
-});
-*/
+
+// describe('Add image', () => {
+//   it('Debería poder agregar una imagen', (done) => {
+//     return uploadImage('file').then(() => {
+//     })zz
+//   });
+// });

@@ -51,16 +51,19 @@ export const saveComment = (postId) => {
   if (noteComment !== '') {
     addCommentFirebase(userUid, userName, postId, noteComment)
       .then(() => {
+        
       }).catch((error) => {
         const modalTitle = 'Error Nuevo Comentario';
         const modalContent = `Error adding document:${error}`;
         modalMessage(modalTitle, modalContent, '#a5bf48ed');
+        
       });
   } else {
     const modalTitle = 'Error de Registro';
     const modalContent = 'Ingresé un comentario en la caja de texto';
     modalMessage(modalTitle, modalContent, '#fa5457');
   }
+  
 };
 
 export const deletePost = (id) => {
