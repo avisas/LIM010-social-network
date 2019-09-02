@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { dataBase } from '../main.js';
+// import { dataBase } from '../main.js';
 
 export const datePost = () => {
   const opt1 = {
@@ -15,33 +15,34 @@ export const datePost = () => {
   return dataTime;
 };
 
-export const addPostFirebase = (notePost, selectPrivacidad, user, imgUrl) => dataBase.collection('post').add({
+export const addPostFirebase = (notePost, selectPrivacidad, userUid, userDisplayName, imgUrl) => firebase.firestore().collection('post').add({
   notes: notePost,
   privacidad: selectPrivacidad,
-  user: user.uid,
-  userName: user.displayName,
+  user: userUid,
+  userName: userDisplayName,
   timePost: datePost(),
   img: imgUrl,
 });
 
-export const deletePostFirebase = id => dataBase.collection('post').doc(id).delete();
+export const deletePostFirebase = id => firebase.firestore().collection('post').doc(id).delete();
 
-export const editPostFirebase = (id, note, selectedPrivacidad) => dataBase.collection('post').doc(id).update({
+export const editPostFirebase = (id, note, selectedPrivacidad) => firebase.firestore().collection('post').doc(id).update({
   notes: note,
   privacidad: selectedPrivacidad,
   // timePost: (new Date()).toGMTString(),
   timePost: datePost(),
 });
 
-export const showPostFirebase = callback => dataBase.collection('post').where('privacidad', '==', 'publico').orderBy('timePost', 'desc').onSnapshot((querySnapshot) => {
-  const data = [];
-  querySnapshot.forEach((doc) => {
-    data.push({ id: doc.id, ...doc.data() });
+export const showPostFirebase = callback => firebase.firestore().collection('post').where('privacidad', '==', 'publico').orderBy('timePost', 'desc')
+  .onSnapshot((querySnapshot) => {
+    const data = [];
+    querySnapshot.forEach((doc) => {
+      data.push({ id: doc.id, ...doc.data() });
+    });
+    callback(data);
   });
-  callback(data);
-});
 
-export const showPostUserFirebase = callback => firebase.auth().onAuthStateChanged(user => dataBase.collection('post').where('user', '==', user.uid).orderBy('timePost', 'desc')
+export const showPostUserFirebase = (userUid, callback) => firebase.firestore().collection('post').where('user', '==', userUid).orderBy('timePost', 'desc')
   .get()
   .then((querySnapshot) => {
     const data = [];
@@ -49,7 +50,7 @@ export const showPostUserFirebase = callback => firebase.auth().onAuthStateChang
       data.push({ id: doc.id, ...doc.data() });
     });
     callback(data);
-  }));
+  });
 
 export const uploadImage = (file) => {
   // Create a storage reference

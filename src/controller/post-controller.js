@@ -18,9 +18,11 @@ export const savePost = (event) => {
   const fileButton = document.querySelector('#fileButton');
   const uploader = document.querySelector('#uploader');
   const user = userCurrent();
+  const userUid = user.uid;
+  const userName = user.displayName;
   if (notePost !== '') {
     if (fileButton.files[0] === undefined) {
-      addPostFirebase(notePost, selectedPrivacidad, user, '')
+      addPostFirebase(notePost, selectedPrivacidad, userUid, userName, '')
         .then(() => {
           const modalTitle = 'Nuevo Registro';
           const modalContent = 'Publicación ingresada';
@@ -29,7 +31,7 @@ export const savePost = (event) => {
     } else {
       // console.log(uploadImage(fileButton.files[0]));
       uploadImage(fileButton.files[0], uploader)
-        .then(url => addPostFirebase(notePost, selectedPrivacidad, user, url));
+        .then(url => addPostFirebase(notePost, selectedPrivacidad, userUid, userName, url));
       const modalTitle = 'Nuevo Registro';
       const modalContent = 'Publicación ingresada';
       modalMessage(modalTitle, modalContent, '#a5bf48ed');
@@ -182,8 +184,11 @@ export const allNotes = (content) => {
 
 export const myPostNotes = (content1) => {
   const contentPost = content1.querySelector('#content-post');
-  showPostUserFirebase((myPostnotes) => {
-    contentPost.innerHTML = '';
-    contentPost.appendChild(myPost(myPostnotes));
+  firebase.auth().onAuthStateChanged((user) => {
+    const userUid = user.uid;
+    showPostUserFirebase(userUid, (myPostnotes) => {
+      contentPost.innerHTML = '';
+      contentPost.appendChild(myPost(myPostnotes));
+    });
   });
 };

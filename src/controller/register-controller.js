@@ -1,9 +1,9 @@
 /* eslint-disable import/no-cycle */
-import { dataBase } from '../main.js';
+// import { dataBase } from '../main.js';
 import { userCurrent, createUser } from '../controller-firebase/controller-authentication.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
-  dataBase.collection('users').doc(id).set({
+  firebase.firestore().collection('users').doc(id).set({
     name: nameUser,
     email: emailUser,
     job: '',
@@ -24,15 +24,16 @@ export const createProfile = (id, nameUser, emailUser) => {
 
 export const getName = (userName) => {
   const user = userCurrent().uid;
-  dataBase.collection('users').doc(user).get().then((doc) => {
-    if (doc.exists) {
-      // console.log('Document data:', doc.data().name);
-      userName.textContent = doc.data().name;
-    } else {
-      // doc.data() will be undefined in this case
-      // console.log('No such document!');
-    }
-  })
+  firebase.firestore().collection('users').doc(user).get()
+    .then((doc) => {
+      if (doc.exists) {
+        // console.log('Document data:', doc.data().name);
+        userName.textContent = doc.data().name;
+      } else {
+        // doc.data() will be undefined in this case
+        // console.log('No such document!');
+      }
+    })
     .catch(() => {
       // console.log('Error getting document:', error);
     });

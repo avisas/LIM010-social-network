@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import { dataBase } from '../main.js';
+// import { dataBase } from '../main.js';
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
 
 export const updateUserName = (user, newName) => user.updateProfile({
@@ -12,7 +12,7 @@ export const updateUserName = (user, newName) => user.updateProfile({
 
 export const getData = (name, email, job, description) => {
   const user = userCurrent();
-  dataBase.collection('users').doc(user.uid).onSnapshot((doc) => {
+  firebase.firestore().collection('users').doc(user.uid).onSnapshot((doc) => {
     name.value = doc.data().name;
     email.value = doc.data().email;
     job.value = doc.data().job;
@@ -23,7 +23,7 @@ export const getData = (name, email, job, description) => {
 
 export const updateProfile = (nameUser, emailUser, jobUser, descriptionUser) => {
   const user = userCurrent();
-  const userProfile = dataBase.collection('users').doc(user.uid);
+  const userProfile = firebase.firestore().collection('users').doc(user.uid);
   user.updateProfile({
     displayName: nameUser,
 
@@ -46,18 +46,19 @@ export const updateProfile = (nameUser, emailUser, jobUser, descriptionUser) => 
 
 export const recoverDataProfile = (textJob, textDescription) => {
   firebase.auth().onAuthStateChanged((user) => {
-    dataBase.collection('users').doc(user.uid).get().then((doc) => {
-      if (doc.exists) {
-        // console.log(doc.data().job);
-        // console.log(doc.data().description);
+    firebase.firestore().collection('users').doc(user.uid).get()
+      .then((doc) => {
+        if (doc.exists) {
+          // console.log(doc.data().job);
+          // console.log(doc.data().description);
 
-        textJob.innerHTML = doc.data().job;
-        textDescription.innerHTML = doc.data().description;
-      } else {
-        // doc.data() will be undefined in this case
-        // console.log('No such document!');
-      }
-    })
+          textJob.innerHTML = doc.data().job;
+          textDescription.innerHTML = doc.data().description;
+        } else {
+          // doc.data() will be undefined in this case
+          // console.log('No such document!');
+        }
+      })
       .catch(() => {
         // console.log('Error getting document:', error);
       });
