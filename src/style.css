@@ -241,11 +241,15 @@ p {
   margin-top: 5%;
 }*/
 .textarea-post {
+  font-size: 15px;
   width: -webkit-fill-available;
   height: 100px;
   resize: none;
   border: 1px solid #a9a9a9;
   padding: 7px 20px 7px 20px;
+}
+.no-border {
+  border:none;
 }
 .btn-select {
   align-self: start;
