@@ -43,11 +43,11 @@ export const signInFacebook = (event) => {
   let modalTitle;
   let modalContent;
   signInWithFacebook().then(() => {
+    createProfile(user.uid, user.displayName, user.email);
     modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
     modalContent = 'bienvenida';
     modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
-    createProfile(user.uid, user.displayName, user.email);
   }).catch((error) => {
     const errorType = error.type;
     if (errorType === 'OAuthException') {
@@ -67,11 +67,11 @@ export const signInGoogle = (event) => {
   let modalTitle;
   let modalContent;
   signInWithGoogle().then(() => {
+    createProfile(user.uid, user.displayName, user.email);
     modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
     modalContent = 'bienvenida';
     modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
-    createProfile(user.uid, user.displayName, user.email);
   }).catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/account-exists-with-different-credential') {
