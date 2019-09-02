@@ -1,6 +1,8 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase, uploadImage } from '../controller-firebase/controller-post.js';
+import {
+  addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase, uploadImage,
+} from '../controller-firebase/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
 } from '../controller-firebase/controller-likes.js';
@@ -44,13 +46,10 @@ export const saveComment = (postId) => {
   if (noteComment !== '') {
     addCommentFirebase(user, postId, noteComment)
       .then(() => {
-        const modalTitle = 'Nuevo Comentario';
-        const modalContent = 'Comentario ingresado';
-        modalMessage(modalTitle, modalContent);
       }).catch((error) => {
         const modalTitle = 'Error Nuevo Comentario';
         const modalContent = `Error adding document:${error}`;
-        modalMessage(modalTitle, modalContent);
+        modalMessage(modalTitle, modalContent, '#a5bf48ed');
       });
   } else {
     const modalTitle = 'Error de Registro';
@@ -80,6 +79,7 @@ export const edit = (id) => {
 
   textPost.disabled = false;
   selectPrivacity.disabled = false;
+  textPost.focus();
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
   boton.addEventListener('click', (e) => {
@@ -89,8 +89,8 @@ export const edit = (id) => {
     editPostFirebase(id, note, selectedPrivacidad)
       .then(() => {
         const modalTitle = 'Editar Publicación';
-        const modalContent = 'Publicación editada';
-        modalMessage(modalTitle, modalContent);
+        const modalContent = 'Los cambios se guardaron satisfactoriamente';
+        modalMessage(modalTitle, modalContent, '#a5bf48ed');
         boton.classList.add('hide');
         botonGuardar.classList.remove('hide');
       })
@@ -118,9 +118,6 @@ export const editComment = (idComment, idPost) => {
     const note = textComment.value;
     editCommentFirebase(idPost, idComment, note)
       .then(() => {
-        const modalTitle = 'Editar Comentario';
-        const modalContent = 'Comentario editado';
-        modalMessage(modalTitle, modalContent);
         boton.classList.add('hide');
         botonEditar.classList.remove('hide');
       })
