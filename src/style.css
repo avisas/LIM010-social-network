@@ -282,7 +282,7 @@ p {
 }
 .div-post {
   height: auto;
-  border: 2px solid #9da9cf;
+  border: 2px solid #40538e;
   border-radius: 5px;
   margin: 2%;
   font-family: "Ubuntu", sans-serif;
@@ -293,7 +293,7 @@ p {
   margin-left: 2%;
 }
 .user-publicated {
-  background-color: #9da9cf;
+  background-color: #40538e;
   color: white;
 }
 .user-commented {
@@ -310,8 +310,8 @@ p {
 }
 .botom-post {
   display: flex;
-  background-color: #e4eefb;
-  border-color: #e4eefb;
+  background-color: #9da9cf;
+  border-color: #9da9cf;
   border-style: solid;
   border-width: 2px 0 2px 0;
   justify-content: space-between;
@@ -336,9 +336,9 @@ p {
   align-items: center;
 }
 .user-perfil {
-  border: 2px solid #7c817e;
+  /* border: 2px solid #9da9cf; */
   border-radius: 5px;
-  /* padding: 2%; */
+  padding: 2%;
   margin-bottom: 5%;
   height: 70%;
   margin-top: 0.7%;
@@ -540,7 +540,7 @@ label {
     width: 90vh;
   }
   .user-perfil {
-    border: 2px solid #7c817e;
+    border: 2px solid #40538e;
     border-radius: 5px;
     /* padding: 2%; */
     margin-bottom: 5%;
