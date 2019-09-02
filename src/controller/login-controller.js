@@ -12,8 +12,8 @@ export const loginFunction = (event) => {
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
     .then(() => {
-      const modalTitle = 'Bienvenida a Meet and Code';
-      const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+      const modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
+      const modalContent = 'bienvenida';
       modalMessage(modalTitle, modalContent, '#009fc6');
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
@@ -43,8 +43,8 @@ export const signInFacebook = (event) => {
   let modalTitle;
   let modalContent;
   signInWithFacebook().then(() => {
-    modalTitle = 'Bienvenida a Meet and Code';
-    modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
+    modalContent = 'bienvenida';
     modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
     createProfile(user.uid, user.displayName, user.email);
@@ -64,17 +64,19 @@ export const signInFacebook = (event) => {
 export const signInGoogle = (event) => {
   event.preventDefault();
   const user = userCurrent();
+  let modalTitle;
+  let modalContent;
   signInWithGoogle().then(() => {
-    const modalTitle = 'Bienvenida a Meet and Code';
-    const modalContent = 'Este grupo está compuesto por y para personas amantes de la tecnología y que quieran aprender y/o compartir sus conocimientos.';
+    modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
+    modalContent = 'bienvenida';
     modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
     createProfile(user.uid, user.displayName, user.email);
   }).catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/account-exists-with-different-credential') {
-      const modalTitle = 'Mensaje de Error';
-      const modalContent = 'Es el mismo usuario';
+      modalTitle = 'Mensaje de Error';
+      modalContent = 'Es el mismo usuario';
       modalMessage(modalTitle, modalContent, '#009fc6');
     }
   });
