@@ -16,7 +16,7 @@ export const savePost = (event) => {
   const notePost = document.querySelector('#publication').value;
   const selectedPrivacidad = document.querySelector('#privacidad').value;
   const fileButton = document.querySelector('#fileButton');
-  const uploader = document.querySelector('#uploader');
+  // const uploader = document.querySelector('#uploader');
   const user = userCurrent();
   const userUid = user.uid;
   const userName = user.displayName;
@@ -30,7 +30,7 @@ export const savePost = (event) => {
         });
     } else {
       // console.log(uploadImage(fileButton.files[0]));
-      uploadImage(fileButton.files[0], uploader)
+      uploadImage(fileButton.files[0])
         .then(url => addPostFirebase(notePost, selectedPrivacidad, userUid, userName, url));
       const modalTitle = 'Nuevo Registro';
       const modalContent = 'Publicación ingresada';
