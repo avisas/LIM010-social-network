@@ -266,7 +266,7 @@ p {
 }
 .btn-share {
   font-family: "Patua One", cursive;
-  background-color: #feafaa;
+  background-color: #1b2354;
   color: white;
   padding: 10px 20px;
   /* margin: 8px 0; */
@@ -648,8 +648,8 @@ label {
   border-radius: 50%;
 }
 .iconEdit {
-  color: #0a0b0b;
-  background: #fad000;
+  color: white;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
@@ -660,19 +660,19 @@ label {
   border-radius: 50%;
 }
 .btn-delete {
-  background: #130d11;
+  background: #1b2354;
   padding: 6px;
   border-radius: 50%;
 }
 .show-comment {
   color: #fefefe;
-  background: #3b5998;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
 .btn-comment {
   color: #fefefe;
-  background: #3b5998;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
@@ -688,7 +688,7 @@ label {
 
 .btn-picture {
   color: #fefefe;
-  background: #fa5457;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
