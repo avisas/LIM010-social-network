@@ -33,7 +33,9 @@ nav ul {
   display: flex;
   justify-content: space-around;
 }
-
+.white{
+  color: white;
+}
 header nav ul {
   list-style-type: none;
   position: absolute;
@@ -271,7 +273,7 @@ p {
 }
 .btn-share {
   font-family: "Patua One", cursive;
-  background-color: #feafaa;
+  background-color: #1b2354;
   color: white;
   padding: 10px 20px;
   /* margin: 8px 0; */
@@ -287,7 +289,7 @@ p {
 }
 .div-post {
   height: auto;
-  border: 2px solid #9da9cf;
+  border: 2px solid #40538e;
   border-radius: 5px;
   margin: 2%;
   font-family: "Ubuntu", sans-serif;
@@ -298,7 +300,7 @@ p {
   margin-left: 2%;
 }
 .user-publicated {
-  background-color: #9da9cf;
+  background-color: #40538e;
   color: white;
 }
 .user-commented {
@@ -315,8 +317,8 @@ p {
 }
 .botom-post {
   display: flex;
-  background-color: #e4eefb;
-  border-color: #e4eefb;
+  background-color: #9da9cf;
+  border-color: #9da9cf;
   border-style: solid;
   border-width: 2px 0 2px 0;
   justify-content: space-between;
@@ -341,9 +343,9 @@ p {
   align-items: center;
 }
 .user-perfil {
-  border: 2px solid #7c817e;
+  /* border: 2px solid #9da9cf; */
   border-radius: 5px;
-  /* padding: 2%; */
+  padding: 2%;
   margin-bottom: 5%;
   height: 70%;
   margin-top: 0.7%;
@@ -545,7 +547,7 @@ label {
     width: 90vh;
   }
   .user-perfil {
-    border: 2px solid #7c817e;
+    border: 2px solid #40538e;
     border-radius: 5px;
     /* padding: 2%; */
     margin-bottom: 5%;
@@ -653,8 +655,8 @@ label {
   border-radius: 50%;
 }
 .iconEdit {
-  color: #0a0b0b;
-  background: #fad000;
+  color: white;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
@@ -665,19 +667,19 @@ label {
   border-radius: 50%;
 }
 .btn-delete {
-  background: #130d11;
+  background: #1b2354;
   padding: 6px;
   border-radius: 50%;
 }
 .show-comment {
   color: #fefefe;
-  background: #3b5998;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
 .btn-comment {
   color: #fefefe;
-  background: #3b5998;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }
@@ -693,7 +695,7 @@ label {
 
 .btn-picture {
   color: #fefefe;
-  background: #fa5457;
+  background: #1b2354;
   padding: 10px;
   border-radius: 50%;
 }

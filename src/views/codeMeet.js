@@ -11,7 +11,7 @@ export default () => {
   const headerDiv = document.createElement('div');
   const headerContent = `
 	<header>
-		<h2>Meet and Code</h2> 
+		<h2 class="white">Meet and Code</h2> 
     <nav class="nav-links flex menu-bar">
     <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
       <ul id="show-hamb" class="hide list-menu">
