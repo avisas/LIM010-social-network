@@ -65,7 +65,6 @@ export default () => {
   const description = headerDiv.querySelector('#description');
 
   allNotes(headerDiv);
-  
   homePag.addEventListener('click', () => {
     homePag.style.backgroundColor = '#abb159b3';
     btnMyPost.style.backgroundColor = '#FAD000';

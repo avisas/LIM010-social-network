@@ -1,5 +1,7 @@
-// eslint-disable-next-line object-curly-newline
-import { loginFunction, signInFacebook, signInGoogle, showPassword } from '../controller/login-controller.js';
+// eslint-disable-next-line import/no-cycle
+import {
+  loginFunction, signInFacebook, signInGoogle, showPassword,
+} from '../controller/login-controller.js';
 
 export default () => {
   const formLogin = document.createElement('div');

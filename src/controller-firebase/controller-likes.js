@@ -23,17 +23,13 @@ export const addCommentFirebase = (user, postId, text) => dataBase.collection('p
   timePost: datePost(),
 });
 
-export const deleteCommentFirebase = (idPost, idComment) => {
-  return dataBase.collection('post').doc(idPost).collection('comment').doc(idComment)
-    .delete();
-};
+export const deleteCommentFirebase = (idPost, idComment) => dataBase.collection('post').doc(idPost).collection('comment').doc(idComment)
+  .delete();
 
-export const editCommentFirebase = (idPost, idComment, commentEdit) => {
-  return dataBase.collection('post').doc(idPost).collection('comment').doc(idComment)
-    .update({
-      comment: commentEdit,
-    });
-};
+export const editCommentFirebase = (idPost, idComment, commentEdit) => dataBase.collection('post').doc(idPost).collection('comment').doc(idComment)
+  .update({
+    comment: commentEdit,
+  });
 
 export const getAllComments = (idPost, callback) => {
   dataBase.collection('post').doc(idPost).collection('comment').orderBy('timePost', 'desc')

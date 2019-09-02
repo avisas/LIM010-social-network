@@ -13,15 +13,15 @@ export const updateUserName = (user, newName) => user.updateProfile({
 export const getData = (name, email, job, description) => {
   const user = userCurrent();
   dataBase.collection('users').doc(user.uid).onSnapshot((doc) => {
-      name.value = doc.data().name;
-      email.value = doc.data().email;
-      job.value = doc.data().job;
-      description.value = doc.data().description;
-    }); 
+    name.value = doc.data().name;
+    email.value = doc.data().email;
+    job.value = doc.data().job;
+    description.value = doc.data().description;
+  });
 };
 
 
-export const updateProfile = (nameUser, emailUser, job, description) => {
+export const updateProfile = (nameUser, emailUser, jobUser, descriptionUser) => {
   const user = userCurrent();
   const userProfile = dataBase.collection('users').doc(user.uid);
   user.updateProfile({
@@ -32,12 +32,12 @@ export const updateProfile = (nameUser, emailUser, job, description) => {
   return userProfile.update({
     name: nameUser,
     email: emailUser,
-    job: job,
-    description: description,
+    job: jobUser,
+    description: descriptionUser,
   }).then(() => {
     // const user = userCurrent();
     // console.log('Document successfully updated!');
-    
+
   }).catch(() => {
     // The document probably doesn't exist.
     // console.error('Error updating document: ', error);
@@ -48,9 +48,9 @@ export const recoverDataProfile = (textJob, textDescription) => {
   firebase.auth().onAuthStateChanged((user) => {
     dataBase.collection('users').doc(user.uid).get().then((doc) => {
       if (doc.exists) {
-        console.log(doc.data().job);
-        console.log(doc.data().description);
-  
+        // console.log(doc.data().job);
+        // console.log(doc.data().description);
+
         textJob.innerHTML = doc.data().job;
         textDescription.innerHTML = doc.data().description;
       } else {
@@ -60,6 +60,6 @@ export const recoverDataProfile = (textJob, textDescription) => {
     })
       .catch(() => {
         // console.log('Error getting document:', error);
-      }); 
+      });
   });
-}
+};

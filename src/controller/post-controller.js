@@ -1,6 +1,9 @@
 /* eslint-disable import/no-cycle */
 import { userCurrent } from '../controller-firebase/controller-authentication.js';
-import { addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase, showPostUserFirebase, uploadImage } from '../controller-firebase/controller-post.js';
+import {
+  addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase,
+  showPostUserFirebase, uploadImage,
+} from '../controller-firebase/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
 } from '../controller-firebase/controller-likes.js';

@@ -6,9 +6,8 @@ import { userCurrent } from '../controller-firebase/controller-authentication.js
 export default () => {
   const profile = document.createElement('div');
   // profile.className = 'profile-div';
-  const profileContent = ` 
-  <header>
-		<h2>Meet and Code</h2> 
+  const profileContent = ` <header>
+  <h2>Meet and Code</h2> 
     <nav class="nav-links flex menu-bar">
     <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
       <ul id="show-hamb" class="hide list-menu">
@@ -20,11 +19,11 @@ export default () => {
           </a>
           </div>
         </li>
-				<li><a href="#/codeMeet" id="homePag" >Home</a></li>
-				<li><a id="setting">Setting</a></li>
-				<li><a id="signOut"><span class="icon-exit"></span>Log Out</a></li>
-			</ul>
-		</nav>    
+        <li><a href="#/codeMeet" id="homePag" >Home</a></li>
+        <li><a id="setting">Setting</a></li>
+        <li><a id="signOut"><span class="icon-exit"></span>Log Out</a></li>
+      </ul>
+    </nav>    
   </header>
    
     <div class="div-main-profile">  
@@ -54,7 +53,6 @@ export default () => {
   const email = profile.querySelector('#email');
   const job = profile.querySelector('#job');
   const description = profile.querySelector('#description');
-  
   btnSignOut.addEventListener('click', signOutUser);
 
   getData(name, email, job, description);
@@ -68,7 +66,7 @@ export default () => {
 
     updateProfile(newName, newEmail, newJob, newDescription).then(() => {
       // Update successful.
-      console.log('Datos cambiados');
+      // console.log('Datos cambiados');
       window.location.hash = '#/codeMeet';
     });
   });

@@ -16,13 +16,12 @@ export const listNotes = (objNote) => {
       <span>Publicado por: ${objNote.userName}</span>
       <span class="only-flex">${objNote.timePost}</span>
     
-    ${userCurrent().uid === objNote.user ? `
-    <span><i class="fa fa-trash btn-delete" id="delete-${objNote.id}" aria-hidden="true"></i><span>` :
-        `<span class="hide"><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i></span>`}
+    ${userCurrent().uid === objNote.user ? `<span><i class="fa fa-trash btn-delete" id="delete-${objNote.id}" aria-hidden="true"></i><span>`
+    : `<span class="hide"><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i></span>`}
   </div>
   <div class="middle-post">
     <textarea class="textarea margin padding" id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
-    ${objNote.img !== '' ? `<img class="img-post" src="${objNote.img}">` : ``}
+    ${objNote.img !== '' ? `<img class="img-post" src="${objNote.img}">` : ''}
     <div>
       <select id="selectPriv-${objNote.id}" class="btn-select margin" name="select" disabled>
         ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>
