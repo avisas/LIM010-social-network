@@ -12,7 +12,7 @@ export const loginFunction = (event) => {
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
     .then(() => {
-      const modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
+      const modalTitle = '¡Bienvenid@!';
       const modalContent = 'bienvenida';
       modalMessage(modalTitle, modalContent, '#009fc6');
       messageErrorLabel.classList.remove('show-message-error');
@@ -44,7 +44,7 @@ export const signInFacebook = (event) => {
   let modalContent;
   signInWithFacebook().then(() => {
     createProfile(user.uid, user.displayName, user.email);
-    modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
+    modalTitle = '¡Bienvenid@ ingresaste con Facebook!';
     modalContent = 'bienvenida';
     modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
@@ -68,7 +68,7 @@ export const signInGoogle = (event) => {
   let modalContent;
   signInWithGoogle().then(() => {
     createProfile(user.uid, user.displayName, user.email);
-    modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
+    modalTitle = '¡Bienvenid@ ingresaste con Google!';
     modalContent = 'bienvenida';
     modalMessage(modalTitle, modalContent, '#009fc6');
     window.location.hash = '#/codeMeet';
