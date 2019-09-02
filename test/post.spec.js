@@ -3,7 +3,6 @@ import MockFirebase from 'mock-cloud-firestore';
 
 import {
   addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase,
-  uploadImage,
 } from '../src/controller-firebase/controller-post.js';
 // global.firebase = MockFirebase();
 
@@ -88,7 +87,6 @@ describe('Edit post', () => {
 /*
 describe('Add image', () => {
   it('Debería poder agregar un post', (done) => {
-   
   });
 });
 */

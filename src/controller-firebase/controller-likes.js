@@ -2,11 +2,11 @@
 // import { dataBase } from '../main.js';
 import { datePost } from './controller-post.js';
 
-export const addLikeFirebase = (user, postId) => firebase.firestore().collection('post').doc(postId).collection('likes')
-  .doc(user.uid)
+export const addLikeFirebase = (userUid, userName, postId) => firebase.firestore().collection('post').doc(postId).collection('likes')
+  .doc(userUid)
   .set({
-    idUser: user.uid,
-    nameUser: user.displayName,
+    idUser: userUid,
+    nameUser: userName,
     idPost: postId,
   });
 
@@ -16,10 +16,10 @@ export const deleteLikeFirebase = (user, postId) => firebase.firestore().collect
 
 export const showLikeFirebase = idPost => firebase.firestore().collection('post').doc(idPost).collection('likes');
 
-export const addCommentFirebase = (user, postId, text) => firebase.firestore().collection('post').doc(postId).collection('comment')
+export const addCommentFirebase = (userUid, userName, postId, text) => firebase.firestore().collection('post').doc(postId).collection('comment')
   .add({
-    idUser: user.uid,
-    nameUser: user.displayName,
+    idUser: userUid,
+    nameUser: userName,
     comment: text,
     idPost: postId,
     timePost: datePost(),

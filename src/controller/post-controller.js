@@ -46,8 +46,10 @@ export const savePost = (event) => {
 export const saveComment = (postId) => {
   const noteComment = document.querySelector(`#commentario-${postId}`).value;
   const user = userCurrent();
+  const userUid = user.uid;
+  const userName = user.displayName;
   if (noteComment !== '') {
-    addCommentFirebase(user, postId, noteComment)
+    addCommentFirebase(userUid, userName, postId, noteComment)
       .then(() => {
       }).catch((error) => {
         const modalTitle = 'Error Nuevo Comentario';
@@ -153,7 +155,7 @@ export const showLikePost = (list, id) => {
 };
 
 export const deleteLikePost = (postId) => {
-  const user = userCurrent();
+  const user = userCurrent().uid;
   const buttonLike = document.getElementById(`like-${postId}`);
   const buttonDislike = document.getElementById(`dislike-${postId}`);
   deleteLikeFirebase(user, postId)
@@ -168,7 +170,9 @@ export const addLike = (postId) => {
   const buttonLike = document.getElementById(`like-${postId}`);
   const buttonDislike = document.getElementById(`dislike-${postId}`);
   const user = userCurrent();
-  addLikeFirebase(user, postId)
+  const userUid = user.uid;
+  const userName = user.displayName;
+  addLikeFirebase(userUid, userName, postId)
     .then(() => {
       buttonDislike.classList.remove('hide');
       buttonLike.classList.add('hide');
