@@ -4,7 +4,7 @@ import { userCurrent, createUser } from '../controller-firebase/controller-authe
 
 export const createProfile = (id, nameUser, emailUser) => {
   dataBase.collection('users').doc(id).set({
-    name: nameUser, 
+    name: nameUser,
     email: emailUser,
     job: '',
     description: '',
@@ -14,12 +14,12 @@ export const createProfile = (id, nameUser, emailUser) => {
   user.updateProfile({
     displayName: nameUser,
   })
-  .then(()=>{
-    console.log('usuario creado');
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+    .then(() => {
+      // console.log('usuario creado');
+    })
+    .catch(() => {
+      // console.log(error);
+    });
 };
 
 export const getName = (userName) => {
