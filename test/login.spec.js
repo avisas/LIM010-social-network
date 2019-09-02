@@ -35,7 +35,6 @@ global.firebase = firebasemock.MockFirebaseSdk(
 describe('Crear un usuario', () => {
   it('Debería poder registrarse con email albayauri.29@gmail.com y password 123456', () => createUser('albayauri.29@gmail.com', '123456')
     .then((user) => {
-      
       expect(user.email).toBe('albayauri.29@gmail.com');
     }));
 });
