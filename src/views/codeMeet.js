@@ -1,8 +1,3 @@
-/* eslint-disable import/newline-after-import */
-/* eslint-disable import/named */
-/* eslint-disable import/no-unresolved */
-/* eslint-disable no-tabs */
-/* eslint-disable import/no-cycle */
 import { recoverUserName, changeViewToProfile, signOutUser } from '../controller/home-controller.js';
 import { allNotes, myPostNotes } from '../controller/post-controller.js';
 import { recoverDataProfile } from '../controller/profile-controller.js';
@@ -10,60 +5,51 @@ import { recoverDataProfile } from '../controller/profile-controller.js';
 export default () => {
   const headerDiv = document.createElement('div');
   const headerContent = `
-	<header>
-		<h2 class="white">Meet and Code</h2> 
-    <nav class="nav-links flex menu-bar">
-    <a  id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
-      <ul id="show-hamb" class="hide list-menu">
-      <!--<li><a id="user-name"><span class="icon-user">User</a></li>-->
-        <li>
-          <div class="only-flex">
-          <img id="photo" class="photo-header">
-          <a id="user-name">
-          </a>
-          </div>
-        </li>
-				<li><a id="homePag" >Home</a></li>
-				<li><a id="setting">Setting</a></li>
-				<li><a id="signOut"><span class="icon-exit"></span>Log Out</a></li>
-			</ul>
-		</nav>    
-  </header>
+    <header>
+      <h2 class="white">Meet and Code</h2> 
+      <nav class="nav-links flex menu-bar">
+        <a id="hamb-menu" class="bt-menu"><span class="icon-menu"></span></a>
+        <ul id="show-hamb" class="hide list-menu">
+          <li>
+            <div class="only-flex">
+              <img id="photo" class="photo-header">
+              <a id="user-name"></a>
+            </div>
+          </li>
+          <li><a id="homePag" >Home</a></li>
+          <li><a id="setting">Setting</a></li>
+          <li><a id="signOut"><span class="icon-exit"></span>Log Out</a></li>
+        </ul>
+      </nav>    
+    </header>
   
-	<main>
+    <main>
       <div id="user-perfil" class="user-perfil">
       <div>
-      <img class="img-profile"
-          src="https://s.savvysme.com/live/themes/fluid_design/img/category/search-engine-marketing.png">
+        <img class="img-profile" src="https://s.savvysme.com/live/themes/fluid_design/img/category/search-engine-marketing.png">
       </div>
-          <div>
-          <div class="flex margin">
-              <img id="user-photo" class="user-photo">
-              <h2 id="profile-name"></h2>
+      <div>
+        <div class="flex margin">
+          <img id="user-photo" class="user-photo">
+          <h2 id="profile-name"></h2>
+        </div>
+        <hr>
+            
+        <div class="margin">
+          <div class="flex-align">
+            <i class="fa fa-graduation-cap margin" aria-hidden="true"></i>
+            <p id="job"></p>
           </div>
-          <hr>
-          
-          <div class="margin">
-            <div class="flex-align">
-              <i class="fa fa-graduation-cap margin" aria-hidden="true"></i>
-              <p id="job"></p>
-            </div>
-            <div class="flex-align">
+          <div class="flex-align">
             <i class="fa fa-tags margin" aria-hidden="true"></i>
             <p id="description"></p>
-            </div>
-          
-         
-
-          
-          </div>
+          </div>  
+        </div>
+        </div>
       </div>
-    </div>
-    <div class="content-post" id="content-post">
-
-    </div>
-  </main>
-		`;
+      <div class="content-post" id="content-post"></div>
+    </main>
+`;
 
   headerDiv.innerHTML = headerContent;
   const btnSignOut = headerDiv.querySelector('#signOut');

@@ -1,4 +1,4 @@
-/* eslint-disable import/no-cycle */
+// eslint-disable-next-line import/no-cycle
 import { editComment } from '../controller/post-controller.js';
 import { deleteCommentFirebase } from '../model/controller-likes.js';
 import { userCurrent } from '../model/controller-authentication.js';
@@ -29,11 +29,9 @@ export const listComment = (objNote) => {
         <span>${objNote.timePost}</span>
                
       </div>
-      
     </div>
-    <textarea class="list-comment margin" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
-   
-    `;
+    <textarea class="list-comment margin" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea> 
+  `;
 
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deleteCommentFirebase(objNote.idPost, objNote.id));

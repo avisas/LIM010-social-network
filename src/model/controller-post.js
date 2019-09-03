@@ -1,5 +1,3 @@
-
-
 export const datePost = () => {
   const opt1 = {
     month: 'short', day: 'numeric', year: 'numeric',

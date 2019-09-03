@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { changeView } from './controller-view/index.js';
 
 const initRouter = () => {
@@ -17,11 +16,7 @@ const init = () => {
     appId: '1:319072321809:web:c6c4023a67eb540e',
   };
   firebase.initializeApp(firebaseConfig);
-  // export const dataBase = firebase.firestore();
-
   initRouter();
 };
 
 window.onload = init();
-
-// Initialize Firebase

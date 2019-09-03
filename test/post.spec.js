@@ -1,12 +1,7 @@
-/* eslint-disable import/no-unresolved */
-
 import MockFirebase from 'mock-cloud-firestore';
-
 import {
-  // eslint-disable-next-line max-len
   addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase,
 } from '../src/model/controller-post.js';
-// global.firebase = MockFirebase();
 
 const fixtureData = {
   __collection__: {
@@ -43,17 +38,14 @@ const fixtureData = {
 
 global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled: true });
 describe('Add post', () => {
-  // eslint-disable-next-line arrow-body-style
-  it('Debería poder agregar un post', (done) => {
-    return addPostFirebase('primer post', 'publico', '001', 'Liliana', '').then(() => {
-      const callback = (notes) => {
-        const result = notes.find(elemento => elemento.notes === 'primer post');
-        expect(result.notes).toBe('primer post');
-        done();
-      };
-      showPostFirebase(callback);
-    });
-  });
+  it('Debería poder agregar un post', done => addPostFirebase('primer post', 'publico', '001', 'Liliana', '').then(() => {
+    const callback = (notes) => {
+      const result = notes.find(elemento => elemento.notes === 'primer post');
+      expect(result.notes).toBe('primer post');
+      done();
+    };
+    showPostFirebase(callback);
+  }));
 });
 
 describe('showPostUserFirebase', () => {
@@ -85,11 +77,3 @@ describe('Edit post', () => {
     showPostFirebase(callback);
   }));
 });
-
-
-// describe('Add image', () => {
-//   it('Debería poder agregar una imagen', (done) => {
-//     return uploadImage('file').then(() => {
-//     })zz
-//   });
-// });

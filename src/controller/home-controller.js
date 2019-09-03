@@ -24,7 +24,6 @@ export const signOutUser = () => {
   signOutLogin().then(() => {
     window.location.hash = '#/';
   }, () => {
-    // console.log(error);
   });
 };
 export const changeViewToProfile = () => {

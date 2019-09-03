@@ -55,8 +55,6 @@ export const signInFacebook = (event) => {
       modalContent = `Error adding document:${errorMessage}`;
       modalMessage(modalTitle, modalContent, '#9da9cf');
     }
-
-    // Aqui va el error , leer manejo de errores de FB
   });
 };
 
@@ -66,7 +64,6 @@ export const signInGoogle = (event) => {
   let modalTitle;
   let modalContent;
   signInWithGoogle().then(() => {
-    console.log(user.uid);
     createProfile(user.uid, user.displayName, user.email);
     modalTitle = '¡Bienvenid@ a Meet and Code!';
     modalContent = 'Ingresaste con tu cuenta de Google';

@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import MockFirebase from 'mock-cloud-firestore';
 import {
   addLikeFirebase, showLikeFirebase, deleteLikeFirebase,
@@ -75,8 +74,6 @@ describe('addLikeFirebase', () => {
 describe('deleteLikeFirebase', () => {
   it('deberia poder quitar like a un post', done => deleteLikeFirebase('user1', 'a01')
     .then(() => {
-      // showLikeFirebase('a01').onSnapshot((querySnapshot) => {
-      // });
       done();
     }));
 });

@@ -1,4 +1,3 @@
-
 import { datePost } from './controller-post.js';
 
 export const addLikeFirebase = (userUid, userName, postId) => firebase.firestore().collection('post').doc(postId).collection('likes')
