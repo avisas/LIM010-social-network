@@ -307,10 +307,9 @@ p {
   color: #565454;
   padding: 2% 3% 0% 3%;
   width: 90%;
-  /* width: 100%; */
+  width: 100%;
   font-size: 13px;
   font-weight: bold;
-
 }
 .border-post {
   border: 2px solid #7c817e;
@@ -479,7 +478,9 @@ label {
 }
 .top-comment{
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  width: 100%;
 }
 .width-icon{
   /* font-size: large; */

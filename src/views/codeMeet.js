@@ -49,7 +49,7 @@ export default () => {
               <p id="job"></p>
             </div>
             <div class="flex-align">
-            <i class="fa fa-tags" aria-hidden="true"></i>
+            <i class="fa fa-tags margin" aria-hidden="true"></i>
             <p id="description"></p>
             </div>
           

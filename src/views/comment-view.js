@@ -10,25 +10,26 @@ export const listComment = (objNote) => {
   liElemnt.classList.add('margin');
   liElemnt.innerHTML = `
     <div class="user-commented flex-name-post">
-
-
       <div class="top-comment">
-
-        <span>${objNote.nameUser}</span>
-        ${userCurrent().uid === objNote.idUser ? `
-        <div class="width-icon">
-          <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o save-comment" aria-hidden="true"></i></span>
-          <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o edit-comment" aria-hidden="true"></i></span>
-          <span class="" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
-        </div> 
-          ` : `
-         <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
-         <span class="hide" id="edit-${objNote.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
-         <span class="hide" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
-          `}
-      </div>
-      <hr class="margin-top">
+        <div>
+          <span>${objNote.nameUser}</span>
+          ${userCurrent().uid === objNote.idUser ? `
+          <div class="width-icon">
+            <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o save-comment" aria-hidden="true"></i></span>
+            <span id="edit-${objNote.id}"><i class="fa fa-pencil-square-o edit-comment" aria-hidden="true"></i></span>
+            <span class="" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
+          </div> 
+            ` : `
+          <span class="hide" id="savecomment-${objNote.id}"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          <span class="hide" id="edit-${objNote.id}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+          <span class="hide" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
+            `}
+        </div>     
+        <hr>
         <span>${objNote.timePost}</span>
+               
+      </div>
+      
     </div>
     <textarea class="list-comment margin" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
    
