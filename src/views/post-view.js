@@ -14,14 +14,14 @@ export const listNotes = (objNote) => {
   <div class="user-publicated padding flex-name-post">
     <div class="only-flex">
       <div>
-        <p>${objNote.userName}  | </p>
+        <p>${objNote.userName} </p>
         <select id="selectPriv-${objNote.id}" class="btn-select" name="select" disabled>
         ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>
         <option value="publico">Público</option>` : `<option value="privado">Privado</option>
         <option value="publico" selected>Público</option> `}
       </select>
       </div>
-      <p>${objNote.timePost}</p>
+      <p class="date-publication">${objNote.timePost}</p>
     </div>
     ${userCurrent().uid === objNote.user ? `
     <span><i class="fa fa-trash btn-delete" id="delete-${objNote.id}" aria-hidden="true"></i><span>`

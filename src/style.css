@@ -193,6 +193,10 @@ p {
   font-size: 14px;
 }
 
+.date-publication{
+  margin-left: 10px;
+  color: #008fd3;
+}
 /* .btn-select {
   align-self: start;
   margin-top: 3px;
@@ -262,6 +266,7 @@ p {
   width: min-content;
   cursor: pointer;
   background: transparent;
+  font-family: "Ubuntu", sans-serif;
 }
 .btn-select select option {
   padding: 30px;
@@ -484,7 +489,6 @@ label {
     background-color: #c1cddb08;
     height: initial;
   }
-
   header nav ul li {
     /* padding: 0px 20px; */
     width: initial;
@@ -567,7 +571,7 @@ label {
     /* margin-bottom: 10%; */
   }
   .contenido-modal {
-    width: 70%;
+    width: 30%;
   }
 
   .flex-form-profile {
@@ -651,14 +655,14 @@ label {
   border-radius: 50%;
 }
 .iconEdit {
-  color: white;
-  background: #1b2354;
+  color:#080808;
+  background: #fefefe;
   padding: 10px;
   border-radius: 50%;
 }
 .iconSave {
-  color: #fefefe;
-  background: #a5cc1b;
+  color: #080808;
+  background: #fefefe;
   padding: 10px;
   border-radius: 50%;
 }
@@ -668,8 +672,8 @@ label {
   border-radius: 50%;
 }
 .show-comment {
-  color: #fefefe;
-  background: #00a1df;
+  color: #080808;
+  background: #fefefe;
   padding: 10px;
   border-radius: 50%;
 }
