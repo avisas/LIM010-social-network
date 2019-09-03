@@ -8,7 +8,6 @@ export const datePost = () => {
   const date = new Date().toLocaleDateString('es-Es', opt1);
   const time = new Date().toLocaleTimeString('es-Es', opt2);
   const dataTime = `${date} - ${time}`;
-  // console.log(dataTime);
   return dataTime;
 };
 
@@ -26,7 +25,6 @@ export const deletePostFirebase = id => firebase.firestore().collection('post').
 export const editPostFirebase = (id, note, selectedPrivacidad) => firebase.firestore().collection('post').doc(id).update({
   notes: note,
   privacidad: selectedPrivacidad,
-  // timePost: (new Date()).toGMTString(),
   timePost: datePost(),
 });
 
@@ -50,7 +48,6 @@ export const showPostUserFirebase = (userUid, callback) => firebase.firestore().
   });
 
 export const uploadImage = (file) => {
-  // Create a storage reference
   const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
   return postImageRef.put(file)
     .then(snapshot => snapshot.ref.getDownloadURL());

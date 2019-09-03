@@ -29,12 +29,14 @@ export const listNotes = (objNote) => {
     <div class="middle-post">
       <textarea class="textarea no-border margin padding" id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
       ${objNote.img !== '' ? `<img class="img-post" src="${objNote.img}">` : ''}
+      <div>
+      </div>
     </div>
     <div class="botom-post padding">
       <div>
-        <i class="fa fa-heart-o heart-empty" aria-hidden="true" id="like-${objNote.id}" data-post="${objNote.id}"></i>
-        <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${objNote.id}" data-post="${objNote.id}"></i>
-        <a id="counter-${objNote.id}" class="counter-heart"></a>
+      <i class="fa fa-heart-o heart-empty" aria-hidden="true" id="like-${objNote.id}" data-post="${objNote.id}"></i>
+      <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${objNote.id}" data-post="${objNote.id}"></i>
+      <a id="counter-${objNote.id}" class="counter-heart"></a>
       </div>
       <div>
         <span id="show-comment"><i class="fa fa-comment-o show-comment" aria-hidden="true"></i></span>
@@ -44,12 +46,10 @@ export const listNotes = (objNote) => {
       <span class="margin-left hide" id="save-post-${objNote.id}" data-note="${objNote.notes}"
         data-privacidad="${objNote.privacidad}"><i class="fa fa-floppy-o iconSave" aria-hidden="true"></i></span>
       <span class="margin-left" id="edit-${objNote.id}" data-note="${objNote.notes}"
-       data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>
-      ` : `
-      <span class="margin-left hide" id="save-post-${objNote.id}" data-note="${objNote.notes}"
-        data-privacidad="${objNote.privacidad}"><i class="fa fa-floppy-o iconSave" aria-hidden="true"></i></span>
-      <span class="margin-left hide" id="edit-${objNote.id}" data-note="${objNote.notes}"
-        data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>`}
+        data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>
+          ` : `
+      <span class="margin-left hide" id="save-post-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="fa fa-floppy-o iconSave" aria-hidden="true"></i></span>
+      <span class="margin-left hide" id="edit-${objNote.id}" data-note="${objNote.notes}" data-privacidad="${objNote.privacidad}"><i class="fa fa-pencil-square-o iconEdit" aria-hidden="true"></i><span>`}
     </div>
     <div id="comments-section" class="hide">
       <form id="form-publication" maxlength=50 class="form-comment" required>
@@ -59,7 +59,7 @@ export const listNotes = (objNote) => {
       <section id="allComments-${objNote.id}"></section>
     </div>
   </div>
-`;
+      `;
   liElemnt.querySelector(`#delete-${objNote.id}`)
     .addEventListener('click', () => deletePost(objNote.id));
 
@@ -80,6 +80,7 @@ export const listNotes = (objNote) => {
     });
 
   showLikePost(liElemnt, objNote.id);
+  // countComments(objNote.id);
 
   const allComents = liElemnt.querySelector(`#allComments-${objNote.id}`);
   const showComment = liElemnt.querySelector('#show-comment');
