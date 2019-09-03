@@ -3,12 +3,23 @@
 import { userCurrent, createUser } from '../model/controller-authentication.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
-  firebase.firestore().collection('users').doc(id).set({
-    name: nameUser,
-    email: emailUser,
-    job: '',
-    description: '',
-  });
+  firebase.firestore().collection('users').doc(id).get()
+    .then((doc) => {
+      if (!doc.exists) {
+        // console.log('Document data:', doc.data().name);
+        firebase.firestore().collection('users').doc(id).set({
+          name: nameUser,
+          email: emailUser,
+          job: '',
+          description: '',
+        });
+      } else {
+        // doc.data() will be undefined in this case
+        // console.log('No such document!');
+      }
+    });
+
+
   const user = userCurrent();
 
   user.updateProfile({

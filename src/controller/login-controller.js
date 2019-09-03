@@ -66,6 +66,7 @@ export const signInGoogle = (event) => {
   let modalTitle;
   let modalContent;
   signInWithGoogle().then(() => {
+    console.log(user.uid);
     createProfile(user.uid, user.displayName, user.email);
     modalTitle = '¡Bienvenid@ a Meet and Code!';
     modalContent = 'Ingresaste con tu cuenta de Google';
