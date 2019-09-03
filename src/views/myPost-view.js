@@ -4,14 +4,12 @@ import { listNotes } from './post-view.js';
 export const myPost = (myNotes) => {
   const myPostDiv = document.createElement('div');
   myPostDiv.innerHTML = `
-  
-    <section>
-      <ul id="myPostNotes-list" class="ul-parent">
-      </ul>
-    </section>
+  <section>
+    <ul id="myPostNotes-list" class="ul-parent"></ul>
+  </section>
   </main>
   <footer></footer>
-    `;
+  `;
 
   const ulMyPost = myPostDiv.querySelector('#myPostNotes-list');
   myNotes.forEach((note3) => {
