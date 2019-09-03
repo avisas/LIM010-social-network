@@ -1,5 +1,4 @@
 /* eslint-disable import/no-cycle */
-/* eslint-disable import/no-cycle */
 import { userCurrent } from '../model/controller-authentication.js';
 import {
   addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase,
@@ -142,7 +141,6 @@ export const showLikePost = (list, id) => {
 
 export const deleteLikePost = (postId) => {
   const user = userCurrent().uid;
-  console.log(postId);
   const buttonLike = document.getElementById(`like-${postId}`);
   const buttonDislike = document.getElementById(`dislike-${postId}`);
   deleteLikeFirebase(user, postId)
