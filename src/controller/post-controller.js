@@ -72,14 +72,14 @@ export const edit = (id) => {
   const botonGuardar = document.querySelector(`#edit-${id}`);
   const boton = document.querySelector(`#save-post-${id}`);
 
-  textPost.disabled = false;
+  textPost.contentEditable = true;
   selectPrivacity.disabled = false;
   textPost.focus();
   boton.classList.remove('hide');
   botonGuardar.classList.add('hide');
   boton.addEventListener('click', (e) => {
     e.preventDefault();
-    const note = textPost.value;
+    const note = textPost.innerHTML;
     const selectedPrivacidad = selectPrivacity.value;
     editPostFirebase(id, note, selectedPrivacidad)
       .then(() => {
