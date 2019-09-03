@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import { signOutUser } from '../controller/home-controller.js';
 import { updateProfile, getData } from '../controller/profile-controller.js';
 import { userCurrent } from '../model/controller-authentication.js';

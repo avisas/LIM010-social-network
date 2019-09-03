@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-cycle
 import {
   loginFunction, signInFacebook, signInGoogle, showPassword,
 } from '../controller/login-controller.js';

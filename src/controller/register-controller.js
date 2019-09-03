@@ -12,9 +12,7 @@ export const createProfile = (id, nameUser, emailUser) => {
         });
       }
     });
-
   const user = userCurrent();
-
   user.updateProfile({
     displayName: nameUser,
   })
@@ -30,6 +28,8 @@ export const getName = (userName) => {
     .then((doc) => {
       if (doc.exists) {
         userName.textContent = doc.data().name;
+      } else {
+        userName.textContent = '';
       }
     })
     .catch(() => {
