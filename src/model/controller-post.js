@@ -2,7 +2,7 @@
 
 export const datePost = () => {
   const opt1 = {
-    month: 'long', day: 'numeric', year: 'numeric',
+    month: 'short', day: 'numeric', year: 'numeric',
   };
   const opt2 = {
     hour12: 'true', hour: 'numeric', minute: 'numeric',
