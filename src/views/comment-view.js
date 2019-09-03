@@ -1,7 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { editComment } from '../controller/post-controller.js';
-import { deleteCommentFirebase } from '../controller-firebase/controller-likes.js';
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
+import { deleteCommentFirebase } from '../model/controller-likes.js';
+import { userCurrent } from '../model/controller-authentication.js';
 
 export const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
@@ -10,7 +10,10 @@ export const listComment = (objNote) => {
   liElemnt.classList.add('margin');
   liElemnt.innerHTML = `
     <div class="user-commented flex-name-post">
+
+
       <div class="top-comment">
+
         <span>${objNote.nameUser}</span>
         ${userCurrent().uid === objNote.idUser ? `
         <div class="width-icon">

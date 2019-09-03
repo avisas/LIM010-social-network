@@ -33,7 +33,7 @@ nav ul {
   display: flex;
   justify-content: space-around;
 }
-.white{
+.white {
   color: white;
 }
 header nav ul {
@@ -107,10 +107,10 @@ header nav ul li span {
   color: #666666;
 }
 p {
-  text-align: center;
+  /* text-align: center; */
   font-family: "Ubuntu", sans-serif;
   color: #666666;
-  padding: 3%;
+  /* padding: 3%; */
 }
 .register-href {
   font-weight: bold;
@@ -190,8 +190,13 @@ p {
   resize: none;
   background-color: white;
   width: -webkit-fill-available;
+  font-size: 14px;
 }
 
+.date-publication{
+  margin-left: 10px;
+  color: #008fd3;
+}
 /* .btn-select {
   align-self: start;
   margin-top: 3px;
@@ -203,6 +208,7 @@ p {
   background: #3b5998;
   padding: 5px 12px 5px 12px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .iconGoogle {
   color: #fefefe;
@@ -211,6 +217,7 @@ p {
   padding: 7px 8px 7px 8px;
   background: #db4a39;
   border-radius: 50%;
+  cursor: pointer;
 }
 .div-icon {
   margin-bottom: 15px;
@@ -252,17 +259,14 @@ p {
   padding: 7px 20px 7px 20px;
 }
 .no-border {
-  border:none;
+  border: none;
 }
 .btn-select {
-  /* align-self: start; */
-  /* margin-top: 3px; */
   border: none;
-  /* border-top-style: inset; */
-  /* background-color: #ffee3d; */
-  /* color: #00a1df; */
-  padding: 7px;
-  border-radius: 20px;
+  width: min-content;
+  cursor: pointer;
+  background: transparent;
+  font-family: "Ubuntu", sans-serif;
 }
 .btn-select select option {
   padding: 30px;
@@ -272,12 +276,10 @@ p {
   background-color: #00a1df;
   color: #ffffff;
   padding: 7px 15px;
-  /* margin: 8px 0; */
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 13px;
-  /* align-self: flex-start; */
 }
 .img-profile {
   width: 100%;
@@ -304,9 +306,11 @@ p {
 .user-commented {
   color: #565454;
   padding: 2% 3% 0% 3%;
+  width: 90%;
   /* width: 100%; */
   font-size: 13px;
   font-weight: bold;
+
 }
 .border-post {
   border: 2px solid #7c817e;
@@ -361,7 +365,7 @@ p {
   border-radius: 50%;
   height: 70px;
 }
-.photo-header{
+.photo-header {
   border-radius: 50%;
   height: 30px;
   margin-top: 5px;
@@ -404,8 +408,8 @@ label {
 }
 .flex-name-post {
   display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
+  flex-direction: row;
+  justify-content: space-between; 
 }
 .delete {
   height: 20px;
@@ -443,7 +447,7 @@ label {
   resize: none;
   background-color: #f2eeed;
   width: -webkit-fill-available;
-  margin: 0 3% 0% 2%;
+  margin: 0 3% 0% 5%;
   border: none;
   padding: 1% 0 0 2%;
   border-radius: 15px;
@@ -453,12 +457,12 @@ label {
   align-items: center;
   display: flex;
 }
-.file-name{
-  border:none;
+.file-name {
+  border: none;
   width: 90px;
   font-size: 10px;
 }
-.div-main-profile{
+.div-main-profile {
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -523,7 +527,6 @@ label {
     background-color: #c1cddb08;
     height: initial;
   }
-
   header nav ul li {
     /* padding: 0px 20px; */
     width: initial;
@@ -597,7 +600,6 @@ label {
     display: flex !important;
   }
 
-  
   /* nav li{
     flex: 1 1 0; 
   } */
@@ -607,10 +609,10 @@ label {
     /* margin-bottom: 10%; */
   }
   .contenido-modal {
-    width: 70%;
+    width: 30%;
   }
-  
-  .flex-form-profile{
+
+  .flex-form-profile {
     align-items: center;
     display: flex;
     justify-content: center;
@@ -640,7 +642,6 @@ label {
   position: relative;
   background-color: #fefefe;
   margin: auto;
-  width: 30%;
   box-shadow: 0 0 6px 0 rgb(0, 0, 0, 0.4);
   animation-name: modal;
   /* animation-duration: 1s; */
@@ -670,11 +671,10 @@ label {
 .modal-footer {
   padding: 8px 16px;
   color: #f2f2f2;
-  background: #009fc6;
+  background: #9da9cf;
 }
 .text-modal {
   text-align: justfy;
-  height: 100px;
 }
 .modal-body {
   padding: 20px 16px;
@@ -693,25 +693,25 @@ label {
   border-radius: 50%;
 }
 .iconEdit {
-  color: white;
-  background: #1b2354;
+  color:#080808;
+  background: #fefefe;
   padding: 10px;
   border-radius: 50%;
 }
 .iconSave {
-  color: #fefefe;
-  background: #a5cc1b;
+  color: #080808;
+  background: #fefefe;
   padding: 10px;
   border-radius: 50%;
 }
 .btn-delete {
-  background: #1b2354;
+  background: #f2f2f2;
   padding: 6px;
   border-radius: 50%;
 }
 .show-comment {
-  color: #fefefe;
-  background: #00a1df;
+  color: #080808;
+  background: #fefefe;
   padding: 10px;
   border-radius: 50%;
 }
@@ -723,10 +723,9 @@ label {
 }
 
 .edit-comment {
-  color: #f6b106;
   font-weight: bold;
 }
-.save-comment{
+.save-comment {
   color: #a5cc1b;
   font-weight: bold;
 }
@@ -737,3 +736,4 @@ label {
   padding: 10px;
   border-radius: 50%;
 }
+

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 // import { dataBase } from '../main.js';
-import { userCurrent, createUser } from '../controller-firebase/controller-authentication.js';
+import { userCurrent, createUser } from '../model/controller-authentication.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
   firebase.firestore().collection('users').doc(id).get()

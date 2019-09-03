@@ -1,8 +1,7 @@
 import {
   signIn, signInWithFacebook, signInWithGoogle, userCurrent,
-} from '../controller-firebase/controller-authentication.js';
+} from '../model/controller-authentication.js';
 import { modalMessage } from './home-controller.js';
-// eslint-disable-next-line import/no-cycle
 import { createProfile } from './register-controller.js';
 
 export const loginFunction = (event) => {
@@ -12,9 +11,9 @@ export const loginFunction = (event) => {
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
     .then(() => {
-      const modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
-      const modalContent = 'bienvenida';
-      modalMessage(modalTitle, modalContent, '#009fc6');
+      const modalTitle = '¡Bienvenid@ a Meet and Code!';
+      const modalContent = 'Ingresaste con tu nueva cuenta';
+      modalMessage(modalTitle, modalContent, '#9da9cf');
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/codeMeet';
@@ -44,9 +43,9 @@ export const signInFacebook = (event) => {
   let modalContent;
   signInWithFacebook().then(() => {
     createProfile(user.uid, user.displayName, user.email);
-    modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
-    modalContent = 'bienvenida';
-    modalMessage(modalTitle, modalContent, '#009fc6');
+    modalTitle = '¡Bienvenid@ a Meet and Code!';
+    modalContent = 'Ingresaste con tu cuenta de Facebook';
+    modalMessage(modalTitle, modalContent, '#9da9cf');
     window.location.hash = '#/codeMeet';
   }).catch((error) => {
     const errorType = error.type;
@@ -54,7 +53,7 @@ export const signInFacebook = (event) => {
       const errorMessage = error.message;
       modalTitle = 'Mensaje de Error';
       modalContent = `Error adding document:${errorMessage}`;
-      modalMessage(modalTitle, modalContent, '#009fc6');
+      modalMessage(modalTitle, modalContent, '#9da9cf');
     }
 
     // Aqui va el error , leer manejo de errores de FB
@@ -69,16 +68,16 @@ export const signInGoogle = (event) => {
   signInWithGoogle().then(() => {
     console.log(user.uid);
     createProfile(user.uid, user.displayName, user.email);
-    modalTitle = '¡¡Bienvenid@ a Meet and Code!!';
-    modalContent = 'bienvenida';
-    modalMessage(modalTitle, modalContent, '#009fc6');
+    modalTitle = '¡Bienvenid@ a Meet and Code!';
+    modalContent = 'Ingresaste con tu cuenta de Google';
+    modalMessage(modalTitle, modalContent, '#9da9cf');
     window.location.hash = '#/codeMeet';
   }).catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/account-exists-with-different-credential') {
       modalTitle = 'Mensaje de Error';
       modalContent = 'Es el mismo usuario';
-      modalMessage(modalTitle, modalContent, '#009fc6');
+      modalMessage(modalTitle, modalContent, '#9da9cf');
     }
   });
 };

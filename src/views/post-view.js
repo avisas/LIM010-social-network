@@ -2,8 +2,8 @@
 import {
   deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment,
 } from '../controller/post-controller.js';
-import { getAllComments } from '../controller-firebase/controller-likes.js';
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
+import { getAllComments } from '../model/controller-likes.js';
+import { userCurrent } from '../model/controller-authentication.js';
 import { listComment } from './comment-view.js';
 
 export const listNotes = (objNote) => {
@@ -12,10 +12,17 @@ export const listNotes = (objNote) => {
   liElemnt.innerHTML = `
   <div class="div-post">
   <div class="user-publicated padding flex-name-post">
-    
-      <span>Publicado por: ${objNote.userName}</span>
-      <span class="only-flex">${objNote.timePost}</span>
-    
+    <div class="only-flex">
+      <div>
+        <p>${objNote.userName} </p>
+        <select id="selectPriv-${objNote.id}" class="btn-select" name="select" disabled>
+        ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>
+        <option value="publico">Público</option>` : `<option value="privado">Privado</option>
+        <option value="publico" selected>Público</option> `}
+      </select>
+      </div>
+      <p class="date-publication">${objNote.timePost}</p>
+    </div>
     ${userCurrent().uid === objNote.user ? `
     <span><i class="fa fa-trash btn-delete" id="delete-${objNote.id}" aria-hidden="true"></i><span>`
     : `<span class="hide"><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i></span>`}
@@ -24,11 +31,7 @@ export const listNotes = (objNote) => {
     <textarea class="textarea no-border margin padding" id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
     ${objNote.img !== '' ? `<img class="img-post" src="${objNote.img}">` : ''}
     <div>
-      <select id="selectPriv-${objNote.id}" class="btn-select margin" name="select" disabled>
-        ${objNote.privacidad === 'privado' ? `<option value="privado" selected>Privado</option>
-        <option value="publico">Público</option>` : `<option value="privado">Privado</option>
-        <option value="publico" selected>Público</option> `}
-      </select>
+      
     </div>
   </div>
   <div class="botom-post padding">
@@ -76,7 +79,11 @@ export const listNotes = (objNote) => {
     .addEventListener('click', () => deleteLikePost(objNote.id));
 
   liElemnt.querySelector(`#comment-${objNote.id}`)
-    .addEventListener('click', () => saveComment(objNote.id));
+    .addEventListener('click', () => {
+      const contNote = liElemnt.querySelector(`#commentario-${objNote.id}`);
+      saveComment(objNote.id);
+      contNote.value = '';
+    });
 
   showLikePost(liElemnt, objNote.id);
   // countComments(objNote.id);

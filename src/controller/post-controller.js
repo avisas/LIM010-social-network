@@ -1,12 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
+import { userCurrent } from '../model/controller-authentication.js';
 import {
   addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase,
   showPostUserFirebase, uploadImage,
-} from '../controller-firebase/controller-post.js';
+} from '../model/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
-} from '../controller-firebase/controller-likes.js';
+} from '../model/controller-likes.js';
 import { home } from '../views/home-view.js';
 import { myPost } from '../views/myPost-view.js';
 import { modalMessage } from './home-controller.js';
@@ -24,17 +24,11 @@ export const savePost = (event) => {
     if (fileButton.files[0] === undefined) {
       addPostFirebase(notePost, selectedPrivacidad, userUid, userName, '')
         .then(() => {
-          const modalTitle = 'Nuevo Registro';
-          const modalContent = 'Publicación ingresada';
-          modalMessage(modalTitle, modalContent, '#a5bf48ed');
         });
     } else {
       // console.log(uploadImage(fileButton.files[0]));
       uploadImage(fileButton.files[0])
         .then(url => addPostFirebase(notePost, selectedPrivacidad, userUid, userName, url));
-      const modalTitle = 'Nuevo Registro';
-      const modalContent = 'Publicación ingresada';
-      modalMessage(modalTitle, modalContent, '#a5bf48ed');
     }
   } else {
     const modalTitle = 'Error de Registro';
@@ -66,9 +60,6 @@ export const saveComment = (postId) => {
 export const deletePost = (id) => {
   deletePostFirebase(id)
     .then(() => {
-      const modalTitle = 'Eliminar publicación';
-      const modalContent = 'La publicación se elimino con éxito';
-      modalMessage(modalTitle, modalContent);
     }).catch((error) => {
       const modalTitle = 'Error Eliminar Publicación';
       const modalContent = `Error adding document:${error}`;
@@ -93,9 +84,6 @@ export const edit = (id) => {
     const selectedPrivacidad = selectPrivacity.value;
     editPostFirebase(id, note, selectedPrivacidad)
       .then(() => {
-        const modalTitle = 'Editar Publicación';
-        const modalContent = 'Los cambios se guardaron satisfactoriamente';
-        modalMessage(modalTitle, modalContent, '#a5bf48ed');
         boton.classList.add('hide');
         botonGuardar.classList.remove('hide');
       })
