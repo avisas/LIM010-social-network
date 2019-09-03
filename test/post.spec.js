@@ -4,8 +4,8 @@ import MockFirebase from 'mock-cloud-firestore';
 
 import {
   // eslint-disable-next-line max-len
-  addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase, uploadImage,
-} from '../src/controller-firebase/controller-post.js';
+  addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase,
+} from '../src/model/controller-post.js';
 // global.firebase = MockFirebase();
 
 const fixtureData = {

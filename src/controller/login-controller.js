@@ -1,8 +1,7 @@
 import {
   signIn, signInWithFacebook, signInWithGoogle, userCurrent,
-} from '../controller-firebase/controller-authentication.js';
+} from '../model/controller-authentication.js';
 import { modalMessage } from './home-controller.js';
-// eslint-disable-next-line import/no-cycle
 import { createProfile } from './register-controller.js';
 
 export const loginFunction = (event) => {
@@ -12,8 +11,8 @@ export const loginFunction = (event) => {
   const contrasena = event.target.password.value;
   signIn(usuario, contrasena)
     .then(() => {
-      const modalTitle = '¡Bienvenid@!';
-      const modalContent = 'bienvenida';
+      const modalTitle = '¡Bienvenid@ a Meet and Code!';
+      const modalContent = 'Ingresaste con tu nueva cuenta';
       modalMessage(modalTitle, modalContent, '#9da9cf');
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
@@ -44,8 +43,8 @@ export const signInFacebook = (event) => {
   let modalContent;
   signInWithFacebook().then(() => {
     createProfile(user.uid, user.displayName, user.email);
-    modalTitle = '¡Bienvenid@ ingresaste con Facebook!';
-    modalContent = 'bienvenida';
+    modalTitle = '¡Bienvenid@ a Meet and Code!';
+    modalContent = 'Ingresaste con tu cuenta de Facebook';
     modalMessage(modalTitle, modalContent, '#9da9cf');
     window.location.hash = '#/codeMeet';
   }).catch((error) => {
@@ -68,8 +67,8 @@ export const signInGoogle = (event) => {
   let modalContent;
   signInWithGoogle().then(() => {
     createProfile(user.uid, user.displayName, user.email);
-    modalTitle = '¡Bienvenid@ ingresaste con Google!';
-    modalContent = 'bienvenida';
+    modalTitle = '¡Bienvenid@ a Meet and Code!';
+    modalContent = 'Ingresaste con tu cuenta de Google';
     modalMessage(modalTitle, modalContent, '#9da9cf');
     window.location.hash = '#/codeMeet';
   }).catch((error) => {

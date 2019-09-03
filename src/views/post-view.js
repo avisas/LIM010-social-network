@@ -2,8 +2,8 @@
 import {
   deletePost, edit, addLike, deleteLikePost, showLikePost, saveComment,
 } from '../controller/post-controller.js';
-import { getAllComments } from '../controller-firebase/controller-likes.js';
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
+import { getAllComments } from '../model/controller-likes.js';
+import { userCurrent } from '../model/controller-authentication.js';
 import { listComment } from './comment-view.js';
 
 export const listNotes = (objNote) => {

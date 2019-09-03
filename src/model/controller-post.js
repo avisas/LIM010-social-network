@@ -1,5 +1,4 @@
-/* eslint-disable import/no-cycle */
-// import { dataBase } from '../main.js';
+
 
 export const datePost = () => {
   const opt1 = {

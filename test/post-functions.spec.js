@@ -3,7 +3,7 @@ import MockFirebase from 'mock-cloud-firestore';
 import {
   addLikeFirebase, showLikeFirebase, deleteLikeFirebase,
   addCommentFirebase, getAllComments, editCommentFirebase, deleteCommentFirebase,
-} from '../src/controller-firebase/controller-likes.js';
+} from '../src/model/controller-likes.js';
 
 const fixtureData = {
   __collection__: {

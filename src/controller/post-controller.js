@@ -1,12 +1,12 @@
 /* eslint-disable import/no-cycle */
-import { userCurrent } from '../controller-firebase/controller-authentication.js';
+import { userCurrent } from '../model/controller-authentication.js';
 import {
   addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase,
   showPostUserFirebase, uploadImage,
-} from '../controller-firebase/controller-post.js';
+} from '../model/controller-post.js';
 import {
   addLikeFirebase, deleteLikeFirebase, showLikeFirebase, addCommentFirebase, editCommentFirebase,
-} from '../controller-firebase/controller-likes.js';
+} from '../model/controller-likes.js';
 import { home } from '../views/home-view.js';
 import { myPost } from '../views/myPost-view.js';
 import { modalMessage } from './home-controller.js';

@@ -1,5 +1,4 @@
-/* eslint-disable brace-style */
-import { signOutLogin } from '../controller-firebase/controller-authentication.js';
+import { signOutLogin } from '../model/controller-authentication.js';
 
 export const recoverUserName = (userName, userProfileName, UserPhotoProfile, photo) => {
   firebase.auth().onAuthStateChanged((user) => {
@@ -11,8 +10,7 @@ export const recoverUserName = (userName, userProfileName, UserPhotoProfile, pho
         userName.innerHTML = displayName;
         userProfileName.innerHTML = displayUserName;
         UserPhotoProfile.src = 'https://icon-library.net/images/avatar-icon-png/avatar-icon-png-16.jpg';
-      }
-      else {
+      } else {
         userName.innerHTML = displayUserName;
         userProfileName.innerHTML = displayUserName;
         UserPhotoProfile.src = userPhoto;
@@ -49,14 +47,9 @@ export const modalMessage = (modalTitleTex, modalContent, color) => {
   modal.classList.remove('hide');
   modalTitle.innerHTML = modalTitleTex;
   modalHeader.style.backgroundColor = color;
-  if (modalContent === 'bienvenida') {
-    textModal.style.backgroundImage = "url('https://i.blogs.es/435a43/7_navegando/650_1200.gif')";
-  } else {
-    textModal.innerHTML = modalContent;
-  }
+  textModal.innerHTML = modalContent;
   close.addEventListener('click', () => {
     modal.classList.add('hide');
-    textModal.style.backgroundImage = '';
     textModal.innerHTML = '';
   });
   window.addEventListener('click', (e) => {

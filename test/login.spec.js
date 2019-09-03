@@ -12,7 +12,7 @@ describe('signIn', () => {
 
 import {
   signIn, createUser, userCurrent, signInWithFacebook, signInWithGoogle, signOutLogin,
-} from '../src/controller-firebase/controller-authentication.js';
+} from '../src/model/controller-authentication.js';
 
 const firebasemock = require('firebase-mock');
 
