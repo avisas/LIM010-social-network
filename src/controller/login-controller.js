@@ -14,7 +14,7 @@ export const loginFunction = (event) => {
     .then(() => {
       const modalTitle = '¡Bienvenid@!';
       const modalContent = 'bienvenida';
-      modalMessage(modalTitle, modalContent, '#009fc6');
+      modalMessage(modalTitle, modalContent, '#9da9cf');
       messageErrorLabel.classList.remove('show-message-error');
       messageErrorLabel.innerHTML = '';
       window.location.hash = '#/codeMeet';
@@ -46,7 +46,7 @@ export const signInFacebook = (event) => {
     createProfile(user.uid, user.displayName, user.email);
     modalTitle = '¡Bienvenid@ ingresaste con Facebook!';
     modalContent = 'bienvenida';
-    modalMessage(modalTitle, modalContent, '#009fc6');
+    modalMessage(modalTitle, modalContent, '#9da9cf');
     window.location.hash = '#/codeMeet';
   }).catch((error) => {
     const errorType = error.type;
@@ -54,7 +54,7 @@ export const signInFacebook = (event) => {
       const errorMessage = error.message;
       modalTitle = 'Mensaje de Error';
       modalContent = `Error adding document:${errorMessage}`;
-      modalMessage(modalTitle, modalContent, '#009fc6');
+      modalMessage(modalTitle, modalContent, '#9da9cf');
     }
 
     // Aqui va el error , leer manejo de errores de FB
@@ -70,14 +70,14 @@ export const signInGoogle = (event) => {
     createProfile(user.uid, user.displayName, user.email);
     modalTitle = '¡Bienvenid@ ingresaste con Google!';
     modalContent = 'bienvenida';
-    modalMessage(modalTitle, modalContent, '#009fc6');
+    modalMessage(modalTitle, modalContent, '#9da9cf');
     window.location.hash = '#/codeMeet';
   }).catch((error) => {
     const errorCode = error.code;
     if (errorCode === 'auth/account-exists-with-different-credential') {
       modalTitle = 'Mensaje de Error';
       modalContent = 'Es el mismo usuario';
-      modalMessage(modalTitle, modalContent, '#009fc6');
+      modalMessage(modalTitle, modalContent, '#9da9cf');
     }
   });
 };

@@ -261,8 +261,6 @@ p {
   align-self: start;
   margin-top: 3px;
   border-top-style: inset;
-  background-color: #0563af;
-  color: white;
   padding: 7px;
   border: none;
   border-radius: 20px;
@@ -632,7 +630,7 @@ label {
 .modal-footer {
   padding: 8px 16px;
   color: #f2f2f2;
-  background: #009fc6;
+  background: #9da9cf;
 }
 .text-modal {
   text-align: justfy;
@@ -685,7 +683,6 @@ label {
 }
 
 .edit-comment {
-  color: #f6b106;
   font-weight: bold;
 }
 .save-comment{
