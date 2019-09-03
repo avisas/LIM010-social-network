@@ -11,7 +11,7 @@ export const listComment = (objNote) => {
   liElemnt.innerHTML = `
     <div class="user-commented flex-name-post">
       <div class="top-comment">
-        <div>
+        <div class="top-flex">
           <span>${objNote.nameUser}</span>
           ${userCurrent().uid === objNote.idUser ? `
           <div class="width-icon">
@@ -25,7 +25,7 @@ export const listComment = (objNote) => {
           <span class="hide" id="delete-${objNote.id}"><i class="fa fa-trash" aria-hidden="true"></i></span>
             `}
         </div>     
-        <hr>
+        <hr class="margin-top">
         <span>${objNote.timePost}</span>
                
       </div>
