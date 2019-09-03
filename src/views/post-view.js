@@ -34,10 +34,9 @@ export const listNotes = (objNote) => {
     </div>
     <div class="botom-post padding">
       <div>
-        <i class="fa fa-heart-o heart-empty" aria-hidden="true" id="like-${objNote.id}" data-post="${objNote.id}"></i>
-        <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${objNote.id}"
-          data-post="${objNote.id}"></i>
-        <a id="counter-${objNote.id}" class="counter-heart"></a>
+      <i class="fa fa-heart-o heart-empty" aria-hidden="true" id="like-${objNote.id}" data-post="${objNote.id}"></i>
+      <i class="fa fa-heart hide heart-full" aria-hidden="true" id="dislike-${objNote.id}" data-post="${objNote.id}"></i>
+      <a id="counter-${objNote.id}" class="counter-heart"></a>
       </div>
       <div>
         <span id="show-comment"><i class="fa fa-comment-o show-comment" aria-hidden="true"></i></span>

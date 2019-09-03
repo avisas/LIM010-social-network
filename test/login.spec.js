@@ -1,15 +1,3 @@
-// importamos la funcion que vamos a testear
-/* import { signIn } from '../src/controller-firebase/controller-authentication.js';
-
-describe('signIn', () => {
-  it('debería ser una función', () => {
-    expect(typeof signIn).toBe('function');
-  });
-}); */
-
-// configurando firebase mock
-// iniciando tests
-
 import {
   signIn, createUser, userCurrent, signInWithFacebook, signInWithGoogle, signOutLogin,
 } from '../src/model/controller-authentication.js';
@@ -25,7 +13,6 @@ const mockprovider = new firebasemock.MockFirebase();
 mockprovider.autoFlush();
 
 global.firebase = firebasemock.MockFirebaseSdk(
-  // use null if your code does not use RTDB
   path => (path ? mockfirestore.child(path) : null),
   () => mockauth,
   () => mockfirestore,

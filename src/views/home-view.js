@@ -1,4 +1,3 @@
-
 // eslint-disable-next-line import/no-cycle
 import { savePost } from '../controller/post-controller.js';
 // eslint-disable-next-line import/no-cycle
@@ -21,7 +20,6 @@ export const home = (notes) => {
                 <option value="publico" selected>Público</option>
                 <option value="privado">Privado</option>
             </select>
-
             <input type="button" id="compartir-post" class="btn-share" value="Compartir">
         </div>
     </form>
