@@ -34,7 +34,7 @@ export default () => {
       <div id="user-perfil" class="user-perfil">
       <div>
       <img class="img-profile"
-          src="https://designmodo.com/wp-content/uploads/2015/02/coding-page-illustration-page-header.png">
+          src="https://s.savvysme.com/live/themes/fluid_design/img/category/search-engine-marketing.png">
       </div>
           <div>
           <div class="flex margin">
@@ -43,18 +43,26 @@ export default () => {
           </div>
           <hr>
           
-          <div>
-          <i class="fa fa-comment-o" aria-hidden="true"></i>
-          <i class="fa fa-user" aria-hidden="true"></i>
-            <p id="job"></p>
+          <div class="margin">
+            <div class="flex-align">
+              <i class="fa fa-graduation-cap margin" aria-hidden="true"></i>
+              <p id="job"></p>
+            </div>
+            <div class="flex-align">
+            <i class="fa fa-tags margin" aria-hidden="true"></i>
             <p id="description"></p>
+            </div>
+          
+         
+
+          
           </div>
       </div>
     </div>
     <div class="content-post" id="content-post">
 
     </div>
-  </main>-
+  </main>
 		`;
 
   headerDiv.innerHTML = headerContent;

@@ -187,7 +187,7 @@ p {
   padding: 7px 20px 7px 20px;
   width: -webkit-fill-available;
   margin: 2%;
-  border-radius: 20px;
+  border-radius: 5px;
   outline: none;
 }
 
@@ -292,7 +292,7 @@ p {
 }
 .div-post {
   height: auto;
-  border: 2px solid #666666;
+  border: 2px solid #e6de8c;
   border-radius: 5px;
   margin: 2%;
   font-family: "Ubuntu", sans-serif;
@@ -309,9 +309,12 @@ p {
   font-size: 12px;
 }
 .user-commented {
-  color: black;
-  padding: 2% 3% 0% 5%;
+  color: #565454;
+  padding: 2% 3% 0% 3%;
   width: 90%;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
 }
 .border-post {
   border: 2px solid #7c817e;
@@ -348,7 +351,7 @@ p {
   align-items: center;
 }
 .user-perfil {
-  /* border: 2px solid #9da9cf; */
+  border: 2px solid #9da9cf;
   border-radius: 5px;
   padding: 2%;
   margin-bottom: 5%;
@@ -438,11 +441,11 @@ label {
   display: list-item;
 }
 .div-comment {
-  border: 1px solid #7c817e;
-  border-radius: 35px;
+  border: 1px solid #00a1df73;
+  border-radius: 5px;
   font-family: "Ubuntu", sans-serif;
-  width: 87%;
-  background-color: #f2eeed;
+  width: -webkit-fill-available;
+  background-color: #4994e814;
 }
 .textArea-comment {
   resize: none;
@@ -455,6 +458,7 @@ label {
   outline: none;
 }
 .form-comment {
+  align-items: center;
   display: flex;
 }
 .file-name {
@@ -467,6 +471,45 @@ label {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
+}
+.list-comment{
+  width: -webkit-fill-available;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 5px;
+  border: 1px solid #736666;
+  background-color: aliceblue;
+  resize: none;
+}
+.top-comment{
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  width: 100%;
+}
+.width-icon{
+  /* font-size: large; */
+}
+.margin-top{
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.flex-align{
+  align-items: center;
+  display: flex;
+}
+.textarea-profile{
+  width: -webkit-fill-available;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-top: 4%;
+}
+.top-flex{
+  display: flex;
+  justify-content: space-between;
 }
 @media screen and (min-width: 764px) {
   html,
@@ -555,7 +598,7 @@ label {
     width: 90vh;
   }
   .user-perfil {
-    border: 2px solid #40538e;
+    border: 2px solid #8c949c;
     border-radius: 5px;
     /* padding: 2%; */
     margin-bottom: 5%;
@@ -686,7 +729,7 @@ label {
 }
 .btn-comment {
   color: #fefefe;
-  background: #1b2354;
+  background: #00a1df;
   padding: 10px;
   border-radius: 50%;
 }
@@ -705,3 +748,4 @@ label {
   padding: 10px;
   border-radius: 50%;
 }
+
