@@ -9,7 +9,7 @@ export const addLikeFirebase = (userUid, userName, postId) => firebase.firestore
   });
 
 export const deleteLikeFirebase = (user, postId) => firebase.firestore().collection('post').doc(postId).collection('likes')
-  .doc(user.uid)
+  .doc(user)
   .delete();
 
 export const showLikeFirebase = idPost => firebase.firestore().collection('post').doc(idPost).collection('likes');
