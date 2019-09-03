@@ -10,16 +10,15 @@ export const updateUserName = (user, newName) => user.updateProfile({
   // console.log(error);
 });
 
-export const getData = (name, email, job, description) => {
+export const getData = (name, email, job, descriptionText) => {
   const user = userCurrent();
   firebase.firestore().collection('users').doc(user.uid).onSnapshot((doc) => {
     name.value = doc.data().name;
     email.value = doc.data().email;
     job.value = doc.data().job;
-    description.value = doc.data().description;
+    descriptionText.value = doc.data().description;
   });
 };
-
 
 export const updateProfile = (nameUser, emailUser, jobUser, descriptionUser) => {
   const user = userCurrent();

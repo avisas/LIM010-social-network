@@ -38,8 +38,7 @@ export default () => {
     <label>Ocupación</label>
     <input type="text" value="" class="inputForm" id="job">
     <label>Sobre ti</label>
-    <input type="text" value="" class="inputForm" id="description">
-
+    <textarea class="textarea-profile" id="description-text"></textarea>
     <input type="submit" class="button-login" id="button-save" value="Guardar">
     <input type="submit" class="button-login" id="button-return" value="Regresar">
     </form>
@@ -52,17 +51,18 @@ export default () => {
   const name = profile.querySelector('#name');
   const email = profile.querySelector('#email');
   const job = profile.querySelector('#job');
-  const description = profile.querySelector('#description');
+  const descriptionText = profile.querySelector('#description-text');
+
   btnSignOut.addEventListener('click', signOutUser);
 
-  getData(name, email, job, description);
+  getData(name, email, job, descriptionText);
   const save = profile.querySelector('#button-save');
   save.addEventListener('click', (event) => {
     event.preventDefault();
     const newName = name.value;
     const newEmail = email.value;
     const newJob = job.value;
-    const newDescription = description.value;
+    const newDescription = descriptionText.value;
 
     updateProfile(newName, newEmail, newJob, newDescription).then(() => {
       // Update successful.
