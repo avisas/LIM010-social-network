@@ -31,6 +31,7 @@ export const editCommentFirebase = (idPost, idComment, commentEdit) => firebase.
   .doc(idComment)
   .update({
     comment: commentEdit,
+    timePost: datePost(),
   });
 
 export const getAllComments = (idPost, callback) => {
