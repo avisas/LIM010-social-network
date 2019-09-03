@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { changeView } from './controller-view/index.js';
 
 const initRouter = () => {
