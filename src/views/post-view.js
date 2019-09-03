@@ -27,8 +27,8 @@ export const listNotes = (objNote) => {
       <span><i class="fa fa-trash btn-delete" id="delete-${objNote.id}" aria-hidden="true"></i><span>` : `<span class="hide"><i class="fa fa-trash" id="delete-${objNote.id}" aria-hidden="true"></i></span>`}
     </div>
     <div class="middle-post">
-      <textarea class="textarea no-border margin padding" id="text-${objNote.id}" disabled>${objNote.notes}</textarea>
-      ${objNote.img !== '' ? `<img class="img-post" src="${objNote.img}">` : ''}
+      <div class="textarea no-border padding" id="text-${objNote.id}" contentEditable="false">${objNote.notes}</div>
+      ${objNote.img !== '' ? `<img class="img-post margin" src="${objNote.img}">` : ''}
       <div>
       </div>
     </div>

@@ -175,6 +175,7 @@ p {
   margin: 2%;
   border-radius: 5px;
   outline: none;
+  text-align: justify;
 }
 
 .textarea {
@@ -183,6 +184,7 @@ p {
   width: -webkit-fill-available;
   font-size: 14px;
   font-family: "Ubuntu", sans-serif;
+  text-align: justify;
 }
 
 .date-publication{
@@ -239,6 +241,7 @@ p {
   resize: none;
   border: 1px solid #a9a9a9;
   padding: 7px 20px 7px 20px;
+  text-align: justify;
 }
 .no-border {
   border: none;
@@ -280,7 +283,7 @@ p {
 .img-post {
   width: 40%;
   height: 50%;
-  margin-left: 2%;
+  margin: 0% 2% 2% 2%;
 }
 .user-publicated {
   background-color: #9da9cf;
@@ -426,6 +429,7 @@ label {
   padding: 1% 0 0 2%;
   border-radius: 15px;
   outline: none;
+  text-align: justify;
 }
 .form-comment {
   align-items: center;
@@ -446,10 +450,11 @@ label {
   padding: 10px;
   font-size: 13px;
   border-radius: 5px;
-  border: 1px solid #736666;
+  border: 1px solid #9e9595;
   background-color: aliceblue;
   resize: none;
   font-family: "Ubuntu", sans-serif;
+  margin: 2%;
 }
 .top-comment{
   display: flex;
@@ -473,6 +478,7 @@ label {
   border: 1px solid #ccc;
   resize: none;
   margin-top: 4%;
+  text-align: justify;
 }
 .top-flex{
   display: flex;

@@ -30,7 +30,7 @@ export const listComment = (objNote) => {
     <span>${objNote.timePost}</span>
   </div>
   </div>
-  <textarea class="list-comment margin" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
+  <textarea class="list-comment" disabled id="textcomment-${objNote.id}">${objNote.comment}</textarea>
  `;
 
   liElemnt.querySelector(`#delete-${objNote.id}`)
