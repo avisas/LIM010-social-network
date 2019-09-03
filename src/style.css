@@ -218,11 +218,6 @@ p {
 }
 .fa-eye:before {
   content: "\f06e";
-  /* float: right; */
-  /* margin-left: 210px; */
-  /* margin-top: -50px; */
-  /* position: relative; */
-  /* z-index: 2; */
 }
 .margin-left {
   margin-left: 5%;

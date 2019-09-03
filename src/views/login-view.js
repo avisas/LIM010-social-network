@@ -34,13 +34,11 @@ export default () => {
   </div>
   `;
   formLogin.innerHTML = divLogin;
-  // document.getElementById("container").appendChild(formLogin);
 
   const formAutenticacion = formLogin.querySelector('#form-autenticacion');
   const loginFacebook = formLogin.querySelector('#facebook');
   const loginGoogle = formLogin.querySelector('#google');
   const showEye = formLogin.querySelector('#show-eye');
-
 
   formAutenticacion.addEventListener('submit', loginFunction);
   loginFacebook.addEventListener('click', signInFacebook);

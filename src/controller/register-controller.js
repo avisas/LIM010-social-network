@@ -4,19 +4,14 @@ export const createProfile = (id, nameUser, emailUser) => {
   firebase.firestore().collection('users').doc(id).get()
     .then((doc) => {
       if (!doc.exists) {
-        // console.log('Document data:', doc.data().name);
         firebase.firestore().collection('users').doc(id).set({
           name: nameUser,
           email: emailUser,
           job: '',
           description: '',
         });
-      } else {
-        // doc.data() will be undefined in this case
-        // console.log('No such document!');
       }
     });
-
 
   const user = userCurrent();
 
@@ -24,10 +19,8 @@ export const createProfile = (id, nameUser, emailUser) => {
     displayName: nameUser,
   })
     .then(() => {
-      // console.log('usuario creado');
     })
     .catch(() => {
-      // console.log(error);
     });
 };
 
@@ -36,15 +29,10 @@ export const getName = (userName) => {
   firebase.firestore().collection('users').doc(user).get()
     .then((doc) => {
       if (doc.exists) {
-        // console.log('Document data:', doc.data().name);
         userName.textContent = doc.data().name;
-      } else {
-        // doc.data() will be undefined in this case
-        // console.log('No such document!');
       }
     })
     .catch(() => {
-      // console.log('Error getting document:', error);
     });
 };
 
@@ -63,7 +51,6 @@ export const registerFunction = (event) => {
       regMessageErrorLabel.classList.remove('show-message-error');
       regMessageErrorLabel.innerHTML = '';
       window.location.hash = '#/';
-      // alert('Usuario creado correctamente'); // Poner un mensaje bonito
     })
     .catch((error) => {
       regMessageErrorLabel.classList.add('show-message-error');
