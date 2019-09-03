@@ -37,13 +37,17 @@ export default () => {
           src="https://designmodo.com/wp-content/uploads/2015/02/coding-page-illustration-page-header.png">
       </div>
           <div>
-          <div class="flex">
+          <div class="flex margin">
               <img id="user-photo" class="user-photo">
               <h2 id="profile-name"></h2>
           </div>
+          <hr>
+          
           <div>
-              <p id="job"></p>
-              <p id="description"></p>
+          <i class="fa fa-comment-o" aria-hidden="true"></i>
+          <i class="fa fa-user" aria-hidden="true"></i>
+            <p id="job"></p>
+            <p id="description"></p>
           </div>
       </div>
     </div>

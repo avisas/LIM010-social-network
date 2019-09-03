@@ -14,7 +14,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 10px 10%;
-  background-color: #40538e;
+  background-color: #00a1df;
   font-family: "Ubuntu", sans-serif;
 }
 body {
@@ -255,11 +255,12 @@ p {
   border:none;
 }
 .btn-select {
-  align-self: start;
-  margin-top: 3px;
-  border-top-style: inset;
-  background-color: #0563af;
-  color: white;
+  /* align-self: start; */
+  /* margin-top: 3px; */
+  border: none;
+  /* border-top-style: inset; */
+  /* background-color: #ffee3d; */
+  /* color: #00a1df; */
   padding: 7px;
   border-radius: 20px;
 }
@@ -268,15 +269,15 @@ p {
 }
 .btn-share {
   font-family: "Patua One", cursive;
-  background-color: #1b2354;
-  color: white;
-  padding: 10px 20px;
+  background-color: #00a1df;
+  color: #ffffff;
+  padding: 7px 15px;
   /* margin: 8px 0; */
   border: none;
   border-radius: 20px;
   cursor: pointer;
   font-size: 13px;
-  align-self: flex-end;
+  /* align-self: flex-start; */
 }
 .img-profile {
   width: 100%;
@@ -284,10 +285,11 @@ p {
 }
 .div-post {
   height: auto;
-  border: 2px solid #40538e;
+  border: 2px solid #666666;
   border-radius: 5px;
   margin: 2%;
   font-family: "Ubuntu", sans-serif;
+  /* padding: 15px; */
 }
 .img-post {
   width: 40%;
@@ -295,8 +297,9 @@ p {
   margin-left: 2%;
 }
 .user-publicated {
-  background-color: #40538e;
-  color: white;
+  background-color: #ffee3d;
+  /* color: white; */
+  font-size: 12px;
 }
 .user-commented {
   color: black;
@@ -312,8 +315,8 @@ p {
 }
 .botom-post {
   display: flex;
-  background-color: #9da9cf;
-  border-color: #9da9cf;
+  background-color: #e8e8e8;
+  border-color: #e8e8e8;
   border-style: solid;
   border-width: 2px 0 2px 0;
   justify-content: space-between;
@@ -394,11 +397,13 @@ label {
 }
 .flex-bottom-form {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-around;
 }
 .flex-name-post {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 .delete {
   height: 20px;
@@ -447,6 +452,8 @@ label {
 }
 .file-name{
   border:none;
+  width: 90px;
+  font-size: 10px;
 }
 .div-main-profile{
   display: flex;
@@ -668,7 +675,7 @@ label {
 }
 .show-comment {
   color: #fefefe;
-  background: #1b2354;
+  background: #00a1df;
   padding: 10px;
   border-radius: 50%;
 }
@@ -690,7 +697,7 @@ label {
 
 .btn-picture {
   color: #fefefe;
-  background: #1b2354;
+  background: #00a1df;
   padding: 10px;
   border-radius: 50%;
 }
