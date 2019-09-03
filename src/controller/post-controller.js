@@ -1,4 +1,5 @@
 /* eslint-disable import/no-cycle */
+/* eslint-disable import/no-cycle */
 import { userCurrent } from '../model/controller-authentication.js';
 import {
   addPostFirebase, deletePostFirebase, editPostFirebase, showPostFirebase,
