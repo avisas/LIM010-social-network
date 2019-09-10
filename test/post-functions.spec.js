@@ -1,6 +1,6 @@
 import MockFirebase from 'mock-cloud-firestore';
 import {
-  addLikeFirebase, showLikeFirebase, deleteLikeFirebase,
+  addLikeFirebase, deleteLikeFirebase, getAllLikes,
   addCommentFirebase, getAllComments, editCommentFirebase, deleteCommentFirebase,
 } from '../src/model/controller-likes.js';
 
@@ -64,17 +64,22 @@ global.firebase = new MockFirebase(fixtureData, { isNaiveSnapshotListenerEnabled
 describe('addLikeFirebase', () => {
   it('deberia poder agregar like a un post', done => addLikeFirebase('user3', 'Paola', 'a02')
     .then(() => {
-      showLikeFirebase('a02').onSnapshot((querySnapshot) => {
-        expect(querySnapshot.size).toBe(1);
+      getAllLikes('a02', (likes) => {
+        const result = likes.find(data => data.id === 'user3');
+        expect(result.id).toBe('user3');
+        done();
       });
-      done();
     }));
 });
 
 describe('deleteLikeFirebase', () => {
   it('deberia poder quitar like a un post', done => deleteLikeFirebase('user1', 'a01')
     .then(() => {
-      done();
+      getAllLikes('a01', (likes) => {
+        const result = likes.find(data => data.id === 'user1');
+        expect(result).toBe(undefined);
+        done();
+      });
     }));
 });
 
