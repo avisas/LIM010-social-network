@@ -1,6 +1,6 @@
 import { signOutUser } from '../controller/home-controller.js';
 import { updateProfile, getData } from '../controller/profile-controller.js';
-import { userCurrent } from '../model/controller-authentication.js';
+import { userCurrent } from '../model/model-authentication.js';
 
 export default () => {
   const profile = document.createElement('div');

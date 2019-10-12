@@ -1,6 +1,6 @@
 import {
   signIn, createUser, userCurrent, signInWithFacebook, signInWithGoogle, signOutLogin,
-} from '../src/model/controller-authentication.js';
+} from '../src/model/model-authentication.js';
 
 const firebasemock = require('firebase-mock');
 

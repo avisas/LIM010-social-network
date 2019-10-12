@@ -1,4 +1,4 @@
-import { userCurrent, createUser } from '../model/controller-authentication.js';
+import { userCurrent, createUser } from '../model/model-authentication.js';
 
 export const createProfile = (id, nameUser, emailUser) => {
   firebase.firestore().collection('users').doc(id).get()

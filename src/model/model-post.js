@@ -28,27 +28,26 @@ export const editPostFirebase = (id, note, selectedPrivacidad) => firebase.fires
   timePost: datePost(),
 });
 
-export const showPostFirebase = callback => firebase.firestore().collection('post').where('privacidad', '==', 'publico').orderBy('timePost', 'desc')
-  .onSnapshot((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
-    });
-    callback(data);
-  });
+let unsubscribe = () => {};
 
-export const showPostUserFirebase = (userUid, callback) => firebase.firestore().collection('post').where('user', '==', userUid).orderBy('timePost', 'desc')
-  .get()
-  .then((querySnapshot) => {
-    const data = [];
-    querySnapshot.forEach((doc) => {
-      data.push({ id: doc.id, ...doc.data() });
+export const showPostUserFirebase = (userUid, callback) => {
+  unsubscribe = firebase.firestore().collection('post').where('user', '==', userUid).orderBy('timePost', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      callback(data);
     });
-    callback(data);
-  });
-
-export const uploadImage = (file) => {
-  const postImageRef = firebase.storage().ref().child(`images/${file.name}`);
-  return postImageRef.put(file)
-    .then(snapshot => snapshot.ref.getDownloadURL());
+};
+export const showPostFirebase = (callback) => {
+  firebase.firestore().collection('post').where('privacidad', '==', 'publico').orderBy('timePost', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        data.push({ id: doc.id, ...doc.data() });
+      });
+      callback(data);
+    });
+  unsubscribe();
 };

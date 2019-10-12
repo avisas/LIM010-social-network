@@ -1,6 +1,6 @@
 import {
   signIn, signInWithFacebook, signInWithGoogle, userCurrent,
-} from '../model/controller-authentication.js';
+} from '../model/model-authentication.js';
 import { modalMessage } from './home-controller.js';
 import { createProfile } from './register-controller.js';
 

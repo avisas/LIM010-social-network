@@ -1,4 +1,4 @@
-import { signOutLogin } from '../model/controller-authentication.js';
+import { signOutLogin } from '../model/model-authentication.js';
 
 export const recoverUserName = (userName, userProfileName, UserPhotoProfile, photo) => {
   firebase.auth().onAuthStateChanged((user) => {

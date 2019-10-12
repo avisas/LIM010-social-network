@@ -2,8 +2,8 @@
 import {
   deletePost, edit, addLike, deleteLikePost, saveComment,
 } from '../controller/post-controller.js';
-import { getAllComments, getAllLikes } from '../model/controller-likes.js';
-import { userCurrent } from '../model/controller-authentication.js';
+import { getAllComments, getAllLikes } from '../model/model-likes.js';
+import { userCurrent } from '../model/model-authentication.js';
 import { listComment } from './comment-view.js';
 
 export const listNotes = (objNote) => {

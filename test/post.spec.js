@@ -1,7 +1,7 @@
 import MockFirebase from 'mock-cloud-firestore';
 import {
   addPostFirebase, showPostFirebase, deletePostFirebase, editPostFirebase, showPostUserFirebase,
-} from '../src/model/controller-post.js';
+} from '../src/model/model-post.js';
 
 const fixtureData = {
   __collection__: {

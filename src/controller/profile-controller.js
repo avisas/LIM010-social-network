@@ -1,4 +1,4 @@
-import { userCurrent } from '../model/controller-authentication.js';
+import { userCurrent } from '../model/model-authentication.js';
 
 export const updateUserName = (user, newName) => user.updateProfile({
   displayName: newName,

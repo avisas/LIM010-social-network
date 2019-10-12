@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { editComment } from '../controller/post-controller.js';
-import { deleteCommentFirebase } from '../model/controller-likes.js';
-import { userCurrent } from '../model/controller-authentication.js';
+import { deleteCommentFirebase } from '../model/model-likes.js';
+import { userCurrent } from '../model/model-authentication.js';
 
 export const listComment = (objNote) => {
   const liElemnt = document.createElement('li');
