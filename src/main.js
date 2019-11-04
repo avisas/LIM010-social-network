@@ -1,9 +1,9 @@
-import { changeView } from './controller-view/index.js';
 
-const initRouter = () => {
+
+/* const initRouter = () => {
   changeView(window.location.hash);
   window.addEventListener('hashchange', () => changeView(window.location.hash));
-};
+}; */
 
 const init = () => {
   const firebaseConfig = {
@@ -16,7 +16,7 @@ const init = () => {
     appId: '1:625296739587:web:f5e413abb9ab5386',
   };
   firebase.initializeApp(firebaseConfig);
-  initRouter();
+  // initRouter();
 };
 
 window.onload = init();
