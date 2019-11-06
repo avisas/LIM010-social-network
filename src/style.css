@@ -40,7 +40,7 @@ header nav ul {
   position: absolute;
   width: 100%;
   top: 45px;
-  background-color: #4994e8;
+  background-color: #40538e;
   height: auto;
   left: 0;
   display: flex;
@@ -218,11 +218,6 @@ p {
 }
 .fa-eye:before {
   content: "\f06e";
-  /* float: right; */
-  /* margin-left: 210px; */
-  /* margin-top: -50px; */
-  /* position: relative; */
-  /* z-index: 2; */
 }
 .margin-left {
   margin-left: 5%;
@@ -662,6 +657,7 @@ label {
   background: #eb1717;
   padding: 10px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .iconEdit {
   color:#080808;
@@ -679,11 +675,13 @@ label {
   background: #f2f2f2;
   padding: 6px;
   border-radius: 50%;
+  cursor: pointer;
 }
 .show-comment {
   color: black;
   background: #fefefe;
   padding: 10px;
+  cursor: pointer;
   border-radius: 50%;
 }
 .btn-comment {
@@ -691,6 +689,7 @@ label {
   background: #e8d838;
   padding: 10px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .edit-comment {
@@ -705,4 +704,5 @@ label {
   background: #e8d838;
   padding: 10px;
   border-radius: 50%;
+  cursor: pointer;
 }

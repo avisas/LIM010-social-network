@@ -14,14 +14,14 @@ const fixtureData = {
           privacidad: 'publico',
           timePost: '1 de septiembre de 2019 - 12:32 p. m.',
           user: 'user1',
-          userName: 'Alba',
+          userName: 'Jesseliz',
           __collection__: {
             likes: {
               __doc__: {
                 user1: {
                   idPost: 'a01',
                   idUser: 'user1',
-                  nameUser: 'Alba',
+                  nameUser: 'Jesseliz',
                 },
               },
             },
@@ -31,14 +31,14 @@ const fixtureData = {
                   idPost: 'a01',
                   idUser: 'user1',
                   comment: 'Comentario 1',
-                  nameUser: 'Alba',
+                  nameUser: 'Jesseliz',
                   timePost: '31 de agosto de 2019 - 2:19 p. m.',
                 },
                 c2: {
                   idPost: 'a01',
                   idUser: 'user2',
                   comment: 'Comentario 2',
-                  nameUser: 'Yesseliz',
+                  nameUser: 'Alba',
                   timePost: '31 de agosto de 2019 - 2:10 p. m.',
                 },
               },
