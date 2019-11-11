@@ -36,7 +36,12 @@
     "stylelint-config-recommended": "^2.2.0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "jest-mock": "^24.9.0",
     "mock": "^0.1.1"
+=======
+    "firebase": "^6.4.1",
+    "firebase-admin": "^8.4.0"
+>>>>>>> 3c233a72927f7ab35848f80d7a100971e8d813a5
   }
 }
