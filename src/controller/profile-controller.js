@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 import { userCurrent } from '../model/model-authentication.js';
+=======
+/* eslint-disable import/no-cycle */
+import { dataBase, storage } from '../main.js';
+import { userCurrent } from '../controller-firebase/controller-authentication.js';
+>>>>>>> 3c233a72927f7ab35848f80d7a100971e8d813a5
 
 export const updateUserName = (user, newName) => user.updateProfile({
   displayName: newName,
